@@ -1,26 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-
+import {getFitnessInfo, getActivityInfo} from "./fetchSource.js";
+import resolvePromise1 from "./resolvePromise.js";
+import SearchView from "./view/searchView.js";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  return <div>
+    <SearchView> </SearchView>
+  </div>;
+  
 }
 
 export default App;
