@@ -29,7 +29,7 @@ function getFitnessInfo(age, weight, height){
 }
 
 function transformActivityACB(object){
-        return object.goals;
+        return object.data.goals;
 }
 
 function getActivityInfo(age, gender,  height, weight, level){
