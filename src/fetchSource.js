@@ -30,7 +30,7 @@ function getFitnessInfo(person){
 }
 
 function transformActivityACB(object){
-        return object.data.goals;
+        console.log(object.data.goals);
 }
 
 function getActivityInfo(person){

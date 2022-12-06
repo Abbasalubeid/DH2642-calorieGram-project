@@ -1,6 +1,7 @@
 export default class FitnessModel{
-    constructor( ){
+    constructor(){
         this.person = {};
+        this.currentGoal = {};
     }
 
     setAge(age){
@@ -19,7 +20,6 @@ export default class FitnessModel{
         else
             this.person.weight = weight;
            
-
     }
 
     setHeight(height){

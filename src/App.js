@@ -1,9 +1,9 @@
-import { getActivityInfo } from "./fetchSource.js";
 import SearchViewPresenter from "./presenter/searchViewPresenter.js";
-function App() {
+function App(props) {
+  
 
   return (<div>
-    <SearchViewPresenter />
+    <SearchViewPresenter model={props.model} />
   </div>);
 
 }
