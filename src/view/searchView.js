@@ -15,6 +15,17 @@ export default function SearchView(props) {
         props.onUserChangedHeight(event.target.value);
     }
 
+    function userChooseGenderACB(event){
+        props.onUserChangedGender(event.target.value);
+    }
+
+    function userChooseLevelACB(event){
+        props.onUserChooseLevel(event.target.value);
+    }
+
+    function renderGoals(data){
+       return <div>{data}</div>
+    }
     return (
         <div>
             <table>
@@ -23,10 +34,10 @@ export default function SearchView(props) {
                         <td>Gender</td>
                         <td>
                             <label>
-                                <input type="radio" value="Male" name="gender" /> Male
+                                <input type="radio" value="male" name="gender" onInput={userChooseGenderACB}/> Male
                             </label>
                             <label>
-                                <input type="radio" value="Female" name="gender" /> Female
+                                <input type="radio" value="female" name="gender" onInput={userChooseGenderACB} /> Female
                             </label>
                         </td>
                     </tr>
@@ -72,19 +83,19 @@ export default function SearchView(props) {
                             <label for="activity">Activity</label>
                         </td>
                         <td>
-                            <select name="activity" className="select">
+                            <select name="activity" className="select" onChange={userChooseLevelACB}>
                                 <option>Choose Activity</option>
-                                <option value="1.2">
+                                <option value="level_1" >
                                     Sedentary: little or no exercise
                                 </option>
-                                <option value="1.375">Light Exercise (1-2 days/week)</option>
-                                <option value="1.55">Exercise 4-5 times/week”,</option>
-                                <option value="1.725">
-                                    Daily exercise or intense exercise 3-4 times/week”,
+                                <option value="level_2" >Light Exercise (1-2 days/week)</option>
+                                <option value="level_3" >Exercise 4-5 times/week</option>
+                                <option value="level_4" >
+                                    Daily exercise or intense exercise 3-4 times/week
                                 </option>
-                                <option value="1.825">Intense exercise 6-7 times/week”,</option>
-                                <option value="1.9">
-                                    Very intense exercise daily, or physical job”
+                                <option value="level_5" >Intense exercise 6-7 times/week </option>
+                                <option value="level_6" >
+                                    Very intense exercise daily, or physical job
                                 </option>
                             </select>
                         </td>
@@ -97,16 +108,12 @@ export default function SearchView(props) {
                     </tr>
                 </tbody>
             </table>
-            {/* <div>
-                <input type="radio" value="Male" name="gender" /> Male
-                <input type="radio" value="Female" name="gender" /> Female
-                <input type="radio" value="Other" name="gender" /> Other
+            <div>
+             {props.goals(renderGoals)}
+             HEJsqsq
             </div>
-            <input placeholder="Age" onInput={userTypedAgeACB}></input>
-            <input placeholder="Weight" onInput={userTypedWeightACB}></input>
-            <input placeholder="Height" onInput={userTypedHeightACB}></input>
-            <button onClick={userSavedACB}>Calculate</button> */}
         </div>
+
     );
 
 }

@@ -9,9 +9,7 @@ function resolvePromise(promiseToResolve, promiseState, notify) {
   
     function saveDataACB(result) {
       if (promiseState.promise !== promiseToResolve) return;
-      console.log(result)
       promiseState.data = result;
-      console.log(result)
       if (notify) notify();
   
     }
