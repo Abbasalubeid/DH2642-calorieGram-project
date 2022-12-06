@@ -1,7 +1,7 @@
 function resolvePromise(promiseToResolve, promiseState, notify) {
     promiseState.promise = promiseToResolve;
-    promiseState.data = null;
-    promiseState.error = null;
+    promiseState.data = {};
+    promiseState.error = {};
     if (promiseToResolve == null) {
       return "The promise is null";
     }
@@ -9,9 +9,10 @@ function resolvePromise(promiseToResolve, promiseState, notify) {
   
     function saveDataACB(result) {
       if (promiseState.promise !== promiseToResolve) return;
+      console.log(result)
       promiseState.data = result;
+      console.log(result)
       if (notify) notify();
-  
   
     }
     function saveErrorACB(err) {

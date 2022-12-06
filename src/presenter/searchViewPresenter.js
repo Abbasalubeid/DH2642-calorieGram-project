@@ -1,33 +1,74 @@
-
+import resolvePromise from "../resolvePromise";
 import SearchView from "../view/searchView";
-import FitnessModel from "../model/FitnessModel";
+import React from "react";
+import { getFitnessInfo, getActivityInfo } from "../fetchSource";
 
 
-export default function SearchViewPresenter(){
-    const model = new FitnessModel();
+export default function SearchViewPresenter(props){
+    const [searchParams, setSearchParams] = React.useState({});
+    const [promiseState] = React.useState({});
 
-
-    let componentHeight;
-    let componentWeight;
-    let componentAge;
+    if (!promiseState.promise) {
+        resolvePromise(getFitnessInfo(searchParams), promiseState);
+      }
 
     function userSearchedACB(){
-        model.setAge(componentAge);
-        model.setWeight(componentWeight);
-        model.setHeight(componentHeight);
+        // resolvePromise(getFitnessInfo(searchParams), promiseState)
+        resolvePromise(getActivityInfo(searchParams), promiseState)
+        console.log(promiseState)
     }
 
     function ageIsChangedACB(age){
-        componentAge = age
+        const obj = {};
+        obj.weight = searchParams.weight;
+        obj.height = searchParams.height;
+        obj.age = age;
+        obj.gender = searchParams.gender;
+        obj.activitylevel = searchParams.level;
+        setSearchParams(obj);
     }
 
     function weightIsChangedACB(weight){
-        componentWeight = weight;
+        const obj = {};
+        obj.weight = weight;
+        obj.height = searchParams.height;
+        obj.age = searchParams.age;
+        obj.gender = searchParams.gender;
+        obj.activitylevel = searchParams.level;
+        setSearchParams(obj);
     }
 
     function heightIsChangedACB(height){
-        componentHeight = height;
+        const obj = {};
+        obj.weight = searchParams.weight;
+        obj.height = height
+        obj.age = searchParams.age;
+        obj.gender = searchParams.gender;
+        obj.activitylevel = searchParams.level;
+        setSearchParams(obj);
     }
+
+    function genderIsChangedACB(gender){
+        const obj = {};
+        obj.weight = searchParams.weight;
+        obj.height = searchParams.height
+        obj.age = searchParams.age;
+        obj.gender = gender;
+        obj.activitylevel = searchParams.activitylevel
+        setSearchParams(obj);
+    }
+
+    function activityLevelIsChangedACB(level){
+        const obj = {};
+        obj.weight = searchParams.weight;
+        obj.height = searchParams.height
+        obj.age = searchParams.age;
+        obj.gender = searchParams.gender;
+        obj.activitylevel = level;
+        setSearchParams(obj);
+    }
+
+
 
 
 
@@ -35,7 +76,9 @@ export default function SearchViewPresenter(){
         <SearchView onUserChangedAge = {ageIsChangedACB}
                     onUserChangedWeight = {weightIsChangedACB}
                     onUserChangedHeight = {heightIsChangedACB}
-                    onUserSearched = {userSearchedACB}/>
+                    onUserSearched = {userSearchedACB}
+                    onUserChangedGender = {genderIsChangedACB}
+                    onUserLevel = {activityLevelIsChangedACB}/>
     )
 
 }
