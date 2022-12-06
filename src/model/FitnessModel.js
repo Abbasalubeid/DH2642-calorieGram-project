@@ -23,6 +23,7 @@ export default class FitnessModel{
     }
 
     setHeight(height){
+        // API restrictions
      if(height < 130 || height > 230)   
         throw new Error("Height must be between 130 cm to 230 cm.")
      else
@@ -30,11 +31,5 @@ export default class FitnessModel{
         
     }
 
-    setAlert(){
-        if(this.person.height < 130 || this.person.height > 230)   
-            alert("Height must be between 130 cm to 230 cm.")
-        if(this.person.weight > 160 ||this.person.weight <  40)
-            alert("Weight must be between 40 kg to 160 kg.");
-    }
 
 }

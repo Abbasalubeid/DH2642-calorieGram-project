@@ -1,5 +1,4 @@
-import resolvePromise1 from "../resolvePromise";
-import { getFitnessInfo } from "../fetchSource";
+
 import React from "react";
 
 
