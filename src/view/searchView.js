@@ -20,11 +20,15 @@ export default function SearchView(props) {
 
     return (
         <div>
+            <div>
+                <input type="radio" value="Male" name="gender" /> Male
+                <input type="radio" value="Female" name="gender" /> Female
+                <input type="radio" value="Other" name="gender" /> Other
+            </div>
             <input placeholder="Age" onInput={userTypedAgeACB}></input>
             <input placeholder="Weight" onInput={userTypedWeightACB}></input>
-            <input type="checkbox" onInput={userTypedWeightACB}></input>
             <input placeholder="Height" onInput={userTypedHeightACB}></input>
-            <button onClick={userSavedACB}>Save</button>
+            <button onClick={userSavedACB}>Calculate</button>
         </div>
     );
 
