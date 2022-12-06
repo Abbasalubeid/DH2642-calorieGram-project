@@ -1,32 +1,46 @@
-
+import resolvePromise from "../resolvePromise";
 import SearchView from "../view/searchView";
 import FitnessModel from "../model/FitnessModel";
+import React from "react";
+import { getFitnessInfo } from "../fetchSource";
 
 
 export default function SearchViewPresenter(){
     const model = new FitnessModel();
+    const [searchParams, setSearchParams] = React.useState({});
+    const [promiseState] = React.useState({});
 
-
-    let componentHeight;
-    let componentWeight;
-    let componentAge;
+    if (!promiseState.promise) {
+        resolvePromise(getFitnessInfo(searchParams), promiseState);
+      }
 
     function userSearchedACB(){
-        model.setAge(componentAge);
-        model.setWeight(componentWeight);
-        model.setHeight(componentHeight);
+        resolvePromise(getFitnessInfo(searchParams), promiseState)
+        console.log(promiseState.data);
     }
 
     function ageIsChangedACB(age){
-        componentAge = age
+        const obj = {};
+        obj.weight = searchParams.weight;
+        obj.height = searchParams.height;
+        obj.age = age;
+        setSearchParams(obj);
     }
 
     function weightIsChangedACB(weight){
-        componentWeight = weight;
+        const obj = {};
+        obj.weight = weight;
+        obj.height = searchParams.height;
+        obj.age = searchParams.age;
+        setSearchParams(obj);
     }
 
     function heightIsChangedACB(height){
-        componentHeight = height;
+        const obj = {};
+        obj.weight = searchParams.weight;
+        obj.height = height
+        obj.age = searchParams.age;
+        setSearchParams(obj);
     }
 
 

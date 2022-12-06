@@ -24,17 +24,18 @@ function transformFitnessACB(object){
     return object.data;
 }
 
-function getFitnessInfo(age, weight, height){
-    return fetch(BASE_URL + "/bmi?age=" + age + "&weight=" + weight + "&height=" + height, options).then(treatHTTPResponseACB).then(transformFitnessACB);
+function getFitnessInfo(person){
+    const query = new URLSearchParams(person);
+    return fetch(BASE_URL + "/bmi?" + query.toString(), options).then(treatHTTPResponseACB).then(transformFitnessACB);
 }
 
 function transformActivityACB(object){
         return object.data.goals;
 }
 
-function getActivityInfo(age, gender,  height, weight, level){
-    return fetch(BASE_URL + "/dailycalorie?age=" + age + "&gender=" + gender + "&height=" + height
-    + "&weight=" + weight  + "&activitylevel=" + level, options).then(treatHTTPResponseACB).then(transformActivityACB);
+function getActivityInfo(person){
+    const query = new URLSearchParams(person);
+    return fetch(BASE_URL + "/dailycalorie?" + query.toString(), options).then(treatHTTPResponseACB).then(transformActivityACB);
 
 }
 
