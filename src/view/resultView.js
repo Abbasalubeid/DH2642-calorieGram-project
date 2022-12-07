@@ -4,12 +4,13 @@ export default function ResultView(props){
         console.log(props.result)
     }
 
-    function renderGoalsCB(object, i){
-        // if("gain weight" in props.result.goals[object])
-            return  <div>  Gain weight: {props.result.goals[object]["gain weight"]}
-                            Lose weight: {props.result.goals[object]["loss weight"]}</div>;
-        // else    
-            
+    function renderGoalsCB(object){
+        if(props.result.goals[object]["gain weight"])
+            return  <div key = {object}>For {object + "(" + props.result.goals[object]["gain weight"] + "/week" + ")" + "-->"}                   
+             Eat {Number(props.result.goals[object]["calory"]).toFixed(0)} Calories/day</div>           
+        else if (props.result.goals[object]["loss weight"] )  
+            return <div key = {object}>For {object + "(" + props.result.goals[object]["loss weight"] +  "/week" + ")" + "-->"}  
+                        Eat {Number(props.result.goals[object]["calory"]).toFixed(0)} Calories/day</div> 
                 
                
         
@@ -17,6 +18,7 @@ export default function ResultView(props){
 
     return ( <div>
                 <div> Your current BMR is {(props.result.BMR)} Calories/day</div>
+                <div>Goals: </div>
                 <div> {Object.keys(props.result.goals).map(renderGoalsCB)}</div>
                 <input type="submit" name="submit" value="ConsoleLog" className="submit-button" onClick={log} />
              </div>);
