@@ -91,7 +91,7 @@ export default function SearchViewPresenter(props) {
                     onUserChooseLevel={activityLevelIsChangedACB}
                 />
             </div>
-            <div className="searchview-container">
+            <div className="result-nopadding">
                 {promiseNoData({ promise, data, error }) ||
                     <ResultView
                         result={data}>

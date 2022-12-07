@@ -48,11 +48,11 @@ export default function SearchView(props) {
                         <td>
                             <label className="container gender">Male
                                 <input type="radio" value="male" name="gender" onInput={userChooseGenderACB} />
-                                <span class="checkmark"></span>
+                                <span className="checkmark"></span>
                             </label>
                             <label className="container gender">Female
                                 <input type="radio" value="female" name="gender" onInput={userChooseGenderACB} />
-                                <span class="checkmark"></span>
+                                <span className="checkmark"></span>
                             </label>
                         </td>
                     </tr>
@@ -108,7 +108,7 @@ export default function SearchView(props) {
                     <tr>
                         <td></td>
                         <td>
-                            <input type="submit" name="submit" value="Calculate!" className="btn-submit btn-lg" onClick={userSavedACB} />
+                            <input type="submit" name="submit" value="Calculater!" className="btn-submit btn-lg" onClick={userSavedACB}/>
                         </td>
                     </tr>
                 </tbody>

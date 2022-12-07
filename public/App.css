@@ -179,12 +179,31 @@ input[type="submit"] {
 .result {
   text-align: left;
   font-size: 22px;
-}
+   background: rgb(60, 255, 0); 
+  text-align: left;
+  padding: 10px;
+  border: dashed;
 
+}
+.result-nopadding{
+  padding: 30px;
+  width: 500px;
+  height: 500px;
+  border: 1px solid aqua;
+  border-radius: 25px;
+  background: linear-gradient(to left, red, blue);
+  /* background-color: #eab2bb; */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
 /* flex-parent*/
 .flex-parent {
   display: flex;
   flex-direction: row;
+ 
+
 }
 
 .flex-searchview {
