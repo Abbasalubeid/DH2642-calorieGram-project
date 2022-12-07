@@ -1,9 +1,9 @@
-import SearchViewPresenter from "./presenter/searchViewPresenter.js";
+import BmrSearchPresenter from "./presenter/bmrSearchPresenter.js";
 function App(props) {
   
 
   return (<div>
-    <SearchViewPresenter model={props.model} />
+    <BmrSearchPresenter model={props.model} />
   </div>);
 
 }
