@@ -15,16 +15,16 @@ export default function SearchView(props) {
         props.onUserChangedHeight(event.target.value);
     }
 
-    function userChooseGenderACB(event){
+    function userChooseGenderACB(event) {
         props.onUserChangedGender(event.target.value);
     }
 
-    function userChooseLevelACB(event){
+    function userChooseLevelACB(event) {
         props.onUserChooseLevel(event.target.value);
     }
 
-    function renderGoals(data){
-       return <div>{data}</div>
+    function renderGoals(data) {
+        return <div>{data}</div>
     }
     return (
         <div>
@@ -34,7 +34,7 @@ export default function SearchView(props) {
                         <td>Gender</td>
                         <td>
                             <label>
-                                <input type="radio" value="male" name="gender" onInput={userChooseGenderACB}/> Male
+                                <input type="radio" value="male" name="gender" onInput={userChooseGenderACB} className="gender-male/> Male
                             </label>
                             <label>
                                 <input type="radio" value="female" name="gender" onInput={userChooseGenderACB} /> Female
@@ -109,8 +109,8 @@ export default function SearchView(props) {
                 </tbody>
             </table>
             <div>
-             {props.goals(renderGoals)}
-             HEJsqsq
+                {props.goals(renderGoals)}
+                HEJsqsq
             </div>
         </div>
 
