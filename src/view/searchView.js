@@ -23,14 +23,6 @@ export default function SearchView(props) {
         props.onUserChooseLevel(event.target.value);
     }
 
-    function log(){
-            console.log(props.data)
-            
-    }
-
-    function renderGoalsCB(data){
-       return console.log(data);
-    }
     return (
         <div>
             <table>
@@ -112,9 +104,6 @@ export default function SearchView(props) {
                     </tr>
                 </tbody>
             </table>
-            <div>
-             {/* {Object.keys(props.goals).map(renderGoalsCB)} */}
-            </div>
         </div>
 
     );
