@@ -15,13 +15,14 @@ export default function SearchView(props) {
         props.onUserChangedHeight(event.target.value);
     }
 
-    function userChooseGenderACB(event){
+    function userChooseGenderACB(event) {
         props.onUserChangedGender(event.target.value);
     }
 
-    function userChooseLevelACB(event){
+    function userChooseLevelACB(event) {
         props.onUserChooseLevel(event.target.value);
     }
+    
 
     return (
         <div>
@@ -31,7 +32,7 @@ export default function SearchView(props) {
                         <td>Gender</td>
                         <td>
                             <label>
-                                <input type="radio" value="male" name="gender" onInput={userChooseGenderACB}/> Male
+                                <input type="radio" value="male" name="gender" onInput={userChooseGenderACB} /> Male
                             </label>
                             <label>
                                 <input type="radio" value="female" name="gender" onInput={userChooseGenderACB} /> Female
@@ -40,6 +41,7 @@ export default function SearchView(props) {
                     </tr>
                     <tr>
                         <td>
+                            <label htmlFor="age">Age</label>
                             <label htmlFor="age">Age</label>
                         </td>
                         <td>
@@ -56,14 +58,18 @@ export default function SearchView(props) {
                     <tr>
                         <td>
                             <label htmlFor="weight">Weight</label>
+                            <label htmlFor="weight">Weight</label>
                         </td>
                         <td>
+                            <input type="text" name="weight" maxLength="3"
+                                   width="60px" placeholder="kg" onInput={userTypedWeightACB}/>
                             <input type="text" name="weight" maxLength="3"
                                    width="60px" placeholder="kg" onInput={userTypedWeightACB}/>
                         </td>
                     </tr>
                     <tr>
                         <td>
+                            <label htmlFor="height">Height</label>
                             <label htmlFor="height">Height</label>
                         </td>
                         <td>
@@ -75,6 +81,7 @@ export default function SearchView(props) {
                     </tr>
                     <tr>
                         <td>
+                            <label htmlFor="activity">Activity</label>
                             <label htmlFor="activity">Activity</label>
                         </td>
                         <td>
@@ -103,8 +110,8 @@ export default function SearchView(props) {
                     </tr>
                 </tbody>
             </table>
+
         </div>
 
     );
-    
 }
