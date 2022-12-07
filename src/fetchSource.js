@@ -16,23 +16,19 @@ function treatHTTPResponseACB(response) {
         return response.json();
 }
 
-function transformFitnessACB(object) {
+function transformACB(object) {
     return object.data;
 }
 
 
 function getFitnessInfo(person){
     const query = new URLSearchParams(person);
-    return fetch(BASE_URL + "/bmi?" + query.toString(), options).then(treatHTTPResponseACB).then(transformFitnessACB);
-}
-
-function transformActivityACB(object){
-        return object.data
+    return fetch(BASE_URL + "/bmi?" + query.toString(), options).then(treatHTTPResponseACB).then(transformACB);
 }
 
 function getActivityInfo(person){
     const query = new URLSearchParams(person);
-    return fetch(BASE_URL + "/dailycalorie?" + query.toString(), options).then(treatHTTPResponseACB).then(transformActivityACB);
+    return fetch(BASE_URL + "/dailycalorie?" + query.toString(), options).then(treatHTTPResponseACB).then(transformACB);
 
 
 }

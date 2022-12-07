@@ -1,20 +1,31 @@
-import resolvePromise from "../resolvePromise";
-import SearchView from "../view/searchView";
+import SearchView from "../view/searchView.js";
+import ResultView from "../view/resultView.js"
 import React from "react";
+import promiseNoData from "../view/promiseNoData.js"
 import { getFitnessInfo, getActivityInfo } from "../fetchSource";
 
-
 export default function SearchViewPresenter(props){
-    const [searchParams, setSearchParams] = React.useState({});
-    const [promiseState] = React.useState({});
+    const [promise, setPromise] = React.useState(null);
+    const [data, setData] = React.useState(null);
+    const [error, setError] = React.useState(null);
 
-    if (!promiseState.promise) {
-        resolvePromise(getFitnessInfo(searchParams), promiseState);
-      }
+    const [searchParams, setSearchParams] = React.useState({});
+
+    function promiseHasChangedACB(){
+        setData(null); 
+        setError(null);
+        let cancelled = false;
+
+        function changedAgainACB(){ cancelled = true; }
+        if (promise)
+            promise.then(function saveData(data){ if(!cancelled) setData (data);}).
+            catch(function saveError(error){ if(!cancelled) setError(error);});
+
+        return changedAgainACB;
+    }
 
     function userSearchedACB(){
-        // resolvePromise(getFitnessInfo(searchParams), promiseState)
-        resolvePromise(getActivityInfo(searchParams), promiseState)
+        setPromise(getActivityInfo(searchParams));
     }
 
     function ageIsChangedACB(age){
@@ -67,18 +78,27 @@ export default function SearchViewPresenter(props){
         setSearchParams(obj);
     }
 
+    React.useEffect(promiseHasChangedACB, [promise]);
 
-
-
-
-    return (
+    return ( 
+        <div>
         <SearchView onUserChangedAge = {ageIsChangedACB}
                     onUserChangedWeight = {weightIsChangedACB}
                     onUserChangedHeight = {heightIsChangedACB}
                     onUserSearched = {userSearchedACB}
                     onUserChangedGender = {genderIsChangedACB}
                     onUserChooseLevel = {activityLevelIsChangedACB}
-                    goals = {promiseState.data}/>
+        />
+            <div>
+            {promiseNoData({promise, data, error}) ||         
+            <ResultView
+                result = {data}>
+            </ResultView>
+            }
+            </div>
+        </div>
+       
+        
     )
 
 }
