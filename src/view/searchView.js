@@ -34,7 +34,7 @@ export default function SearchView(props) {
                         <td>Gender</td>
                         <td>
                             <label>
-                                <input type="radio" value="male" name="gender" onInput={userChooseGenderACB} className="gender-male/> Male
+                                <input type="radio" value="male" name="gender" onInput={userChooseGenderACB} /> Male
                             </label>
                             <label>
                                 <input type="radio" value="female" name="gender" onInput={userChooseGenderACB} /> Female
