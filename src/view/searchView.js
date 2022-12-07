@@ -23,32 +23,36 @@ export default function SearchView(props) {
         props.onUserChooseLevel(event.target.value);
     }
 
-    const options = 
-                    [
-                    { value: "level_1", type: "Sedentary: little or no exercise" },
-                    { value: "level_2", type: "Light Exercise (1-2 days/week)" },
-                    { value: "level_3", type: "Exercise 4-5 times/week"},
-                    {value: "level_4",  type: "Daily exercise or intense exercise 3-4 times/week"},
-                    { value: "level_5", type: "Intense exercise 6-7 times/week" },
-                    { value: "level_6", type: "Very intense exercise daily, or physical job"},
-                    ];
+    const options =
+        [
+            { value: "level_1", type: "Sedentary: little or no exercise" },
+            { value: "level_2", type: "Light Exercise (1-2 days/week)" },
+            { value: "level_3", type: "Exercise 4-5 times/week" },
+            { value: "level_4", type: "Daily exercise or intense exercise 3-4 times/week" },
+            { value: "level_5", type: "Intense exercise 6-7 times/week" },
+            { value: "level_6", type: "Very intense exercise daily, or physical job" },
+        ];
 
-    function renderOptionsCB(opt){
-        return <option value= {opt.value} key = {opt.value}> {opt.type} </option>
+    function renderOptionsCB(opt) {
+        return <option value={opt.value} key={opt.value}> {opt.type} </option>
     }
-    
+
     return (
-        <div>
+        <div className="searchview-container">
             <table>
                 <tbody>
                     <tr>
-                        <td>Gender</td>
+                        <td className="column">
+                            <label>Gender</label>
+                        </td>
                         <td>
-                            <label>
-                                <input type="radio" value="male" name="gender" onInput={userChooseGenderACB} /> Male
+                            <label className="container gender">Male
+                                <input type="radio" value="male" name="gender" onInput={userChooseGenderACB} />
+                                <span class="checkmark"></span>
                             </label>
-                            <label>
-                                <input type="radio" value="female" name="gender" onInput={userChooseGenderACB} /> Female
+                            <label className="container gender">Female
+                                <input type="radio" value="female" name="gender" onInput={userChooseGenderACB} />
+                                <span class="checkmark"></span>
                             </label>
                         </td>
                     </tr>
@@ -64,6 +68,7 @@ export default function SearchView(props) {
                                 width="60px"
                                 placeholder="age"
                                 onInput={userTypedAgeACB}
+                                className="input-box"
                             />
                         </td>
                     </tr>
@@ -73,7 +78,8 @@ export default function SearchView(props) {
                         </td>
                         <td>
                             <input type="text" name="weight" maxLength="3"
-                                   width="60px" placeholder="kg" onInput={userTypedWeightACB}/>
+                                width="60px" placeholder="kg" onInput={userTypedWeightACB}
+                                className="input-box" />
                         </td>
                     </tr>
                     <tr>
@@ -84,6 +90,7 @@ export default function SearchView(props) {
                             <input
                                 type="text" name="height" maxLength="3"
                                 width="60px" placeholder="cm" onInput={userTypedHeightACB}
+                                className="input-box"
                             />
                         </td>
                     </tr>
@@ -101,7 +108,7 @@ export default function SearchView(props) {
                     <tr>
                         <td></td>
                         <td>
-                            <input type="submit" name="submit" value="Calculate!" className="submit-button" onClick={userSavedACB} />
+                            <input type="submit" name="submit" value="Calculate!" className="btn-submit btn-lg" onClick={userSavedACB} />
                         </td>
                     </tr>
                 </tbody>

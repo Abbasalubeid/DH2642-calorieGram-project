@@ -4,31 +4,31 @@ import React from "react";
 import promiseNoData from "../view/promiseNoData.js"
 import { getFitnessInfo, getActivityInfo } from "../fetchSource";
 
-export default function SearchViewPresenter(props){
+export default function SearchViewPresenter(props) {
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
 
     const [searchParams, setSearchParams] = React.useState({});
 
-    function promiseHasChangedACB(){
-        setData(null); 
+    function promiseHasChangedACB() {
+        setData(null);
         setError(null);
         let cancelled = false;
 
-        function changedAgainACB(){ cancelled = true; }
+        function changedAgainACB() { cancelled = true; }
         if (promise)
-            promise.then(function saveData(data){ if(!cancelled) setData (data);}).
-            catch(function saveError(error){ if(!cancelled) setError(error);});
+            promise.then(function saveData(data) { if (!cancelled) setData(data); }).
+                catch(function saveError(error) { if (!cancelled) setError(error); });
 
         return changedAgainACB;
     }
 
-    function userSearchedACB(){
+    function userSearchedACB() {
         setPromise(getActivityInfo(searchParams));
     }
 
-    function ageIsChangedACB(age){
+    function ageIsChangedACB(age) {
         const obj = {};
         obj.age = age;
         obj.gender = searchParams.gender;
@@ -38,7 +38,7 @@ export default function SearchViewPresenter(props){
         setSearchParams(obj);
     }
 
-    function weightIsChangedACB(weight){
+    function weightIsChangedACB(weight) {
         const obj = {};
         obj.age = searchParams.age;
         obj.gender = searchParams.gender;
@@ -48,7 +48,7 @@ export default function SearchViewPresenter(props){
         setSearchParams(obj);
     }
 
-    function heightIsChangedACB(height){
+    function heightIsChangedACB(height) {
         const obj = {};
         obj.age = searchParams.age;
         obj.gender = searchParams.gender;
@@ -58,7 +58,7 @@ export default function SearchViewPresenter(props){
         setSearchParams(obj);
     }
 
-    function genderIsChangedACB(gender){
+    function genderIsChangedACB(gender) {
         const obj = {};
         obj.age = searchParams.age;
         obj.gender = gender;
@@ -68,7 +68,7 @@ export default function SearchViewPresenter(props){
         setSearchParams(obj);
     }
 
-    function activityLevelIsChangedACB(level){
+    function activityLevelIsChangedACB(level) {
         const obj = {};
         obj.age = searchParams.age;
         obj.gender = searchParams.gender;
@@ -80,25 +80,27 @@ export default function SearchViewPresenter(props){
 
     React.useEffect(promiseHasChangedACB, [promise]);
 
-    return ( 
+    return (
         <div>
-        <SearchView onUserChangedAge = {ageIsChangedACB}
-                    onUserChangedWeight = {weightIsChangedACB}
-                    onUserChangedHeight = {heightIsChangedACB}
-                    onUserSearched = {userSearchedACB}
-                    onUserChangedGender = {genderIsChangedACB}
-                    onUserChooseLevel = {activityLevelIsChangedACB}
-        />
-            <div>
-            {promiseNoData({promise, data, error}) ||         
-            <ResultView
-                result = {data}>
-            </ResultView>
-            }
+            <div className="flex-searchview">
+                <SearchView onUserChangedAge={ageIsChangedACB}
+                    onUserChangedWeight={weightIsChangedACB}
+                    onUserChangedHeight={heightIsChangedACB}
+                    onUserSearched={userSearchedACB}
+                    onUserChangedGender={genderIsChangedACB}
+                    onUserChooseLevel={activityLevelIsChangedACB}
+                />
+            </div>
+            <div className="searchview-container">
+                {promiseNoData({ promise, data, error }) ||
+                    <ResultView
+                        result={data}>
+                    </ResultView>
+                }
             </div>
         </div>
-       
-        
+
+
     )
 
 }
