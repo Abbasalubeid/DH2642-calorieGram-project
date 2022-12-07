@@ -108,7 +108,7 @@ export default function SearchView(props) {
                     <tr>
                         <td></td>
                         <td>
-                            <input type="submit" name="submit" value="Calculater!" className="btn-submit btn-lg" onClick={userSavedACB}/>
+                            <input type="submit" name="submit" value="Calculate!" className="btn-submit btn-lg" onClick={userSavedACB}/>
                         </td>
                     </tr>
                 </tbody>

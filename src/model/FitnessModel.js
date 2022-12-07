@@ -5,10 +5,10 @@ export default class FitnessModel{
     }
 
     setAge(age){
-        if(Number.isInteger(age) && age > 1)
-        this.person.age = age;
+        if(Number.isInteger(+age) && +age > 1)
+            this.person.age = age;
     }
-
+    
     setGender(gender){
         this.person.gender = gender;
     }
@@ -28,13 +28,6 @@ export default class FitnessModel{
      else
         this.person.height = height;   
         
-    }
-
-    setAlert(){
-        if(this.person.height < 130 || this.person.height > 230)   
-            alert("Height must be between 130 cm to 230 cm.")
-        if(this.person.weight > 160 ||this.person.weight <  40)
-            alert("Weight must be between 40 kg to 160 kg.");
     }
 
 }

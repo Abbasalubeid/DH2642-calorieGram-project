@@ -2,9 +2,9 @@ import SearchView from "../view/searchView.js";
 import ResultView from "../view/resultView.js"
 import React from "react";
 import promiseNoData from "../view/promiseNoData.js"
-import { getFitnessInfo, getActivityInfo } from "../fetchSource";
+import { getActivityInfo } from "../fetchSource";
 
-export default function SearchViewPresenter(props) {
+export default function BmrSearchPresenter(props) {
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
@@ -25,57 +25,33 @@ export default function SearchViewPresenter(props) {
     }
 
     function userSearchedACB() {
+        searchParams.age = props.model.person.age;
+        searchParams.gender = props.model.person.gender;
+        searchParams.height = props.model.person.height;
+        searchParams.weight = props.model.person.weight;
         setPromise(getActivityInfo(searchParams));
     }
 
     function ageIsChangedACB(age) {
-        const obj = {};
-        obj.age = age;
-        obj.gender = searchParams.gender;
-        obj.height = searchParams.height;
-        obj.weight = searchParams.weight;
-        obj.activitylevel = searchParams.activitylevel;
-        setSearchParams(obj);
+        props.model.setAge(age)
     }
 
     function weightIsChangedACB(weight) {
-        const obj = {};
-        obj.age = searchParams.age;
-        obj.gender = searchParams.gender;
-        obj.height = searchParams.height;
-        obj.weight = weight;
-        obj.activitylevel = searchParams.activitylevel;
-        setSearchParams(obj);
+        props.model.setWeight(weight)
     }
 
     function heightIsChangedACB(height) {
-        const obj = {};
-        obj.age = searchParams.age;
-        obj.gender = searchParams.gender;
-        obj.height = height;
-        obj.weight = searchParams.weight;
-        obj.activitylevel = searchParams.activitylevel;
-        setSearchParams(obj);
+        props.model.setHeight(height)
+
     }
 
     function genderIsChangedACB(gender) {
-        const obj = {};
-        obj.age = searchParams.age;
-        obj.gender = gender;
-        obj.height = searchParams.height;
-        obj.weight = searchParams.weight;
-        obj.activitylevel = searchParams.activitylevel;
-        setSearchParams(obj);
+        props.model.setGender(gender)
     }
 
     function activityLevelIsChangedACB(level) {
-        const obj = {};
-        obj.age = searchParams.age;
-        obj.gender = searchParams.gender;
-        obj.height = searchParams.height;
-        obj.weight = searchParams.weight;
-        obj.activitylevel = level;
-        setSearchParams(obj);
+        searchParams.activitylevel = level;
+        setSearchParams(searchParams);
     }
 
     React.useEffect(promiseHasChangedACB, [promise]);
@@ -91,10 +67,10 @@ export default function SearchViewPresenter(props) {
                     onUserChooseLevel={activityLevelIsChangedACB}
                 />
             </div>
-            <div className="result-nopadding">
+            <div className="result-nopadding result">
                 {promiseNoData({ promise, data, error }) ||
                     <ResultView
-                        result={data}>
+                        activityResult={data}>
                     </ResultView>
                 }
             </div>
