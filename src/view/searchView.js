@@ -23,8 +23,13 @@ export default function SearchView(props) {
         props.onUserChooseLevel(event.target.value);
     }
 
-    function renderGoals(data){
-       return <div>{data}</div>
+    function log(){
+            console.log(props.data)
+            
+    }
+
+    function renderGoalsCB(data){
+       return console.log(data);
     }
     return (
         <div>
@@ -43,7 +48,7 @@ export default function SearchView(props) {
                     </tr>
                     <tr>
                         <td>
-                            <label for="age">Age</label>
+                            <label htmlFor="age">Age</label>
                         </td>
                         <td>
                             <input
@@ -58,18 +63,16 @@ export default function SearchView(props) {
                     </tr>
                     <tr>
                         <td>
-                            <label for="weight">Weight</label>
+                            <label htmlFor="weight">Weight</label>
                         </td>
                         <td>
-                            <input
-                                type="text" name="weight" maxLength="3"
-                                width="60px" placeholder="kg" onInput={userTypedWeightACB}
-                            />
+                            <input type="text" name="weight" maxLength="3"
+                                   width="60px" placeholder="kg" onInput={userTypedWeightACB}/>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="height">Height</label>
+                            <label htmlFor="height">Height</label>
                         </td>
                         <td>
                             <input
@@ -80,7 +83,7 @@ export default function SearchView(props) {
                     </tr>
                     <tr>
                         <td>
-                            <label for="activity">Activity</label>
+                            <label htmlFor="activity">Activity</label>
                         </td>
                         <td>
                             <select name="activity" className="select" onChange={userChooseLevelACB}>
@@ -104,16 +107,16 @@ export default function SearchView(props) {
                         <td></td>
                         <td>
                             <input type="submit" name="submit" value="Calculate!" className="submit-button" onClick={userSavedACB} />
+                            <input type="submit" name="submit" value="ConsoleLog" className="submit-button" onClick={log} />
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div>
-             {props.goals(renderGoals)}
-             HEJsqsq
+             {/* {Object.keys(props.goals).map(renderGoalsCB)} */}
             </div>
         </div>
 
     );
-
+    
 }
