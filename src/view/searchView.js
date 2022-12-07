@@ -22,10 +22,7 @@ export default function SearchView(props) {
     function userChooseLevelACB(event) {
         props.onUserChooseLevel(event.target.value);
     }
-
-    function renderGoals(data) {
-        return <div>{data}</div>
-    }
+    
     return (
         <div>
             <table>
