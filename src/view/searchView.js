@@ -22,8 +22,21 @@ export default function SearchView(props) {
     function userChooseLevelACB(event) {
         props.onUserChooseLevel(event.target.value);
     }
-    
 
+    const options = 
+                    [
+                    { value: "level_1", type: "Sedentary: little or no exercise" },
+                    { value: "level_2", type: "Light Exercise (1-2 days/week)" },
+                    { value: "level_3", type: "Exercise 4-5 times/week"},
+                    {value: "level_4",  type: "Daily exercise or intense exercise 3-4 times/week"},
+                    { value: "level_5", type: "Intense exercise 6-7 times/week" },
+                    { value: "level_6", type: "Very intense exercise daily, or physical job"},
+                    ];
+
+    function renderOptionsCB(opt){
+        return <option value= {opt.value} key = {opt.value}> {opt.type} </option>
+    }
+    
     return (
         <div>
             <table>
@@ -81,18 +94,7 @@ export default function SearchView(props) {
                         <td>
                             <select name="activity" className="select" onChange={userChooseLevelACB}>
                                 <option>Choose Activity</option>
-                                <option value="level_1" >
-                                    Sedentary: little or no exercise
-                                </option>
-                                <option value="level_2" >Light Exercise (1-2 days/week)</option>
-                                <option value="level_3" >Exercise 4-5 times/week</option>
-                                <option value="level_4" >
-                                    Daily exercise or intense exercise 3-4 times/week
-                                </option>
-                                <option value="level_5" >Intense exercise 6-7 times/week </option>
-                                <option value="level_6" >
-                                    Very intense exercise daily, or physical job
-                                </option>
+                                {options.map(renderOptionsCB)}
                             </select>
                         </td>
                     </tr>
