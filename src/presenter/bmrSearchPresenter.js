@@ -5,7 +5,7 @@ import promiseNoData from "../view/promiseNoData.js"
 import { getActivityInfo } from "../fetchSource";
 
 export default function BmrSearchPresenter(props) {
-    
+
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
@@ -38,18 +38,13 @@ export default function BmrSearchPresenter(props) {
     }
 
     function weightIsChangedACB(weight) {
-        if(weight > 160 || weight <  40)
-            return;
-        else
-            props.model.setWeight(weight)
+
+        props.model.setWeight(weight)
     }
 
     function heightIsChangedACB(height) {
-        if(height < 130 || height > 230)
-            return;
-        else
-            props.model.setHeight(height)
 
+        props.model.setHeight(height)
 
     }
 
