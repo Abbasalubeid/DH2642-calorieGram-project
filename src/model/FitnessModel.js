@@ -5,10 +5,10 @@ export default class FitnessModel{
     }
 
     setAge(age){
-        if(Number.isInteger(+age) && +age > 1)
+        if(Number.isInteger(+age) && age > 1)
             this.person.age = age;
     }
-    
+
     setGender(gender){
         this.person.gender = gender;
     }
