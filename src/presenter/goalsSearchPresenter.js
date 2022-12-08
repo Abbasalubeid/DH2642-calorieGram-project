@@ -1,10 +1,10 @@
-import SearchView from "../view/searchView.js";
-import ResultView from "../view/resultView.js"
+import GoalsSearchView from "../view/goalsSearchView.js";
+import GoalsResultView from "../view/goalsResultView.js"
 import React from "react";
 import promiseNoData from "../view/promiseNoData.js"
 import { getActivityInfo } from "../fetchSource";
 
-export default function BmrSearchPresenter(props) {
+export default function GoalsSearchPresenter(props) {
 
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
@@ -38,14 +38,11 @@ export default function BmrSearchPresenter(props) {
     }
 
     function weightIsChangedACB(weight) {
-
         props.model.setWeight(weight)
     }
 
     function heightIsChangedACB(height) {
-
         props.model.setHeight(height)
-
     }
 
     function genderIsChangedACB(gender) {
@@ -54,7 +51,6 @@ export default function BmrSearchPresenter(props) {
 
     function activityLevelIsChangedACB(level) {
         searchParams.activitylevel = level;
-        setSearchParams(searchParams);
     }
 
     React.useEffect(promiseHasChangedACB, [promise]);
@@ -62,7 +58,7 @@ export default function BmrSearchPresenter(props) {
     return (
         <div>
             <div className="flex-searchview">
-                <SearchView onUserChangedAge={ageIsChangedACB}
+                <GoalsSearchView onUserChangedAge={ageIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
                     onUserChangedHeight={heightIsChangedACB}
                     onUserSearched={userSearchedACB}
@@ -72,9 +68,9 @@ export default function BmrSearchPresenter(props) {
             </div>
             <div className="result-nopadding result">
                 {promiseNoData({ promise, data, error }) ||
-                    <ResultView
+                    <GoalsResultView
                         activityResult={data}>
-                    </ResultView>
+                    </GoalsResultView>
                 }
             </div>
         </div>

@@ -1,4 +1,4 @@
-export default function ResultView(props){
+export default function GoalsResultView(props){
 
     function renderGoalsCB(object){
         if(props.activityResult.goals[object]["gain weight"])

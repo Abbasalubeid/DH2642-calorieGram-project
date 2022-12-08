@@ -1,10 +1,12 @@
-import BmrSearchPresenter from "./presenter/bmrSearchPresenter.js";
+import GoalsSearchPresenter from "./presenter/goalsSearchPresenter.js";
+import BmiPresenter from "./presenter/bmiPresenter.js";
 function App(props) {
   
 
   return (<div>
-    <BmrSearchPresenter model={props.model} />
-  </div>);
+          <GoalsSearchPresenter model={props.model} />
+          <BmiPresenter model = {props.model}/>
+          </div>);
 
 }
 
