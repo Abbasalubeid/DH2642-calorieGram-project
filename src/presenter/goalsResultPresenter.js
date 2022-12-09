@@ -1,15 +1,15 @@
-import BmiSearchView from "../view/bmiSearchView.js";
-import BmiResultview from "../view/bmiResultView.js";
+import GoalsSearchView from "../view/goalsSearchView.js";
+import GoalsResultView from "../view/goalsResultView.js"
 import React from "react";
-import promiseNoData from "../view/promiseNoData.js";
-import { getFitnessInfo } from "../fetchSource";
+import promiseNoData from "../view/promiseNoData.js"
+import { getActivityInfo } from "../fetchSource";
 
-
-export default function BmiPresenter(props) {
+export default function GoalsResultPresenter(props) {
 
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
+
     const [searchParams, setSearchParams] = React.useState({});
 
     function promiseHasChangedACB() {
@@ -26,22 +26,7 @@ export default function BmiPresenter(props) {
     }
 
     function userSearchedACB() {
-        searchParams.age = props.model.person.age;
-        searchParams.height = props.model.person.height;
-        searchParams.weight = props.model.person.weight;
-        setPromise(getFitnessInfo(searchParams));
-    }
-
-    function ageIsChangedACB(age) {
-        props.model.setAge(age)
-    }
-
-    function weightIsChangedACB(weight) {
-        props.model.setWeight(weight)
-    }
-
-    function heightIsChangedACB(height) {
-        props.model.setHeight(height)
+        setPromise(getActivityInfo(searchParams));
     }
 
     React.useEffect(promiseHasChangedACB, [promise]);
@@ -49,17 +34,15 @@ export default function BmiPresenter(props) {
     return (
         <div>
             <div className="flex-searchview">
-                <BmiSearchView onUserChangedAge={ageIsChangedACB}
-                    onUserChangedWeight={weightIsChangedACB}
-                    onUserChangedHeight={heightIsChangedACB}
+                <GoalsSearchView
                     onUserSearched={userSearchedACB}
                 />
             </div>
             <div className="result-nopadding result">
                 {promiseNoData({ promise, data, error }) ||
-                    <BmiResultview
-                        bmiResult={data}>
-                    </BmiResultview>
+                    <GoalsResultView
+                        activityResult={data}>
+                    </GoalsResultView>
                 }
             </div>
         </div>
