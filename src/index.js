@@ -2,13 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import FitnessModel from "./model/FitnessModel.js";
+import {BrowserRouter } from "react-router-dom"
 
 let model = new FitnessModel();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App model ={model}/>
+    <BrowserRouter>
+      <App model ={model}/>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
