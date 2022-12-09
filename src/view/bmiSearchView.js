@@ -1,12 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import "../css/bmiSearch.css";
 
 export default function BmiSearchView(props) {
-    const navigate = useNavigate();
     function userSavedACB() {
         props.onUserSearched();
-        // navigate('bmi');
     }
 
     function userTypedAgeACB(event) {
@@ -42,9 +39,6 @@ export default function BmiSearchView(props) {
                             />
                             <span className="greytext">nr</span>
                         </td>
-                        {/* <td>
-                            <input type="text" name="cheightfeet" id="cheightfeet" value="5" class="inhalf inuifoot" onkeyup="iptfieldCheck(this, '', 'pzn');"><span class="inuifootspan">feet</span>
-                        </td> */}
                     </tr>
                     <tr>
                         <td>

@@ -7,13 +7,14 @@ body {
 }
 
 .navbar {
-  background-color: #333;
+  background-color: #023047;
   color: #fff;
   display: flex;
   justify-content: space-between;
-  align-items: stretch;
+  align-items: center;
   gap: 2rem;
   padding: 0 1rem;
+  height: 100px;
 }
 
 .nav-title {
@@ -26,7 +27,8 @@ body {
   padding: 0;
   list-style: none;
   display: flex;
-  gap: 1rem;
+  gap: 2.5rem;
+  font-size: 2em;
 }
 
 .navbar a {
@@ -39,9 +41,20 @@ body {
 }
 
 .navbar li.active {
-  background-color: #555;
+  background-color: #8ecae6;
 }
 
 .navbar li:hover {
   background-color: #777;
+}
+
+.nav-home {
+  color: #2196f3;
+}
+
+.nav-bmi {
+  color: #2196f3;
+}
+.nav-goals {
+  color: #2196f3;
 }

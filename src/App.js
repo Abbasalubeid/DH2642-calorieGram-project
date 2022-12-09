@@ -1,28 +1,66 @@
+import Joyride from 'react-joyride';
+import React from "react";
 import GoalsSearchPresenter from "./presenter/goalsSearchPresenter.js";
 import BmiPresenter from "./presenter/bmiPresenter.js";
 import Homepage from "./view/homepage.js";
-import GoalsResultPresenter from "./presenter/goalsResultPresenter.js";
-import BmiResultPresenter from "./presenter/bmiResultPresenter.js";
 import { Route, Routes } from "react-router-dom";
-import NavbarPresenter from "./presenter/navbarPresenter.js";
+import NavbarView from "./view/navbarView.js";
 import "./css/App.css";
+
 function App(props) {
-  console.log(window.location);
+
+  const [{ steps, run }, setState] = React.useState({
+    run: false,
+    steps: [],
+    stepIndex: 0
+  });
+
+
+  function pageReview() {
+    setState({
+      run: true,
+      steps: [
+        {
+          target: '.nav-home',
+          content: 'Click here to go back to the homepage',
+          stepIndex: 2
+        },
+        {
+          target: '.nav-bmi',
+          content: 'Click here to calculate your current BMI',
+          stepIndex: 1
+        },
+        {
+          target: '.nav-goals',
+          content: 'Click here to plan your healthy journey',
+          stepIndex: 0
+        },
+      ]
+    })
+  }
+
+  function refreshACB() {
+    window.location.reload();
+  }
 
   return (
-    <>
-      <NavbarPresenter />
-      <div>
-        <Routes>
-          <Route path="/home" element={<Homepage />} />
-          <Route path="/goals" element={<GoalsSearchPresenter model={props.model} />} />
-          <Route path="goals/result" element={<GoalsResultPresenter model={props.model} />} />
-          <Route path="/bmi" element={<BmiPresenter model={props.model} />} />
-          <Route path="bmi/result" element={<BmiResultPresenter model={props.model} />} />
-        </Routes>
+    <div>
+      <div className="app">
+        <Joyride steps={steps}
+          run={run}
+          continuous={true} />
       </div>
-    </>
-  );
+      <NavbarView />
+      <button onClick={pageReview}>Page review</button>
+      <button onClick={refreshACB}>Restore pageReview</button>
+      <Routes>
+        <Route path="home" element={<Homepage />} />
+        <Route path="goals" element={<GoalsSearchPresenter model={props.model} />} />
+        <Route path="bmi" element={<BmiPresenter model={props.model} />} />
+      </Routes>
+
+    </div>);
+
 }
 
 export default App;

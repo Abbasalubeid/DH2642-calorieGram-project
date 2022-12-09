@@ -1,4 +1,5 @@
 import "../css/bmiResult.css";
+
 export default function BmiResultView(props) {
 
     return (<div className="result">
