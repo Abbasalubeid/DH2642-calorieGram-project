@@ -44,22 +44,24 @@ function App(props) {
   }
 
   return (
-    <div>
+    <>
       <div className="app">
         <Joyride steps={steps}
           run={run}
           continuous={true} />
       </div>
       <NavbarView />
-      <button onClick={pageReview}>Page review</button>
-      <button onClick={refreshACB}>Restore pageReview</button>
-      <Routes>
-        <Route path="home" element={<Homepage />} />
-        <Route path="goals" element={<GoalsSearchPresenter model={props.model} />} />
-        <Route path="bmi" element={<BmiPresenter model={props.model} />} />
-      </Routes>
+      <div className="mainContainer">
+        <button onClick={pageReview}>Page review</button>
+        <button onClick={refreshACB}>Restore pageReview</button>
+        <Routes>
+          <Route path="home" element={<Homepage />} />
+          <Route path="goals" element={<GoalsSearchPresenter model={props.model} />} />
+          <Route path="bmi" element={<BmiPresenter model={props.model} />} />
+        </Routes>
 
-    </div>);
+      </div>
+    </>);
 
 }
 

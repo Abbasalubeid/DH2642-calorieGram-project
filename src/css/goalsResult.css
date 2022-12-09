@@ -1,0 +1,64 @@
+/*----------------------------------------------------------------SearchView----------------------------------------------*/
+.searchview-container {
+  padding-left: 70px;
+  width: 500px;
+  height: 500px;
+  border: 1px solid aqua;
+  border-radius: 25px;
+  /* background: linear-gradient(to bottom, red, blue); */
+  background-color: #eab2bb;
+  /* position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  display: flex;
+  text-align: center;
+}
+
+.searchview-container td {
+  /* border: 1px solid #d6dbd2; */
+  border-spacing: 100px;
+}
+.select {
+  display: block;
+  width: 250px;
+  height: 50px;
+  padding: 6px 12px;
+  font-size: 17px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+table td.column {
+  font-weight: bold;
+  text-align: right;
+  font-size: 13px;
+}
+
+table label {
+  color: #3c77af;
+  text-align: right;
+  font-size: 20px;
+  font-weight: bold;
+}
+table label.gender:hover {
+  color: #047d0c;
+}
+
+.result-nopadding {
+  padding: 30px;
+  width: 500px;
+  height: 500px;
+  border: 1px solid aqua;
+  border-radius: 25px;
+  /* background: linear-gradient(to left, red, blue); */
+  background-color: #eab2bb;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}

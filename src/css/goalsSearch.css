@@ -7,11 +7,11 @@
   border-radius: 25px;
   /* background: linear-gradient(to bottom, red, blue); */
   background-color: #eab2bb;
-  position: absolute;
-  top: 53%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
+  /* position: absolute; */
+  /* top: 53%;
+  left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  display: block;
   text-align: center;
 }
 
