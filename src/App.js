@@ -1,6 +1,7 @@
 import Joyride, { ACTIONS, EVENTS, STATUS } from 'react-joyride';
 import React from "react";
 import GoalsSearchPresenter from "./presenter/goalsSearchPresenter.js";
+import GoalsResultPresenter from './presenter/goalsResultPresenter.js';
 import BmiPresenter from "./presenter/bmiPresenter.js";
 import Homepage from "./view/homepage.js";
 import { Route, Routes } from "react-router-dom";
@@ -69,7 +70,9 @@ function App(props) {
         <button onClick={refreshACB} className = {run === true ? " ": "hidden"}>Restore page Review</button>
         <Routes>
           <Route path="home" element={<Homepage />} />
-          <Route path="goals" element={<GoalsSearchPresenter model={props.model} />} />
+          <Route path="goals" element={<GoalsSearchPresenter model={props.model} />}>
+            <Route path="result" element={<GoalsResultPresenter/> }/>
+          </Route> 
           <Route path="bmi" element={<BmiPresenter model={props.model} />} />
         </Routes>
 

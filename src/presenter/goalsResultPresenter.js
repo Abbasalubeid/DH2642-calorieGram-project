@@ -4,7 +4,7 @@ import React from "react";
 import promiseNoData from "../view/promiseNoData.js"
 import { getActivityInfo } from "../fetchSource";
 
-export default function GoalsResultPresenter(props) {
+export default function GoalsResultPresenter() {
 
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
