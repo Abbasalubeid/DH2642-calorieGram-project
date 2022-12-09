@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/bmiSearch.css";
 
 export default function BmiSearchView(props) {
     function userSavedACB() {
@@ -64,7 +65,7 @@ export default function BmiSearchView(props) {
                     <tr>
                         <td></td>
                         <td>
-                            <input type="submit" name="submit" value="Calculate!" className="btn-submit btn-lg" onClick={userSavedACB}/>
+                            <input type="submit" name="submit" value="Calculate!" className="btn-submit btn-lg" onClick={userSavedACB} />
                         </td>
                     </tr>
                 </tbody>

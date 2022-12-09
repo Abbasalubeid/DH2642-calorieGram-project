@@ -4,8 +4,9 @@ import React from "react";
 import promiseNoData from "../view/promiseNoData.js";
 import { getFitnessInfo } from "../fetchSource";
 
-export default function BmiPresenter(props){
- 
+
+export default function BmiPresenter(props) {
+
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);

@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/goalsSearch.css";
 
 export default function GoalsSearchView(props) {
     function userSavedACB() {
@@ -108,7 +109,7 @@ export default function GoalsSearchView(props) {
                     <tr>
                         <td></td>
                         <td>
-                            <input type="submit" name="submit" value="Calculate!" className="btn-submit btn-lg" onClick={userSavedACB}/>
+                            <input type="submit" name="submit" value="Calculate!" className="btn-submit btn-lg" onClick={userSavedACB} />
                         </td>
                     </tr>
                 </tbody>
