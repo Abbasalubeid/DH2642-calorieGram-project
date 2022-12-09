@@ -1,3 +1,4 @@
+import Joyride from 'react-joyride';
 import BmiSearchView from "../view/bmiSearchView.js";
 import BmiResultview from "../view/bmiResultView.js";
 import React from "react";
@@ -9,7 +10,6 @@ export default function BmiPresenter(props){
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
-
     const [searchParams, setSearchParams] = React.useState({});
 
     function promiseHasChangedACB() {
@@ -57,9 +57,11 @@ export default function BmiPresenter(props){
             </div>
             <div className="result-nopadding result">
                 {promiseNoData({ promise, data, error }) ||
-                    <BmiResultview
+                    <BmiResultview 
                     bmiResult={data}>
                     </BmiResultview>
+                                      
+                    
                 }
             </div>
         </div>
