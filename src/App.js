@@ -1,5 +1,6 @@
 import GoalsSearchPresenter from "./presenter/goalsSearchPresenter.js";
 import BmiPresenter from "./presenter/bmiPresenter.js";
+import Homepage from "./view/homepage.js";
 import { Link, Route, Routes } from "react-router-dom";
 function App(props) {
   
@@ -8,14 +9,18 @@ function App(props) {
         <div>
           <nav>
             <li>
-              <Link to="goals">Goals</Link>
+              <Link to="goals" reloadDocument>Goals</Link>
             </li>
             <li>
-            <Link to="bmi">BMI calculator</Link>
+            <Link to="bmi" reloadDocument>BMI calculator</Link>
+            </li>
+            <li>
+            <Link to="Home" reloadDocument>Homepage</Link>
             </li>
           </nav>
           <Routes>
-            <Route path="goals" element={<GoalsSearchPresenter model={props.model} />} />
+            <Route path="Home" element={<Homepage/>} />
+            <Route path="goals" element={<GoalsSearchPresenter model={props.model}/>}/>
             <Route path="bmi" element={<BmiPresenter model = {props.model}/>} />
           </Routes>
         </div>);
