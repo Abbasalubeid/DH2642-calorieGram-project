@@ -1,31 +1,28 @@
 import GoalsSearchPresenter from "./presenter/goalsSearchPresenter.js";
 import BmiPresenter from "./presenter/bmiPresenter.js";
 import Homepage from "./view/homepage.js";
-import { Link, Route, Routes } from "react-router-dom";
+import GoalsResultPresenter from "./presenter/goalsResultPresenter.js";
+import BmiResultPresenter from "./presenter/bmiResultPresenter.js";
+import { Route, Routes } from "react-router-dom";
+import NavbarPresenter from "./presenter/navbarPresenter.js";
 import "./css/App.css";
 function App(props) {
-
+  console.log(window.location);
 
   return (
-    <div>
-      <nav>
-        <li>
-          <Link to="goals" reloadDocument>Goals</Link>
-        </li>
-        <li>
-          <Link to="bmi" reloadDocument>BMI calculator</Link>
-        </li>
-        <li>
-          <Link to="Home" reloadDocument>Homepage</Link>
-        </li>
-      </nav>
-      <Routes>
-        <Route path="Home" element={<Homepage />} />
-        <Route path="goals" element={<GoalsSearchPresenter model={props.model} />} />
-        <Route path="bmi" element={<BmiPresenter model={props.model} />} />
-      </Routes>
-    </div>);
-
+    <>
+      <NavbarPresenter />
+      <div>
+        <Routes>
+          <Route path="/home" element={<Homepage />} />
+          <Route path="/goals" element={<GoalsSearchPresenter model={props.model} />} />
+          <Route path="goals/result" element={<GoalsResultPresenter model={props.model} />} />
+          <Route path="/bmi" element={<BmiPresenter model={props.model} />} />
+          <Route path="bmi/result" element={<BmiResultPresenter model={props.model} />} />
+        </Routes>
+      </div>
+    </>
+  );
 }
 
 export default App;

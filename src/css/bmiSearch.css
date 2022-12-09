@@ -7,10 +7,10 @@
   border-radius: 25px;
   /* background: linear-gradient(to bottom, red, blue); */
   background-color: #eab2bb;
-  /* position: a;
+  position: absolute;
   top: 53%;
-  left: 50%; */
-  /* transform: translate(-50%, -50%); */
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   text-align: center;
 }
@@ -117,9 +117,10 @@ table label.gender:hover {
 /* input box such as age, weight and height */
 .input-box {
   display: block;
-  width: 80px;
+  width: 110px;
   height: 50px;
-  padding: 6px 12px;
+  padding: 6px 14px;
+  padding-right: 18px;
   font-size: 17px;
   line-height: 1.42857143;
   color: #555;
@@ -149,4 +150,9 @@ input[type="submit"] {
   font-size: 25px;
   line-height: 1.3333333;
   border-radius: 6px;
+}
+
+.greytext {
+  margin-left: -24px;
+  color: #888;
 }

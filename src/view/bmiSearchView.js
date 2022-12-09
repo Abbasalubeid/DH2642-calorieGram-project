@@ -1,9 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../css/bmiSearch.css";
 
 export default function BmiSearchView(props) {
+    const navigate = useNavigate();
     function userSavedACB() {
         props.onUserSearched();
+        // navigate('bmi');
     }
 
     function userTypedAgeACB(event) {
@@ -33,12 +36,15 @@ export default function BmiSearchView(props) {
                                 type="text"
                                 name="age"
                                 maxLength="3"
-                                width="60px"
                                 placeholder="age"
                                 onInput={userTypedAgeACB}
                                 className="input-box"
                             />
+                            <span className="greytext">nr</span>
                         </td>
+                        {/* <td>
+                            <input type="text" name="cheightfeet" id="cheightfeet" value="5" class="inhalf inuifoot" onkeyup="iptfieldCheck(this, '', 'pzn');"><span class="inuifootspan">feet</span>
+                        </td> */}
                     </tr>
                     <tr>
                         <td>
@@ -46,7 +52,7 @@ export default function BmiSearchView(props) {
                         </td>
                         <td>
                             <input type="text" name="weight" maxLength="3"
-                                width="60px" placeholder="kg" onInput={userTypedWeightACB}
+                                placeholder="kg" onInput={userTypedWeightACB}
                                 className="input-box" />
                         </td>
                     </tr>
@@ -57,7 +63,7 @@ export default function BmiSearchView(props) {
                         <td>
                             <input
                                 type="text" name="height" maxLength="3"
-                                width="60px" placeholder="cm" onInput={userTypedHeightACB}
+                                placeholder="cm" onInput={userTypedHeightACB}
                                 className="input-box"
                             />
                         </td>
