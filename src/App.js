@@ -65,8 +65,8 @@ function App(props) {
       </div>
       <NavbarView />
       <div className="mainContainer">
-        <button onClick={pageReview} className = {run === false ? " ": "hidden"} >Page review</button>
-        <button onClick={refreshACB} className = {run === true ? " ": "hidden"}>Restore page Review</button>
+        <input type="submit" value="Review" className = {run === false ? "btn-submit btn-lg": "hidden"} onClick={pageReview}/>
+        <input type="submit" value="Restore Review" className = {run === true ? "btn-submit btn-lg": "hidden"} onClick={refreshACB}/>
         <Routes>
           <Route path="home" element={<Homepage />} />
           <Route path="goals" element={<GoalsSearchPresenter model={props.model} />}>
