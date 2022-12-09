@@ -59,13 +59,11 @@ export default function BmiPresenter(props) {
             <div className="result-nopadding result">
                 {promiseNoData({ promise, data, error }) ||
                     <BmiResultview
-                        bmiResult={data}>
+                    bmiResult={data}>
                     </BmiResultview>
                 }
             </div>
         </div>
-
-
-    )
+            )
 
 }
