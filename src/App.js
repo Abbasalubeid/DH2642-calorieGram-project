@@ -55,7 +55,7 @@ function App(props) {
         <button onClick={pageReview}>Page review</button>
         <button onClick={refreshACB}>Restore pageReview</button>
         <Routes>
-          <Route path="home" element={<Homepage />} />
+          <Route path="home" element={<div className="homeContent"><Homepage /></div>} />
           <Route path="goals" element={<GoalsSearchPresenter model={props.model} />} />
           <Route path="bmi" element={<BmiPresenter model={props.model} />} />
         </Routes>

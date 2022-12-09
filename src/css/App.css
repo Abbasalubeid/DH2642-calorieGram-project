@@ -5,11 +5,14 @@
 }
 /*----------------------------------------------------------------body----------------------------------------------*/
 body {
+  margin: 0;
+  padding: 0;
   /* background: url(pngtree-black-meat-western-food-banner-background-image_194600.jpg); */
   /*  background: rgb(254, 202, 66); */
+  background-image: url(pngtree-black-meat-western-food-banner-background-image_194600.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #eab2bb;
+  background-color: #023047;
 }
 
 .mainContainer {
