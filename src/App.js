@@ -1,4 +1,4 @@
-import Joyride, { ACTIONS, EVENTS, STATUS } from 'react-joyride';
+import Joyride from 'react-joyride';
 import React from "react";
 import GoalsSearchPresenter from "./presenter/goalsSearchPresenter.js";
 import BmiPresenter from "./presenter/bmiPresenter.js";
@@ -15,7 +15,7 @@ function App(props) {
   });
 
 
-  function pageReview() {
+  function pageReviewACB() {
     setState({
       run: true,
       steps: [
@@ -31,19 +31,16 @@ function App(props) {
 
           target: '.nav-home',
           content: <h2>Click here to go back to the homepage 🏠</h2>,
-          stepIndex: 2,
           locale: { skip: <strong aria-label="skip">SKIP</strong> },
         },
         {
           target: '.nav-bmi',
           content: <h2>Calculate your current BMI ✔️</h2>,
-          stepIndex: 1,
           locale: { skip: <strong aria-label="skip">SKIP</strong> },
         },
         {
           target: '.nav-goals',
           content: <h2>Calculate your food intake and set a personal goal🎯</h2>,
-          stepIndex: 0,
           locale: { skip: <strong aria-label="skip">SKIP</strong> },
         },
       ]
@@ -57,7 +54,7 @@ function App(props) {
 
   return (
     <>
-      <div className="app">
+      <div>
         <Joyride steps={steps}
           run={run}
           continuous={true}
@@ -65,7 +62,7 @@ function App(props) {
       </div>
       <NavbarView />
       <div className="mainContainer">
-        <input type="submit" value="Review" className = {run === false ? "btn-submit btn-lg": "hidden"} onClick={pageReview}/>
+        <input type="submit" value="Review" className = {run === false ? "btn-submit btn-lg": "hidden"} onClick={pageReviewACB}/>
         <input type="submit" value="Restore Review" className = {run === true ? "btn-submit btn-lg": "hidden"} onClick={refreshACB}/>
         <Routes>
           <Route path="home" element={<Homepage />} />
