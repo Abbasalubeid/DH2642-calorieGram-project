@@ -4,10 +4,10 @@
 
 body {
   margin: 0;
+  height: 100vh;
 }
 
 .navbar {
-  background-color: #023047;
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -15,6 +15,7 @@ body {
   gap: 2rem;
   padding: 0 1rem;
   height: 100px;
+  background-color: #023047;
 }
 
 .nav-title {
@@ -41,7 +42,7 @@ body {
 }
 
 .navbar li.active {
-  background-color: #8ecae6;
+  background-color: #023047;
 }
 
 .navbar li:hover {
@@ -57,4 +58,22 @@ body {
 }
 .nav-goals {
   color: #2196f3;
+}
+
+.navbar-toogle {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+
+.navbar-toogle .bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
 }

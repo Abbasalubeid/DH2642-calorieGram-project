@@ -3,12 +3,20 @@ import "../css/navbar.css";
 
 export default function NavbarView() {
     return <nav className="navbar">
-        <Link to="home" className="nav-title">Calorie Gram</Link>
-        <ul>
-            <CustomLink to="/home" className="nav-home">Home</CustomLink>
-            <CustomLink to="/bmi" className="nav-bmi">BMI</CustomLink>
-            <CustomLink to="/goals" className="nav-goals">Goals</CustomLink>
-        </ul>
+        <div className="nav-title">
+            <Link to="home">Calorie Gram</Link>
+        </div>
+        <a href="/home" className="nav-toggle">
+            <span className="nav-bar"></span>
+            <span className="nav-bar"></span>
+            <span className="nav-bar"></span>
+        </a>
+        <div>
+            <ul>
+                <CustomLink to="/bmi" className="nav-bmi">BMI</CustomLink>
+                <CustomLink to="/goals" className="nav-goals">Goals</CustomLink>
+            </ul>
+        </div>
     </nav>
 }
 
