@@ -13,7 +13,6 @@ function App(props) {
     stepIndex : 0
   });
 
-
   function pageReview(){
     setState({
       run : true,
