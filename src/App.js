@@ -9,10 +9,9 @@ import "./css/App.css";
 
 function App(props) {
 
-  const [{ steps, run, stepIndex }, setState] = React.useState({
+  const [{ steps, run,}, setState] = React.useState({
     run: false,
     steps: [],
-    stepIndex: 0
   });
 
 
@@ -25,24 +24,27 @@ function App(props) {
           content: <h2>Welcome to Calorie Gram🍓
                        Your personal fitness advisor, calorie calculator, and more 💪 
                   </h2>,
-          locale: { skip: <strong aria-label="skip">S-K-I-P</strong> },
+          locale: { skip: <strong aria-label="skip">SKIP</strong> },
           placement: 'center',
         },
         {
 
           target: '.nav-home',
           content: <h2>Click here to go back to the homepage 🏠</h2>,
-          stepIndex: 2
+          stepIndex: 2,
+          locale: { skip: <strong aria-label="skip">SKIP</strong> },
         },
         {
           target: '.nav-bmi',
           content: <h2>Calculate your current BMI ✔️</h2>,
-          stepIndex: 1
+          stepIndex: 1,
+          locale: { skip: <strong aria-label="skip">SKIP</strong> },
         },
         {
           target: '.nav-goals',
           content: <h2>Calculate your food intake and set a personal goal🎯</h2>,
-          stepIndex: 0
+          stepIndex: 0,
+          locale: { skip: <strong aria-label="skip">SKIP</strong> },
         },
       ]
     })
@@ -58,7 +60,8 @@ function App(props) {
       <div className="app">
         <Joyride steps={steps}
           run={run}
-          continuous={true}/>
+          continuous={true}
+          showSkipButton/>
       </div>
       <NavbarView />
       <div className="mainContainer">
