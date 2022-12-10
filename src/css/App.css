@@ -1,0 +1,39 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*----------------------------------------------------------------body----------------------------------------------*/
+body {
+  margin: 0;
+  padding: 0;
+  /* background: url(pngtree-black-meat-western-food-banner-background-image_194600.jpg); */
+  /*  background: rgb(254, 202, 66); */
+  background-image: url(pngtree-black-meat-western-food-banner-background-image_194600.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #023047;
+}
+
+.mainContainer {
+  height: 100%;
+  width: 700px;
+  align-items: center;
+}
+
+/* flex-parent*/
+.flex-parent {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-searchview {
+  color: #3c77af;
+  text-align: right;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.hidden{
+  display: none;
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/bmiSearch.css";
 
 export default function BmiSearchView(props) {
     function userSavedACB() {
@@ -32,11 +33,11 @@ export default function BmiSearchView(props) {
                                 type="text"
                                 name="age"
                                 maxLength="3"
-                                width="60px"
                                 placeholder="age"
                                 onInput={userTypedAgeACB}
                                 className="input-box"
                             />
+                            <span className="greytext">nr</span>
                         </td>
                     </tr>
                     <tr>
@@ -45,7 +46,7 @@ export default function BmiSearchView(props) {
                         </td>
                         <td>
                             <input type="text" name="weight" maxLength="3"
-                                width="60px" placeholder="kg" onInput={userTypedWeightACB}
+                                placeholder="kg" onInput={userTypedWeightACB}
                                 className="input-box" />
                         </td>
                     </tr>
@@ -56,7 +57,7 @@ export default function BmiSearchView(props) {
                         <td>
                             <input
                                 type="text" name="height" maxLength="3"
-                                width="60px" placeholder="cm" onInput={userTypedHeightACB}
+                                placeholder="cm" onInput={userTypedHeightACB}
                                 className="input-box"
                             />
                         </td>
@@ -64,7 +65,7 @@ export default function BmiSearchView(props) {
                     <tr>
                         <td></td>
                         <td>
-                            <input type="submit" name="submit" value="Calculate!" className="btn-submit btn-lg" onClick={userSavedACB}/>
+                            <input type="submit" name="submit" value="Calculate!" className="btn-submit btn-lg" onClick={userSavedACB} />
                         </td>
                     </tr>
                 </tbody>
