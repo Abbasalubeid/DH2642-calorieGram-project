@@ -1,11 +1,13 @@
 export default class FitnessModel{
-    constructor( ){
+    constructor(){
         this.person = {};
+        this.currentGoal = {};
     }
 
     setAge(age){
-        if(Number.isInteger(age) && age > 1)
-        this.person.age = age;
+        if(age > 1 && age < 80)
+            if(Number.isInteger(+age))
+                this.person.age = age;
     }
 
     setGender(gender){
@@ -15,21 +17,19 @@ export default class FitnessModel{
     setWeight(weight){
         // API restrictions
         if(weight > 160 || weight <  40)
-            throw new Error("Weight must be between 40 kg to 160 kg.");
+            return;
         else
             this.person.weight = weight;
            
-
     }
 
     setHeight(height){
         // API restrictions
      if(height < 130 || height > 230)   
-        throw new Error("Height must be between 130 cm to 230 cm.")
+        return;
      else
         this.person.height = height;   
         
     }
-
 
 }
