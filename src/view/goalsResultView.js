@@ -1,13 +1,14 @@
-export default function GoalsResultView(props){
+import "../css/goalsResult.css";
+export default function GoalsResultView(props) {
 
-    function renderGoalsCB(object){
-        if(props.activityResult.goals[object]["gain weight"])
-            return  <div key = {object}>For {object + "(" + props.activityResult.goals[object]["gain weight"] + "/week" + ")" + "-->"}                   
-             Eat {Number(props.activityResult.goals[object]["calory"]).toFixed(0)} Calories/day</div> 
+    function renderGoalsCB(object) {
+        if (props.activityResult.goals[object]["gain weight"])
+            return <div key={object}>For {object + "(" + props.activityResult.goals[object]["gain weight"] + "/week" + ")" + "-->"}
+                Eat {Number(props.activityResult.goals[object]["calory"]).toFixed(0)} Calories/day</div>
 
-        else if (props.activityResult.goals[object]["loss weight"] )  
-            return <div key = {object}>For {object + "(" + props.activityResult.goals[object]["loss weight"] +  "/week" + ")" + "-->"}  
-                        Eat {Number(props.activityResult.goals[object]["calory"]).toFixed(0)} Calories/day</div> 
+        else if (props.activityResult.goals[object]["loss weight"])
+            return <div key={object}>For {object + "(" + props.activityResult.goals[object]["loss weight"] + "/week" + ")" + "-->"}
+                Eat {Number(props.activityResult.goals[object]["calory"]).toFixed(0)} Calories/day</div>
     }
     function printFunc(){
         const results= document.getElementsByClassName("result");

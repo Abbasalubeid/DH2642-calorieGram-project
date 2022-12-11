@@ -5,11 +5,11 @@ import promiseNoData from "../view/promiseNoData.js";
 import { getFitnessInfo } from "../fetchSource";
 
 
-export default function BmiPresenter(props) {
-
+export default function BmiResultPresenter(props) {
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
+
     const [searchParams, setSearchParams] = React.useState({});
 
     function promiseHasChangedACB() {
@@ -26,32 +26,14 @@ export default function BmiPresenter(props) {
     }
 
     function userSearchedACB() {
-        searchParams.age = props.model.person.age;
-        searchParams.height = props.model.person.height;
-        searchParams.weight = props.model.person.weight;
         setPromise(getFitnessInfo(searchParams));
     }
-
-    function ageIsChangedACB(age) {
-        props.model.setAge(age)
-    }
-
-    function weightIsChangedACB(weight) {
-        props.model.setWeight(weight)
-    }
-
-    function heightIsChangedACB(height) {
-        props.model.setHeight(height)
-    }
-
     React.useEffect(promiseHasChangedACB, [promise]);
 
     return (
         <div>
             <div className="flex-searchview">
-                <BmiSearchView onUserChangedAge={ageIsChangedACB}
-                    onUserChangedWeight={weightIsChangedACB}
-                    onUserChangedHeight={heightIsChangedACB}
+                <BmiSearchView
                     onUserSearched={userSearchedACB}
                 />
             </div>
@@ -64,5 +46,4 @@ export default function BmiPresenter(props) {
             </div>
         </div>
     )
-
 }

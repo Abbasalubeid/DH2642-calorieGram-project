@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/goalsSearch.css";
 
 export default function GoalsSearchView(props) {
     function userSavedACB() {

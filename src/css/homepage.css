@@ -1,0 +1,13 @@
+h1 {
+  color: white;
+  font-size: 90px;
+  margin: 5px 25px;
+  padding: 8px;
+  border: 1px solid#75e6da;
+  border-radius: 55px;
+  font-family: "Helvetica", sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
