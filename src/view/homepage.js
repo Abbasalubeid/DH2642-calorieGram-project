@@ -8,7 +8,7 @@ export default function Homepage() {
     steps: [
       {
         target: '.nav-home',
-        content: <h2>This a page review (UPDATE THIS)
+        content: <h2>This is a page review (UPDATE THIS)
                 </h2>,
         locale: { skip: <strong aria-label="skip">SKIP</strong> },
         placement: 'center',
