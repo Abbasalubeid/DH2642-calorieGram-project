@@ -49,12 +49,12 @@ export default function GoalsSearchView(props) {
                         <td>
                             <label className="container gender">Male
                                 <input type="radio" value="male" name="gender"
-                                 onInput={userChooseGenderACB} defaultValue = {props.person.gender}  />
+                                 onInput={userChooseGenderACB}  />
                                 <span className="checkmark"></span>
                             </label>
                             <label className="container gender">Female
                                 <input type="radio" value="female" name="gender"
-                                 onInput={userChooseGenderACB} defaultValue = {props.person.gender} />
+                                 onInput={userChooseGenderACB}  />
                                 <span className="checkmark"></span>
                             </label>
                         </td>
@@ -71,7 +71,6 @@ export default function GoalsSearchView(props) {
                                 width="60px"
                                 placeholder="age"
                                 onChange={userTypedAgeACB}
-                                defaultValue = {props.person.age}
                                 className="input-box"
                             />
                         </td>
@@ -83,7 +82,6 @@ export default function GoalsSearchView(props) {
                         <td>
                             <input type="text" name="weight" maxLength="3"
                                 width="60px" placeholder="kg" onChange={userTypedWeightACB}
-                                defaultValue = {props.person.weight}
                                 className="input-box" />
                         </td>
                     </tr>
@@ -95,7 +93,6 @@ export default function GoalsSearchView(props) {
                             <input
                                 type="text" name="height" maxLength="3"
                                 width="60px" placeholder="cm" onChange={userTypedHeightACB}
-                                defaultValue = {props.person.height}
                                 className="input-box"
                             />
                         </td>

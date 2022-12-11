@@ -6,9 +6,6 @@ import { getFitnessInfo } from "../fetchSource";
 
 
 export default function BmiPresenter(props) {
-    const [age, setPerson] = React.useState(props.model.person.age)
-    const [weight, setWeight] = React.useState(props.model.person.weight)
-    const [height, setHeight] = React.useState(props.model.person.height)
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
@@ -55,9 +52,6 @@ export default function BmiPresenter(props) {
                     onUserChangedWeight={weightIsChangedACB}
                     onUserChangedHeight={heightIsChangedACB}
                     onUserSearched={userSearchedACB}
-                    age = {age}
-                    weight = {weight}
-                    height = {height}
                 />
             </div>
             <div>

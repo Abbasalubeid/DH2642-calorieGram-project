@@ -5,7 +5,6 @@ import promiseNoData from "../view/promiseNoData.js"
 import { getActivityInfo } from "../fetchSource";
 
 export default function GoalsSearchPresenter(props) {
-    const [person, setPerson] = React.useState(props.model.person);
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
@@ -64,7 +63,6 @@ export default function GoalsSearchPresenter(props) {
                     onUserSearched={userSearchedACB}
                     onUserChangedGender={genderIsChangedACB}
                     onUserChooseLevel={activityLevelIsChangedACB}
-                    person = {person}
                 />
             </div>
             <div className="result-nopadding result">
