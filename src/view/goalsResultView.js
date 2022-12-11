@@ -29,7 +29,7 @@ export default function GoalsResultView(props) {
                     Goals:
                      {Object.keys(props.activityResult.goals).map(renderGoalsCB)}
                 </div>
-                <div><button class = "btn anim" onClick={printFunc}> Download result </button></div>
+                <div><button className = "btn anim" onClick={printFunc}> Download result </button></div>
              </div>
              );
 }
