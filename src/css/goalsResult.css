@@ -62,3 +62,24 @@ table label.gender:hover {
   flex-direction: column;
   text-align: center;
 }
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 14px 40px;
+  color: #fff;
+  background-image: linear-gradient(45deg, #4887df, #3051d7);
+  font-size: 14px;
+  border-radius: 30px;
+  border-top-left-radius: 0;
+  transition: 0.2s;
+}
+.btn:hover {
+  border-top-left-radius: 30px;
+}
+
+.anim {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: moveup 0.5s linear forwards;
+}
