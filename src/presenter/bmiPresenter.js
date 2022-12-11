@@ -6,7 +6,6 @@ import { getFitnessInfo } from "../fetchSource";
 
 
 export default function BmiPresenter(props) {
-
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
@@ -55,7 +54,7 @@ export default function BmiPresenter(props) {
                     onUserSearched={userSearchedACB}
                 />
             </div>
-            <div className="result-nopadding result">
+            <div>
                 {promiseNoData({ promise, data, error }) ||
                     <BmiResultview
                         bmiResult={data}>
