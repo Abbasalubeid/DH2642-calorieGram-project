@@ -24,6 +24,7 @@ export default class FitnessModel{
     }
 
     setHeight(height){
+        // API restrictions
      if(height < 130 || height > 230)   
         return;
      else

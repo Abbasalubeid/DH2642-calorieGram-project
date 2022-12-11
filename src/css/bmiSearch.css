@@ -64,6 +64,7 @@ input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
 }
+<<<<<<< HEAD
 .btn-submit {
   margin-top: 8px;
   background-color: #28e166;
@@ -80,3 +81,5 @@ input[type="submit"] {
   line-height: 1.3333333;
   border-radius: 6px;
 }
+=======
+>>>>>>> d37ff8c4169b62de04868a9316fe96267ac048b5
