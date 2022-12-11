@@ -3,7 +3,7 @@ import Joyride from 'react-joyride';
 import "../css/homepage.css";
 
 export default function Homepage() {
-  const [{ steps, run }, setState] = React.useState({
+  const [state, setState] = React.useState({
     run: false,
     steps: [],
     stepIndex: 0
@@ -34,15 +34,18 @@ export default function Homepage() {
   }
 
   function refreshACB() {
-    window.location.reload();
+    const newState = {};
+    newState.steps = state.steps;
+    newState.run = false;
+    setState(newState)
   }
 
 
   return (
     <div className="hero">
       <div className="app">
-        <Joyride steps={steps}
-          run={run}
+        <Joyride steps={state.steps}
+          run={state.run}
           continuous={true} />
       </div>
       <div class="content">
