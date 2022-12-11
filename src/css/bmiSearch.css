@@ -64,22 +64,3 @@ input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
 }
-<<<<<<< HEAD
-.btn-submit {
-  margin-top: 8px;
-  background-color: #28e166;
-  /* background-image: linear-gradient(to bottom, #0088cc, #0044cc);
-  background-repeat: repeat-x;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); */
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgb(0 0 0 / 25%);
-}
-.btn-lg,
-.btn-group-lg > .btn {
-  padding: 10px 16px;
-  font-size: 25px;
-  line-height: 1.3333333;
-  border-radius: 6px;
-}
-=======
->>>>>>> d37ff8c4169b62de04868a9316fe96267ac048b5
