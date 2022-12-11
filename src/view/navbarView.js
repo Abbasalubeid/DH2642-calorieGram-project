@@ -3,32 +3,29 @@ import "../css/navbar.css";
 
 export default function NavbarView() {
     return <nav className="navbar">
-        <div className="nav-title">
-            <Link to="home">Calorie Gram</Link>
-        </div>
+        <Link to="/home" className="nav-title"><img src="logo.png"></img></Link>
         <a href="/home" className="nav-toggle">
             <span className="nav-bar"></span>
             <span className="nav-bar"></span>
             <span className="nav-bar"></span>
         </a>
-        <div>
-            <ul>
-                <CustomLink to="/bmi" className="nav-bmi">BMI</CustomLink>
-                <CustomLink to="/goals" className="nav-goals">Goals</CustomLink>
-            </ul>
-        </div>
+        <ul>
+            <CustomLink href="/" className="btn-links">Diet</CustomLink>
+            <CustomLink href="/bmi" className="btn-links">Bmi</CustomLink>
+            <CustomLink href="/goals" className="btn-links">Goals</CustomLink>
+        </ul>
     </nav>
 }
 
 /* custom component */
-function CustomLink({ to, children, ...props }) {
-    const resolvedPath = useResolvedPath(to)
+function CustomLink({ href, children, ...props }) {
+    const resolvedPath = useResolvedPath(href)
     const isActive = useMatch({ path: resolvedPath.pathname, end: true })
     return (
         <li className={isActive ? "active" : ""}>
-            <Link to={to} {...props}>
+            <a href={href} {...props}>
                 {children}
-            </Link>
+            </a>
         </li >
     )
 }

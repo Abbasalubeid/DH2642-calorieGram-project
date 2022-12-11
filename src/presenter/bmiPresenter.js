@@ -55,7 +55,7 @@ export default function BmiPresenter(props) {
                     onUserSearched={userSearchedACB}
                 />
             </div>
-            <div className="result-nopadding result">
+            <div>
                 {promiseNoData({ promise, data, error }) ||
                     <BmiResultview
                         bmiResult={data}>

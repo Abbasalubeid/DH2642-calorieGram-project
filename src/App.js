@@ -1,4 +1,3 @@
-import Joyride from 'react-joyride';
 import React from "react";
 import GoalsSearchPresenter from "./presenter/goalsSearchPresenter.js";
 import BmiPresenter from "./presenter/bmiPresenter.js";
@@ -9,51 +8,10 @@ import "./css/App.css";
 
 function App(props) {
 
-  const [{ steps, run }, setState] = React.useState({
-    run: false,
-    steps: [],
-    stepIndex: 0
-  });
-
-
-  function pageReview() {
-    setState({
-      run: true,
-      steps: [
-        {
-          target: '.nav-home',
-          content: 'Click here to go back to the homepage',
-          stepIndex: 2
-        },
-        {
-          target: '.nav-bmi',
-          content: 'Click here to calculate your current BMI',
-          stepIndex: 1
-        },
-        {
-          target: '.nav-goals',
-          content: 'Click here to plan your healthy journey',
-          stepIndex: 0
-        },
-      ]
-    })
-  }
-
-  function refreshACB() {
-    window.location.reload();
-  }
-
   return (
-    <>
-      <div className="app">
-        <Joyride steps={steps}
-          run={run}
-          continuous={true} />
-      </div>
+    <div className="banner">
       <NavbarView />
       <div className="mainContainer">
-        <button onClick={pageReview}>Page review</button>
-        <button onClick={refreshACB}>Restore pageReview</button>
         <Routes>
           <Route path="home" element={<div className="homeContent"><Homepage /></div>} />
           <Route path="goals" element={<GoalsSearchPresenter model={props.model} />} />
@@ -61,7 +19,7 @@ function App(props) {
         </Routes>
 
       </div>
-    </>);
+    </div>);
 
 }
 
