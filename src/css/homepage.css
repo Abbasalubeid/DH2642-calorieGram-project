@@ -33,7 +33,7 @@
   font-size: 14px;
   border-radius: 30px;
   border-top-left-radius: 0;
-  transition: 0.5s;
+  transition: 0.2s;
 }
 .btn:hover {
   border-top-left-radius: 30px;
