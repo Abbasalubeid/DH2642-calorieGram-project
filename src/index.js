@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import FitnessModel from "./model/FitnessModel.js";
 import {BrowserRouter } from "react-router-dom"
+import {writeUserData, deleteUserData} from "../src/model/firebaseModel";
+
+writeUserData(1, 22, 170, 180);
+
+deleteUserData(22);
 
 let model = new FitnessModel();
 
