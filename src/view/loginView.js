@@ -3,7 +3,7 @@ import "../css/login.css";
 
 export default function LoginView() {
     function handleLoginACB(e) {
-        // e.preventDefault();
+        e.preventDefault();
         console.log(e);
     }
 
