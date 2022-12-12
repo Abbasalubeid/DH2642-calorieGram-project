@@ -15,15 +15,10 @@
 
 .navbar ul {
   margin: 0;
+  padding: 0;
   list-style: none;
   display: flex;
   font-size: 2em;
-}
-
-.navbar-nav:hover {
-  border: 1px solid green;
-  background-color: blue;
-  color: white;
 }
 
 .navbar li.active {

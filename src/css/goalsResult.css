@@ -1,14 +1,4 @@
 /*----------------------------------------------------------------SearchView----------------------------------------------*/
-.searchview-container {
-  padding-left: 70px;
-  width: 500px;
-  height: 500px;
-  border: 1px solid aqua;
-  border-radius: 25px;
-  background-color: #eab2bb;
-  display: flex;
-  text-align: center;
-}
 
 .searchview-container td {
   border-spacing: 100px;
@@ -47,12 +37,12 @@ table label.gender:hover {
   padding: 30px;
   width: 500px;
   height: 500px;
-  border: 1px solid aqua;
+  /* border: 1px solid aqua;
   border-radius: 25px;
   background-color: #eab2bb;
-  color: white;
-  display: flex;
-  flex-direction: column;
+  color: white; */
+  /* display: flex;
+  flex-direction: column; */
   text-align: center;
 }
 

@@ -46,8 +46,8 @@ export default function BmiPresenter(props) {
     React.useEffect(promiseHasChangedACB, [promise]);
 
     return (
-        <div>
-            <div className="flex-searchview">
+        <div className="bmi-mainStyle">
+            <div>
                 <BmiSearchView onUserChangedAge={ageIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
                     onUserChangedHeight={heightIsChangedACB}
@@ -58,7 +58,7 @@ export default function BmiPresenter(props) {
                 {promiseNoData({ promise, data, error }) ||
                     <BmiResultview
                         bmiResult={data}>
-                            <h2> hii</h2>
+                        <h2> hii</h2>
                     </BmiResultview>
                 }
             </div>

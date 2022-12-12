@@ -55,8 +55,8 @@ export default function GoalsSearchPresenter(props) {
     React.useEffect(promiseHasChangedACB, [promise]);
 
     return (
-        <div>
-            <div className="flex-searchview">
+        <div className="goal-mainStyle">
+            <div>
                 <GoalsSearchView onUserChangedAge={ageIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
                     onUserChangedHeight={heightIsChangedACB}
