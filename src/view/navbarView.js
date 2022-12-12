@@ -15,8 +15,8 @@ export default function NavbarView() {
             <CustomLink href="/diet" className="btn-links nav-diet">Diet</CustomLink>
         </ul>
         <div>
-            <a href="#" className="login-btn">Login</a>
-            <a href="#" className="btn">Sign up</a>
+            <a href="/login" className="login-btn">Login</a>
+            <a href="/signup" className="btn">Sign up</a>
         </div>
     </nav>
 }

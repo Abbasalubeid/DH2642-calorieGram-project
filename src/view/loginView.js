@@ -6,10 +6,10 @@ export default function LoginView() {
         <div>
             <form onSubmit>
                 <label htmlFor="email">Email address:</label><br />
-                <input type="email" placeholder="Email" onChange></input>
+                <input type="email" placeholder="abc@email.com" onChange></input><br />
                 <label htmlFor="password">Password:</label><br />
-                <input type="password" placeholder="Password" onChange></input>
-                <Link to={"/CreateAccount"}>Create a new account</Link>
+                <input type="password" placeholder="**********" onChange></input><br />
+                <Link to={"/signup"}>Create a new account</Link>
                 <button type="submit">Log in</button>
             </form>
         </div>
