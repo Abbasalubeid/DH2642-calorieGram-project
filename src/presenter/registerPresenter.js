@@ -3,11 +3,11 @@ import RegisterView from "../view/registerView.js";
 
 
 export default function LoginPresenter(props) {
-    // const [searchParams, setSearchParams] = React.useState({});
+    const [name, setName] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
 
-    // function userSearchedACB() {
-    //     setPromise(getFitnessInfo(searchParams));
-    // }
+
 
     return (
         <div>

@@ -3,15 +3,24 @@ import LoginView from "../view/loginView.js";
 
 
 export default function LoginPresenter(props) {
-    // const [searchParams, setSearchParams] = React.useState({});
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
 
-    // function userSearchedACB() {
-    //     setPromise(getFitnessInfo(searchParams));
-    // }
+    function handleEmailACB(email) {
+        setEmail(email)
+    }
+
+    function handlePasswordACB(password) {
+        setPassword(password)
+    }
+
+    function handleLoginACB() {
+        props.model.signIn(email, password);
+    }
 
     return (
         <div>
-            <LoginView />
+            <LoginView onUserSignIn={handleLoginACB} onUserEmail={handleEmailACB} onUserPassword={handlePasswordACB} />
         </div>
     )
 
