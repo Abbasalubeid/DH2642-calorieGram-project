@@ -40,82 +40,72 @@ export default function GoalsSearchView(props) {
 
     return (
         <div className="goalsearchview">
-            <table>
-                <tbody>
-                    <tr>
-                        <td className="column">
-                            <label>Gender</label>
-                        </td>
-                        <td>
-                            <label className="container gender">Male
-                                <input type="radio" value="male" name="gender"
-                                    onInput={userChooseGenderACB} />
-                                <span className="checkmark"></span>
-                            </label>
-                            <label className="container gender">Female
-                                <input type="radio" value="female" name="gender"
-                                    onInput={userChooseGenderACB} />
-                                <span className="checkmark"></span>
-                            </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label htmlFor="age">Age</label>
-                        </td>
-                        <td>
-                            <input
-                                type="number"
-                                name="age"
-                                maxLength="3"
-                                placeholder="age"
-                                onBlur={userTypedAgeACB}
-                                className="input-box"
-                                required="required"
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label htmlFor="weight">Weight</label>
-                        </td>
-                        <td>
-                            <input type="number" name="weight" maxLength="3"
-                                width="60px" placeholder="kg" onBlur={userTypedWeightACB}
-                                className="input-box" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label htmlFor="height">Height</label>
-                        </td>
-                        <td>
-                            <input
-                                type="number"  name="height" maxLength="3"
-                                width="60px" placeholder="cm" onBlur={userTypedHeightACB}
-                                className="input-box"
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label htmlFor="activity">Activity</label>
-                        </td>
-                        <td>
-                            <select name="activity" className="select" onChange={userChooseLevelACB}>
-                                <option>Choose Activity</option>
-                                {options.map(renderOptionsCB)}
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <input type="submit" name="submit" value="Calculate!" className="btn-submit btn-lg" onClick={userSavedACB} />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <form>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td className="column"><label>Gender</label></td>
+                            <td>
+                                <label className="container gender">Male
+                                    <input type="radio" value="male" name="gender"
+                                        onInput={userChooseGenderACB} />
+                                    <span className="checkmark" ></span>
+                                </label>
+                                <label className="container gender">Female
+                                    <input type="radio" value="female" name="gender"
+                                        onInput={userChooseGenderACB} />
+                                    <span className="checkmark" ></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label htmlFor="age">Age</label></td>
+                            <td>
+                                <input
+                                    type="number" name="age" maxLength="3"
+                                    placeholder="age" onBlur={userTypedAgeACB} className="input-box"
+                                    required
+                                    // oninvalid={this.setCustomValidity('Enter User Name Here')}
+                                    minValue="1" maxValue="90" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label htmlFor="weight">Weight</label></td>
+                            <td>
+                                <input type="number" name="weight" maxLength="3"
+                                    placeholder="kg" onBlur={userTypedWeightACB}
+                                    className="input-box" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label htmlFor="height">Height</label></td>
+                            <td>
+                                <input
+                                    type="number" name="height" maxLength="3"
+                                    placeholder="cm" onBlur={userTypedHeightACB}
+                                    className="input-box" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label htmlFor="activity">Activity</label></td>
+                            <td>
+                                <select name="activity" className="select" onChange={userChooseLevelACB}>
+                                    <option>Choose Activity</option>
+                                    {options.map(renderOptionsCB)}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="submit" name="submit"
+                                    value="Calculate!" className="btn-submit btn-lg"
+                                    onClick={userSavedACB} />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
         </div>
     );
 }
