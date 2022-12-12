@@ -14,6 +14,7 @@ export default function GoalsSearchView(props) {
     }
     function userTypedHeightACB(event) {
         props.onUserChangedHeight(event.target.value);
+        console.log(event.target.value);
     }
 
     function userChooseGenderACB(event) {
@@ -91,8 +92,8 @@ export default function GoalsSearchView(props) {
                         </td>
                         <td>
                             <input
-                                type="text" name="height" maxLength="3"
-                                width="60px" placeholder="cm" onChange={userTypedHeightACB}
+                                type="number"  name="height" maxLength="3"
+                                width="60px" placeholder="cm" onBlur={userTypedHeightACB}
                                 className="input-box"
                             />
                         </td>
