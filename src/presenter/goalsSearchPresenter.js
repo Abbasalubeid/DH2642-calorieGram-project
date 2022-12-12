@@ -31,7 +31,7 @@ export default function GoalsSearchPresenter(props) {
         searchParams.weight = props.model.person.weight;
         setPromise(getActivityInfo(searchParams));
     }
-
+        
     function ageIsChangedACB(age) {
         props.model.setAge(age)
     }
