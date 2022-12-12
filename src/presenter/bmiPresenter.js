@@ -58,7 +58,6 @@ export default function BmiPresenter(props) {
                 {promiseNoData({ promise, data, error }) ||
                     <BmiResultview
                         bmiResult={data}>
-                        <h2> hii</h2>
                     </BmiResultview>
                 }
             </div>
