@@ -1,16 +1,16 @@
 /*----------------------------------------------------------------SearchView----------------------------------------------*/
+.bmi-mainStyle {
+  display: flex;
+  flex-direction: row;
+}
+
 .searchview-container {
   padding-left: 70px;
   width: 500px;
   height: 500px;
   border: 1px solid aqua;
   border-radius: 25px;
-  /* background: linear-gradient(to bottom, red, blue); */
-  background-color: #eab2bb;
-  /* position: absolute;
-  top: 53%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
+  background-color: #a5e2ff;
   display: flex;
   text-align: center;
 }

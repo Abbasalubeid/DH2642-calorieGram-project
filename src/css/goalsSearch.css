@@ -1,21 +1,25 @@
 /*----------------------------------------------------------------SearchView----------------------------------------------*/
-.searchview-container {
+.goal-mainStyle {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5%;
+  background-color: #a5e2ff;
+  height: 75vh;
+}
+.goalsearchview {
   padding-left: 70px;
-  width: 500px;
+  width: 450px;
   height: 500px;
   border: 1px solid aqua;
   border-radius: 25px;
   /* background: linear-gradient(to bottom, red, blue); */
-  background-color: #023047;
-  /* position: absolute; */
-  /* top: 53%;
-  left: 50%; */
-  /* transform: translate(-50%, -50%); */
-  display: block;
+  /* background-color: #023047; */
+  background-color: #a5e2ff;
+  display: flex;
   text-align: center;
 }
 
-.searchview-container td {
+.goalsearchview td {
   /* border: 1px solid #d6dbd2; */
   border-spacing: 100px;
 }

@@ -39,7 +39,7 @@ export default function GoalsSearchView(props) {
     }
 
     return (
-        <div className="searchview-container">
+        <div className="goalsearchview">
             <table>
                 <tbody>
                     <tr>
@@ -49,12 +49,12 @@ export default function GoalsSearchView(props) {
                         <td>
                             <label className="container gender">Male
                                 <input type="radio" value="male" name="gender"
-                                 onInput={userChooseGenderACB}  />
+                                    onInput={userChooseGenderACB} />
                                 <span className="checkmark"></span>
                             </label>
                             <label className="container gender">Female
                                 <input type="radio" value="female" name="gender"
-                                 onInput={userChooseGenderACB}  />
+                                    onInput={userChooseGenderACB} />
                                 <span className="checkmark"></span>
                             </label>
                         </td>
@@ -111,7 +111,7 @@ export default function GoalsSearchView(props) {
                     <tr>
                         <td></td>
                         <td>
-                            <input type="submit" name="submit" value="Calculate!" className="btn-submit btn-lg" onClick={userSavedACB}/>
+                            <input type="submit" name="submit" value="Calculate!" className="btn-submit btn-lg" onClick={userSavedACB} />
                         </td>
                     </tr>
                 </tbody>
