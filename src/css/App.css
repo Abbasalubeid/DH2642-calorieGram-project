@@ -1,0 +1,20 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*----------------------------------------------------------------body----------------------------------------------*/
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.banner {
+  margin: 0;
+  padding: 10px 10%;
+}
+
+.hidden {
+  display: none;
+}

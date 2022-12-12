@@ -1,25 +1,29 @@
-import BmrSearchPresenter from "./presenter/bmrSearchPresenter.js";
-import ResultPresenter from "./presenter/resultpresenter.js";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import React from "react";
+import GoalsSearchPresenter from "./presenter/goalsSearchPresenter.js";
+import BmiPresenter from "./presenter/bmiPresenter.js";
+import LoginPresenter from "./presenter/loginPresenter.js";
+import RegisterPresenter from "./presenter/registerPresenter.js";
+import Homepage from "./view/homepage.js";
+import { Route, Routes } from "react-router-dom";
+import NavbarView from "./view/navbarView.js";
+import "./css/App.css";
+
 function App(props) {
 
-
   return (
-    <Router>
-      <div>
-        <nav>
-          <h1>Calorie Gram</h1>
-          <Link to="/">BMR</Link>
-          <Link to="/result">Result</Link>
-        </nav>
+    <div className="banner">
+      <NavbarView />
+      <div className="mainContainer">
         <Routes>
-          <Route exact path="/" element={<BmrSearchPresenter model={props.model} />} />
-          <Route exact path="/result" element={<ResultPresenter model={props.model} />} />
+          <Route path="" element={<Homepage />} />
+          <Route path="goals" element={<GoalsSearchPresenter model={props.model} />} />
+          <Route path="bmi" element={<BmiPresenter model={props.model} />} />
+          <Route path="login" element={<LoginPresenter model={props.model} />} />
+          <Route path="signup" element={<RegisterPresenter model={props.model} />} />
         </Routes>
-      </div>
-    </Router>
 
-  );
+      </div>
+    </div>);
 
 }
 

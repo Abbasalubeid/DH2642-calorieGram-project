@@ -1,45 +1,25 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-/*----------------------------------------------------------------body----------------------------------------------*/
-body {
-  /* background: url(pngtree-black-meat-western-food-banner-background-image_194600.jpg); */
-  /*  background: rgb(254, 202, 66); */
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-h1 {
-  color: white;
-  display: inline-block;
-  font-size: 90px;
-  margin: 5px 25px;
-  padding: 8px;
-  border: 1px solid#75e6da;
-  border-radius: 55px;
-  font-family: "Helvetica", sans-serif;
-  background-color: #75e6da;
-  transform: translate(55%, 0%);
-}
 /*----------------------------------------------------------------SearchView----------------------------------------------*/
-.searchview-container {
+.goal-mainStyle {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5%;
+  background-color: #a5e2ff;
+  height: 75vh;
+}
+.goalsearchview {
   padding-left: 70px;
-  width: 500px;
+  width: 450px;
   height: 500px;
   border: 1px solid aqua;
   border-radius: 25px;
   /* background: linear-gradient(to bottom, red, blue); */
-  background-color: #eab2bb;
-  /* position: a;
-  top: 53%;
-  left: 50%; */
-  /* transform: translate(-50%, -50%); */
+  /* background-color: #023047; */
+  background-color: #a5e2ff;
   display: flex;
   text-align: center;
 }
 
-.searchview-container td {
+.goalsearchview td {
   /* border: 1px solid #d6dbd2; */
   border-spacing: 100px;
 }
@@ -160,12 +140,12 @@ input[type="submit"] {
 }
 .btn-submit {
   margin-top: 8px;
-  background-color: #006dcc;
-  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+  background-color: #ad00cc;
+  /* background-image: linear-gradient(to bottom, #d35dee, #ec0cdd);
   background-repeat: repeat-x;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgb(0 0 0 / 25%);
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); */
+  /* color: #ffffff;
+  text-shadow: 0 -1px 0 rgb(0 0 0 / 25%); */
 }
 .btn-lg,
 .btn-group-lg > .btn {
@@ -173,42 +153,4 @@ input[type="submit"] {
   font-size: 25px;
   line-height: 1.3333333;
   border-radius: 6px;
-}
-
-/* result div */
-.result {
-  text-align: left;
-  font-size: 22px;
-   background: rgb(7, 8, 96); 
-  text-align: left;
-  padding: 10px;
-  border: dashed;
-
-}
-.result-nopadding{
-  padding: 30px;
-  width: 500px;
-  height: 500px;
-  border: 1px solid aqua;
-  border-radius: 25px;
-  background: linear-gradient(to left, red, blue);
-  /* background-color: #eab2bb; */
-  color: white;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-/* flex-parent*/
-.flex-parent {
-  display: flex;
-  flex-direction: row;
- 
-
-}
-
-.flex-searchview {
-  color: #3c77af;
-  text-align: right;
-  font-size: 20px;
-  font-weight: bold;
 }

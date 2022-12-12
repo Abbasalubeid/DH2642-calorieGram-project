@@ -6,7 +6,7 @@ import React from "react";
 import { getActivityInfo } from "../fetchSource";
 
 export default function BmrSearchPresenter(props) {
-    const navigate = useNavigate();
+
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
@@ -40,10 +40,12 @@ export default function BmrSearchPresenter(props) {
     }
 
     function weightIsChangedACB(weight) {
+
         props.model.setWeight(weight)
     }
 
     function heightIsChangedACB(height) {
+
         props.model.setHeight(height)
 
     }
