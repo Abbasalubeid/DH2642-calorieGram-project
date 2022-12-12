@@ -5,11 +5,11 @@ import FitnessModel from "./model/FitnessModel.js";
 import {BrowserRouter } from "react-router-dom"
 import {writeUserData, deleteUserData} from "../src/model/firebaseModel";
 
-writeUserData(1, 22, 170, 180);
+writeUserData(22, 170, 180);
 
-deleteUserData(22);
 
 let model = new FitnessModel();
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
