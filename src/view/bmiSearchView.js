@@ -34,7 +34,7 @@ export default function BmiSearchView(props) {
                                 name="age"
                                 maxLength="3"
                                 placeholder="age"
-                                onChange={userTypedAgeACB}
+                                onBlur={userTypedAgeACB}
                                 className="input-box"
                             />
                             <span className="greytext">nr</span>
@@ -45,8 +45,8 @@ export default function BmiSearchView(props) {
                             <label htmlFor="weight">Weight</label>
                         </td>
                         <td>
-                            <input type="text" name="weight" maxLength="3"
-                                placeholder="kg" onChange={userTypedWeightACB}
+                            <input type="number" name="weight" maxLength="3"
+                                placeholder="kg" onBlur={userTypedWeightACB}
                                 className="input-box" />
                         </td>
                     </tr>
@@ -56,8 +56,8 @@ export default function BmiSearchView(props) {
                         </td>
                         <td>
                             <input
-                                type="text" name="height" maxLength="3"
-                                placeholder="cm" onChange={userTypedHeightACB}
+                                type="number" name="height" maxLength="3"
+                                placeholder="cm" onBlur={userTypedHeightACB}
                                 className="input-box"
                             />
                         </td>

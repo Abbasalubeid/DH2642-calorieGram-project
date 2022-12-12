@@ -14,7 +14,6 @@ export default function GoalsSearchView(props) {
     }
     function userTypedHeightACB(event) {
         props.onUserChangedHeight(event.target.value);
-        console.log(event.target.value);
     }
 
     function userChooseGenderACB(event) {
@@ -36,7 +35,7 @@ export default function GoalsSearchView(props) {
         ];
 
     function renderOptionsCB(opt) {
-        return <option value={opt.value} key={opt.value}> {opt.type} </option>
+        return <option value={opt.value} key={opt.value}>{opt.type}</option>
     }
 
     return (
@@ -66,12 +65,12 @@ export default function GoalsSearchView(props) {
                         </td>
                         <td>
                             <input
-                                type="text"
+                                type="number"
                                 name="age"
                                 maxLength="3"
                                 width="60px"
                                 placeholder="age"
-                                onChange={userTypedAgeACB}
+                                onBlur={userTypedAgeACB}
                                 className="input-box"
                             />
                         </td>
@@ -81,8 +80,8 @@ export default function GoalsSearchView(props) {
                             <label htmlFor="weight">Weight</label>
                         </td>
                         <td>
-                            <input type="text" name="weight" maxLength="3"
-                                width="60px" placeholder="kg" onChange={userTypedWeightACB}
+                            <input type="number" name="weight" maxLength="3"
+                                width="60px" placeholder="kg" onBlur={userTypedWeightACB}
                                 className="input-box" />
                         </td>
                     </tr>

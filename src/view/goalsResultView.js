@@ -3,12 +3,12 @@ export default function GoalsResultView(props) {
 
     function renderGoalsCB(object) {
         if (props.activityResult.goals[object]["gain weight"])
-            return <div key={object}>For {object + "(" + props.activityResult.goals[object]["gain weight"] + "/week" + ")" + "-->"}
-                Eat {Number(props.activityResult.goals[object]["calory"]).toFixed(0)} Calories/day</div>
+            return <button key={object}>For {object + "(" + props.activityResult.goals[object]["gain weight"] + "/week" + ")" + "-->"}
+                Eat {Number(props.activityResult.goals[object]["calory"]).toFixed(0)} Calories/day</button>
 
         else if (props.activityResult.goals[object]["loss weight"])
-            return <div key={object}>For {object + "(" + props.activityResult.goals[object]["loss weight"] + "/week" + ")" + "-->"}
-                Eat {Number(props.activityResult.goals[object]["calory"]).toFixed(0)} Calories/day</div>
+            return <button key={object}>For {object + "(" + props.activityResult.goals[object]["loss weight"] + "/week" + ")" + "-->"}
+                Eat {Number(props.activityResult.goals[object]["calory"]).toFixed(0)} Calories/day</button>
     }
     function printFunc(){
         const results= document.getElementsByClassName("result");
@@ -25,11 +25,11 @@ export default function GoalsResultView(props) {
     }
     return ( <div>
                 <div className="result">
-                     Your current BMR is {(props.activityResult.BMR)} Calories/day
+                    Your current BMR is {(props.activityResult.BMR)} Calories/day
                     Goals:
                      {Object.keys(props.activityResult.goals).map(renderGoalsCB)}
                 </div>
-                <div><button class = "btn anim" onClick={printFunc}> Download result </button></div>
+                <div><button className = "btn anim" onClick={printFunc}> Download result </button></div>
              </div>
              );
 }
