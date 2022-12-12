@@ -28,7 +28,7 @@ export default function LoginView() {
                     <input type="username" onChange={handleUsernameACB}></input>
                     <label htmlFor="password">Password:</label>
                     <input type="password" placeholder="**********" onChange={handlePasswordACB}></input>
-                    <label htmlFor="password">Retype password:</label>
+                    <label htmlFor="password">Re-type password:</label>
                     <input type="password" placeholder="**********" onChange={handlePasswordACB}></input>
                     <button type='submit' className="btn">Sign up</button>
                     <Link to="/login">Already have a account? Sign in</Link>

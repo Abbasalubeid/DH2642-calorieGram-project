@@ -54,7 +54,7 @@ export default class FitnessModel{
     setWeight(weight){
         // API restrictions
         if(weight > 160 || weight <  40)
-            return;
+          return;
         else if (weight !== this.person.weight){
             this.person.weight = weight;
             const payload = { newWeight : weight}
@@ -65,7 +65,8 @@ export default class FitnessModel{
     setHeight(height){
         // API restrictions
      if(height < 130 || height > 230)   
-        return;
+     return;
+    //  throw Error("Weight must be between 40 kg to 160 kg");
      else if (height !== this.person.height)
         this.person.height = height;  
         const payload = { newHeight : height}
