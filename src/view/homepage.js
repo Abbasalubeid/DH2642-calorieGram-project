@@ -9,7 +9,7 @@ export default function Homepage() {
       {
         target: '.nav-home',
         content: <h2>This is a page review (UPDATE THIS)
-                </h2>,
+        </h2>,
         locale: { skip: <strong aria-label="skip">SKIP</strong> },
         placement: 'center',
       },
@@ -56,30 +56,31 @@ export default function Homepage() {
   return (
     <div className="hero">
       <div className="app">
-      <Joyride steps = {joyrideState.steps}
+        <Joyride steps={joyrideState.steps}
           run={joyrideState.run}
           continuous={true}
           showSkipButton
           styles={{
-          options  : {
-            arrowColor : '#006dcc',
-            backgroundColor: '#fff',
-            beaconSize: 100,
-            overlayColor: 'rgba(0, 0, 0, 0.5)',
-            primaryColor: '#006dcc',
-            spotlightShadow: '0 0 15px rgba(0, 0, 0, 0.5)',
-            textColor: '#333',
-            zIndex: 100,
-          }}}/>
+            options: {
+              arrowColor: '#006dcc',
+              backgroundColor: '#fff',
+              beaconSize: 100,
+              overlayColor: 'rgba(0, 0, 0, 0.5)',
+              primaryColor: '#006dcc',
+              spotlightShadow: '0 0 15px rgba(0, 0, 0, 0.5)',
+              textColor: '#333',
+              zIndex: 100,
+            }
+          }} />
       </div>
-      <div class="content">
-        <h1 class="anim">Welcome <br />to Calorie Gram</h1>
-        <p class="anim">
+      <div className="content">
+        <h1 className="anim">Welcome <br />to Calorie Gram</h1>
+        <p className="anim">
           Welcome to Calorie Gram🍓 Your personal fitness advisor, calorie calculator, and more 💪
         </p>
-        <button onClick={pageReview} className = {joyrideState.run === false ? "btn anim": "hidden"}>Page review</button>
-        <button onClick={refreshACB} className = {joyrideState.run === true ? "btn anim": "hidden"}>Restore pageReview</button>
-        <img src="apple.png" class="feature-img anim" />
+        <button onClick={pageReview} className={joyrideState.run === false ? "btn anim" : "hidden"}>Page review</button>
+        <button onClick={refreshACB} className={joyrideState.run === true ? "btn anim" : "hidden"}>Restore pageReview</button>
+        <img src="apple.png" className="feature-img anim" />
       </div>
     </div >
   )

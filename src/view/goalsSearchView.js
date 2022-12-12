@@ -65,13 +65,13 @@ export default function GoalsSearchView(props) {
                         </td>
                         <td>
                             <input
-                                type="text"
+                                type="number"
                                 name="age"
                                 maxLength="3"
-                                width="60px"
                                 placeholder="age"
                                 onChange={userTypedAgeACB}
                                 className="input-box"
+                                required="required"
                             />
                         </td>
                     </tr>
