@@ -30,8 +30,11 @@ function getActivityInfo(person){
     const query = new URLSearchParams(person);
     return fetch(BASE_URL + "/dailycalorie?" + query.toString(), options).then(treatHTTPResponseACB).then(transformACB);
 }
-
-export { getFitnessInfo, getActivityInfo }
+function getMacroInfo(person){
+    const query = new URLSearchParams(person);
+    return fetch(BASE_URL + "/macrocalculator?" + query.toString(), options).then(treatHTTPResponseACB).then(transformACB);
+}
+export { getFitnessInfo, getActivityInfo, getMacroInfo }
 
 
 
