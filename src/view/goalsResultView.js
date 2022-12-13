@@ -9,7 +9,7 @@ export default function GoalsResultView(props) {
         else if (props.activityResult.goals[object]["loss weight"])
             return <button className= "btn anim" key={object}>For {object + "(" + props.activityResult.goals[object]["loss weight"] + "/week" + ")" + "-->"}
                 Eat {Number(props.activityResult.goals[object]["calory"]).toFixed(0)} Calories/day</button>
-    }
+    }   
     function printFunc(){
         const results= document.getElementsByClassName("result");
         const blob = new Blob([results[0].textContent], {type:"text/plain"})
@@ -24,8 +24,8 @@ export default function GoalsResultView(props) {
     }
     return ( <div>
                 <div className="result">
-                    Your current BMR is {(props.activityResult.BMR)} Calories/day
-                    Goals:
+                    Choose a goal by clicking:
+                    <button className = "btn anim" >Maintain weight: {(props.activityResult.BMR)} Calories/day </button>
                      {Object.keys(props.activityResult.goals).map(renderGoalsCB)}
                 </div>
                 <div><button className = "btn anim" onClick={printFunc}> Download result </button></div>
