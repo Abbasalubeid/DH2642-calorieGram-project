@@ -49,7 +49,8 @@ export default function GoalsSearchPresenter(props) {
     }
 
     function activityLevelIsChangedACB(level) {
-        searchParams.activitylevel = level;
+
+        searchParams.activitylevel = "level_"+ level;
     }
 
     function UserChangedUserGoals(goal){
@@ -71,12 +72,12 @@ export default function GoalsSearchPresenter(props) {
                     showLevels = {true}
                     levels = {
                                 [
-                                    { value: "level_1", type: "Sedentary: little or no exercise" },
-                                    { value: "level_2", type: "Light Exercise (1-2 days/week)" },
-                                    { value: "level_3", type: "Exercise 4-5 times/week" },
-                                    { value: "level_4", type: "Daily exercise or intense exercise 3-4 times/week" },
-                                    { value: "level_5", type: "Intense exercise 6-7 times/week" },
-                                    { value: "level_6", type: "Very intense exercise daily, or physical job" },
+                                    { value: "1", type: "Sedentary: little or no exercise" },
+                                    { value: "2", type: "Light Exercise (1-2 days/week)" },
+                                    { value: "3", type: "Exercise 4-5 times/week" },
+                                    { value: "4", type: "Daily exercise or intense exercise 3-4 times/week" },
+                                    { value: "5", type: "Intense exercise 6-7 times/week" },
+                                    { value: "6", type: "Very intense exercise daily, or physical job" },
                                 ]}
                 />
             </div>
