@@ -29,7 +29,7 @@
   background-image: linear-gradient(79deg, #edf3fc, #dddff9 48%, #b2c3fd 100%);
 }
 
-.form-container input:invalid {
+input:invalid {
   background-color: ivory;
   border: none;
   outline: 2px solid red;

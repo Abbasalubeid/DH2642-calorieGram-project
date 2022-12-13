@@ -52,6 +52,10 @@ export default function GoalsSearchPresenter(props) {
         searchParams.activitylevel = level;
     }
 
+    function UserChangedUserGoals(goal){
+        props.model.setUserGoal(goal)
+    }
+
     React.useEffect(promiseHasChangedACB, [promise]);
 
     return (
@@ -68,8 +72,10 @@ export default function GoalsSearchPresenter(props) {
             <div className="result-nopadding result">
                 {promiseNoData({ promise, data, error }) ||
                     <GoalsResultView
-                        activityResult={data}>
-                    </GoalsResultView>
+                        activityResult={data} 
+                        userInfo={searchParams}
+                        onUserChangedUserGoals={UserChangedUserGoals}
+                        />
                 }
             </div>
         </div>

@@ -29,8 +29,6 @@ function getFitnessInfo(person){
 function getActivityInfo(person){
     const query = new URLSearchParams(person);
     return fetch(BASE_URL + "/dailycalorie?" + query.toString(), options).then(treatHTTPResponseACB).then(transformACB);
-
-
 }
 function getMacroInfo(person){
     const query = new URLSearchParams(person);

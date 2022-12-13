@@ -1,5 +1,5 @@
-import React from "react";
-export default function SearchView(props){
+
+export default function DietSearchView(props){
 
     function userSavedACB() {
         props.onUserSearched();
@@ -13,6 +13,7 @@ export default function SearchView(props){
     function userTypedHeightACB(event) {
         props.onUserChangedHeight(event.target.value);
     }
+
     function userChooseGenderACB(event) {
         props.onUserChangedGender(event.target.value);
     }
@@ -107,8 +108,8 @@ return (
                         />
                     </td>
                 </tr>
-                <tr className={!props.showActivity?  "hidden" : ""}>
-                    <td >
+                <tr>
+                    <td>
                         <label htmlFor="activity">Activity</label>
                     </td>
                     <td>
@@ -118,7 +119,7 @@ return (
                         </select>
                     </td>
                 </tr>
-                <tr className={!props.showGoals?  "hidden" : ""}>
+                <tr>
                     <td>
                         <label htmlFor="activity">Goal</label>
                     </td>
@@ -140,3 +141,5 @@ return (
     </div>
 );
 }
+
+

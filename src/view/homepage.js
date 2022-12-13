@@ -1,5 +1,5 @@
 import React from 'react';
-import Joyride from 'react-joyride';
+import Joyride, { ACTIONS, EVENTS, STATUS } from 'react-joyride';
 import "../css/homepage.css";
 
 export default function Homepage() {
@@ -41,6 +41,18 @@ export default function Homepage() {
   });
 
 
+  function handleJoyrideCallback (data) {
+    const {action} = data;
+
+    if (action.includes("reset")) {
+      const newState = {};
+      newState.steps = joyrideState.steps;
+      newState.run = false;
+      setJoyrideState(newState)
+    }
+  };
+
+
   function pageReview() {
     const newState = {};
     newState.steps = joyrideState.steps;
@@ -54,21 +66,14 @@ export default function Homepage() {
     }
   }
 
-  function refreshACB() {
-    const newState = {};
-    newState.steps = joyrideState.steps;
-    newState.run = false;
-    setJoyrideState(newState)
-  }
-
-
   return (
     <div className="hero">
       <div className="app">
         <Joyride steps={joyrideState.steps}
           run={joyrideState.run}
           continuous={true}
-          showSkipButton
+          showSkipButton = {true}
+          showProgress = {true}
           styles={{
             options: {
               arrowColor: '#006dcc',
@@ -80,18 +85,16 @@ export default function Homepage() {
               textColor: '#333',
               zIndex: 100,
             }
-          }} />
+          }} 
+          callback ={handleJoyrideCallback}/>
       </div>
       <div className="content">
         <h1 className="anim">Welcome <br />to Calorie Gram</h1>
         <p className="anim">
           Welcome to Calorie Gram🍓 Your personal fitness advisor, calorie calculator, and more 💪
         </p>
-        <button onClick={pageReview} className={joyrideState.run === false ? "btn anim" : "hidden"} >Page review</button>
-    
-       
         <img src="apple.png" className="feature-img anim" />
       </div>
-    </div >
-  )
+    </div >)
 }
+
