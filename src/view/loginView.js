@@ -1,17 +1,19 @@
 import { Link } from "react-router-dom";
 import "../css/login.css";
+import FitnessModel from "../model/FitnessModel.js";
+import FirebaseModel from "../model/firebaseModel.js";
 
-export default function LoginView() {
+export default function LoginView(props) {
     function handleLoginACB(e) {
         e.preventDefault();
-        console.log(e);
+        props.onUserSignIn(e.target.value);
     }
 
     function handleEmailACB(e) {
-        console.log(e.target.value);
+        props.onUserEmail(e.target.value);
     }
     function handlePasswordACB(e) {
-        console.log(e.target.value);
+        props.onUserPassword(e.target.value);
     }
     return (
         <div className="login-banner">

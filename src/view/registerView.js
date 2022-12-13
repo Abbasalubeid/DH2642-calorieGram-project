@@ -1,27 +1,27 @@
 import { Link } from "react-router-dom";
 import "../css/login.css";
 
-export default function LoginView() {
-    function handleLoginACB(e) {
+export default function LoginView(props) {
+    function handleRegisterACB(e) {
         e.preventDefault();
-        console.log(e.target.value);
+        props.onUserSignUp(e.target.value);
+    }
+    function handleUsernameACB(e) {
+        props.onUserName(e.target.value);
     }
 
     function handleEmailACB(e) {
-        console.log(e.target.value);
+        props.onUserEmail(e.target.value);
     }
     function handlePasswordACB(e) {
-        console.log(e.target.value);
-    }
-    function handleUsernameACB(e) {
-        console.log(e.target.value);
+        props.onUserPassword(e.target.value);
     }
 
     return (
         <div className="login-banner">
             <div className="form-container">
                 <h2>Create a new account</h2>
-                <form onSubmit={handleLoginACB} className="form-register">
+                <form onSubmit={handleRegisterACB} className="form-register">
                     <label htmlFor="email">Email address:</label>
                     <input type="email" placeholder="abc@email.om" onChange={handleEmailACB}></input>
                     <label htmlFor="username">Username:</label>

@@ -1,3 +1,7 @@
+import {
+  createUserInFirebase, signInWithPasswordAndEmail
+} from "./firebaseModel.js";
+
 export default class FitnessModel {
   constructor() {
     this.observers = [];
@@ -75,29 +79,9 @@ export default class FitnessModel {
   }
 
 
-  // setCurrentUser(email, username, password) {
-  //   function currentUseACB(email, password) {
-  //     this.currentUser;
-  //   }
-  //   const user = this.currentUser(email, username, password);
-  //   this.currentUser = user;
-  // }
-
-  // async signUp(email, username, password) {
-  //   const user = await createUserInFirebase(email, username, password);
-  //   this.notifyObservers({
-  //     email: email,
-  //     username: username,
-  //   });
-  //   this.setCurrentUser(user);
-  // }
-  // async signIn(email, password) {
-  //   const user = await signInWithPasswordAndEmail(email, password);
-  //   this.notifyObservers({ signIn: "true" });
-  //   this.setCurrentUser(user);
-  // }
-
-  signIn(email, password) {
-    this.setCurrentUser(email, password);
+  setCurrentUser(user) {
+    this.currentUser = user;
   }
+
+
 }

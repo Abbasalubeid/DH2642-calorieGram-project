@@ -7,11 +7,24 @@ export default function LoginPresenter(props) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
+    function handleNameACB(name) {
+        setName(name)
+    }
+    function handleEmailACB(email) {
+        setEmail(email)
+    }
 
+    function handlePasswordACB(password) {
+        setPassword(password)
+    }
+
+    function handleLoginACB() {
+        props.model.signUp(email, password);
+    }
 
     return (
         <div>
-            <RegisterView />
+            <RegisterView onUserSignUp={handleLoginACB} onUserName={handleNameACB} onUserEmail={handleEmailACB} onUserPassword={handlePasswordACB} />
         </div>
     )
 
