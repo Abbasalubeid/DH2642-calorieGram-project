@@ -24,7 +24,7 @@ export default function GoalsSearchView(props) {
         props.onUserChooseLevel(event.target.value);
     }
 
-    const options =
+    const levels =
         [
             { value: "level_1", type: "Sedentary: little or no exercise" },
             { value: "level_2", type: "Light Exercise (1-2 days/week)" },
@@ -104,7 +104,7 @@ export default function GoalsSearchView(props) {
                         <td>
                             <select name="activity" className="select" onChange={userChooseLevelACB}>
                                 <option>Choose Activity</option>
-                                {options.map(renderOptionsCB)}
+                                {levels.map(renderOptionsCB)}
                             </select>
                         </td>
                     </tr>

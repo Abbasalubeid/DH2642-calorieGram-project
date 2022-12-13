@@ -10,6 +10,7 @@ export default function NavbarView() {
             <span className="nav-bar"></span>
         </a>
         <ul>
+        <CustomLink href="/searchTest" className="btn-links nav-goals">Search</CustomLink>
             <CustomLink href="/goals" className="btn-links nav-goals">Goals</CustomLink>
             <CustomLink href="/bmi" className="btn-links nav-bmi">Bmi</CustomLink>
             <CustomLink href="/diet" className="btn-links nav-diet">Diet</CustomLink>
