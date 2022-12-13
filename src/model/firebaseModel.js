@@ -5,21 +5,21 @@ import firebaseConfig from "../firebaseConfig";
 const app = initializeApp(firebaseConfig)
 
 
- function writeUserData(age, height, weight) {
-    const db = getDatabase();
+function writeUserData(age, height, weight) {
+  const db = getDatabase();
 
-    set(ref(db, 'currentUser/'), {
-      age : age,
-      height: height,
-      weight : weight
-    });
-  }
+  set(ref(db, 'currentUser/'), {
+    age: age,
+    height: height,
+    weight: weight
+  });
+}
 
-  function deleteUserData() {
-    const db = getDatabase();
+function deleteUserData() {
+  const db = getDatabase();
 
-    set(ref(db, 'currentUsers/'), null);
-  }
+  set(ref(db, 'currentUsers/'), null);
+}
 
-  export {writeUserData, deleteUserData}
+export { writeUserData, deleteUserData }
 
