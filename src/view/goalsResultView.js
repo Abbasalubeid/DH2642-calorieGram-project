@@ -6,14 +6,14 @@ export default function GoalsResultView(props) {
             const s =`For ${object + "(" + props.activityResult.goals[object]["gain weight"] + "/week" + ")" + "-->"}
             Eat ${Number(props.activityResult.goals[object]["calory"]).toFixed(0)} Calories/day`
             const ret = `${object + "," + props.activityResult.goals[object]["gain weight"] + ","}${Number(props.activityResult.goals[object]["calory"]).toFixed(0)}`
-            return <button className= "btn anim" value = {ret} onClick={userGoalIsChanged}>{s}</button>
+            return <button className= "btn anim" value = {ret} key = {object} onClick={userGoalIsChanged}>{s}</button>
         }
 
         else if (props.activityResult.goals[object]["loss weight"]){
             const s = `For ${object + "(" + props.activityResult.goals[object]["loss weight"] + "/week" + ")" + "-->"}
             Eat ${Number(props.activityResult.goals[object]["calory"]).toFixed(0)} Calories/day`
             const ret = `${object +","+ props.activityResult.goals[object]["loss weight"] + "," }${Number(props.activityResult.goals[object]["calory"]).toFixed(0)}`
-            return <button className= "btn anim" value = {ret} onClick={userGoalIsChanged}>{s}</button>
+            return <button className= "btn anim" value = {ret} key = {object} onClick={userGoalIsChanged}>{s}</button>
         }
     }
     function userGoalIsChanged(event){
