@@ -1,37 +1,39 @@
 import { Link } from "react-router-dom";
-import "../css/register.css";
+import "../css/login.css";
 
-export default function LoginView(props) {
-
+export default function LoginView() {
     function handleLoginACB(e) {
         e.preventDefault();
-        props.onUserCreate();
+        console.log(e.target.value);
     }
 
-    function userEmailACB(event) {
-        props.onUserEmail(event.target.value)
+    function handleEmailACB(e) {
+        console.log(e.target.value);
+    }
+    function handlePasswordACB(e) {
+        console.log(e.target.value);
+    }
+    function handleUsernameACB(e) {
+        console.log(e.target.value);
     }
 
-    function userPasswordACB(event) {
-        props.onUserPassword(event.target.value)
-    }
-    function userNameACB(event) {
-        props.onUserName(event.target.value)
-    }
     return (
-        <div>
-            <form onSubmit={handleLoginACB}>
-                <label htmlFor="email">Email address:</label><br />
-                <input type="email" placeholder="abc@email.om" onChange={userEmailACB}></input> <div>
-                    <label htmlFor="username">Username:</label><br />
-                    <input type="username" onChange={userNameACB}></input></div>
-                <label htmlFor="password">Password:</label><br />
-                <input type="password" placeholder="**********" onChange={userPasswordACB}></input><br />
-                <label htmlFor="password">Retype password:</label><br />
-                <input type="password" placeholder="**********" onChange={userPasswordACB}></input><br />
-                <Link to="/login">Already have a account? Sign in</Link><br />
-                <button type='submit'>Sign up</button>
-            </form>
+        <div className="login-banner">
+            <div className="form-container">
+                <h2>Create a new account</h2>
+                <form onSubmit={handleLoginACB} className="form-register">
+                    <label htmlFor="email">Email address:</label>
+                    <input type="email" placeholder="abc@email.om" onChange={handleEmailACB}></input>
+                    <label htmlFor="username">Username:</label>
+                    <input type="username" onChange={handleUsernameACB}></input>
+                    <label htmlFor="password">Password:</label>
+                    <input type="password" placeholder="**********" onChange={handlePasswordACB}></input>
+                    <label htmlFor="password">Re-type password:</label>
+                    <input type="password" placeholder="**********" onChange={handlePasswordACB}></input>
+                    <button type='submit' className="btn">Sign up</button>
+                    <Link to="/login">Already have a account? Sign in</Link>
+                </form>
+            </div>
         </div>
     )
 }

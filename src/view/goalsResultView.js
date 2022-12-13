@@ -3,16 +3,15 @@ export default function GoalsResultView(props) {
 
     function renderGoalsCB(object) {
         if (props.activityResult.goals[object]["gain weight"])
-            return <div key={object}>For {object + "(" + props.activityResult.goals[object]["gain weight"] + "/week" + ")" + "-->"}
-                Eat {Number(props.activityResult.goals[object]["calory"]).toFixed(0)} Calories/day</div>
+            return <button className= "btn anim" key={object}>For {object + "(" + props.activityResult.goals[object]["gain weight"] + "/week" + ")" + "-->"}
+                Eat {Number(props.activityResult.goals[object]["calory"]).toFixed(0)} Calories/day</button>
 
         else if (props.activityResult.goals[object]["loss weight"])
-            return <div key={object}>For {object + "(" + props.activityResult.goals[object]["loss weight"] + "/week" + ")" + "-->"}
-                Eat {Number(props.activityResult.goals[object]["calory"]).toFixed(0)} Calories/day</div>
+            return <button className= "btn anim" key={object}>For {object + "(" + props.activityResult.goals[object]["loss weight"] + "/week" + ")" + "-->"}
+                Eat {Number(props.activityResult.goals[object]["calory"]).toFixed(0)} Calories/day</button>
     }
     function printFunc(){
         const results= document.getElementsByClassName("result");
-        //console.log(results[0].textContent);
         const blob = new Blob([results[0].textContent], {type:"text/plain"})
         const href = URL.createObjectURL(blob)
         const a= Object.assign(document.createElement("a"), {
@@ -25,7 +24,7 @@ export default function GoalsResultView(props) {
     }
     return ( <div>
                 <div className="result">
-                     Your current BMR is {(props.activityResult.BMR)} Calories/day
+                    Your current BMR is {(props.activityResult.BMR)} Calories/day
                     Goals:
                      {Object.keys(props.activityResult.goals).map(renderGoalsCB)}
                 </div>
@@ -33,3 +32,5 @@ export default function GoalsResultView(props) {
              </div>
              );
 }
+
+

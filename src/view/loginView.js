@@ -1,30 +1,31 @@
 import { Link } from "react-router-dom";
 import "../css/login.css";
 
-export default function LoginView(props) {
-
+export default function LoginView() {
     function handleLoginACB(e) {
         e.preventDefault();
-        props.onUserSignIn();
+        console.log(e);
     }
 
-    function userEmailACB(event) {
-        props.onUserEmail(event.target.value)
+    function handleEmailACB(e) {
+        console.log(e.target.value);
     }
-
-    function userPasswordACB(event) {
-        props.onUserPassword(event.target.value)
+    function handlePasswordACB(e) {
+        console.log(e.target.value);
     }
     return (
-        <div>
-            <form onSubmit={handleLoginACB}>
-                <label htmlFor="email">Email address:</label><br />
-                <input type="email" placeholder="abc@email.com" onChange={userEmailACB}></input><br />
-                <label htmlFor="password">Password:</label><br />
-                <input type="password" placeholder="**********" onChange={userPasswordACB}></input><br />
-                <Link to={"/signup"}>Create a new account</Link>
-                <button type="submit">Log in</button>
-            </form>
+        <div className="login-banner">
+            <div className="form-container">
+                <h2>Login</h2>
+                <form onSubmit={handleLoginACB} className="form-login">
+                    <label htmlFor="email">Email address:</label>
+                    <input type="email" placeholder="abc@email.com" onChange={handleEmailACB} required="required"></input>
+                    <label htmlFor="password">Password:</label>
+                    <input type="password" placeholder="**********" onChange={handlePasswordACB}></input>
+                    <button type="submit" className="btn">Log in</button>
+                    <Link to={"/signup"}>Don't have a account? Sign up</Link>
+                </form>
+            </div>
         </div>
     )
 }
