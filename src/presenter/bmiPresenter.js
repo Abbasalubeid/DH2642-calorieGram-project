@@ -1,4 +1,4 @@
-import BmiSearchView from "../view/bmiSearchView.js";
+import SearchView from "../view/searchView.js";
 import BmiResultview from "../view/bmiResultView.js";
 import React from "react";
 import promiseNoData from "../view/promiseNoData.js";
@@ -48,7 +48,7 @@ export default function BmiPresenter(props) {
     return (
         <div className="bmi-mainStyle">
             <div>
-                <BmiSearchView onUserChangedAge={ageIsChangedACB}
+                <SearchView onUserChangedAge={ageIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
                     onUserChangedHeight={heightIsChangedACB}
                     onUserSearched={userSearchedACB}
