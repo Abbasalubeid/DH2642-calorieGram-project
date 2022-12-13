@@ -1,4 +1,4 @@
-import GoalsSearchView from "../view/goalsSearchView.js";
+import SearchView from "../view/searchView.js";
 import GoalsResultView from "../view/goalsResultView.js"
 import React from "react";
 import promiseNoData from "../view/promiseNoData.js"
@@ -31,7 +31,7 @@ export default function GoalsSearchPresenter(props) {
         searchParams.weight = props.model.person.weight;
         setPromise(getActivityInfo(searchParams));
     }
-
+        
     function ageIsChangedACB(age) {
         props.model.setAge(age)
     }
@@ -52,12 +52,16 @@ export default function GoalsSearchPresenter(props) {
         searchParams.activitylevel = level;
     }
 
+    function UserChangedUserGoals(goal){
+        props.model.setUserGoal(goal)
+    }
+
     React.useEffect(promiseHasChangedACB, [promise]);
 
     return (
         <div className="goal-mainStyle">
             <div>
-                <GoalsSearchView onUserChangedAge={ageIsChangedACB}
+                <SearchView onUserChangedAge={ageIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
                     onUserChangedHeight={heightIsChangedACB}
                     onUserSearched={userSearchedACB}
@@ -68,8 +72,10 @@ export default function GoalsSearchPresenter(props) {
             <div className="result-nopadding result">
                 {promiseNoData({ promise, data, error }) ||
                     <GoalsResultView
-                        activityResult={data}>
-                    </GoalsResultView>
+                        activityResult={data} 
+                        userInfo={searchParams}
+                        onUserChangedUserGoals={UserChangedUserGoals}
+                        />
                 }
             </div>
         </div>

@@ -1,11 +1,11 @@
 import SearchView from "../view/searchView.js";
-import ResultView from "../view/resultView.js"
+import DietResultView from "../view/dietResultView.js";
 import React from "react";
-import promiseNoData from "../view/promiseNoData.js"
-import { getActivityInfo } from "../fetchSource";
+import promiseNoData from "../view/promiseNoData.js";
+import { getMacroInfo } from "../fetchSource";
 
-export default function BmrSearchPresenter(props) {
 
+export default function DietPresenter(props){
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
@@ -30,22 +30,19 @@ export default function BmrSearchPresenter(props) {
         searchParams.gender = props.model.person.gender;
         searchParams.height = props.model.person.height;
         searchParams.weight = props.model.person.weight;
-        setPromise(getActivityInfo(searchParams));
+        setPromise(getMacroInfo(searchParams));
     }
-
+        
     function ageIsChangedACB(age) {
         props.model.setAge(age)
     }
 
     function weightIsChangedACB(weight) {
-
         props.model.setWeight(weight)
     }
 
     function heightIsChangedACB(height) {
-
         props.model.setHeight(height)
-
     }
 
     function genderIsChangedACB(gender) {
@@ -53,33 +50,38 @@ export default function BmrSearchPresenter(props) {
     }
 
     function activityLevelIsChangedACB(level) {
-        searchParams.activitylevel = level;gi
-        setSearchParams(searchParams);
+        searchParams.activitylevel = level;
+    }
+
+    function goalIsChangedACB(goal) {
+        searchParams.goal = goal;
     }
 
     React.useEffect(promiseHasChangedACB, [promise]);
 
     return (
-        <div>
-            <div className="flex-searchview">
+        <div className="goal-mainStyle">
+            <div >
                 <SearchView onUserChangedAge={ageIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
                     onUserChangedHeight={heightIsChangedACB}
                     onUserSearched={userSearchedACB}
                     onUserChangedGender={genderIsChangedACB}
                     onUserChooseLevel={activityLevelIsChangedACB}
+                    onUserChooseGoal = {goalIsChangedACB}
+                    showGender = {true}
+                    showActivity = {true}
+                    showGoals = {true}
                 />
             </div>
             <div className="result-nopadding result">
                 {promiseNoData({ promise, data, error }) ||
-                    <ResultView
-                        activityResult={data}>
-                    </ResultView>
+                    <DietResultView
+                        macros={data}>
+                    </DietResultView>
                 }
             </div>
         </div>
-
-
-    )
+            )
 
 }

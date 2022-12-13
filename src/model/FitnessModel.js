@@ -71,7 +71,19 @@ export default class FitnessModel{
         this.person.height = height;  
         const payload = { newHeight : height}
         this.notifyObservers(payload); 
-        
     }
 
+    setUserGoal(goal){
+        const goals = goal.split(",");        
+        this.currentGoal.weightGoal = goals[0];
+        this.currentGoal.weightPerWeek = goals[1];
+        this.currentGoal.caloriesIntake = goals[2];
+
+        const payload = {
+          newWeightGoal : goals[0],
+          newWeightPerWeek : goals[1],
+          newCaloriesIntake : goals[2]
+        }
+        this.notifyObservers(payload);
+    }
 }
