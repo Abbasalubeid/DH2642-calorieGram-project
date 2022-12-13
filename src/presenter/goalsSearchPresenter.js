@@ -1,4 +1,4 @@
-import GoalsSearchView from "../view/goalsSearchView.js";
+import SearchView from "../view/searchView.js";
 import GoalsResultView from "../view/goalsResultView.js"
 import React from "react";
 import promiseNoData from "../view/promiseNoData.js"
@@ -61,7 +61,7 @@ export default function GoalsSearchPresenter(props) {
     return (
         <div className="goal-mainStyle">
             <div>
-                <GoalsSearchView onUserChangedAge={ageIsChangedACB}
+                <SearchView onUserChangedAge={ageIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
                     onUserChangedHeight={heightIsChangedACB}
                     onUserSearched={userSearchedACB}

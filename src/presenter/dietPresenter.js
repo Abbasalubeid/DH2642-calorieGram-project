@@ -1,8 +1,9 @@
+import SearchView from "../view/searchView.js";
 import DietResultView from "../view/dietResultView.js";
 import React from "react";
 import promiseNoData from "../view/promiseNoData.js";
 import { getMacroInfo } from "../fetchSource";
-import DietSearchView from "../view/dietSearchView.js";
+
 
 export default function DietPresenter(props){
     const [promise, setPromise] = React.useState(null);
@@ -60,14 +61,17 @@ export default function DietPresenter(props){
 
     return (
         <div className="goal-mainStyle">
-            <div>
-                <DietSearchView onUserChangedAge={ageIsChangedACB}
+            <div >
+                <SearchView onUserChangedAge={ageIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
                     onUserChangedHeight={heightIsChangedACB}
                     onUserSearched={userSearchedACB}
                     onUserChangedGender={genderIsChangedACB}
                     onUserChooseLevel={activityLevelIsChangedACB}
                     onUserChooseGoal = {goalIsChangedACB}
+                    showGender = {true}
+                    showActivity = {true}
+                    showGoals = {true}
                 />
             </div>
             <div className="result-nopadding result">

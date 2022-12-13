@@ -1,4 +1,5 @@
 import React from "react";
+
 export default function SearchView(props){
 
     function userSavedACB() {
@@ -53,7 +54,7 @@ return (
     <div className="goalsearchview">
         <table>
             <tbody>
-                <tr>
+                <tr className={!props.showGender?  "hidden" : " "}>
                     <td className="column">
                         <label>Gender</label>
                     </td>
@@ -107,7 +108,7 @@ return (
                         />
                     </td>
                 </tr>
-                <tr className={!props.showActivity?  "hidden" : ""}>
+                <tr className={!props.showActivity?  "hidden" : " "}>
                     <td >
                         <label htmlFor="activity">Activity</label>
                     </td>
