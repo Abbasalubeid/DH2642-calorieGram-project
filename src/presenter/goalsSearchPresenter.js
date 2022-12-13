@@ -67,6 +67,17 @@ export default function GoalsSearchPresenter(props) {
                     onUserSearched={userSearchedACB}
                     onUserChangedGender={genderIsChangedACB}
                     onUserChooseLevel={activityLevelIsChangedACB}
+                    showGender = {true}
+                    showLevels = {true}
+                    levels = {
+                                [
+                                    { value: "level_1", type: "Sedentary: little or no exercise" },
+                                    { value: "level_2", type: "Light Exercise (1-2 days/week)" },
+                                    { value: "level_3", type: "Exercise 4-5 times/week" },
+                                    { value: "level_4", type: "Daily exercise or intense exercise 3-4 times/week" },
+                                    { value: "level_5", type: "Intense exercise 6-7 times/week" },
+                                    { value: "level_6", type: "Very intense exercise daily, or physical job" },
+                                ]}
                 />
             </div>
             <div className="result-nopadding result">
