@@ -10,9 +10,12 @@ export default function LoginPresenter(props) {
     // }
 
     return (
-        <div>
+        <AuthProvider>
+             <div>
             <LoginView />
-        </div>
+            </div>
+        </AuthProvider>
+       
     )
 
 }
