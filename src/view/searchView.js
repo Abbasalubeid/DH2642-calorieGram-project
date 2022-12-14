@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/bmiSearch.css"
 
 export default function SearchView(props){
 
@@ -31,6 +32,19 @@ function renderOptionsCB(opt) {
 
 return (
     <div className="goalsearchview">
+        <div classname="bmi-info">
+            <div className={!props.showBmiInfo?  "hidden" : " "}>
+                <p>
+                Body mass index (BMI) to determine how healthy you are.
+                    For most adults, a BMI between 18.5 to 24.9 is the idead BMI to have.
+
+                    BMI is not a perfect measure, because it does not directly assess body fat.
+                    Muscle and bone are denser than fat, so an athlete or muscular person may have a high BMI, yet not have too much fat. But most people are not athletes,
+                    and for most people, BMI is a very good gauge of their level of body fat.
+                </p>
+                    
+                </div>
+        </div>  
         <table>
             <tbody>
                 <tr className={!props.showGender?  "hidden" : " "}>
@@ -117,6 +131,19 @@ return (
                 </tr>
             </tbody>
         </table>
+        
+        
+        <div classname="Activity-per-week-info">
+            <div className={!props.showActivityPerWeekInfo?  "hidden" : " "}>
+                        By choosing how many times you intend to train per week you will be presented 
+                        with a set of goals to achieve. <br></br>
+                        Each set has first the main goal which can vary from mild weight loss 
+                        to extreme weight gain, then amount of calories you need to take daily to achieve
+                        that goal.
+
+                </div>
+        </div>
+            
     </div>
 );
 }
