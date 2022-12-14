@@ -1,8 +1,18 @@
+// new imported fire base
+import "firebase/auth"
+import 'firebase/compat/auth';
+
+import firebase from 'firebase/compat/app';
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set } from "firebase/database";
 import firebaseConfig from "../firebaseConfig";
 
 const app = initializeApp(firebaseConfig)
+const firebaseApp = firebase.initializeApp(firebaseConfig)
+const auth = firebaseApp.auth();
+
+// new implementing outh
+//const auth = app.auth();
 
 
  function writeUserData(age, height, weight) {
@@ -21,5 +31,5 @@ const app = initializeApp(firebaseConfig)
     set(ref(db, 'currentUsers/'), null);
   }
 
-  export {writeUserData, deleteUserData}
+  export {writeUserData, deleteUserData, auth}
 
