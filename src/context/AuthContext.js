@@ -19,14 +19,13 @@ export function AuthProvider({ children }) {
     function login(email, password) {
         return auth.signInWithEmailAndPassword(email, password)
     }
-    function rer(user){
+    function userCurrent(user){
         setCurrentUser(user);
         setLoading(false)
     }
     
-
     function unsubscrbedUser(){
-        const unsubscribe = auth.onAuthStateChanged(rer)
+        const unsubscribe = auth.onAuthStateChanged(userCurrent)
         
         return unsubscribe
     }
