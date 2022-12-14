@@ -21,14 +21,14 @@ function App(props) {
       <NavbarView />
       <div className="mainContainer">
         <Routes>
+         
           <Route path="" element={<Homepage />} />
           <Route path="profile" element={<ProfilePresenter model={props.model} showActivity = {true} showGoals = {true}/>} />
           <Route path="goals" element={<GoalsSearchPresenter model={props.model} />} />
           <Route path="bmi" element={<BmiPresenter model={props.model} />} />
           <Route path="diet" element={<DietPresenter model={props.model} />} />
           <Route path="login" element={<LoginPresenter model={props.model} />} />
-          <Route path="signup" element={<RegisterPresenter model={props.model} />} />
-        
+          <Route path="signup" element={<RegisterPresenter model={props.model} />} /> 
          
         </Routes>
       
