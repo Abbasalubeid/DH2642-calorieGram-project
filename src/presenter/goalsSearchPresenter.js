@@ -80,6 +80,10 @@ export default function GoalsSearchPresenter(props) {
                                     { value: "5", type: "Intense exercise 6-7 times/week" },
                                     { value: "6", type: "Very intense exercise daily, or physical job" },
                                 ]}
+                    age = {props.model.person.age}
+                    gender = {props.model.person.gender}
+                    height = {props.model.person.height}
+                    weight = {props.model.person.weight}
                 />
             </div>
             <div className="result-nopadding result">

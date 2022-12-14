@@ -1,11 +1,10 @@
-
 import SearchView from "../view/searchView.js";
-
 import React from "react";
 
 
 export default function ProfilePresenter(props){
-    
+    const [person, setPerson] = React.useState(props.model.person);
+    const [, reRender] = React.useState();
 
     function userSearchedACB() {
         
@@ -53,12 +52,12 @@ export default function ProfilePresenter(props){
                     goals ={
                                 [
                                     { value: "maintain", type: "Maintain weight" },
-                                    { value: "mildlose", type: "Mild weight loss" },
-                                    { value: "weightlose", type: "Weight loss" },
-                                    { value: "extremelose", type: "Extreme Weight loss" },
-                                    { value: "mildgain", type: "Mild weight gain" },
-                                    { value: "weightgain", type: "Weight gain" },
-                                    { value: "extremegain", type: "Extreme weight gain" }
+                                    { value: "mildlose", type: "Mild weight loss 0.25 kg/week" },
+                                    { value: "weightlose", type: "Weight loss 0.5 kg/week" },
+                                    { value: "extremelose", type: "Extreme Weight loss 1 kg/week" },
+                                    { value: "mildgain", type: "Mild weight gain 0.25 kg/week" },
+                                    { value: "weightgain", type: "Weight gain 0.5 kg/week" },
+                                    { value: "extremegain", type: "Extreme weight gain 1 kg/week" }
                                 ]}
                      levels ={
                                 [
@@ -69,6 +68,10 @@ export default function ProfilePresenter(props){
                                     { value: "5", type: "Intense exercise 6-7 times/week" },
                                     { value: "6", type: "Very intense exercise daily, or physical job" },
                                 ]}
+                    age = {props.model.person.age}
+                    gender = {props.model.person.gender}
+                    height = {props.model.person.height}
+                    weight = {props.model.person.weight}
                 />
             </div>
            

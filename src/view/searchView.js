@@ -47,7 +47,7 @@ return (
                 </p>
                 </div>
         </div>
-        <div classname="Activity-per-week-info">
+        <div className="Activity-per-week-info">
             <div className={!props.showActivityPerWeekInfo?  "hidden" : " "}>
                         By choosing how many times you intend to train per week you will be presented 
                         with a set of goals to achieve. <br></br>
@@ -56,7 +56,7 @@ return (
                         that goal.
                 </div>
         </div>
-        <div classname="Diet-info">
+        <div className="Diet-info">
             <div className={!props.showDietInfo?  "hidden" : " "}>
             A healthy diet is essential for good health and nutrition. 
             It protects you against many chronic noncommunicable diseases, such as heart disease, diabetes and cancer.
@@ -98,6 +98,7 @@ return (
                             maxLength="3"
                             placeholder="age"
                             onBlur={userTypedAgeACB}
+                            defaultValue = {props.age}
                             className="input-box"
                         />
                     </td>
@@ -109,7 +110,7 @@ return (
                     <td>
                         <input type="number" name="weight" maxLength="3"
                             width="60px" placeholder="kg" onBlur={userTypedWeightACB}
-                            className="input-box" />
+                            defaultValue = {props.weight} className="input-box" />
                     </td>
                 </tr>
                 <tr>
@@ -120,7 +121,7 @@ return (
                         <input
                             type="number"  name="height" maxLength="3"
                             width="60px" placeholder="cm" onBlur={userTypedHeightACB}
-                            className="input-box"
+                            defaultValue = {props.height} className="input-box"
                         />
                     </td>
                 </tr>

@@ -1,7 +1,12 @@
 export default class FitnessModel{
     constructor(){
         this.observers = [];
-        this.person = {};
+        this.person = {
+          age : 25,
+          gender : "male",
+          height : 169,
+          weight : 100
+        };
         this.currentGoal = {};
     }
 
@@ -32,8 +37,8 @@ export default class FitnessModel{
     setAge(age){
         if(age > 1 && age < 80)
             if(Number.isInteger(+age) && age !== this.person.age){
-                this.person.age = age;
-                const payload = { newAge : age}
+                this.person.age = +age;
+                const payload = { newAge : +age}
                 this.notifyObservers(payload);
             }
                 
