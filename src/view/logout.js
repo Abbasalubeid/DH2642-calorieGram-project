@@ -3,8 +3,16 @@ import React from "react"
 export default function Logout() {
 
     const [error, setError] = React.useState('')
-    return(<div>
+    function userLogedOutACB() {
+        
+    }
 
-    </div>)
+    return(
+            
+            <div>
+                <button onClick={userLogedOutACB}>Log out</button>
+            </div>
+            
+          )
     
 }

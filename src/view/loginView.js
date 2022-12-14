@@ -11,6 +11,8 @@ export default function LoginView() {
     const passwordRef = useRef();
     const {login} = useAuth();
     const [error, setError] = useState('')
+    const [succes, setSuccess] = useState('')
+
    
     const [loading, setLoading] = useState(false)
     let history = useNavigate();
@@ -22,7 +24,7 @@ export default function LoginView() {
             setError('')
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value);
-            alert("You have successfully logged in.")
+            //setSuccess("You have successfully logged in.")
           history("/profile")
         } catch  {
             setError("Failed To Sign in")
@@ -45,6 +47,7 @@ export default function LoginView() {
             <div className="form-container">
                 <h2>Login</h2>
                 {error}
+                {succes}
                 <form onSubmit={handleSubmit} className="form-login">
                     <label htmlFor="email">Email address:</label>
                     <input type="email" placeholder="abc@email.com" onChange={handleEmailACB} required="required" ref={emailRef}></input>
