@@ -3,7 +3,7 @@ import React from "react";
 
 
 export default function ProfilePresenter(props){
-    const [age, setPerson] = React.useState(props.model.person.age);
+    const [person, setPerson] = React.useState(props.model.person);
     const [, reRender] = React.useState();
 
     function userSearchedACB() {
@@ -13,7 +13,6 @@ export default function ProfilePresenter(props){
         
     function ageIsChangedACB(age) {
         props.model.setAge(age)
-        reRender({});
     }
 
     function weightIsChangedACB(weight) {
@@ -69,10 +68,10 @@ export default function ProfilePresenter(props){
                                     { value: "5", type: "Intense exercise 6-7 times/week" },
                                     { value: "6", type: "Very intense exercise daily, or physical job" },
                                 ]}
-                    age = {age}
-                    // gender = {props.model.person.gender}
-                    // height = {props.model.person.height}
-                    // weight = {props.model.person.weight}
+                    age = {props.model.person.age}
+                    gender = {props.model.person.gender}
+                    height = {props.model.person.height}
+                    weight = {props.model.person.weight}
                 />
             </div>
            

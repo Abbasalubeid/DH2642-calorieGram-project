@@ -8,7 +8,7 @@ function updateFirebaseFromModel(model) {
   function persistenceObserverACB(payload){
     const db = getDatabase();
       if (payload){
-      
+        
           if (payload.hasOwnProperty('newAge'))
             set(ref(db, 'currentUser/'), {age : payload.newAge,
                                           gender : model.person.gender,
@@ -52,11 +52,11 @@ function updateModelFromFirebase(model) {
 
   onValue(ageRef, function ageIschanged (snapshot) { model.setAge(snapshot.val());})
 
-  onValue(genderRef, function weightIschanged (snapshot) { model.setGender(snapshot.val());})
+  onValue(genderRef, function weightIschanged (snapshot) {   console.log(model.person); model.setGender(snapshot.val());})
 
-  onValue(heightRef, function heightIschanged (snapshot) { model.setHeight(snapshot.val());})
+  onValue(heightRef, function heightIschanged (snapshot) {   console.log(model.person); model.setHeight(snapshot.val());})
 
-  onValue(weightRef, function weightIschanged (snapshot) { model.setWeight(snapshot.val());})
+  onValue(weightRef, function weightIschanged (snapshot) {   console.log(model.person); model.setWeight(snapshot.val());})
 
 }
 
