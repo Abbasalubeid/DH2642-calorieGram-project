@@ -70,6 +70,7 @@ export default function GoalsSearchPresenter(props) {
                     onUserChooseLevel={activityLevelIsChangedACB}
                     showGender = {true}
                     showLevels = {true}
+                    showActivityPerWeekInfo= {true}
                     levels = {
                                 [
                                     { value: "1", type: "Sedentary: little or no exercise" },
