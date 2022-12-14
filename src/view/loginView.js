@@ -20,7 +20,7 @@ export default function LoginView() {
             setError('')
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value);
-          // console.log("succesfull")
+           console.log("succesfull")
           history("/profile")
         } catch  {
             setError("Failed To Sign in")
