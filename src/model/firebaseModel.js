@@ -3,11 +3,11 @@ import "firebase/auth"
 import 'firebase/compat/auth';
 
 import firebase from 'firebase/compat/app';
-import { initializeApp } from "firebase/app";
+
 import { getDatabase, ref, set } from "firebase/database";
 import firebaseConfig from "../firebaseConfig";
 
-const app = initializeApp(firebaseConfig)
+
 const firebaseApp = firebase.initializeApp(firebaseConfig)
 const auth = firebaseApp.auth();
 
