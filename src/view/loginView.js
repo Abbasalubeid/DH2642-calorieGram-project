@@ -4,12 +4,14 @@ import "../css/login.css";
 import { useAuth } from "../context/AuthContext";
 import React, {useRef, useState} from "react";
 
+
 export default function LoginView() {
     // from here 
     const emailRef = useRef();
     const passwordRef = useRef();
     const {login} = useAuth();
     const [error, setError] = useState('')
+   
     const [loading, setLoading] = useState(false)
     let history = useNavigate();
 
@@ -20,7 +22,7 @@ export default function LoginView() {
             setError('')
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value);
-           console.log("succesfull")
+            alert("You have successfully logged in.")
           history("/profile")
         } catch  {
             setError("Failed To Sign in")
@@ -30,10 +32,7 @@ export default function LoginView() {
     }
     // to here are new
 
-    function handleLoginACB(e) {
-        e.preventDefault();
-        console.log(e);
-    }
+  
 
     function handleEmailACB(e) {
         console.log(e.target.value);
@@ -46,7 +45,6 @@ export default function LoginView() {
             <div className="form-container">
                 <h2>Login</h2>
                 {error}
-
                 <form onSubmit={handleSubmit} className="form-login">
                     <label htmlFor="email">Email address:</label>
                     <input type="email" placeholder="abc@email.com" onChange={handleEmailACB} required="required" ref={emailRef}></input>
