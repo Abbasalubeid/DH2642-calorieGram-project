@@ -32,7 +32,7 @@ function renderOptionsCB(opt) {
 
 return (
     <div className="goalsearchview">
-        <div classname="bmi-info">
+        <div className="bmi-info">
             <div className={!props.showBmiInfo?  "hidden" : " "}>
                 <p>
                 Body mass index (BMI) to determine how healthy you are.
@@ -133,7 +133,7 @@ return (
         </table>
         
         
-        <div classname="Activity-per-week-info">
+        <div className="Activity-per-week-info">
             <div className={!props.showActivityPerWeekInfo?  "hidden" : " "}>
                         By choosing how many times you intend to train per week you will be presented 
                         with a set of goals to achieve. <br></br>
