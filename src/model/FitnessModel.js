@@ -29,8 +29,6 @@ export default class FitnessModel{
         }
       }
 
-
-
     setAge(age){
         if(age > 1 && age < 80)
             if(Number.isInteger(+age) && age !== this.person.age){
