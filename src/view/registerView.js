@@ -27,7 +27,7 @@ export default function LoginView() {
             setError('')
             setLoading(true)
             await signup(emailRef.current.value, passwordRef.current.value);
-            console.log("signed in successful")
+            alert("Your account have successfully created.")
             navigate("/login")
         } catch  {
             setError("Failed To create account")
@@ -36,11 +36,6 @@ export default function LoginView() {
        
     }
     // to here are new
-
-    function handleLoginACB(e) {
-        e.preventDefault();
-        console.log(e.target.value);
-    }
 
     function handleEmailACB(e) {
         console.log(e.target.value);
