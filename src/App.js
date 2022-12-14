@@ -10,6 +10,7 @@ import { Route, Routes } from "react-router-dom";
 import NavbarView from "./view/navbarView.js";
 import "./css/App.css";
 import LogoutPresenter from "./presenter/logoutPresenter.js";
+import PrivateRoute from "./view/privateRout.js";
 
 
 
@@ -27,9 +28,11 @@ function App(props) {
           <Route path="diet" element={<DietPresenter model={props.model} />} />
           <Route path="login" element={<LoginPresenter model={props.model} />} />
           <Route path="signup" element={<RegisterPresenter model={props.model} />} />
+        
          
         </Routes>
-        <LogoutPresenter/>
+      
+       
       </div>
     </div>);
 
