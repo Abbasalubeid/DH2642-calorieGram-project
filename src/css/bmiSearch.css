@@ -59,8 +59,15 @@ table label {
   border-radius: 4px;
 }
 
+.bmi-info {
+  float: right;
+  margin-right: 100px;
+  color:#3c77af;
+}
+
 /* Submit button */
 input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
 }
+

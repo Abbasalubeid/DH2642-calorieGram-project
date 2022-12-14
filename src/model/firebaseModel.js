@@ -1,8 +1,16 @@
-import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, onValue } from "firebase/database";
+// new imported fire base
+import "firebase/auth"
+import 'firebase/compat/auth';
+import firebase from 'firebase/compat/app';
 import firebaseConfig from "../firebaseConfig";
 
-const app = initializeApp(firebaseConfig)
+
+const firebaseApp = firebase.initializeApp(firebaseConfig)
+const auth = firebaseApp.auth();
+
+// new implementing outh
+//const auth = app.auth();
 
 // function persistedModel() {
     
@@ -97,5 +105,5 @@ function updateModelFromFirebase(model) {
     set(ref(db, 'currentUsers/'), null);
   }
 
-  export {writeUserData, deleteUserData, updateModelFromFirebase, updateFirebaseFromModel}
+  export {writeUserData, deleteUserData, updateModelFromFirebase, updateFirebaseFromModel, auth}
 

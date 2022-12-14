@@ -72,6 +72,7 @@ export default function DietPresenter(props){
                     showGender = {true}
                     showLevels = {true}
                     showGoals = {true}
+                    showDietInfo = {true}
                     goals ={
                                 [
                                     { value: "maintain", type: "Maintain weight" },

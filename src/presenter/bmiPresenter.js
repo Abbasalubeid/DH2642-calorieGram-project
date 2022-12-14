@@ -6,10 +6,6 @@ import { getFitnessInfo } from "../fetchSource";
 
 
 export default function BmiPresenter(props) {
-    // const [age, setPerson] = React.useState(props.model.person.age);
-    // const [gender, setGender] = React.useState(props.model.person.gender);
-    // const [height, setHeight] = React.useState(props.model.person.height);
-    // const [weight, setWeight] = React.useState(props.model.person.weight);
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
@@ -27,21 +23,6 @@ export default function BmiPresenter(props) {
 
         return changedAgainACB;
     }
-
-    // function observerACB() {    
-    //     setPerson(props.model.person.age);
-    //     setGender(props.model.gender);
-    //     setHeight(props.model.person.height);
-    //     setWeight(props.model.person.weight);
-    // }
-
-    // function wasCreatedACB() {
-    //     console.log("test");                           
-    //     props.model.addObserver(observerACB);
-    //     return function isTakenDownACB() {                                
-    //         props.model.removeObserver(observerACB);
-    //     };
-    // }
 
     function userSearchedACB() {
         searchParams.age = props.model.person.age;
@@ -62,7 +43,6 @@ export default function BmiPresenter(props) {
         props.model.setHeight(height)
     }
 
-    // React.useEffect(wasCreatedACB, []);
     React.useEffect(promiseHasChangedACB, [promise]);
 
     return (
@@ -72,10 +52,7 @@ export default function BmiPresenter(props) {
                     onUserChangedWeight={weightIsChangedACB}
                     onUserChangedHeight={heightIsChangedACB}
                     onUserSearched={userSearchedACB}
-                    age = {props.model.person.age}
-                    gender = {props.model.person.gender}
-                    height = {props.model.person.height}
-                    weight = {props.model.person.weight}
+                    showBmiInfo={true}
                 />
             </div>
             <div>

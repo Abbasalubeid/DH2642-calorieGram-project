@@ -1,14 +1,17 @@
 import React from "react";
-import LoginView from "../view/loginView.js";
+
+import Logout from "../view/logout.js";
 import { AuthProvider } from "../context/AuthContext.js";
+// import PrivateRoute from "../view/privateRout.js";
 
 
-export default function LoginPresenter(props) {
+export default function LogoutPresenter(props) {
 
     return (
         <AuthProvider>
              <div>
-                 <LoginView />
+                 <Logout />
+                 
             </div>
         </AuthProvider>
        
