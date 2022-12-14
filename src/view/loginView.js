@@ -8,7 +8,7 @@ export default function LoginView() {
     // from here 
     const emailRef = useRef();
     const passwordRef = useRef();
-    const {signup} = useAuth();
+    const {login} = useAuth();
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
 
@@ -18,9 +18,9 @@ export default function LoginView() {
         try {
             setError('')
             setLoading(true)
-            await signup(emailRef.current.value, passwordRef.current.value);
+            await login(emailRef.current.value, passwordRef.current.value);
         } catch  {
-            setError("Failed To create account")
+            setError("Failed To Sign in")
         }
             setLoading(false)
        
@@ -42,7 +42,7 @@ export default function LoginView() {
         <div className="login-banner">
             <div className="form-container">
                 <h2>Login</h2>
-                
+
                 <form onSubmit={handleSubmit} className="form-login">
                     <label htmlFor="email">Email address:</label>
                     <input type="email" placeholder="abc@email.com" onChange={handleEmailACB} required="required" ref={emailRef}></input>
