@@ -29,7 +29,7 @@ function App(props) {
           <Route path="signup" element={<RegisterPresenter model={props.model} />} />
          
         </Routes>
-        <LogoutPresenter model={props.model} />
+        <LogoutPresenter/>
       </div>
     </div>);
 
