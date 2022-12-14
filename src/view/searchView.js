@@ -25,27 +25,6 @@ export default function SearchView(props){
     props.onUserChooseGoal(event.target.value);
 }
 
-const goals =
-[
-    { value: "maintain", type: "Maintain weight" },
-    { value: "mildlose", type: "Mild weight loss" },
-    { value: "weightlose", type: "Weight loss" },
-    { value: "extremelose", type: "Extreme Weight loss" },
-    { value: "mildgain", type: "Mild weight gain" },
-    { value: "weightgain", type: "Weight gain" },
-    { value: "extremegain", type: "Extreme weight gain" }
-];
-
-const levels =
-[
-    { value: "1", type: "Sedentary: little or no exercise" },
-    { value: "2", type: "Light Exercise (1-2 days/week)" },
-    { value: "3", type: "Exercise 4-5 times/week" },
-    { value: "4", type: "Daily exercise or intense exercise 3-4 times/week" },
-    { value: "5", type: "Intense exercise 6-7 times/week" },
-    { value: "6", type: "Very intense exercise daily, or physical job" },
-];
-
 function renderOptionsCB(opt) {
     return <option value={opt.value} key={opt.value}>{opt.type}</option>
 }
@@ -108,25 +87,25 @@ return (
                         />
                     </td>
                 </tr>
-                <tr className={!props.showActivity?  "hidden" : " "}>
+                <tr className={!props.showLevels?  "hidden" : " "}>
                     <td >
                         <label htmlFor="activity">Activity</label>
                     </td>
                     <td>
                         <select name="activity" className="select" onChange={userChooseLevelACB}>
                             <option>Choose Activity</option>
-                            {levels.map(renderOptionsCB)}
+                            {props.levels?.map(renderOptionsCB)}
                         </select>
                     </td>
                 </tr>
-                <tr className={!props.showGoals?  "hidden" : ""}>
+                <tr className={!props.showGoals?  "hidden" : " "}>
                     <td>
                         <label htmlFor="activity">Goal</label>
                     </td>
                     <td>
                         <select name="activity" className="select" onChange={userChooseGoalACB}>
                             <option>Choose goal</option>
-                            {goals.map(renderOptionsCB)}
+                            {props.goals?.map(renderOptionsCB)}
                         </select>
                     </td>
                 </tr>

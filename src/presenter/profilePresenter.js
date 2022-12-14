@@ -1,36 +1,15 @@
+
 import SearchView from "../view/searchView.js";
-import DietResultView from "../view/dietResultView.js";
+
 import React from "react";
-import promiseNoData from "../view/promiseNoData.js";
-import { getMacroInfo } from "../fetchSource";
 
 
-export default function DietPresenter(props){
-    const [promise, setPromise] = React.useState(null);
-    const [data, setData] = React.useState(null);
-    const [error, setError] = React.useState(null);
-
-    const [searchParams, setSearchParams] = React.useState({});
-
-    function promiseHasChangedACB() {
-        setData(null);
-        setError(null);
-        let cancelled = false;
-
-        function changedAgainACB() { cancelled = true; }
-        if (promise)
-            promise.then(function saveData(data) { if (!cancelled) setData(data); }).
-                catch(function saveError(error) { if (!cancelled) setError(error); });
-
-        return changedAgainACB;
-    }
+export default function ProfilePresenter(props){
+    
 
     function userSearchedACB() {
-        searchParams.age = props.model.person.age;
-        searchParams.gender = props.model.person.gender;
-        searchParams.height = props.model.person.height;
-        searchParams.weight = props.model.person.weight;
-        setPromise(getMacroInfo(searchParams));
+        
+       
     }
         
     function ageIsChangedACB(age) {
@@ -50,14 +29,13 @@ export default function DietPresenter(props){
     }
 
     function activityLevelIsChangedACB(level) {
-        searchParams.activitylevel = level;
+       
     }
 
     function goalIsChangedACB(goal) {
-        searchParams.goal = goal;
+      
     }
 
-    React.useEffect(promiseHasChangedACB, [promise]);
 
     return (
         <div className="goal-mainStyle">
@@ -93,14 +71,9 @@ export default function DietPresenter(props){
                                 ]}
                 />
             </div>
-            <div className="result-nopadding result">
-                {promiseNoData({ promise, data, error }) ||
-                    <DietResultView
-                        macros={data}>
-                    </DietResultView>
-                }
-            </div>
+           
         </div>
             )
+
 
 }

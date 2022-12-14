@@ -52,7 +52,6 @@ export default function Homepage() {
     }
   };
 
-
   function pageReview() {
     const newState = {};
     newState.steps = joyrideState.steps;
@@ -93,6 +92,7 @@ export default function Homepage() {
         <p className="anim">
           Welcome to Calorie Gram🍓 Your personal fitness advisor, calorie calculator, and more 💪
         </p>
+        <button onClick={pageReview} className={joyrideState.run === false ? "btn anim" : "hidden"}>Page review</button>
         <img src="apple.png" className="feature-img anim" />
       </div>
     </div >)
