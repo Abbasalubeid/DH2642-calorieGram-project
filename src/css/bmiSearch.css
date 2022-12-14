@@ -56,6 +56,12 @@
   width: 700px;
 }
 
+.bmi-info {
+  float: right;
+  margin-right: 100px;
+  color: #3c77af;
+}
+
 .grey-text {
   margin-left: -57px;
   color: #888;

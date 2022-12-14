@@ -61,6 +61,7 @@ export default function BmiPresenter(props) {
                     onUserChangedWeight={weightIsChangedACB}
                     onUserChangedHeight={heightIsChangedACB}
                     onUserSearched={userSearchedACB}
+                    showBmiInfo={true}
                 />
             </div>
             <div className={!show ? "bmi-info" : "hidden"}>
