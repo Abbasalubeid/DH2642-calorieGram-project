@@ -14,10 +14,12 @@ export default function NavbarView() {
             <CustomLink href="/goals" className="btn-links nav-goals">Goals</CustomLink>
             <CustomLink href="/bmi" className="btn-links nav-bmi">Bmi</CustomLink>
             <CustomLink href="/diet" className="btn-links nav-diet">Diet</CustomLink>
+           
         </ul>
         <div>
             <a href="/login" className="login-btn">Login</a>
             <a href="/signup" className="btn">Sign up</a>
+            
         </div>
     </nav>
 }
