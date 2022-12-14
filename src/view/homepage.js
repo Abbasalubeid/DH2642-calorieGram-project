@@ -52,7 +52,6 @@ export default function Homepage() {
     }
   };
 
-
   function pageReview() {
     const newState = {};
     newState.steps = joyrideState.steps;
