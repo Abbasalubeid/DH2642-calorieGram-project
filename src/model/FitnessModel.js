@@ -4,8 +4,8 @@ export default class FitnessModel{
         this.person = {
           age : 25,
           gender : "male",
-          weight : 85,
-          height : 190
+          height : 169,
+          weight : 100
         };
         this.currentGoal = {};
     }

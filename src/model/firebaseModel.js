@@ -4,6 +4,25 @@ import firebaseConfig from "../firebaseConfig";
 
 const app = initializeApp(firebaseConfig)
 
+// function persistedModel() {
+    
+//   function createModelACB(firebaseData) {        
+         
+//       const defaultPerson = {
+//         age : 25,
+//         gender : "male",
+//         weight : 85,
+//         height : 190
+//       }
+//       const person = firebaseData.val()?.person ?? defaultPerson;
+
+//       return new DinnerModel(person);
+      
+//   }
+//   const db = getDatabase();
+//   return onValue(ref(db, '/currentUser'), createModelACB, {onlyOnce : true});
+// }
+
 function updateFirebaseFromModel(model) {
   function persistenceObserverACB(payload){
     const db = getDatabase();
@@ -42,6 +61,8 @@ function updateFirebaseFromModel(model) {
   model.addObserver(persistenceObserverACB);
 }
 
+
+
 function updateModelFromFirebase(model) {
   const db = getDatabase();
 
@@ -76,5 +97,5 @@ function updateModelFromFirebase(model) {
     set(ref(db, 'currentUsers/'), null);
   }
 
-  export {writeUserData, deleteUserData, updateModelFromFirebase, updateFirebaseFromModel }
+  export {writeUserData, deleteUserData, updateModelFromFirebase, updateFirebaseFromModel}
 

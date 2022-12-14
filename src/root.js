@@ -2,25 +2,27 @@ import React from 'react';
 import App from './App';
 import FitnessModel from "./model/FitnessModel.js";
 import {BrowserRouter } from "react-router-dom"
-import {updateFirebaseFromModel, updateModelFromFirebase} from "../src/model/firebaseModel";
+import {updateFirebaseFromModel, updateModelFromFirebase, persistedModel} from "../src/model/firebaseModel";
 
 export default function Root(){
 
-const [promiseState] = React.useState({});
-const [, reRender] = React.useState();
-
-let model = new FitnessModel();
-
-
-function wasCreatedACB() {
-  console.log("created")
+  const model = new FitnessModel()
   updateFirebaseFromModel(model);
   updateModelFromFirebase(model);
+  
 
-  return function isTakenDownACB() {};
-}
+// const [model, SetModel] = React.useState();
 
-React.useEffect(wasCreatedACB, []);
+
+// function wasCreatedACB() {
+//   console.log("created")
+//   SetModel(persistedModel())
+//   updateFirebaseFromModel(model);
+//   updateModelFromFirebase(model);
+//   return function isTakenDownACB() {};
+// }
+
+// React.useEffect(wasCreatedACB, []);
 
 
 return (<React.StrictMode>
