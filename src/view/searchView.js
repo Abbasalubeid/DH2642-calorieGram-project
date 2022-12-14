@@ -32,8 +32,8 @@ export default function SearchView(props) {
     }
 
     return (
-        <div className="goalsearchview">
-            <table>
+        <div>
+            < table >
                 <tbody>
                     <tr className={!props.showGender ? "hidden" : " "}>
                         <td className="column">
@@ -118,7 +118,7 @@ export default function SearchView(props) {
                         </td>
                     </tr>
                 </tbody>
-            </table>
-        </div>
+            </table >
+        </div >
     );
 }

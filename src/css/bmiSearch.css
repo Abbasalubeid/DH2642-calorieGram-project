@@ -1,23 +1,28 @@
 .bmi-mainStyle {
+  padding: 0;
   height: 75vh;
   width: 600px;
   display: flex;
   flex-direction: column;
   position: relative;
-  border: 1px solid aquamarine;
+  /* border: 1px solid aquamarine; */
   margin-top: 3%;
 }
 .bmi-mainStyle h1 {
   flex: 0.3;
   text-align: center;
   justify-content: center;
-  /* display: inline-block;
-  width: 35%; */
+  margin: 0;
+  padding: 0;
 }
-.bmi-mainStyle .bmi-Style {
-  position: absolute;
-  left: 50%;
-  display: flex;
+.bmi-mainStyle p {
+  line-height: 1.5rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+.bmi-style {
+  padding-left: 70px;
+  /* background-color: grey; */
 }
 
 .bmi-mainStyle table label {
@@ -27,7 +32,7 @@
   font-weight: bold;
 }
 
-.bmi-mainStyle input {
+.input-box {
   margin: 0.5rem 0;
   padding: 1rem;
   border: none;
@@ -36,6 +41,14 @@
 }
 
 .bmi-result {
+  position: absolute;
+  left: 600px;
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+}
+
+.bmi-info {
   position: absolute;
   left: 600px;
   display: flex;
