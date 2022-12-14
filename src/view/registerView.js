@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "../css/login.css";
 // new import
@@ -15,6 +15,7 @@ export default function LoginView() {
     const {signup} = useAuth();
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+    const navigate = useNavigate();
 
     async function handleSubmit(e){
         e.preventDefault()
@@ -26,6 +27,8 @@ export default function LoginView() {
             setError('')
             setLoading(true)
             await signup(emailRef.current.value, passwordRef.current.value);
+            console.log("signed in successful")
+            navigate("/login")
         } catch  {
             setError("Failed To create account")
         }
