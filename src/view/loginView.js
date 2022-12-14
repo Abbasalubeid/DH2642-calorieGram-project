@@ -1,7 +1,16 @@
 import { Link } from "react-router-dom";
 import "../css/login.css";
+// new import
+import { useAuth } from "../context/AuthContext";
+import React, {useRef, useState} from "react";
 
 export default function LoginView() {
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const {signup} = useAuth();
+    const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false)
+
     function handleLoginACB(e) {
         e.preventDefault();
         console.log(e);
