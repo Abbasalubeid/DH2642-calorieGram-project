@@ -52,6 +52,10 @@ export default function BmiPresenter(props) {
                     onUserChangedWeight={weightIsChangedACB}
                     onUserChangedHeight={heightIsChangedACB}
                     onUserSearched={userSearchedACB}
+                    age = {props.model.person.age}
+                    gender = {props.model.person.gender}
+                    height = {props.model.person.height}
+                    weight = {props.model.person.weight}
                 />
             </div>
             <div>

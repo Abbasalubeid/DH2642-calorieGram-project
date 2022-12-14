@@ -46,10 +46,13 @@ function updateModelFromFirebase(model) {
   const db = getDatabase();
 
   const ageRef = ref(db, 'currentUser/age');
+  const genderRef = ref(db, 'currentUser/gender');
   const heightRef = ref(db, 'currentUser/height');
   const weightRef = ref(db, 'currentUser/weight');
 
   onValue(ageRef, function ageIschanged (snapshot) { model.setAge(snapshot.val());})
+
+  onValue(genderRef, function weightIschanged (snapshot) { model.setGender(snapshot.val());})
 
   onValue(heightRef, function heightIschanged (snapshot) { model.setHeight(snapshot.val());})
 

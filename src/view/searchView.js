@@ -61,6 +61,7 @@ return (
                             maxLength="3"
                             placeholder="age"
                             onBlur={userTypedAgeACB}
+                            defaultValue = {props.age}
                             className="input-box"
                         />
                     </td>
@@ -72,7 +73,7 @@ return (
                     <td>
                         <input type="number" name="weight" maxLength="3"
                             width="60px" placeholder="kg" onBlur={userTypedWeightACB}
-                            className="input-box" />
+                            defaultValue = {props.weight} className="input-box" />
                     </td>
                 </tr>
                 <tr>
@@ -83,7 +84,7 @@ return (
                         <input
                             type="number"  name="height" maxLength="3"
                             width="60px" placeholder="cm" onBlur={userTypedHeightACB}
-                            className="input-box"
+                            defaultValue = {props.height} className="input-box"
                         />
                     </td>
                 </tr>
