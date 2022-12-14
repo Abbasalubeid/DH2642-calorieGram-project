@@ -3,12 +3,11 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import FitnessModel from "./model/FitnessModel.js";
 import {BrowserRouter } from "react-router-dom"
-import {writeUserData, deleteUserData} from "../src/model/firebaseModel";
-
-writeUserData(22, 170, 180);
-
-
+import {updateFirebaseFromModel, updateModelFromFirebase} from "../src/model/firebaseModel";
 let model = new FitnessModel();
+
+updateFirebaseFromModel(model);
+updateModelFromFirebase(model);
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
