@@ -1,6 +1,4 @@
-
 import SearchView from "../view/searchView.js";
-
 import React from "react";
 
 
@@ -53,12 +51,12 @@ export default function ProfilePresenter(props){
                     goals ={
                                 [
                                     { value: "maintain", type: "Maintain weight" },
-                                    { value: "mildlose", type: "Mild weight loss" },
-                                    { value: "weightlose", type: "Weight loss" },
-                                    { value: "extremelose", type: "Extreme Weight loss" },
-                                    { value: "mildgain", type: "Mild weight gain" },
-                                    { value: "weightgain", type: "Weight gain" },
-                                    { value: "extremegain", type: "Extreme weight gain" }
+                                    { value: "mildlose", type: "Mild weight loss 0.25 kg/week" },
+                                    { value: "weightlose", type: "Weight loss 0.5 kg/week" },
+                                    { value: "extremelose", type: "Extreme Weight loss 1 kg/week" },
+                                    { value: "mildgain", type: "Mild weight gain 0.25 kg/week" },
+                                    { value: "weightgain", type: "Weight gain 0.5 kg/week" },
+                                    { value: "extremegain", type: "Extreme weight gain 1 kg/week" }
                                 ]}
                      levels ={
                                 [
