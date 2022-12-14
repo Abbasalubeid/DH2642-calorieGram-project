@@ -155,17 +155,6 @@ return (
             </tbody>
         </table>
         
-        
-        <div className="Activity-per-week-info">
-            <div className={!props.showActivityPerWeekInfo?  "hidden" : " "}>
-                        By choosing how many times you intend to train per week you will be presented 
-                        with a set of goals to achieve. <br></br>
-                        Each set has first the main goal which can vary from mild weight loss 
-                        to extreme weight gain, then amount of calories you need to take daily to achieve
-                        that goal.
-
-                </div>
-        </div>
             
     </div>
 );
