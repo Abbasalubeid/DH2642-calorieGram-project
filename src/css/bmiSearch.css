@@ -1,66 +1,55 @@
-/*----------------------------------------------------------------SearchView----------------------------------------------*/
 .bmi-mainStyle {
+  height: 75vh;
+  width: 600px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid aquamarine;
+  margin-top: 3%;
 }
-
-.searchview-container {
-  padding-left: 70px;
-  width: 500px;
-  height: 500px;
-  border: 1px solid aqua;
-  border-radius: 25px;
-  background-color: #a5e2ff;
-  display: flex;
+.bmi-mainStyle h1 {
+  flex: 0.3;
   text-align: center;
+  justify-content: center;
+  /* display: inline-block;
+  width: 35%; */
+}
+.bmi-mainStyle .bmi-Style {
+  position: absolute;
+  left: 50%;
+  display: flex;
 }
 
-table td.column {
-  font-weight: bold;
-  text-align: right;
-  font-size: 13px;
-}
-
-table label {
+.bmi-mainStyle table label {
   color: #3c77af;
   text-align: right;
   font-size: 20px;
   font-weight: bold;
 }
 
-/* Show the indicator (dot/circle) when checked */
-.container input:checked ~ .checkmark:after {
-  display: block;
+.bmi-mainStyle input {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+  background-image: linear-gradient(79deg, #edf3fc, #dddff9 48%, #b2c3fd 100%);
 }
 
-/* Style the indicator (dot/circle) */
-.container .checkmark:after {
-  top: 9px;
-  left: 9px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: white;
+.bmi-result {
+  position: absolute;
+  left: 600px;
+  display: flex;
+  flex-direction: row;
+  width: 700px;
 }
 
-/* input box such as age, weight and height */
-.input-box {
-  display: block;
-  width: 110px;
-  height: 50px;
-  padding: 6px 14px;
-  padding-right: 18px;
-  font-size: 17px;
-  line-height: 1.42857143;
-  color: #555;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.grey-text {
+  margin-left: -57px;
+  color: #888;
 }
 
-/* Submit button */
-input[type="submit"] {
-  -webkit-appearance: button;
-  cursor: pointer;
-}
+/* position: relative;
+    background: #eee;
+    border: 1px solid #aaa;
+    padding: 3px 8px;
+    text-align: center; */
