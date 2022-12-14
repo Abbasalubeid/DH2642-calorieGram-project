@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import "../css/login.css";
 // new import
 import { useAuth } from "../context/AuthContext";
@@ -11,6 +11,7 @@ export default function LoginView() {
     const {login} = useAuth();
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+    let history = useNavigate();
 
     async function handleSubmit(e){
         e.preventDefault()
@@ -19,6 +20,8 @@ export default function LoginView() {
             setError('')
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value);
+          // console.log("succesfull")
+          history("/profile")
         } catch  {
             setError("Failed To Sign in")
         }
@@ -42,6 +45,7 @@ export default function LoginView() {
         <div className="login-banner">
             <div className="form-container">
                 <h2>Login</h2>
+                {error}
 
                 <form onSubmit={handleSubmit} className="form-login">
                     <label htmlFor="email">Email address:</label>
