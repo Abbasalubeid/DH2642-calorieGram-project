@@ -1,40 +1,38 @@
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/login.css";
 // new import
 import { useAuth } from "../context/AuthContext";
-import React, {useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 
 
 export default function LoginView() {
     // from here 
     const emailRef = useRef();
     const passwordRef = useRef();
-    const {login} = useAuth();
+    const { login } = useAuth();
     const [error, setError] = useState('')
-    const [succes, setSuccess] = useState('')
 
-   
+
     const [loading, setLoading] = useState(false)
     let history = useNavigate();
 
-    async function handleSubmit(e){
+    async function handleSubmit(e) {
         e.preventDefault()
 
         try {
             setError('')
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value);
-            //setSuccess("You have successfully logged in.")
-          history("/profile")
-        } catch  {
+            history("/profile")
+        } catch {
             setError("Failed To Sign in")
         }
-            setLoading(false)
-       
+        setLoading(false)
+
     }
     // to here are new
 
-  
+
 
     function handleEmailACB(e) {
         console.log(e.target.value);
