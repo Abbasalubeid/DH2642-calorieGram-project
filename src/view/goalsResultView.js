@@ -19,6 +19,7 @@ export default function GoalsResultView(props) {
     function userGoalIsChanged(event){
         props.onUserChangedUserGoals(event.target.value)
     }
+
     function printFunc(){
         const blob = new Blob([template], {type:"text/plain"})
         const href = URL.createObjectURL(blob)

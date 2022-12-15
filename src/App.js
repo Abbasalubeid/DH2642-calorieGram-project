@@ -2,9 +2,10 @@ import React from "react";
 import ProfilePresenter from "./presenter/profilePresenter.js";
 import GoalsSearchPresenter from "./presenter/goalsSearchPresenter.js";
 import BmiPresenter from "./presenter/bmiPresenter.js";
-import  DietPresenter  from "./presenter/dietPresenter.js";
+import DietPresenter  from "./presenter/dietPresenter.js";
 import LoginPresenter from "./presenter/loginPresenter.js";
 import RegisterPresenter from "./presenter/registerPresenter.js";
+import SummaryPresenter from "./presenter/summaryPresenter.js";
 import Homepage from "./view/homepage.js";
 import { Route, Routes } from "react-router-dom";
 import NavbarView from "./view/navbarView.js";
@@ -21,15 +22,14 @@ function App(props) {
       <NavbarView />
       <div className="mainContainer">
         <Routes>
-         
           <Route path="" element={<Homepage />} />
           <Route path="profile" element={<ProfilePresenter model={props.model} showActivity = {true} showGoals = {true}/>} />
           <Route path="goals" element={<GoalsSearchPresenter model={props.model} />} />
           <Route path="bmi" element={<BmiPresenter model={props.model} />} />
           <Route path="diet" element={<DietPresenter model={props.model} />} />
+          <Route path="summary" element={<SummaryPresenter model={props.model} />} />
           <Route path="login" element={<LoginPresenter model={props.model} />} />
           <Route path="signup" element={<RegisterPresenter model={props.model} />} /> 
-         
         </Routes>
       
        <LogoutPresenter/>
