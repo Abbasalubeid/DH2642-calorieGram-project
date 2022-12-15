@@ -69,7 +69,7 @@ export default function DietPresenter(props){
     }
     
     function wasCreatedACB() {
-        console.log("goals created!");                           
+        console.log("diet created!");                           
         props.model.addObserver(observerACB);
         return function isTakenDownACB() {                                
             props.model.removeObserver(observerACB);
