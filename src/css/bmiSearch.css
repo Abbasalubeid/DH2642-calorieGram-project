@@ -23,6 +23,7 @@
 }
 .bmi-mainStyle p.first-p {
   line-height: 1.5rem;
+  letter-spacing: 1px;
   font-weight: 500;
   font-size: 1.1rem;
   color: black;
@@ -135,8 +136,9 @@
   display: flex;
   flex-direction: row;
   width: 700px;
-  margin: 0 5px;
+  margin: 37px 8px;
   padding: 10px;
+  padding-right: 5px;
   border-radius: 8px;
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
@@ -146,7 +148,7 @@
   top: 100px;
   left: 600px;
   width: 670px;
-   margin: 0 5px;
+  margin: 0 5px;
   padding: 10px;
   border-radius: 8px;
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
@@ -159,6 +161,8 @@
 }
 .custom-info p {
   line-height: 1.2;
+  letter-spacing: 1px;
+   word-spacing: -2px;
   text-align: justify;
 }
 .custom-info h4 {

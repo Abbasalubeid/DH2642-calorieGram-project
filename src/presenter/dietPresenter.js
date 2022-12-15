@@ -1,42 +1,36 @@
 import SearchView from "../view/searchView.js";
-import { useNavigate } from "react-router-dom";
-import { getActivityInfo } from "../fetchSource";
 import DietResultView from "../view/dietResultView.js";
 import React from "react";
 import promiseNoData from "../view/promiseNoData.js";
 import { getMacroInfo } from "../fetchSource";
-import "../css/bmiSearch.css"
+import "../css/dietSearch.css"
 
 
 export default function DietPresenter(props) {
     const [promise, setPromise] = React.useState(null);
-    const [show, setShow] = React.useState(false);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
-    const navigate = useNavigate();
+    const [show, setShow] = React.useState(false);
     const [searchParams, setSearchParams] = React.useState({});
 
-    // function promiseHasChangedACB() {
-    //     setData(null);
-    //     setError(null);
-    //     let cancelled = false;
+    function promiseHasChangedACB() {
+        setData(null);
+        setError(null);
+        let cancelled = false;
 
-    //     function changedAgainACB() { cancelled = true; }
-    //     if (promise)
-    //         promise.then(function saveData(data) { if (!cancelled) setData(data); }).
-    //             catch(function saveError(error) { if (!cancelled) setError(error); });
+        function changedAgainACB() { cancelled = true; }
+        if (promise)
+            promise.then(function saveData(data) { if (!cancelled) setData(data); }).
+                catch(function saveError(error) { if (!cancelled) setError(error); });
 
-    //     return changedAgainACB;
-    // }
+        return changedAgainACB;
+    }
 
     function userSearchedACB() {
         searchParams.age = props.model.person.age;
         searchParams.gender = props.model.person.gender;
         searchParams.height = props.model.person.height;
         searchParams.weight = props.model.person.weight;
-        setPromise(getActivityInfo(searchParams));
-        navigate('/result');
-
         setPromise(getMacroInfo(searchParams));
         setShow(true);
     }
@@ -69,11 +63,16 @@ export default function DietPresenter(props) {
 
     }
 
-    // React.useEffect(promiseHasChangedACB, []);
+    React.useEffect(promiseHasChangedACB, [promise]);
 
     return (
         <div className="diet-mainStyle">
+            <div>
             <h1>Diet Calculate</h1>
+             <p className="first-p anim">The Diet Calculator can be used to estimate the number of calories
+                    a person needs to consume each day.
+                    This calculator can also provide some simple guidelines for gaining or losing weight.</p>
+            </div>
             <div className="diet-style">
                 <SearchView onUserChangedAge={ageIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
@@ -85,6 +84,7 @@ export default function DietPresenter(props) {
                     showGender={true}
                     showLevels={true}
                     showGoals={true}
+                    showDietInfo={true}
                     goals={
                         [
                             { value: "maintain", type: "Maintain weight" },
@@ -104,6 +104,10 @@ export default function DietPresenter(props) {
                             { value: "5", type: "Intense exercise 6-7 times/week" },
                             { value: "6", type: "Very intense exercise daily, or physical job" },
                         ]}
+                    age={props.model.person.age}
+                    gender={props.model.person.gender}
+                    height={props.model.person.height}
+                    weight={props.model.person.weight}
                 />
             </div>
             <div className={!show ? "diet-info" : "diet-info-result"}>
@@ -124,26 +128,36 @@ export default function DietPresenter(props) {
 /* custom component */
 function CustomInfo({ href, children, ...props }) {
     return (
-        <div>
-            <h2>Information</h2>
-            <p>A healthy diet is essential for good health and nutrition.
-                It protects you against many chronic noncommunicable diseases, such as heart disease, diabetes and cancer.
-                Eating a variety of foods and consuming less salt, sugars and saturated and industrially-produced trans-fats, are essential for healthy diet.<br></br>
-
-                A good diet consist of three main components which we will help you calculate based on what you want to achieve:<br></br>
-                Carbs are sugar basically. No matter that you eat a chocolate, bread, pasta or sugar, in your body they get converted to the same thing,
-                spiking your blood sugar, which in turn spikes your insulin levels.
-
-                When you have a high amount of insulin in your body, you can't burn fat. Carbs will provide you with "instant energy" but they
-                are hard to consume so eating a lot will tend to make you fat. Think of the standard american diet and the obesity epidemic. Diets that
-                advocate a high carb consumption are vegan, for example. US health system advocates high carb, low fat diets.<br></br>
-                Fats There are at least 3 types of fat. Some are good, some are bad. There is a consensus that trans fats (from processed foods) are bad for you.
-                Saturated fat (butter, lard) is now again being considered healthy (check Time magazine, and lots of studies). Monounsaturated fat was always
-                considered healthy.
-                Diets that advocate a high fat, low carb lifestyle are keto and paleo. Sweden for example advocates low carb, high fat diets.<br></br>
-                Protein is a macronutrient. To put it simply, protein is one of the main nutrients that every person needs to maintain a healthy body. It helps to repair
-                any internal or external damage, supports the immune system and contributes to an overall feeling of well-being.
+        <div className="custom-info anim">
+            <input type="checkbox" id="check" />
+            <h2>InFormation</h2>
+            <img src="healthy-diet.png" />
+            <p>
+                <h4>What's Healthy Diet?</h4>
+                    A healthy diet is essential for good health and nutrition.
+                    It protects you against many chronic noncommunicable diseases, such as heart disease, diabetes and cancer.
+                    Eating a variety of foods and consuming less salt, sugars and saturated and industrially-produced trans-fats, are essential for healthy diet.<br/>
+                <h4>What's Good Diet?</h4>   
+                    A good diet consist of three main components which we will help you calculate based on what you want to achieve:<br></br>
+                    Carbs are sugar basically. No matter what you eat a chocolate, bread, pasta or sugar, in your body they get converted to the same thing,
+                    spiking your blood sugar, which in turn spikes your insulin levels.
             </p>
+            <div className="readmore-text">
+                <p>
+                    When you have a high amount of insulin in your body, you can't burn fat. Carbs will provide you with "instant energy" but they
+                    are hard to consume so eating a lot will tend to make you fat. Think of the standard american diet and the obesity epidemic. Diets that
+                    advocate a high carb consumption are vegan, for example. US health system advocates high carb, low fat diets.<br></br>
+                    <h4>What's Body Fat?</h4> 
+                    Fats There are at least 3 types of fat. Some are good, some are bad. There is a consensus that trans fats (from processed foods) are bad for you.
+                    Saturated fat (butter, lard) is now again being considered healthy (check Time magazine, and lots of studies). Monounsaturated fat was always
+                    considered healthy.
+                    Diets that advocate a high fat, low carb lifestyle are keto and paleo. Sweden for example advocates low carb, high fat diets.<br></br>
+                    <h4>What's Protein?</h4> 
+                    Protein is a macronutrient. To put it simply, protein is one of the main nutrients that every person needs to maintain a healthy body. It helps to repair
+                    any internal or external damage, supports the immune system and contributes to an overall feeling of well-being.
+            </p>
+            </div>
+            <label htmlFor="check">Read More</label>
         </div>
     )
 }

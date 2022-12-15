@@ -57,7 +57,7 @@ export default function BmiPresenter(props) {
         <div className="bmi-mainStyle">
             <div>
                 <h1>BMI Calculate</h1>
-                <p className="first-p">The BMI Calculator can be used to estimate the number of calories
+                <p className="first-p anim">The BMI Calculator can be used to estimate the number of calories
                     a person needs to consume each day.
                     This calculator can also provide some simple guidelines for gaining or losing weight.</p>
             </div>
@@ -76,6 +76,7 @@ export default function BmiPresenter(props) {
             </div>
             <div className={show ? "bmi-result" : "hidden"}>
                 {promiseNoData({ promise, data, error }) ||
+                
                     <BmiResultview
                         bmiResult={data}>
                     </BmiResultview>
@@ -89,7 +90,7 @@ export default function BmiPresenter(props) {
 /* custom component */
 function CustomInfo({ href, children, ...props }) {
     return (
-        <div className="custom-info">
+        <div className="custom-info anim">
             <input type="checkbox" id="check" />
             <h2>Information</h2>
             <img src="bmicalc.png" />
