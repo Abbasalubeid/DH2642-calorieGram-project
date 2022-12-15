@@ -14,7 +14,7 @@ export default function LoginView() {
 
 
     const [loading, setLoading] = useState(false)
-    let history = useNavigate();
+    let navigate = useNavigate();
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -23,7 +23,7 @@ export default function LoginView() {
             setError('')
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value);
-            history("/profile")
+            navigate("/profile")
         } catch {
             setError("Failed To Sign in")
         }
@@ -44,7 +44,7 @@ export default function LoginView() {
         <div className="login-banner">
             <div className="form-container">
                 <h2>Login</h2>
-                {error} {succes}
+                {error} 
                 <form onSubmit={handleSubmit} className="form-login">
                     <label htmlFor="email">Email address:</label>
                     <input type="email" placeholder="abc@email.com" onChange={handleEmailACB} required="required" ref={emailRef}></input>
