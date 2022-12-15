@@ -1,33 +1,36 @@
 import { getDatabase, ref, set, onValue } from "firebase/database";
-// new imported fire base
 import "firebase/auth"
 import 'firebase/compat/auth';
 import firebase from 'firebase/compat/app';
 import firebaseConfig from "../firebaseConfig";
+import FitnessModel from "./FitnessModel";
 
 
 const firebaseApp = firebase.initializeApp(firebaseConfig)
 const auth = firebaseApp.auth();
 
 
-// function persistedModel() {
-    
-//   function createModelACB(firebaseData) {        
-         
-//       const defaultPerson = {
-//         age : 25,
-//         gender : "male",
-//         weight : 85,
-//         height : 190
-//       }
-//       const person = firebaseData.val()?.person ?? defaultPerson;
+function persistedModel() {
+    // const model = {};
 
-//       return new DinnerModel(person);
-      
-//   }
-//   const db = getDatabase();
-//   return onValue(ref(db, '/currentUser'), createModelACB, {onlyOnce : true});
-// }
+  function createModelACB(snapshot) {        
+         
+      const defaultPerson = {
+        age : 25,
+        gender : "male",
+        weight : 85,
+        height : 190
+      }
+      const person = snapshot.val() ?? defaultPerson;
+      console.log(person);
+      return new FitnessModel(person);
+      // console.log(model);
+  }
+
+  // console.log(model);
+  const db = getDatabase();
+  return onValue(ref(db, '/currentUser'), createModelACB, {onlyOnce : true});
+}
 
 function updateFirebaseFromModel(model) {
   const db = getDatabase();
@@ -88,5 +91,5 @@ function updateModelFromFirebase(model) {
     set(ref(db, 'currentUsers/'), null);
   }
 
-  export {writeUserData, deleteUserData, updateModelFromFirebase, updateFirebaseFromModel, auth}
+  export {writeUserData, deleteUserData, updateModelFromFirebase, updateFirebaseFromModel, persistedModel, auth}
 
