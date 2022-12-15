@@ -1,0 +1,77 @@
+.diet-mainStyle {
+  padding: 0;
+  height: 75vh;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 3%;
+}
+
+.diet-mainStyle h1 {
+  flex: 0.3;
+  text-align: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+.diet-mainStyle p {
+  line-height: 1.5rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: black;
+}
+.diet-style {
+  padding-left: 70px;
+}
+
+.diet-mainStyle table label {
+  color: #3c77af;
+  text-align: right;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.diet-info {
+  position: absolute;
+  left: 600px;
+  display: flex;
+  flex-direction: row;
+  width: 700px;
+}
+.diet-info-result {
+  position: absolute;
+  top: 400px;
+  left: 600px;
+  width: 670px;
+}
+
+.diet-result {
+  position: absolute;
+  left: 600px;
+  width: 300px;
+  margin: 20px 10px;
+  padding-left: 10px;
+  border: 1px solid grey;
+}
+.diet-result span {
+  position: relative;
+  background: #eee;
+  border: 1px solid #aaa;
+  padding: 3px 8px;
+  text-align: center;
+}
+
+.select {
+  display: block;
+  width: 250px;
+  height: 50px;
+  padding: 6px 12px;
+  font-size: 17px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
