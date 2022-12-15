@@ -1,7 +1,7 @@
 export default class FitnessModel{
-    constructor(person){
+    constructor(){
         this.observers = [];
-        this.person = person;
+        this.person = {}
         this.currentActivityLevel = ""
         this.currentGoal = {};
         this.bmi = {};
@@ -32,6 +32,12 @@ export default class FitnessModel{
       }
 
     setAge(age){
+      // Undefined when deleted in the UI
+      if(!age){
+        this.person.age = null;
+        const payload = { newAge : +age}
+        this.notifyObservers(payload);
+      }
         if(age > 1 && age < 80)
             if(Number.isInteger(+age) && age !== this.person.age){
                 this.person.age = +age;
@@ -52,6 +58,12 @@ export default class FitnessModel{
     }
 
     setWeight(weight){
+      // Undefined when deleted in the UI
+      if(!weight){
+        this.person.weight = null;
+        const payload = { newWeight : +weight}
+        this.notifyObservers(payload);
+      }
         // API restrictions
         if(weight > 160 || weight <  40)
           return;
@@ -63,6 +75,13 @@ export default class FitnessModel{
     }
 
     setHeight(height){
+      // Undefined when deleted in the UI
+      if(!height){
+        this.person.weight = null;
+        const payload = { newHeight : height}
+        this.notifyObservers(payload);
+      }
+      
         // API restrictions
      if(height < 130 || height > 230)   
      return;

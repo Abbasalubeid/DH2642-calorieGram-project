@@ -6,10 +6,14 @@ import { getFitnessInfo } from "../fetchSource";
 
 
 export default function BmiPresenter(props) {
+    const [age, setAge] = React.useState(props.model.person.age);
+    const [weight, setWeight] = React.useState(props.model.person.weight);
+    const [height, setHeight] = React.useState(props.model.person.height);
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
     const [searchParams, setSearchParams] = React.useState({});
+
 
     function promiseHasChangedACB() {
         setData(null);
@@ -22,6 +26,12 @@ export default function BmiPresenter(props) {
                 catch(function saveError(error) { if (!cancelled) setError(error); });
 
         return changedAgainACB;
+    }
+
+    function observerACB(){
+        setAge(props.model.person.age);
+        setWeight(props.model.person.weight)
+        setHeight(props.model.person.height)
     }
 
     function userSearchedACB() {
@@ -43,6 +53,16 @@ export default function BmiPresenter(props) {
         props.model.setHeight(height)
     }
 
+    function wasCreatedACB() {
+        console.log("bmi pres created!");                           
+        props.model.addObserver(observerACB);
+        return function isTakenDownACB() {                                
+            props.model.removeObserver(observerACB);
+        };
+    }
+
+
+    React.useEffect(wasCreatedACB, []);
     React.useEffect(promiseHasChangedACB, [promise]);
 
     return (
@@ -53,6 +73,9 @@ export default function BmiPresenter(props) {
                     onUserChangedHeight={heightIsChangedACB}
                     onUserSearched={userSearchedACB}
                     showBmiInfo={true}
+                    age = {age}
+                    height = {height}
+                    weight = {weight}
                 />
             </div>
             <div>

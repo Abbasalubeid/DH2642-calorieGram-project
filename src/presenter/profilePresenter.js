@@ -7,9 +7,6 @@ export default function ProfilePresenter(props){
     const [weight, setWeight] = React.useState(props.model.person.weight);
     const [height, setHeight] = React.useState(props.model.person.height);
     const [gender, setGender] = React.useState(props.model.person.gender);
-    const [, reRender] = React.useState();
-
-
 
     function observerACB(){
         setAge(props.model.person.age);
@@ -17,6 +14,7 @@ export default function ProfilePresenter(props){
         setHeight(props.model.person.height)
         setGender(props.model.person.gender)
     }
+
     function userSearchedACB(){
 
     }
@@ -46,14 +44,14 @@ export default function ProfilePresenter(props){
     }
 
     function wasCreatedACB() {
-        console.log("component created!");                           
+        console.log("profile created!");                           
         props.model.addObserver(observerACB);
         return function isTakenDownACB() {                                
             props.model.removeObserver(observerACB);
         };
     }
 
-
+    React.useEffect(wasCreatedACB, []);
     React.useEffect(wasCreatedACB, []);
 
 

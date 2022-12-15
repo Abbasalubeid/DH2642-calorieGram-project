@@ -38,10 +38,7 @@ export default function Root(){
     //   //   updateModelFromFirebase(promiseState.data);
     //   // }
     // }
-   const model = new FitnessModel({age : 25,
-      gender : "male",
-      weight : 85,
-      height : 190})
+   const model = new FitnessModel()
 function wasCreatedACB() {
   updateModelFromFirebase(model);
   updateFirebaseFromModel(model);
