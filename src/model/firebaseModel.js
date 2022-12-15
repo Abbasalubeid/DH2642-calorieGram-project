@@ -1,13 +1,31 @@
-import { getDatabase, ref, set, onValue } from "firebase/database";
+import { getDatabase, ref, set, onValue, Database } from "firebase/database";
 // new imported fire base
-import "firebase/auth"
-import 'firebase/compat/auth';
-import firebase from 'firebase/compat/app';
-import firebaseConfig from "../firebaseConfig";
+ // import "firebase/auth"
+ import  'firebase/compat/auth';
+  import firebase from 'firebase/compat/app';
+ //import firebase from 'firebase/app';
+
+ import firebaseConfig from "../firebaseConfig";
+
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
 
-const firebaseApp = firebase.initializeApp(firebaseConfig)
-const auth = firebaseApp.auth();
+
+
+
+const app = firebase.initializeApp(firebaseConfig)
+const apps = initializeApp(firebaseConfig)
+const auth = app.auth();
+let datab = getDatabase(app);
+
+// set(ref(datab, 'users/' + firebase.auth().currentUser),{
+//   userName: 'auth',
+//   emai: firebase.auth().currentUser
+// })
+
+
+
 
 // new implementing outh
 //const auth = app.auth();
@@ -31,9 +49,11 @@ const auth = firebaseApp.auth();
 //   return onValue(ref(db, '/currentUser'), createModelACB, {onlyOnce : true});
 // }
 
-function updateFirebaseFromModel(model) {
+// i commited out codes in below for test
+
+ function updateFirebaseFromModel(model) {
   function persistenceObserverACB(payload){
-    const db = getDatabase();
+    const db = getDatabase(app);
       if (payload){
         
           if (payload.hasOwnProperty('newAge'))
@@ -67,12 +87,12 @@ function updateFirebaseFromModel(model) {
   }
 
   model.addObserver(persistenceObserverACB);
-}
+ }
 
 
 
-function updateModelFromFirebase(model) {
-  const db = getDatabase();
+ function updateModelFromFirebase(model) {
+  const db = getDatabase(app)
 
   const ageRef = ref(db, 'currentUser/age');
   const genderRef = ref(db, 'currentUser/gender');
@@ -90,7 +110,7 @@ function updateModelFromFirebase(model) {
 }
 
  function writeUserData(age, height, weight) {
-    const db = getDatabase();
+    const db = getDatabase(app);
 
     set(ref(db, 'currentUser/'), {
       age : age,
@@ -100,10 +120,11 @@ function updateModelFromFirebase(model) {
   }
 
   function deleteUserData() {
-    const db = getDatabase();
+    const db = getDatabase(app);
 
     set(ref(db, 'currentUsers/'), null);
-  }
+   }
 
-  export {writeUserData, deleteUserData, updateModelFromFirebase, updateFirebaseFromModel, auth}
+   export {writeUserData, deleteUserData, updateModelFromFirebase, updateFirebaseFromModel, auth}
+
 
