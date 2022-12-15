@@ -31,7 +31,8 @@
   padding: 14px 40px;
   color: #fff;
   background-image: linear-gradient(45deg, #4887df, #3051d7);
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: bold;
   border-radius: 30px;
   border-top-left-radius: 0;
   transition: 0.2s;

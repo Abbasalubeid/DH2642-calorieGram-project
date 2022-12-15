@@ -1,0 +1,40 @@
+.row {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.col {
+  flex-basis: 25%;
+  text-align: center;
+  padding: 22px 18px;
+  height: 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+.col span {
+  width: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 10px solid #4177dc;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.text {
+  background-color: #4177dc;
+  color: white;
+}
+
+.state {
+  font-weight: bold;
+  font-size: 1.2em;
+  background-color: #a5e2ff;
+}

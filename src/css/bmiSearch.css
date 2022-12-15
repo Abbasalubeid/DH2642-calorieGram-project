@@ -5,11 +5,13 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  /* border: 1px solid aquamarine; */
   margin-top: 3%;
+  font-size: 18px;
 }
 .grey-text {
-  margin-left: -57px;
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: -60px;
   color: #888;
 }
 .bmi-mainStyle h1 {
@@ -37,6 +39,7 @@
 }
 
 .input-box {
+  font-size: 18px;
   margin: 0.5rem 0;
   padding: 1rem;
   border: none;
@@ -60,15 +63,8 @@
 .bmi-result {
   position: absolute;
   left: 600px;
-  width: 300px;
+  width: 600px;
+  height: 80px;
   margin: 20px 10px;
-  padding-left: 10px;
-  border: 1px solid grey;
-}
-.bmi-result span {
-  position: relative;
-  background: #eee;
-  border: 1px solid #aaa;
-  padding: 3px 8px;
-  text-align: center;
+  /* border: 1px solid grey; */
 }
