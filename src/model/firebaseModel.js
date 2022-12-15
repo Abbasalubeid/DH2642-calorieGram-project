@@ -9,7 +9,6 @@ import FitnessModel from "./FitnessModel";
 const firebaseApp = firebase.initializeApp(firebaseConfig)
 const auth = firebaseApp.auth();
 
-
 function persistedModel() {
     // const model = {};
 
@@ -75,21 +74,46 @@ function updateModelFromFirebase(model) {
 
 }
 
-function writeUserData(age, height, weight) {
-  const db = getDatabase();
+function persistedModel() {
+    // const model = {};
 
-  set(ref(db, 'currentUser/'), {
-    age: age,
-    height: height,
-    weight: weight
-  });
+  function createModelACB(snapshot) {        
+         
+      const defaultPerson = {
+        age : 25,
+        gender : "male",
+        weight : 85,
+        height : 190
+      }
+      const person = snapshot.val() ?? defaultPerson;
+      console.log(person);
+      return new FitnessModel(person);
+      // console.log(model);
+  }
+
+  // console.log(model);
+  const db = getDatabase();
+  return onValue(ref(db, '/currentUser'), createModelACB, {onlyOnce : true});
 }
 
-function deleteUserData() {
+function updateFirebaseFromModel(model) {
   const db = getDatabase();
+  function persistenceObserverACB(payload){
+    
+      
+    if (payload){
+          if (payload.hasOwnProperty('newAge'))
+            set(ref(db, 'currentUser/age'), payload.newAge)
+              
+          if (payload.hasOwnProperty('newGender'))
+            set(ref(db, 'currentUser/gender'), payload.newGender)
 
-  set(ref(db, 'currentUsers/'), null);
-}
-
+          if(payload.hasOwnProperty('newWeight'))
+            set(ref(db, 'currentUser/weight'), payload.newWeight)
+          
+          if(payload.hasOwnProperty('newHeight'))
+            set(ref(db, 'currentUser/height'), payload.newHeight)
+      }
+  }
   export {writeUserData, deleteUserData, updateModelFromFirebase, updateFirebaseFromModel, persistedModel, auth}
 

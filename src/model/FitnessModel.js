@@ -1,3 +1,4 @@
+
 export default class FitnessModel {
   constructor() {
     this.observers = [];
@@ -45,15 +46,29 @@ export default class FitnessModel {
         this.notifyObservers(payload);
       }
 
-  }
-
-  setGender(gender) {
-    if (gender !== this.person.gender) {
-      this.person.gender = gender;
-      const payload = { newGender: gender }
-      this.notifyObservers(payload);
+    setAge(age){
+      // Undefined when deleted in the UI
+      if(!age){
+        this.person.age = null;
+        const payload = { newAge : +age}
+        this.notifyObservers(payload);
+      }
+        if(age > 1 && age < 80)
+            if(Number.isInteger(+age) && age !== this.person.age){
+                this.person.age = +age;
+                const payload = { newAge : +age}
+                this.notifyObservers(payload);
+            }
+                
     }
 
+    setGender(gender){
+        if (gender !== this.person.gender){
+            this.person.gender = gender;
+            const payload = { newGender : gender}
+            this.notifyObservers(payload);
+        }
+        
 
   }
 
@@ -73,23 +88,41 @@ export default class FitnessModel {
       this.notifyObservers(payload);
     }
   }
-
-  setHeight(height) {
-    // Undefined when deleted in the UI
-    if (!height) {
-      this.person.weight = null;
-      const payload = { newHeight: height }
-      this.notifyObservers(payload);
+  
+    setWeight(weight){
+      // Undefined when deleted in the UI
+      if(!weight){
+        this.person.weight = null;
+        const payload = { newWeight : +weight}
+        this.notifyObservers(payload);
+      }
+        // API restrictions
+        if(weight > 160 || weight <  40)
+          return;
+        else if (weight !== this.person.weight){
+            this.person.weight = +weight;
+            const payload = { newWeight : +weight}
+            this.notifyObservers(payload);
+        }
     }
 
-    // API restrictions
-    if (height < 130 || height > 230)
-      return;
+    setHeight(height){
+      // Undefined when deleted in the UI
+      if(!height){
+        this.person.weight = null;
+        const payload = { newHeight : height}
+        this.notifyObservers(payload);
+      }
+      
+        // API restrictions
+     if(height < 130 || height > 230)   
+     return;
     //  throw Error("Weight must be between 40 kg to 160 kg");
-    else if (height !== this.person.height) {
-      this.person.height = +height;
-      const payload = { newHeight: +height }
-      this.notifyObservers(payload);
+     else if (height !== this.person.height){
+        this.person.height = +height;  
+        const payload = { newHeight : +height}
+        this.notifyObservers(payload); 
+     }
     }
   }
 

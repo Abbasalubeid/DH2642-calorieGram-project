@@ -16,6 +16,7 @@ export default function BmiPresenter(props) {
     const [show, setShow] = React.useState(false);
 
 
+
     function promiseHasChangedACB() {
         setData(null);
         setError(null);
@@ -29,7 +30,7 @@ export default function BmiPresenter(props) {
         return changedAgainACB;
     }
 
-    function observerACB() {
+    function observerACB(){
         setAge(props.model.person.age);
         setWeight(props.model.person.weight)
         setHeight(props.model.person.height)
@@ -56,9 +57,9 @@ export default function BmiPresenter(props) {
     }
 
     function wasCreatedACB() {
-        console.log("bmi pres created!");
+        console.log("bmi pres created!");                           
         props.model.addObserver(observerACB);
-        return function isTakenDownACB() {
+        return function isTakenDownACB() {                                
             props.model.removeObserver(observerACB);
         };
     }

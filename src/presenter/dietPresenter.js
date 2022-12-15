@@ -15,7 +15,6 @@ export default function DietPresenter(props){
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
     const [show, setShow] = React.useState(false);
-    
 
     const [searchParams, setSearchParams] = React.useState({});
 
@@ -84,7 +83,14 @@ export default function DietPresenter(props){
             props.model.removeObserver(observerACB);
         };
     }
-
+    
+    function wasCreatedACB() {
+        console.log("diet created!");                           
+        props.model.addObserver(observerACB);
+        return function isTakenDownACB() {                                
+            props.model.removeObserver(observerACB);
+        };
+    }
 
     React.useEffect(wasCreatedACB, []);
     React.useEffect(promiseHasChangedACB, [promise]);
@@ -128,10 +134,10 @@ export default function DietPresenter(props){
                                     { value: "5", type: "Intense exercise 6-7 times/week" },
                                     { value: "6", type: "Very intense exercise daily, or physical job" },
                                 ]}
-                    age={props.model.person.age}
-                    gender={props.model.person.gender}
-                    height={props.model.person.height}
-                    weight={props.model.person.weight}
+                    age = {props.model.person.age}
+                    gender = {props.model.person.gender}
+                    height = {props.model.person.height}
+                    weight = {props.model.person.weight}
                 />
             </div>
             <div className={!show ? "diet-info" : "diet-info-result"}>

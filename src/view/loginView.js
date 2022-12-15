@@ -11,7 +11,6 @@ export default function LoginView(props) {
     const passwordRef = useRef();
     const { login } = useAuth();
     const [error, setError] = useState('')
-
     const [loading, setLoading] = useState(false)
     let navigate = useNavigate();
 
