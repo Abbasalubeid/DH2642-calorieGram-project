@@ -1,17 +1,19 @@
 import React from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import { useAuth } from "../context/AuthContext"
 
 export default function Logout() {
 
     const [error, setError] = React.useState('')
-    const [currentUser, logout] = React.useState()
+    const {currentUser, logout} = useAuth();
     const navigate = useNavigate()
-   async function userLogedOutACB() {
+   
+    async function userLogedOutACB() {
         setError("")
         try {
-            logout()
+            await logout()
+            
             navigate("/login")
-              
             
         } catch  {
             setError("failed to log out")
@@ -22,7 +24,6 @@ export default function Logout() {
             
             <div>
                 <button onClick={userLogedOutACB} className ="btn">Log out</button>
-
             </div>
             
           )

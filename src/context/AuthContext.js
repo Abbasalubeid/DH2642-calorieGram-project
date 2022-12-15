@@ -15,12 +15,15 @@ export function AuthProvider({ children }) {
 
 
     function signup(email, password) {
+        console.log("user " + currentUser.email + " sign up")
         return auth.createUserWithEmailAndPassword(email, password)
     }
     function login(email, password) {
+        console.log("user " + currentUser.email + " logged in")
         return auth.signInWithEmailAndPassword(email, password)
     }
     function logout() {
+        console.log("user " + currentUser.email + " logged out")
         return auth.signOut;
         
     }
