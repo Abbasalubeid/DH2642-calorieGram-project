@@ -3,15 +3,18 @@ import BmiResultview from "../view/bmiResultView.js";
 import React from "react";
 import promiseNoData from "../view/promiseNoData.js";
 import { getFitnessInfo } from "../fetchSource";
-import "../css/bmiSearch.css"
 
 
 export default function BmiPresenter(props) {
+    const [age, setAge] = React.useState(props.model.person.age);
+    const [weight, setWeight] = React.useState(props.model.person.weight);
+    const [height, setHeight] = React.useState(props.model.person.height);
     const [promise, setPromise] = React.useState(null);
-    const [show, setShow] = React.useState(false);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
     const [searchParams, setSearchParams] = React.useState({});
+    const [show, setShow] = React.useState(false);
+
 
     function promiseHasChangedACB() {
         setData(null);
@@ -26,9 +29,14 @@ export default function BmiPresenter(props) {
         return changedAgainACB;
     }
 
+    function observerACB() {
+        setAge(props.model.person.age);
+        setWeight(props.model.person.weight)
+        setHeight(props.model.person.height)
+    }
+
     function userSearchedACB() {
         searchParams.age = props.model.person.age;
-        searchParams.gender = props.model.person.gender;
         searchParams.height = props.model.person.height;
         searchParams.weight = props.model.person.weight;
         setPromise(getFitnessInfo(searchParams));
@@ -47,11 +55,18 @@ export default function BmiPresenter(props) {
         props.model.setHeight(height)
     }
 
-    function genderIsChangedACB(gender) {
-        props.model.setGender(gender)
+    function wasCreatedACB() {
+        console.log("bmi pres created!");
+        props.model.addObserver(observerACB);
+        return function isTakenDownACB() {
+            props.model.removeObserver(observerACB);
+        };
     }
 
+
+    React.useEffect(wasCreatedACB, []);
     React.useEffect(promiseHasChangedACB, [promise]);
+
 
     return (
         <div className="bmi-mainStyle">
@@ -63,12 +78,13 @@ export default function BmiPresenter(props) {
             </div>
             <div className="bmi-style">
                 <SearchView onUserChangedAge={ageIsChangedACB}
-                    onUserChangedGender={genderIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
                     onUserChangedHeight={heightIsChangedACB}
                     onUserSearched={userSearchedACB}
-                    showGender={true}
                     showBmiInfo={true}
+                    age = {age}
+                    height = {height}
+                    weight = {weight}
                 />
             </div>
             <div className={!show ? "bmi-info" : "bmi-info-result"}>

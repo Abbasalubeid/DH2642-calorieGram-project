@@ -6,12 +6,26 @@ import { getMacroInfo } from "../fetchSource";
 import "../css/dietSearch.css"
 
 
-export default function DietPresenter(props) {
+export default function DietPresenter(props){
+    const [age, setAge] = React.useState(props.model.person.age);
+    const [weight, setWeight] = React.useState(props.model.person.weight);
+    const [height, setHeight] = React.useState(props.model.person.height);
+    const [gender, setGender] = React.useState(props.model.person.gender);
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
     const [show, setShow] = React.useState(false);
+    
+
     const [searchParams, setSearchParams] = React.useState({});
+
+
+    function observerACB(){
+        setAge(props.model.person.age);
+        setWeight(props.model.person.weight)
+        setHeight(props.model.person.height)
+        setGender(props.model.person.gender)
+    }
 
     function promiseHasChangedACB() {
         setData(null);
@@ -62,7 +76,17 @@ export default function DietPresenter(props) {
         searchParams.goal = goal;
 
     }
+    
+    function wasCreatedACB() {
+        console.log("diet created!");                           
+        props.model.addObserver(observerACB);
+        return function isTakenDownACB() {                                
+            props.model.removeObserver(observerACB);
+        };
+    }
 
+
+    React.useEffect(wasCreatedACB, []);
     React.useEffect(promiseHasChangedACB, [promise]);
 
     return (
@@ -80,30 +104,30 @@ export default function DietPresenter(props) {
                     onUserSearched={userSearchedACB}
                     onUserChangedGender={genderIsChangedACB}
                     onUserChooseLevel={activityLevelIsChangedACB}
-                    onUserChooseGoal={goalIsChangedACB}
-                    showGender={true}
-                    showLevels={true}
-                    showGoals={true}
-                    showDietInfo={true}
-                    goals={
-                        [
-                            { value: "maintain", type: "Maintain weight" },
-                            { value: "mildlose", type: "Mild weight loss" },
-                            { value: "weightlose", type: "Weight loss" },
-                            { value: "extremelose", type: "Extreme Weight loss" },
-                            { value: "mildgain", type: "Mild weight gain" },
-                            { value: "weightgain", type: "Weight gain" },
-                            { value: "extremegain", type: "Extreme weight gain" }
-                        ]}
-                    levels={
-                        [
-                            { value: "1", type: "Sedentary: little or no exercise" },
-                            { value: "2", type: "Light Exercise (1-2 days/week)" },
-                            { value: "3", type: "Exercise 4-5 times/week" },
-                            { value: "4", type: "Daily exercise or intense exercise 3-4 times/week" },
-                            { value: "5", type: "Intense exercise 6-7 times/week" },
-                            { value: "6", type: "Very intense exercise daily, or physical job" },
-                        ]}
+                    onUserChooseGoal = {goalIsChangedACB}
+                    showGender = {true}
+                    showLevels = {true}
+                    showGoals = {true}
+                    showDietInfo = {true}
+                    goals ={
+                                [
+                                    { value: "maintain", type: "Maintain weight" },
+                                    { value: "mildlose", type: "Mild weight loss" },
+                                    { value: "weightlose", type: "Weight loss" },
+                                    { value: "extremelose", type: "Extreme Weight loss" },
+                                    { value: "mildgain", type: "Mild weight gain" },
+                                    { value: "weightgain", type: "Weight gain" },
+                                    { value: "extremegain", type: "Extreme weight gain" }
+                                ]}
+                     levels ={
+                                [
+                                    { value: "1", type: "Sedentary: little or no exercise" },
+                                    { value: "2", type: "Light Exercise (1-2 days/week)" },
+                                    { value: "3", type: "Exercise 4-5 times/week" },
+                                    { value: "4", type: "Daily exercise or intense exercise 3-4 times/week" },
+                                    { value: "5", type: "Intense exercise 6-7 times/week" },
+                                    { value: "6", type: "Very intense exercise daily, or physical job" },
+                                ]}
                     age={props.model.person.age}
                     gender={props.model.person.gender}
                     height={props.model.person.height}

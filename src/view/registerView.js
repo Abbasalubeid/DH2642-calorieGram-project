@@ -27,7 +27,7 @@ export default function LoginView(props) {
             setError('')
             setLoading(true)
             await signup(emailRef.current.value, passwordRef.current.value);
-            alert("Your account have successfully created.")
+            //alert("Your account have successfully created.")
             navigate("/login")
         } catch {
             setError("Failed To create account")

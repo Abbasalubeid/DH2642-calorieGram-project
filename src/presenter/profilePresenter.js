@@ -1,14 +1,21 @@
-
 import SearchView from "../view/searchView.js";
-
 import React from "react";
 
 
 export default function ProfilePresenter(props) {
+    const [age, setAge] = React.useState(props.model.person.age);
+    const [weight, setWeight] = React.useState(props.model.person.weight);
+    const [height, setHeight] = React.useState(props.model.person.height);
+    const [gender, setGender] = React.useState(props.model.person.gender);
 
+    function observerACB() {
+        setAge(props.model.person.age);
+        setWeight(props.model.person.weight)
+        setHeight(props.model.person.height)
+        setGender(props.model.person.gender)
+    }
 
     function userSearchedACB() {
-
 
     }
 
@@ -36,10 +43,20 @@ export default function ProfilePresenter(props) {
 
     }
 
+    function wasCreatedACB() {
+        console.log("profile created!");
+        props.model.addObserver(observerACB);
+        return function isTakenDownACB() {
+            props.model.removeObserver(observerACB);
+        };
+    }
+
+    React.useEffect(wasCreatedACB, []);
+    React.useEffect(wasCreatedACB, []);
+
 
     return (
-        <div className="profile-mainStyle">
-            <h1>Profile Calculate</h1>
+        <div className="goal-mainStyle">
             <div >
                 <SearchView onUserChangedAge={ageIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
@@ -54,12 +71,12 @@ export default function ProfilePresenter(props) {
                     goals={
                         [
                             { value: "maintain", type: "Maintain weight" },
-                            { value: "mildlose", type: "Mild weight loss" },
-                            { value: "weightlose", type: "Weight loss" },
-                            { value: "extremelose", type: "Extreme Weight loss" },
-                            { value: "mildgain", type: "Mild weight gain" },
-                            { value: "weightgain", type: "Weight gain" },
-                            { value: "extremegain", type: "Extreme weight gain" }
+                            { value: "mildlose", type: "Mild weight loss 0.25 kg/week" },
+                            { value: "weightlose", type: "Weight loss 0.5 kg/week" },
+                            { value: "extremelose", type: "Extreme Weight loss 1 kg/week" },
+                            { value: "mildgain", type: "Mild weight gain 0.25 kg/week" },
+                            { value: "weightgain", type: "Weight gain 0.5 kg/week" },
+                            { value: "extremegain", type: "Extreme weight gain 1 kg/week" }
                         ]}
                     levels={
                         [
@@ -70,6 +87,10 @@ export default function ProfilePresenter(props) {
                             { value: "5", type: "Intense exercise 6-7 times/week" },
                             { value: "6", type: "Very intense exercise daily, or physical job" },
                         ]}
+                    age={age}
+                    gender={gender}
+                    height={height}
+                    weight={weight}
                 />
             </div>
 

@@ -24,9 +24,13 @@ export default function SearchView(props) {
     function userChooseLevelACB(event) {
         props.onUserChooseLevel(event.target.value);
     }
-    function userChooseGoalACB(event) {
+    function userChooseGoalACB(event){
         props.onUserChooseGoal(event.target.value);
-    }
+}
+
+function renderOptionsCB(opt) {
+    return <option value={opt.value} key={opt.value}>{opt.type}</option>
+}
 
     function renderOptionsCB(opt) {
         return <option value={opt.value} key={opt.value}>{opt.type}</option>
@@ -72,6 +76,7 @@ export default function SearchView(props) {
                                 name="age"
                                 maxLength="3"
                                 onBlur={userTypedAgeACB}
+                                defaultValue={props.age}
                                 className="input-box" />
                             <span className="grey-text">age</span>
                         </td>
@@ -83,7 +88,9 @@ export default function SearchView(props) {
                         <td>
                             <input type="number" name="weight" maxLength="3"
                                 width="60px" onBlur={userTypedWeightACB}
-                                className="input-box" />
+                                className="input-box" 
+                                defaultValue={props.weight}/>
+                                
                             <span className="grey-text">kg</span>
                         </td>
                     </tr>
@@ -95,7 +102,7 @@ export default function SearchView(props) {
                             <input
                                 type="number" name="height" maxLength="3"
                                 width="60px" onBlur={userTypedHeightACB}
-                                className="input-box" />
+                                className="input-box" defaultValue={props.height}/>
                             <span className="grey-text">cm</span>
                         </td>
                     </tr>

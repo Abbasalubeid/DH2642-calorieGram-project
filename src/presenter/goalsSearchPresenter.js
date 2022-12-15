@@ -5,11 +5,21 @@ import promiseNoData from "../view/promiseNoData.js"
 import { getActivityInfo } from "../fetchSource";
 
 export default function GoalsSearchPresenter(props) {
+    const [age, setAge] = React.useState(props.model.person.age);
+    const [weight, setWeight] = React.useState(props.model.person.weight);
+    const [height, setHeight] = React.useState(props.model.person.height);
+    const [gender, setGender] = React.useState(props.model.person.gender);
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
-
     const [searchParams, setSearchParams] = React.useState({});
+
+    function observerACB() {
+        setAge(props.model.person.age);
+        setWeight(props.model.person.weight)
+        setHeight(props.model.person.height)
+        setGender(props.model.person.gender)
+    }
 
     function promiseHasChangedACB() {
         setData(null);
@@ -57,11 +67,20 @@ export default function GoalsSearchPresenter(props) {
         props.model.setUserGoal(goal)
     }
 
+    function wasCreatedACB() {
+        console.log("goals created!");
+        props.model.addObserver(observerACB);
+        return function isTakenDownACB() {
+            props.model.removeObserver(observerACB);
+        };
+    }
+
+
+    React.useEffect(wasCreatedACB, []);
     React.useEffect(promiseHasChangedACB, [promise]);
 
     return (
         <div className="goal-mainStyle">
-            <h1>Goals Calculate</h1>
             <div>
                 <SearchView onUserChangedAge={ageIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
@@ -81,6 +100,10 @@ export default function GoalsSearchPresenter(props) {
                             { value: "5", type: "Intense exercise 6-7 times/week" },
                             { value: "6", type: "Very intense exercise daily, or physical job" },
                         ]}
+                    age={age}
+                    gender={gender}
+                    height={height}
+                    weight={weight}
                 />
             </div>
             <div className="result-nopadding result">

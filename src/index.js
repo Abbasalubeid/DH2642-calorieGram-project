@@ -1,24 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import FitnessModel from "./model/FitnessModel.js";
-import {BrowserRouter } from "react-router-dom"
-import {writeUserData, deleteUserData} from "../src/model/firebaseModel";
-
-writeUserData(22, 170, 180);
-
-
-let model = new FitnessModel();
-
+import Root from "./root.js";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App model ={model}/>
-    </BrowserRouter>
-  </React.StrictMode>
-);
+root.render( <Root/>);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
