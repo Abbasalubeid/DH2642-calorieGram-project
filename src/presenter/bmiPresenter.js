@@ -95,7 +95,8 @@ function CustomInfo({ href, children, ...props }) {
             <h2>Information</h2>
             <img src="bmicalc.png" />
             <p>
-                <h4>What's BMI?</h4>
+                <span className="bold-text">What's BMI?</span>
+                <br/>
                 Body mass index (BMI) to determine how healthy you are.
                 For most adults, a BMI between 18.5 to 24.9 is the idead BMI to have.
 
