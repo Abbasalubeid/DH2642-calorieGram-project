@@ -9,8 +9,6 @@ import firebaseConfig from "../firebaseConfig";
 const firebaseApp = firebase.initializeApp(firebaseConfig)
 const auth = firebaseApp.auth();
 
-// new implementing outh
-//const auth = app.auth();
 
 // function persistedModel() {
     
@@ -32,37 +30,22 @@ const auth = firebaseApp.auth();
 // }
 
 function updateFirebaseFromModel(model) {
+  const db = getDatabase();
   function persistenceObserverACB(payload){
-    const db = getDatabase();
-      if (payload){
-        
+    
+      
+    if (payload){
           if (payload.hasOwnProperty('newAge'))
-            set(ref(db, 'currentUser/'), {age : payload.newAge,
-                                          gender : model.person.gender,
-                                          height : model.person.height,
-                                          weight : model.person.weight
-                                          })
+            set(ref(db, 'currentUser/age'), payload.newAge)
               
           if (payload.hasOwnProperty('newGender'))
-            set(ref(db, 'currentUser/'), {age : model.person.age,
-                                          gender : payload.newGender,
-                                          height : model.person.height,
-                                          weight : model.person.weight
-                                          })
+            set(ref(db, 'currentUser/gender'), payload.newGender)
 
           if(payload.hasOwnProperty('newWeight'))
-            set(ref(db, 'currentUser/'), {age : model.person.age,
-                                          gender : model.person.gender,
-                                          height : model.person.height,
-                                          weight : payload.newWeight
-                                          })
+            set(ref(db, 'currentUser/weight'), payload.newWeight)
           
           if(payload.hasOwnProperty('newHeight'))
-          set(ref(db, 'currentUser/'), {age : model.person.age,
-                                        gender : model.person.gender,
-                                        height : payload.newHeight,
-                                        weight : model.person.weight
-                                        })
+            set(ref(db, 'currentUser/height'), payload.newHeight)
       }
   }
 
@@ -79,13 +62,13 @@ function updateModelFromFirebase(model) {
   const heightRef = ref(db, 'currentUser/height');
   const weightRef = ref(db, 'currentUser/weight');
 
-  onValue(ageRef, function ageIschanged (snapshot) { model.setAge(snapshot.val());})
+  onValue(ageRef, function ageIsChanged (snapshot) { model.setAge(snapshot.val()); console.log("1"); console.log(model.person);})
 
-  onValue(genderRef, function weightIschanged (snapshot) {   console.log(model.person); model.setGender(snapshot.val());})
+  onValue(genderRef, function genderIsChanged (snapshot) {  model.setGender(snapshot.val());  console.log("2"); console.log(model.person);})
 
-  onValue(heightRef, function heightIschanged (snapshot) {   console.log(model.person); model.setHeight(snapshot.val());})
+  onValue(heightRef, function heightIsChanged (snapshot) { model.setHeight(snapshot.val());  console.log("3");  console.log(model.person);})
 
-  onValue(weightRef, function weightIschanged (snapshot) {   console.log(model.person); model.setWeight(snapshot.val());})
+  onValue(weightRef, function weightIsChanged (snapshot) {   model.setWeight(snapshot.val()); console.log("4"); console.log(model.person);})
 
 }
 

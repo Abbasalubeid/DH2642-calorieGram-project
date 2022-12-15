@@ -6,9 +6,11 @@ import {updateFirebaseFromModel, updateModelFromFirebase, persistedModel} from "
 
 export default function Root(){
 
+  console.log("root");
   const model = new FitnessModel()
-  updateFirebaseFromModel(model);
   updateModelFromFirebase(model);
+  updateFirebaseFromModel(model);
+  
   
 
 // const [model, SetModel] = React.useState();

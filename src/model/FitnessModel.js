@@ -45,7 +45,7 @@ export default class FitnessModel{
     }
 
     setGender(gender){
-        if (gender != this.person.gender){
+        if (gender !== this.person.gender){
             this.person.gender = gender;
             const payload = { newGender : gender}
             this.notifyObservers(payload);
@@ -59,8 +59,8 @@ export default class FitnessModel{
         if(weight > 160 || weight <  40)
           return;
         else if (weight !== this.person.weight){
-            this.person.weight = weight;
-            const payload = { newWeight : weight}
+            this.person.weight = +weight;
+            const payload = { newWeight : +weight}
             this.notifyObservers(payload);
         }
     }
@@ -70,10 +70,11 @@ export default class FitnessModel{
      if(height < 130 || height > 230)   
      return;
     //  throw Error("Weight must be between 40 kg to 160 kg");
-     else if (height !== this.person.height)
-        this.person.height = height;  
-        const payload = { newHeight : height}
+     else if (height !== this.person.height){
+        this.person.height = +height;  
+        const payload = { newHeight : +height}
         this.notifyObservers(payload); 
+     }
     }
 
     setUserGoal(goal){

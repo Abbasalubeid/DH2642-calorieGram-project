@@ -22,7 +22,7 @@ export default function SearchView(props){
         props.onUserChooseLevel(event.target.value);
     }
     function userChooseGoalACB(event){
-    props.onUserChooseGoal(event.target.value);
+        props.onUserChooseGoal(event.target.value);
 }
 
 function renderOptionsCB(opt) {
