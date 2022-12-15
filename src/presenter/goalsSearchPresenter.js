@@ -41,7 +41,7 @@ export default function GoalsSearchPresenter(props) {
         searchParams.weight = props.model.person.weight;
         setPromise(getActivityInfo(searchParams));
     }
-        
+
     function ageIsChangedACB(age) {
         props.model.setAge(age)
     }
@@ -60,10 +60,10 @@ export default function GoalsSearchPresenter(props) {
 
     function activityLevelIsChangedACB(level) {
 
-        searchParams.activitylevel = "level_"+ level;
+        searchParams.activitylevel = "level_" + level;
     }
 
-    function UserChangedUserGoals(goal){
+    function UserChangedUserGoals(goal) {
         props.model.setUserGoal(goal)
     }
 
@@ -109,10 +109,10 @@ export default function GoalsSearchPresenter(props) {
             <div className="result-nopadding result">
                 {promiseNoData({ promise, data, error }) ||
                     <GoalsResultView
-                        activityResult={data} 
+                        activityResult={data}
                         userInfo={searchParams}
                         onUserChangedUserGoals={UserChangedUserGoals}
-                        />
+                    />
                 }
             </div>
         </div>

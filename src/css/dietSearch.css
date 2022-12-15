@@ -1,4 +1,4 @@
-.bmi-mainStyle {
+.diet-mainStyle {
   padding: 0;
   height: 75vh;
   width: 600px;
@@ -14,14 +14,14 @@
   margin-left: -60px;
   color: #888;
 }
-.bmi-mainStyle h1 {
+.diet-mainStyle h1 {
   flex: 0.3;
   text-align: left;
   justify-content: center;
   margin: 0;
   padding: 0;
 }
-.bmi-mainStyle p.first-p {
+.diet-mainStyle p.first-p {
   line-height: 1.5rem;
   letter-spacing: 1px;
   font-weight: 500;
@@ -34,11 +34,11 @@
   border-radius: 8px;
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.25);
 }
-.bmi-style {
+.diet-style {
   padding-left: 70px;
 }
 
-.bmi-mainStyle table label {
+.diet-mainStyle table label {
   color: #3c77af;
   text-align: right;
   font-size: 20px;
@@ -52,6 +52,20 @@
   border: none;
   border-radius: 10px;
   background-image: linear-gradient(79deg, #edf3fc, #dddff9 48%, #b2c3fd 100%);
+}
+
+.select {
+  display: block;
+  width: 250px;
+  height: 50px;
+  padding: 6px 12px;
+  font-size: 17px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 /* The container */
@@ -117,35 +131,34 @@
   border-radius: 50%;
   background: white;
 }
-/*----------------------------------------------------------------bmi result---------------------------------------*/
-.bmi-result {
+/*----------------------------------------------------------------diet result---------------------------------------*/
+.diet-result {
   position: absolute;
   left: 600px;
-  width: 667px;
-  height: 80px;
+  width: 645px;
+  height: 300px;
   margin: 10px 5px;
   border-radius: 8px;
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.25);
 }
 
-/*----------------------------------------------------------------bmi info---------------------------------------*/
+/*----------------------------------------------------------------diet info---------------------------------------*/
 
-.bmi-info {
+.diet-info {
   position: absolute;
   left: 600px;
   display: flex;
   flex-direction: row;
   width: 700px;
-  margin: 37px 8px;
+  margin: 5px 8px;
   padding: 10px;
-  padding-right: 5px;
   border-radius: 8px;
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
-.bmi-info-result {
+.diet-info-result {
   position: absolute;
-  top: 100px;
+  top: 330px;
   left: 600px;
   width: 670px;
   margin: 0 5px;
@@ -160,14 +173,21 @@
   margin-left: 10px;
 }
 .custom-info p {
-  line-height: 1.2;
+  line-height: 1.4;
   letter-spacing: 1px;
-   word-spacing: -2px;
+  word-spacing: 4 .2px;
   text-align: justify;
 }
-.custom-info h4 {
-  width: 25%;
-  margin: 0;
+.custom-info h2 {
+  width: 30%;
+  margin: 0 0 10px;
+}
+.bold-text {
+  width: 100px;
+  height:100px;
+  margin: 10px 0;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 #check {

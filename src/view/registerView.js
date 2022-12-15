@@ -3,21 +3,21 @@ import { Link, useNavigate } from "react-router-dom";
 import "../css/login.css";
 // new import
 import { useAuth } from "../context/AuthContext";
-import React, {useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 
 
-export default function LoginView() {
-   
-   // from here 
+export default function LoginView(props) {
+
+    // from here 
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
-    const {signup} = useAuth();
+    const { signup } = useAuth();
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
 
-    async function handleSubmit(e){
+    async function handleSubmit(e) {
         e.preventDefault()
 
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
@@ -29,22 +29,22 @@ export default function LoginView() {
             await signup(emailRef.current.value, passwordRef.current.value);
             //alert("Your account have successfully created.")
             navigate("/login")
-        } catch  {
+        } catch {
             setError("Failed To create account")
         }
-            setLoading(false)
-       
+        setLoading(false)
+
     }
     // to here are new
 
+    function handleUsernameACB(e) {
+        props.onUserName(e.target.value);
+    }
     function handleEmailACB(e) {
-        console.log(e.target.value);
+        props.onUserEmail(e.target.value);
     }
     function handlePasswordACB(e) {
-        console.log(e.target.value);
-    }
-    function handleUsernameACB(e) {
-        console.log(e.target.value);
+        props.onUserPassword(e.target.value);
     }
 
     return (

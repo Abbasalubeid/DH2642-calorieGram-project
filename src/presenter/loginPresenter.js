@@ -7,11 +7,11 @@ export default function LoginPresenter(props) {
 
     return (
         <AuthProvider>
-             <div>
-                 <LoginView />
+            <div>
+                <LoginView />
             </div>
         </AuthProvider>
-       
+
     )
 
 }

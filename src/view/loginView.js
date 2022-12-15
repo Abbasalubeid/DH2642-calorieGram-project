@@ -5,14 +5,12 @@ import { useAuth } from "../context/AuthContext";
 import React, { useRef, useState } from "react";
 
 
-export default function LoginView() {
+export default function LoginView(props) {
     // from here 
     const emailRef = useRef();
     const passwordRef = useRef();
     const { login } = useAuth();
     const [error, setError] = useState('')
-
-
     const [loading, setLoading] = useState(false)
     let navigate = useNavigate();
 
@@ -35,10 +33,10 @@ export default function LoginView() {
 
 
     function handleEmailACB(e) {
-        console.log(e.target.value);
+        props.onUserEmail(e.target.value);
     }
     function handlePasswordACB(e) {
-        console.log(e.target.value);
+        props.onUserPassword(e.target.value);
     }
     return (
         <div className="login-banner">
