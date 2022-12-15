@@ -3,12 +3,22 @@ import React from "react";
 
 
 export default function ProfilePresenter(props){
-    const [person, setPerson] = React.useState(props.model.person);
+    const [age, setAge] = React.useState(props.model.person.age);
+    const [weight, setWeight] = React.useState(props.model.person.weight);
+    const [height, setHeight] = React.useState(props.model.person.height);
+    const [gender, setGender] = React.useState(props.model.person.gender);
     const [, reRender] = React.useState();
 
-    function userSearchedACB() {
-        
-       
+
+
+    function observerACB(){
+        setAge(props.model.person.age);
+        setWeight(props.model.person.weight)
+        setHeight(props.model.person.height)
+        setGender(props.model.person.gender)
+    }
+    function userSearchedACB(){
+
     }
         
     function ageIsChangedACB(age) {
@@ -34,6 +44,17 @@ export default function ProfilePresenter(props){
     function goalIsChangedACB(goal) {
       
     }
+
+    function wasCreatedACB() {
+        console.log("component created!");                           
+        props.model.addObserver(observerACB);
+        return function isTakenDownACB() {                                
+            props.model.removeObserver(observerACB);
+        };
+    }
+
+
+    React.useEffect(wasCreatedACB, []);
 
 
     return (
@@ -68,10 +89,10 @@ export default function ProfilePresenter(props){
                                     { value: "5", type: "Intense exercise 6-7 times/week" },
                                     { value: "6", type: "Very intense exercise daily, or physical job" },
                                 ]}
-                    age = {props.model.person.age}
-                    gender = {props.model.person.gender}
-                    height = {props.model.person.height}
-                    weight = {props.model.person.weight}
+                    age = {age}
+                    gender = {gender}
+                    height = {height}
+                    weight = {weight}
                 />
             </div>
            
