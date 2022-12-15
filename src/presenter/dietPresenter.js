@@ -14,7 +14,6 @@ export default function DietPresenter(props) {
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
     const navigate = useNavigate();
-
     const [searchParams, setSearchParams] = React.useState({});
 
     // function promiseHasChangedACB() {

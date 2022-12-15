@@ -28,6 +28,7 @@ export default function BmiPresenter(props) {
 
     function userSearchedACB() {
         searchParams.age = props.model.person.age;
+        searchParams.gender = props.model.person.gender;
         searchParams.height = props.model.person.height;
         searchParams.weight = props.model.person.weight;
         setPromise(getFitnessInfo(searchParams));
@@ -46,6 +47,10 @@ export default function BmiPresenter(props) {
         props.model.setHeight(height)
     }
 
+    function genderIsChangedACB(gender) {
+        props.model.setGender(gender)
+    }
+
     React.useEffect(promiseHasChangedACB, [promise]);
 
     return (
@@ -58,9 +63,11 @@ export default function BmiPresenter(props) {
             </div>
             <div className="bmi-style">
                 <SearchView onUserChangedAge={ageIsChangedACB}
+                    onUserChangedGender={genderIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
                     onUserChangedHeight={heightIsChangedACB}
                     onUserSearched={userSearchedACB}
+                    showGender={true}
                     showBmiInfo={true}
                 />
             </div>
