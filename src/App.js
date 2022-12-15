@@ -32,7 +32,7 @@ function App(props) {
          
         </Routes>
       
-       
+       <LogoutPresenter/>
       </div>
     </div>);
 
