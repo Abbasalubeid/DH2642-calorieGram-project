@@ -6,11 +6,22 @@ import { getMacroInfo } from "../fetchSource";
 
 
 export default function DietPresenter(props){
+    const [age, setAge] = React.useState(props.model.person.age);
+    const [weight, setWeight] = React.useState(props.model.person.weight);
+    const [height, setHeight] = React.useState(props.model.person.height);
+    const [gender, setGender] = React.useState(props.model.person.gender);
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
-
     const [searchParams, setSearchParams] = React.useState({});
+
+
+    function observerACB(){
+        setAge(props.model.person.age);
+        setWeight(props.model.person.weight)
+        setHeight(props.model.person.height)
+        setGender(props.model.person.gender)
+    }
 
     function promiseHasChangedACB() {
         setData(null);
@@ -56,7 +67,17 @@ export default function DietPresenter(props){
     function goalIsChangedACB(goal) {
         searchParams.goal = goal;
     }
+    
+    function wasCreatedACB() {
+        console.log("goals created!");                           
+        props.model.addObserver(observerACB);
+        return function isTakenDownACB() {                                
+            props.model.removeObserver(observerACB);
+        };
+    }
 
+
+    React.useEffect(wasCreatedACB, []);
     React.useEffect(promiseHasChangedACB, [promise]);
 
     return (

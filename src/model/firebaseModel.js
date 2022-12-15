@@ -1,88 +1,55 @@
-import { getDatabase, ref, set, onValue, Database } from "firebase/database";
-// new imported fire base
- // import "firebase/auth"
- import  'firebase/compat/auth';
-  import firebase from 'firebase/compat/app';
- //import firebase from 'firebase/app';
-
- import firebaseConfig from "../firebaseConfig";
-
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-
-
-
+import { getDatabase, ref, set, onValue } from "firebase/database";
+import "firebase/auth"
+import 'firebase/compat/auth';
+import firebase from 'firebase/compat/app';
+import firebaseConfig from "../firebaseConfig";
+import FitnessModel from "./FitnessModel";
 
 
 const app = firebase.initializeApp(firebaseConfig)
-const apps = initializeApp(firebaseConfig)
+
 const auth = app.auth();
 let datab = getDatabase(app);
 
-// set(ref(datab, 'users/' + firebase.auth().currentUser),{
-//   userName: 'auth',
-//   emai: firebase.auth().currentUser
-// })
+function persistedModel() {
+    // const model = {};
 
-
-
-
-// new implementing outh
-//const auth = app.auth();
-
-// function persistedModel() {
-    
-//   function createModelACB(firebaseData) {        
+  function createModelACB(snapshot) {        
          
-//       const defaultPerson = {
-//         age : 25,
-//         gender : "male",
-//         weight : 85,
-//         height : 190
-//       }
-//       const person = firebaseData.val()?.person ?? defaultPerson;
+      const defaultPerson = {
+        age : 25,
+        gender : "male",
+        weight : 85,
+        height : 190
+      }
+      const person = snapshot.val() ?? defaultPerson;
+      console.log(person);
+      return new FitnessModel(person);
+      // console.log(model);
+  }
 
-//       return new DinnerModel(person);
-      
-//   }
-//   const db = getDatabase();
-//   return onValue(ref(db, '/currentUser'), createModelACB, {onlyOnce : true});
-// }
+  // console.log(model);
+  const db = getDatabase();
+  return onValue(ref(db, '/currentUser'), createModelACB, {onlyOnce : true});
+}
 
-// i commited out codes in below for test
-
- function updateFirebaseFromModel(model) {
+function updateFirebaseFromModel(model) {
+  const db = getDatabase();
   function persistenceObserverACB(payload){
-    const db = getDatabase(app);
-      if (payload){
-        
+    
+      
+    if (payload){
           if (payload.hasOwnProperty('newAge'))
-            set(ref(db, 'currentUser/'), {age : payload.newAge,
-                                          gender : model.person.gender,
-                                          height : model.person.height,
-                                          weight : model.person.weight
-                                          })
+            set(ref(db, 'currentUser/age'), payload.newAge)
               
           if (payload.hasOwnProperty('newGender'))
-            set(ref(db, 'currentUser/'), {age : model.person.age,
-                                          gender : payload.newGender,
-                                          height : model.person.height,
-                                          weight : model.person.weight
-                                          })
+            set(ref(db, 'currentUser/gender'), payload.newGender)
 
           if(payload.hasOwnProperty('newWeight'))
-            set(ref(db, 'currentUser/'), {age : model.person.age,
-                                          gender : model.person.gender,
-                                          height : model.person.height,
-                                          weight : payload.newWeight
-                                          })
+            set(ref(db, 'currentUser/weight'), payload.newWeight)
           
           if(payload.hasOwnProperty('newHeight'))
-          set(ref(db, 'currentUser/'), {age : model.person.age,
-                                        gender : model.person.gender,
-                                        height : payload.newHeight,
-                                        weight : model.person.weight
-                                        })
+            set(ref(db, 'currentUser/height'), payload.newHeight)
       }
   }
 
@@ -99,13 +66,13 @@ let datab = getDatabase(app);
   const heightRef = ref(db, 'currentUser/height');
   const weightRef = ref(db, 'currentUser/weight');
 
-  onValue(ageRef, function ageIschanged (snapshot) { model.setAge(snapshot.val());})
+  onValue(ageRef, function ageIsChanged (snapshot) { model.setAge(snapshot.val()); console.log("1"); console.log(model.person);})
 
-  onValue(genderRef, function weightIschanged (snapshot) {   console.log(model.person); model.setGender(snapshot.val());})
+  onValue(genderRef, function genderIsChanged (snapshot) {  model.setGender(snapshot.val());  console.log("2"); console.log(model.person);})
 
-  onValue(heightRef, function heightIschanged (snapshot) {   console.log(model.person); model.setHeight(snapshot.val());})
+  onValue(heightRef, function heightIsChanged (snapshot) { model.setHeight(snapshot.val());  console.log("3");  console.log(model.person);})
 
-  onValue(weightRef, function weightIschanged (snapshot) {   console.log(model.person); model.setWeight(snapshot.val());})
+  onValue(weightRef, function weightIsChanged (snapshot) {   model.setWeight(snapshot.val()); console.log("4"); console.log(model.person);})
 
 }
 
@@ -127,4 +94,5 @@ let datab = getDatabase(app);
 
    export {writeUserData, deleteUserData, updateModelFromFirebase, updateFirebaseFromModel, auth}
 
+  // export {writeUserData, deleteUserData, updateModelFromFirebase, updateFirebaseFromModel, persistedModel, auth}
 
