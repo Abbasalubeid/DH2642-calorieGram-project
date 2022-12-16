@@ -77,15 +77,13 @@ export default class FitnessModel{
   setHeight(height){
     // Undefined when deleted in the UI
     if(!height){
-      this.person.weight = null;
+      this.person.height = null;
       const payload = { newHeight : height}
       this.notifyObservers(payload);
     }
-    
       // API restrictions
    if(height < 130 || height > 230)   
-   return;
-  //  throw Error("Weight must be between 40 kg to 160 kg");
+      return;
    else if (height !== this.person.height){
       this.person.height = +height;  
       const payload = { newHeight : +height}
