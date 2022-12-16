@@ -1,6 +1,8 @@
 import React from 'react';
 import Joyride, { ACTIONS, EVENTS, STATUS } from 'react-joyride';
 import "../css/homepage.css";
+// new import
+
 
 export default function Homepage() {
   const [joyrideState, setJoyrideState] = React.useState({

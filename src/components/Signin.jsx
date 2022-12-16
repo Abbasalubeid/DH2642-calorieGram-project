@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
  import { UserAuth } from '../context/AuthContext';
  import "../css/login.css";
+ import { AuthProvider } from '../context/AuthContext';
 
 export default function Signin()  {
   const [email, setEmail] = useState('');
@@ -28,6 +29,8 @@ export default function Signin()  {
       setPassword(e.target.value)
     }
       return (
+        <AuthProvider>
+
         <div className="login-banner">
             <div className="form-container">
                 <h2>Login</h2>
@@ -43,6 +46,7 @@ export default function Signin()  {
                 </form>
             </div>
         </div>
+        </AuthProvider>
     )
 };
 

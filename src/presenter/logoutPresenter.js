@@ -5,7 +5,7 @@ import { AuthProvider } from "../context/AuthContext.js";
 // import PrivateRoute from "../view/privateRout.js";
 
 
-export default function LogoutPresenter(props) {
+export default function LogoutPresenter() {
 
     return (
         <AuthProvider>

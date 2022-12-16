@@ -4,7 +4,7 @@ import { AuthProvider } from "../context/AuthContext.js";
 import Signin from "../components/Signin.jsx";
 
 
-export default function LoginPresenter(props) {
+export default function LoginPresenter() {
 
     return (
         <AuthProvider>

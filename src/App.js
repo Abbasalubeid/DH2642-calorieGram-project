@@ -56,16 +56,8 @@ function App(props) {
          <Route path='/signup' element={<Signup />} />
          <Route
            path='/account'
-           element={
-             <ProtectedRoute>
-               <Account />
-             </ProtectedRoute>
-           }
-         />
-          <Route
-           path='home'
-           element={
-             <ProtectedRoute>
+           element={ <ProtectedRoute> <Account /> </ProtectedRoute>}/>
+          <Route path='home'element={ <ProtectedRoute>
                <Homepage />
              </ProtectedRoute>
            }
