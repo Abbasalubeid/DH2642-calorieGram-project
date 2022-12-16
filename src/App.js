@@ -11,36 +11,103 @@ import NavbarView from "./view/navbarView.js";
 import "./css/App.css";
 import LogoutPresenter from "./presenter/logoutPresenter.js";
 import PrivateRoute from "./view/privateRout.js";
+import { AuthProvider } from "./context/AuthContext.js";
 
+import Signin from './components/Signin';
+import Signup from './components/Signup';
+import Account from './components/Account';
+
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 function App(props) {
 
-  return (
-    <div className="banner">
-      <NavbarView />
-      <div className="mainContainer">
-        <Routes>
+  // return (
+  //   <div className="banner">
+  //     <NavbarView />
+  //     <div className="mainContainer">
+  //       <Routes>
          
-          <Route path="" element={<Homepage />} />
-          <Route path="profile" element={<ProfilePresenter model={props.model} showActivity = {true} showGoals = {true}/>} />
-          <Route path="goals" element={<GoalsSearchPresenter model={props.model} />} />
-          <Route path="bmi" element={<BmiPresenter model={props.model} />} />
-          <Route path="diet" element={<DietPresenter model={props.model} />} />
+  //         <Route path="" element={<Homepage />} />
+  //         <Route path="profile" element={<ProfilePresenter model={props.model} showActivity = {true} showGoals = {true}/>} />
+  //         <Route path="goals" element={<GoalsSearchPresenter model={props.model} />} />
+  //         <Route path="bmi" element={<BmiPresenter model={props.model} />} />
+  //         <Route path="diet" element={<DietPresenter model={props.model} />} />
 
-          /*  for test*/
+  //         /*  for test*/
 
-          <Route path="login" element={<LoginPresenter model={props.model} />} />
-          <Route path="signup" element={<RegisterPresenter model={props.model} />} /> 
+  //         <Route path="login" element={<LoginPresenter model={props.model} />} />
+  //         <Route path="signup" element={<RegisterPresenter model={props.model} />} /> 
 
-          <Route path="/home" element={<PrivateRoute> <Homepage /></PrivateRoute>} />
+  //         <Route path="/home" element={<PrivateRoute> <Homepage /></PrivateRoute>} />
          
-        </Routes>
+  //       </Routes>
       
-       <LogoutPresenter/>
-      </div>
-    </div>);
+  //      <LogoutPresenter/>
+  //     </div>
+  //   </div>);
 
+  return(
+    <div>
+       <NavbarView />
+      <AuthProvider>
+       <Routes>
+         <Route path='/' element={<Signin />} />
+         <Route path='/signup' element={<Signup />} />
+         <Route
+           path='/account'
+           element={
+             <ProtectedRoute>
+               <Account />
+             </ProtectedRoute>
+           }
+         />
+          <Route
+           path='home'
+           element={
+             <ProtectedRoute>
+               <Homepage />
+             </ProtectedRoute>
+           }
+         />
+          <Route
+           path='bmi'
+           element={
+             <ProtectedRoute>
+               <BmiPresenter   model={props.model}/>
+             </ProtectedRoute>
+           }
+         />
+         <Route
+           path='profile'
+           element={
+             <ProtectedRoute>
+               <ProfilePresenter model={props.model} showActivity = {true} showGoals = {true}/>
+             </ProtectedRoute>
+           }
+         />
+         <Route
+           path='goals'
+           element={
+             <ProtectedRoute>
+               <GoalsSearchPresenter model={props.model} />
+             </ProtectedRoute>
+           }
+         />
+         <Route
+           path='diet'
+           element={
+             <ProtectedRoute>
+               <DietPresenter model={props.model} />
+             </ProtectedRoute>
+           }
+         />
+       </Routes>
+
+      
+     </AuthProvider>
+    </div>
+  )
 }
 
 export default App;
