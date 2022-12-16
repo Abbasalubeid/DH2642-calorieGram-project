@@ -15,7 +15,7 @@ export default function GoalsSearchPresenter(props) {
     const [searchParams, setSearchParams] = React.useState({});
     const [show, setShow] = React.useState(false);
 
-    function observerACB() {
+    function observerACB(){
         setAge(props.model.person.age);
         setWeight(props.model.person.weight)
         setHeight(props.model.person.height)
@@ -36,6 +36,7 @@ export default function GoalsSearchPresenter(props) {
     }
 
     function userSearchedACB() {
+        console.log(props.model);
         searchParams.age = props.model.person.age;
         searchParams.gender = props.model.person.gender;
         searchParams.height = props.model.person.height;
@@ -70,9 +71,9 @@ export default function GoalsSearchPresenter(props) {
     }
 
     function wasCreatedACB() {
-        console.log("goals created!");
+        console.log("goals created!");                           
         props.model.addObserver(observerACB);
-        return function isTakenDownACB() {
+        return function isTakenDownACB() {                                
             props.model.removeObserver(observerACB);
         };
     }
@@ -98,22 +99,22 @@ export default function GoalsSearchPresenter(props) {
                     onUserSearched={userSearchedACB}
                     onUserChangedGender={genderIsChangedACB}
                     onUserChooseLevel={activityLevelIsChangedACB}
-                    showGender={true}
-                    showLevels={true}
-                    showActivityPerWeekInfo={true}
-                    levels={
-                        [
-                            { value: "1", type: "Sedentary: little or no exercise" },
-                            { value: "2", type: "Light Exercise (1-2 days/week)" },
-                            { value: "3", type: "Exercise 4-5 times/week" },
-                            { value: "4", type: "Daily exercise or intense exercise 3-4 times/week" },
-                            { value: "5", type: "Intense exercise 6-7 times/week" },
-                            { value: "6", type: "Very intense exercise daily, or physical job" },
-                        ]}
-                    age={age}
-                    gender={gender}
-                    height={height}
-                    weight={weight}
+                    showGender = {true}
+                    showLevels = {true}
+                    showActivityPerWeekInfo= {true}
+                    levels = {
+                                [
+                                    { value: "1", type: "Sedentary: little or no exercise" },
+                                    { value: "2", type: "Light Exercise (1-2 days/week)" },
+                                    { value: "3", type: "Exercise 4-5 times/week" },
+                                    { value: "4", type: "Daily exercise or intense exercise 3-4 times/week" },
+                                    { value: "5", type: "Intense exercise 6-7 times/week" },
+                                    { value: "6", type: "Very intense exercise daily, or physical job" },
+                                ]}
+                    age = {age}
+                    gender = {gender}
+                    height = {height}
+                    weight = {weight}
                 />
             </div>
             <div className={!show ? "goal-info" : "goal-info-result"}>

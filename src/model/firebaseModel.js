@@ -1,4 +1,4 @@
-import { getDatabase, ref, set, onValue } from "firebase/database";
+import { getDatabase, ref, set, onValue, get } from "firebase/database";
 import "firebase/auth"
 import 'firebase/compat/auth';
 import firebase from 'firebase/compat/app';
@@ -29,7 +29,7 @@ function persistedModel() {
 
   // console.log(model);
   const db = getDatabase();
-  return onValue(ref(db, '/currentUser'), createModelACB, {onlyOnce : true});
+  return get(ref(db, '/currentUser')).then(createModelACB);
 }
 
 function updateFirebaseFromModel(model) {
@@ -75,21 +75,21 @@ function updateModelFromFirebase(model) {
 
 }
 
-function writeUserData(age, height, weight) {
-  const db = getDatabase();
+ function writeUserData(age, height, weight) {
+    const db = getDatabase();
 
-  set(ref(db, 'currentUser/'), {
-    age: age,
-    height: height,
-    weight: weight
-  });
-}
+    set(ref(db, 'currentUser/'), {
+      age : age,
+      height: height,
+      weight : weight
+    });
+  }
 
-function deleteUserData() {
-  const db = getDatabase();
+  function deleteUserData() {
+    const db = getDatabase();
 
-  set(ref(db, 'currentUsers/'), null);
-}
+    set(ref(db, 'currentUsers/'), null);
+  }
 
   export {writeUserData, deleteUserData, updateModelFromFirebase, updateFirebaseFromModel, persistedModel, auth}
 

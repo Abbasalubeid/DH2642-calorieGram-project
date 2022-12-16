@@ -5,11 +5,36 @@ import "../css/goalsSearch.css";
 
 export default function SearchView(props) {
 
-    function userSavedACB() {
+    const [ageError, SetAgeError] = React.useState(false);
+    const [heightError, SetHeightError] = React.useState(false);
+    const [weightError, SetWeightError] = React.useState(false);
+    
+
+    function userSavedACB(event) {
+        event.preventDefault();
         props.onUserSearched();
     }
     function userTypedAgeACB(event) {
-        props.onUserChangedAge(event.target.value);
+
+        if(!event.target.value || (event.target.value > 1 && event.target.value < 80)){
+            props.onUserChangedAge(event.target.value);
+            SetAgeError(false);
+            return;
+        }
+
+        if ((event.target.value < 1)){
+            props.onUserChangedAge(event.target.value);
+            SetAgeError("Age cannot be less than 1");
+        }
+        // }
+        // if(event.target.value < 80)
+
+    
+        // if (!(event.target.value > 1 && event.target.value < 80)){
+        //     SetAgeError(true);
+        // }
+        
+            
     }
     function userTypedWeightACB(event) {
         props.onUserChangedWeight(event.target.value);

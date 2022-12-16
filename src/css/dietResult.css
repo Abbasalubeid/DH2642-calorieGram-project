@@ -57,3 +57,7 @@
   border-bottom-right-radius: 10px;
 
 }
+
+.error-msg {
+  color : red;
+}
