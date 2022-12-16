@@ -13,7 +13,7 @@ import { AuthProvider } from "./AuthContext.js";
 
 import SigninView from './view/SigninView';
 import SignupView from './view/SignupView';
-import Account from './view/Account';
+import Account from './view/accountView';
 
 import ProtectedRoute from './ProtectedRoute';
 
