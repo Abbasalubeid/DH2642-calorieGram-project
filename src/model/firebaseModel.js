@@ -1,4 +1,4 @@
-import { getDatabase, ref, set, onValue } from "firebase/database";
+import { getDatabase, ref, set, onValue, get } from "firebase/database";
 import "firebase/auth"
 import 'firebase/compat/auth';
 import firebase from 'firebase/compat/app';
@@ -29,7 +29,7 @@ function persistedModel() {
 
   // console.log(model);
   const db = getDatabase();
-  return onValue(ref(db, '/currentUser'), createModelACB, {onlyOnce : true});
+  return get(ref(db, '/currentUser')).then(createModelACB);
 }
 
 function updateFirebaseFromModel(model) {

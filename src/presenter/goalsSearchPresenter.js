@@ -35,6 +35,7 @@ export default function GoalsSearchPresenter(props) {
     }
 
     function userSearchedACB() {
+        console.log(props.model);
         searchParams.age = props.model.person.age;
         searchParams.gender = props.model.person.gender;
         searchParams.height = props.model.person.height;
