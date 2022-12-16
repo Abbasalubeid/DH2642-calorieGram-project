@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import "../css/login.css";
 // new import
-import { useAuth } from "../context/AuthContext";
+import { UserAuth } from "../context/AuthContext";
 import React, {useRef, useState} from "react";
 
 
@@ -12,7 +12,7 @@ export default function LoginView() {
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
-    const {signup} = useAuth();
+    const {signup} = UserAuth();
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate();

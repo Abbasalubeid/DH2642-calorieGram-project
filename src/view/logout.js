@@ -1,11 +1,11 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
-import { useAuth } from "../context/AuthContext"
+import {UserAuth } from "../context/AuthContext"
 
 export default function Logout() {
 
     const [error, setError] = React.useState('')
-    const {currentUser, logout} = useAuth();
+    const {currentUser, logout} = UserAuth();
     const navigate = useNavigate()
    
     async function userLogedOutACB() {
