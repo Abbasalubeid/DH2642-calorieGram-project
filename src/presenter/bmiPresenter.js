@@ -133,7 +133,7 @@ function CustomInfo({ href, children, ...props }) {
                     of Units, and you'll see both kJ and kcal on nutrition labels. 4.2kJ is equivalent to approximately 1kcal.
                 </p>
             </div>
-            <label for="check">Read More</label>
+            <label htmlFor="check">Read More</label>
         </div >
     )
 }

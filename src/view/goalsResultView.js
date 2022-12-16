@@ -7,12 +7,12 @@ export default function GoalsResultView(props) {
             const s =`For ${object + "(" + props.activityResult.goals[object]["gain weight"] + "/week" + ")" + "-->"}
             Eat ${Number(props.activityResult.goals[object]["calory"]).toFixed(0)} Calories/day`
             const ret = `${object + "," + props.activityResult.goals[object]["gain weight"] + ","}${Number(props.activityResult.goals[object]["calory"]).toFixed(0)}`
-            return <button  value = {ret} key = {object} onClick={userGoalIsChanged}>
-                    <div className="goal-row text">
-                        <div className="goal-col text">{object}</div>
-                        <div className="goal-col text">{props.activityResult.goals[object]["gain weight"] + "/week"}</div>
-                        <div className="goal-col text">  Eat</div>
-                        <div className="goal-col text">{Number(props.activityResult.goals[object]["calory"]).toFixed(0) + " Calories/day"}</div>
+            return <button  value = {ret} key = {object} onClick={userGoalIsChanged} className="table">
+                <div>
+                        <div className="goal-col1 text">{object}</div>
+                        <div className="goal-col2 text">{props.activityResult.goals[object]["gain weight"] + "/week"}</div>
+                        <div className="goal-col3 text">  Eat</div>
+                        <div className="goal-col4 text">{Number(props.activityResult.goals[object]["calory"]).toFixed(0) + " Calories/day"}</div>
                     </div>
                 </button>
         }
@@ -21,12 +21,12 @@ export default function GoalsResultView(props) {
             const s = `For ${object + "(" + props.activityResult.goals[object]["loss weight"] + "/week" + ")" + "-->"}
             Eat ${Number(props.activityResult.goals[object]["calory"]).toFixed(0)} Calories/day`
             const ret = `${object +","+ props.activityResult.goals[object]["loss weight"] + "," }${Number(props.activityResult.goals[object]["calory"]).toFixed(0)}`
-            return <button value={ret} key={object} onClick={userGoalIsChanged}>
-                <div className="goal-row text">
-                    <div className="goal-col text">{object}</div>
-                    <div className="goal-col text">{props.activityResult.goals[object]["loss weight"] + "/week"}</div>
-                    <div className="goal-col text">  Eat</div>
-                    <div className="goal-col text">{Number(props.activityResult.goals[object]["calory"]).toFixed(0) + " Calories/day"}</div>
+            return <button value={ret} key={object} onClick={userGoalIsChanged} className="table">
+                <div>
+                    <div className="goal-col1 text">{object}</div>
+                    <div className="goal-col2 text">{props.activityResult.goals[object]["loss weight"] + "/week"}</div>
+                    <div className="goal-col3 text">  Eat</div>
+                    <div className="goal-col4 text">{Number(props.activityResult.goals[object]["calory"]).toFixed(0) + " Calories/day"}</div>
                 </div>
             </button>
         }
@@ -53,8 +53,8 @@ export default function GoalsResultView(props) {
     Goals: ${JSON.stringify(props.activityResult.goals).replace(/,/g, "\n")}
     `
     return ( <div>
-        <div>
-             {Object.keys(props.activityResult.goals).map(renderGoalsCB)}
+        <div className="goal-row">
+            {Object.keys(props.activityResult.goals).map(renderGoalsCB)}
         </div>
         <div><button className = "btn anim" onClick ={printFunc}> Download result </button></div>
      </div>

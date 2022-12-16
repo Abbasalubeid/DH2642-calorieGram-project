@@ -7,27 +7,51 @@
   align-items: center;
   font-size: 1.2rem;
 }
-.goal-row table{
-  width: 100%;
+.table{
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
 }
+/* .table .goal-col1, .goal-col2, .goal-col3, .goal-col4 {
+    padding: 10px;
+    background-color: #00b4d8;
+    font-size: 1rem;
+} */
 .goal-col {
   flex-basis: 25%;
   text-align: center;
   padding: 22px 18px;
   height: 100%;
-  /* cursor: pointer; */
+  cursor: pointer;
   position: relative;
 }
 
 .goal-col1{
-    text-align: center;
-    padding: 14px 10px;
-    position: relative;
-    width: 0px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    background-color: #4177dc;
-    color: #fff;
+     /* padding: 10px;
+    background-color: #00b4d8;
+    font-size: 1rem; */
+    width: 100px;
+    height: 70px;
+    background-color: aqua;
+    border: 1px solid black;
+}
+.goal-col2{
+    width: 100px;
+    height: 70px;
+    background-color: red;
+    border: 1px solid black;
+}
+.goal-col3{
+    width: 100px;
+    height: 70px;
+    background-color: blue;
+    border: 1px solid black;
+}
+.goal-col4{
+    width: 100px;
+    height: 70px;
+    background-color: green;
+    border: 1px solid black;
 }
 
 .goal-col span {
@@ -41,12 +65,12 @@
   transform: translateY(-50%);
 }
 
-.dtext {
+.gtext {
   background-color: #00b4d8;
   color: white;
 }
 
-.dstate {
+.gstate {
   font-weight: bold;
   font-size: 1.2em;
   background-color: #b9fbc0;

@@ -3,6 +3,8 @@ import GoalsResultView from "../view/goalsResultView.js"
 import React from "react";
 import promiseNoData from "../view/promiseNoData.js"
 import { getActivityInfo } from "../fetchSource";
+import "../css/goalsSearch.css"
+import "../css/goalsResult.css"
 
 export default function GoalsSearchPresenter(props) {
     const [age, setAge] = React.useState(props.model.person.age);
@@ -117,7 +119,7 @@ export default function GoalsSearchPresenter(props) {
                     weight = {weight}
                 />
             </div>
-            <div className={!show ? "goal-info" : "goal-info-result"}>
+            <div className={!show ? "goal-info" : "hidden"}>
                 <CustomInfo />
             </div>
             <div className={show ? "goal-result" : "hidden"}>
@@ -166,7 +168,7 @@ function CustomInfo({ href, children, ...props }) {
                     of Units, and you'll see both kJ and kcal on nutrition labels. 4.2kJ is equivalent to approximately 1kcal.
                 </p>
             </div>
-            <label for="check">Read More</label>
+            <label htmlFor="check">Read More</label>
         </div >
     )
 }
