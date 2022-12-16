@@ -1,58 +1,51 @@
 import React from 'react';
 import App from './App';
-import FitnessModel from "./model/FitnessModel.js";
 import {BrowserRouter } from "react-router-dom"
 import {updateFirebaseFromModel, updateModelFromFirebase, persistedModel} from "../src/model/firebaseModel";
+import promiseNoData from './view/promiseNoData';
 
 export default function Root(){
-  // const [model, setModel] = React.useState(null);
-  // const [, reRender] = React.useState();
+
   const [promise, setPromise] = React.useState(null);
   const [data, setData] = React.useState(null);
   const [error, setError] = React.useState(null);
+
+  function notifyACB(){
+    if (data) {
+      updateModelFromFirebase(data);
+      updateFirebaseFromModel(data);
+    }
+  }
 
   function promiseHasChangedACB() {
     setData(null);
     setError(null);
     let cancelled = false;
+    notifyACB();
 
     function changedAgainACB() { cancelled = true; }
 
     if (promise)
-        promise.then(function saveData(data) { if (!cancelled) setData(data); }).
-            catch(function saveError(error) { if (!cancelled) setError(error);});
+        promise.then(function saveData(data) { if (!cancelled) setData(data); notifyACB(); }).
+            catch(function saveError(error) { if (!cancelled) setError(error); notifyACB(); });
 
     return changedAgainACB;
 }
 
-
-
-    // function notify() {
-    //   // const newProm = {};
-    //   // reRender(newProm);
-    //   console.log(promise);
-    //   console.log(data);
-    //   console.log(error);
-    //   // if (promiseState.data) {
-    //   //   updateFirebaseFromModel(promiseState.data);
-    //   //   updateModelFromFirebase(promiseState.data);
-    //   // }
-    // }
-   const model = new FitnessModel()
 function wasCreatedACB() {
-  updateModelFromFirebase(model);
-  updateFirebaseFromModel(model);
-
+  setPromise(persistedModel());
   return function isTakenDownACB() {};
 }
 
-React.useEffect(promiseHasChangedACB, [promise]);
+
 React.useEffect(wasCreatedACB, []);
+React.useEffect(promiseHasChangedACB, [promise]);
+
 
 
 return (<React.StrictMode>
     <BrowserRouter>
-      <App model ={model}/>
+      {promiseNoData({ promise, data, error }) || <App model ={data}/>}
     </BrowserRouter>
   </React.StrictMode>
 );

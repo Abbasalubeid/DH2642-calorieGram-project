@@ -1,13 +1,12 @@
 import SearchView from "../view/searchView.js";
 import React from "react";
 
-
 export default function ProfilePresenter(props){
     const [age, setAge] = React.useState(props.model.person.age);
     const [weight, setWeight] = React.useState(props.model.person.weight);
     const [height, setHeight] = React.useState(props.model.person.height);
     const [gender, setGender] = React.useState(props.model.person.gender);
-
+    
     function observerACB(){
         setAge(props.model.person.age);
         setWeight(props.model.person.weight)
@@ -15,10 +14,11 @@ export default function ProfilePresenter(props){
         setGender(props.model.person.gender)
     }
 
+
     function userSearchedACB(){
 
     }
-        
+
     function ageIsChangedACB(age) {
         props.model.setAge(age)
     }
@@ -36,11 +36,19 @@ export default function ProfilePresenter(props){
     }
 
     function activityLevelIsChangedACB(level) {
-       
+
     }
 
     function goalIsChangedACB(goal) {
-      
+
+    }
+
+    function wasCreatedACB() {
+        console.log("profile created!");
+        props.model.addObserver(observerACB);
+        return function isTakenDownACB() {
+            props.model.removeObserver(observerACB);
+        };
     }
 
     function wasCreatedACB() {
@@ -93,9 +101,9 @@ export default function ProfilePresenter(props){
                     weight = {weight}
                 />
             </div>
-           
+
         </div>
-            )
+    )
 
 
 }
