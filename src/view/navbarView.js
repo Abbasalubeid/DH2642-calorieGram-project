@@ -18,9 +18,9 @@ export default function NavbarView() {
            
         </ul>
         <div>
-            <a href="/login" className="login-btn">Login</a>
-            <a href="/signup" className="btn">Sign up</a>
-           
+            <a href="/" className="login-btn">Login</a>
+            <a href="/signup" className="btn">Sign upp</a>
+      
 
 
             

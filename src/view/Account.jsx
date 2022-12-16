@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserAuth } from '../presenter/AuthContext';
+import { UserAuth } from '../AuthContext';
 
 export default function  Account () {
   const { user, logout } = UserAuth();

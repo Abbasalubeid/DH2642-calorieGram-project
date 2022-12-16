@@ -66,7 +66,7 @@ import {
 // import { auth } from '../firebase';
 
 
- import { auth } from "../model/firebaseModel";
+ import { auth } from "./model/firebaseModel";
 
 const UserContext = createContext();
 
