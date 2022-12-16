@@ -5,57 +5,47 @@ import "../css/goalsSearch.css";
 
 export default function SearchView(props) {
 
-    const [ageError, setAgeError] = React.useState(false);
-    const [heightError, setHeightError] = React.useState(false);
-    const [weightError, setWeightError] = React.useState(false);
-    const [emptyBox, setEmptyBox] =  React.useState(false);
+    const [ageError, setAgeError] = React.useState("");
+    const [heightError, setHeightError] = React.useState("");
+    const [weightError, setWeightError] = React.useState("");
+    const [emptyBoxError, setEmptyBoxError] =  React.useState("");
 
     function userSavedACB(event) {
-        console.log(props.age)
-
         event.preventDefault();
+        if(props.age === "" || props.height === "" || props.weight === ""){
+            setEmptyBoxError(true);
+            return;
+        }
         props.onUserSearched();
-
     }
 
     function userTypedAgeACB(event) {
 
-        if(!event.target.value || (event.target.value > 1 && event.target.value < 80)){
-            console.log(event.target.value);
-            
+        try {
             props.onUserChangedAge(event.target.value);
-            console.log(props.age)
-            setAgeError(false);
+            setAgeError("");
+        } catch (error) {
+            setAgeError(error.message);
         }
-        else
-            setAgeError(true);
-        
+
     }
 
     function userTypedWeightACB(event) {
-
-        if(!event.target.value || (event.target.value < 160 && event.target.value >  40 )){
-            console.log(event.target.value);    
-            console.log(props.weight)
+        try {
             props.onUserChangedWeight(event.target.value);
-            setWeightError(false);
+            setWeightError("");
+        } catch (error) {
+            setWeightError(error.message);
         }
-        else
-            setWeightError(true);
     }
 
     function userTypedHeightACB(event) {
-
-        if(!event.target.value || (event.target.value > 130 && event.target.value <  230 )){ 
-            console.log(event.target.value);    
-            console.log(props.height)
+        try {
             props.onUserChangedHeight(event.target.value);
-            setHeightError(false);
+            setHeightError("");
+        } catch (error) {
+            setHeightError(error.message);
         }
-        else
-            setHeightError(true);
-        
-
     }
     
     function userChooseGenderACB(event) {
@@ -124,9 +114,11 @@ function renderOptionsCB(opt) {
                             defaultValue = {props.age}
                             className="input-box"
                         />
+                        {emptyBoxError&&props.age === ""? 
+                        <label className="error-msg"> {"<--"}Age is required!</label> : ""}
                     </div>
-                    {ageError? 
-                    <label className="error-msg">Age must be an integer between 2 and 80!</label> : ""}
+                    {ageError !== ""? 
+                    <label className="error-msg">{ageError}</label> : ""}
                     </td>
                 </tr>
                 <tr>
@@ -139,9 +131,11 @@ function renderOptionsCB(opt) {
                         <input type="number" name="weight" maxLength="3"
                             width="60px" placeholder="kg" onChange={userTypedWeightACB}
                             defaultValue = {props.weight} className="input-box" />
+                        {emptyBoxError&&props.weight === ""? 
+                        <label className="error-msg"> {"<--"}Weight is required!</label> : ""}
                         </div>
-                        {weightError? 
-                    <label className="error-msg">Weight must be an integer between 40 and 160!</label> : ""}
+                        {weightError !== ""?
+                    <label className="error-msg">{weightError}</label> : ""}
                     </td>
 
                 </tr>
@@ -154,11 +148,12 @@ function renderOptionsCB(opt) {
                         <input
                             type="number"  name="height" maxLength="3"
                             width="60px" placeholder="cm" onChange={userTypedHeightACB}
-                            defaultValue = {props.height} className="input-box"
-                        />
+                            defaultValue = {props.height} className="input-box"/>
+                        {emptyBoxError&&props.height === ""? 
+                        <label className="error-msg"> {"<--"}Height is required!</label> : ""}
                         </div>
-                        {heightError? 
-                    <label className="error-msg">Height must be an integer between 130 and 230!</label> : ""}
+                        {heightError !== ""? 
+                    <label className="error-msg">{heightError}</label> : ""}
                     </td>
                 </tr>
                 <tr className={!props.showLevels?  "hidden" : " "}>
