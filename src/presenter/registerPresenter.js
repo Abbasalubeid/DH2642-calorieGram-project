@@ -1,5 +1,5 @@
 import React from "react";
-import { AuthProvider } from "../context/AuthContext.js";
+import { AuthProvider } from "./AuthContext.js";
 import RegisterView from "../view/registerView.js";
 
 

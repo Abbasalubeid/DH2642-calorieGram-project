@@ -11,7 +11,7 @@ import NavbarView from "./view/navbarView.js";
 import "./css/App.css";
 import LogoutPresenter from "./presenter/logoutPresenter.js";
 import PrivateRoute from "./view/privateRout.js";
-import { AuthProvider } from "./context/AuthContext.js";
+import { AuthProvider } from "./presenter/AuthContext.js";
 
 import Signin from './components/Signin';
 import Signup from './components/Signup';

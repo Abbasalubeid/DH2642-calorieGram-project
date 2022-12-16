@@ -70,7 +70,7 @@ import {
 
 const UserContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+  function AuthProvider  ({ children }) {
   const [user, setUser] = useState({});
 
   const createUser = (email, password) => {
@@ -81,7 +81,7 @@ export const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password)
    }
 
-  const logout = () => {
+  function logout  () {
       return signOut(auth)
   }
 
@@ -102,6 +102,8 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-export const UserAuth = () => {
+ function UserAuth  () {
   return useContext(UserContext);
 };
+
+export{UserAuth, AuthProvider}

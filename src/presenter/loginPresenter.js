@@ -1,6 +1,6 @@
 import React from "react";
 import LoginView from "../view/loginView.js";
-import { AuthProvider } from "../context/AuthContext.js";
+import { AuthProvider } from "./AuthContext.js";
 import Signin from "../components/Signin.jsx";
 
 

@@ -1,7 +1,7 @@
 import React from "react";
 
 import Logout from "../view/logout.js";
-import { AuthProvider } from "../context/AuthContext.js";
+import { AuthProvider } from "./AuthContext.js";
 // import PrivateRoute from "../view/privateRout.js";
 
 
