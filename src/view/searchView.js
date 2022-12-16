@@ -38,7 +38,7 @@ function renderOptionsCB(opt) {
 
     return (
         <div>
-            <div className="Activity-per-week-info">
+            {/* <div className="Activity-per-week-info">
                 <div className={!props.showActivityPerWeekInfo ? "hidden" : " "}>
                     By choosing how many times you intend to train per week you will be presented
                     with a set of goals to achieve. <br></br>
@@ -46,7 +46,7 @@ function renderOptionsCB(opt) {
                     to extreme weight gain, then amount of calories you need to take daily to achieve
                     that goal.
                 </div>
-            </div>
+            </div> */}
                    < table >
                 <tbody>
                     <tr className={!props.showGender ? "hidden" : " "}>
