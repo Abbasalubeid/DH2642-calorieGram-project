@@ -5,7 +5,8 @@ import "../css/goalsSearch.css";
 
 export default function SearchView(props) {
 
-    function userSavedACB() {
+    function userSavedACB(event) {
+        event.preventDefault();
         props.onUserSearched();
     }
     function userTypedAgeACB(event) {
@@ -38,6 +39,7 @@ function renderOptionsCB(opt) {
 
     return (
         <div>
+           
             <div className="Activity-per-week-info">
                 <div className={!props.showActivityPerWeekInfo ? "hidden" : " "}>
                     By choosing how many times you intend to train per week you will be presented
@@ -47,6 +49,7 @@ function renderOptionsCB(opt) {
                     that goal.
                 </div>
             </div>
+            <form>
                    <table>
             <tbody>
                 <tr className={!props.showGender?  "hidden" : " "}>
@@ -78,6 +81,7 @@ function renderOptionsCB(opt) {
                             placeholder="age"
                             onBlur={userTypedAgeACB}
                             defaultValue = {props.age}
+                            required
                             className="input-box"
                         />
                     </td>
@@ -134,6 +138,7 @@ function renderOptionsCB(opt) {
                 </tr>
             </tbody>
         </table>
+        </form>
         
             
     </div>
