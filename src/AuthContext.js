@@ -49,4 +49,4 @@ const UserContext = createContext();
   return useContext(UserContext);
 };
 
-export{UserAuth, AuthProvider}
+export {UserAuth, AuthProvider}

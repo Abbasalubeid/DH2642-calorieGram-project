@@ -30,9 +30,8 @@ function App(props) {
          <Route
            path='/account'
            element={ <ProtectedRoute> <Account /> </ProtectedRoute>}/>
-          <Route path='home'element={ <ProtectedRoute>
+          <Route path='home'element={
                <Homepage />
-             </ProtectedRoute>
            }
          />
           <Route
@@ -62,7 +61,9 @@ function App(props) {
          <Route 
             path="summary"
             element={
+              <ProtectedRoute>
             <SummaryPresenter model={props.model} />
+              </ProtectedRoute>
             }
           />
          <Route

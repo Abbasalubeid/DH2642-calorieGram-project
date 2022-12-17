@@ -2,6 +2,7 @@ import React from "react";
 import "../css/bmiSearch.css";
 import "../css/dietSearch.css";
 import "../css/goalsSearch.css";
+import "../css/profile.css";
 
 export default function SearchView(props) {
 
@@ -70,7 +71,7 @@ function renderOptionsCB(opt) {
     return (
         <div>
             <form>
-                <table>
+                <table cellspacing= "17">
                     <tbody>
                         <tr className={!props.showGender ? "hidden" : " "}>
                             <td className="column">
