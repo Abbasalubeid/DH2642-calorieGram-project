@@ -17,6 +17,7 @@ export default function GoalsSearchPresenter(props) {
     const [error, setError] = React.useState(null);
     const [searchParams, setSearchParams] = React.useState({});
     const [show, setShow] = React.useState(false);
+    
 
     function observerACB(){
         setAge(props.model.person.age);
@@ -40,7 +41,8 @@ export default function GoalsSearchPresenter(props) {
     }
 
     function userSearchedACB() {
-        console.log(props.model);
+        console.log("hellooooo"); 
+        console.log(goals);
         searchParams.age = props.model.person.age;
         searchParams.gender = props.model.person.gender;
         searchParams.height = props.model.person.height;
@@ -118,6 +120,7 @@ export default function GoalsSearchPresenter(props) {
                     gender = {gender}
                     height = {height}
                     weight = {weight}
+                    
                 />
             </div>
             <div className={!show ? "goal-info" : "hidden"}>
