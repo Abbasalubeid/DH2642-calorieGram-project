@@ -59,6 +59,7 @@ export default class FitnessModel{
 
   setWeight(weight){
     // Undefined when deleted in the UI
+    console.log(this.person)
     if(!weight){
       this.person.weight = null;
       const payload = { newWeight : +weight}
@@ -99,11 +100,7 @@ export default class FitnessModel{
       this.currentGoal.weightPerWeek = goals[1];
       this.currentGoal.caloriesIntake = goals[2];
 
-      const payload = {
-        newWeightGoal : goals[0],
-        newWeightPerWeek : goals[1],
-        newCaloriesIntake : goals[2]
-      }
+      const payload = {newGoal : this.currentGoal}
       this.notifyObservers(payload);
   }
 }
