@@ -76,8 +76,7 @@ export default class FitnessModel{
    }
 
   setUserGoal(goal){
-      const goals = goal.split(",");
-       
+      const goals = (goal.toString()).split(",");
       this.currentGoal.weightGoal = goals[0];
       this.currentGoal.weightPerWeek = goals[1];
       this.currentGoal.caloriesIntake = goals[2];

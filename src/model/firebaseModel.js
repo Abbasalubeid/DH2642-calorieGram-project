@@ -32,7 +32,7 @@ function persistedModel() {
       const person = snapshot.val()?.currentUser ?? defaultPerson;
       const goals = snapshot.val()?.goals ?? defaultGoals;
 
-      console.log(person);
+      console.log(goals);
       return new FitnessModel(person, goals);
       // console.log(model);
   }
