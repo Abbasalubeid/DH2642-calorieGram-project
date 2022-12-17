@@ -92,6 +92,4 @@ function updateFirebaseFromModel(model) {
     set(ref(db, 'currentUsers/'), null);
    }
 
-   export {writeUserData, deleteUserData, updateModelFromFirebase, updateFirebaseFromModel, auth, persistedModel}
-
-  
+  export {writeUserData, deleteUserData, updateModelFromFirebase, updateFirebaseFromModel, persistedModel, auth}
