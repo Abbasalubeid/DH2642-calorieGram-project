@@ -71,7 +71,8 @@
 /* The container */
 .container {
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
+  flex-direction: row;
   position: relative;
   padding-left: 10px;
   margin: 0 6px;
