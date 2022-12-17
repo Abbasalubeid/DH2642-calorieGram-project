@@ -12,7 +12,6 @@ const auth = app.auth();
 let datab = getDatabase(app);
 
 function persistedModel() {
-    // const model = {};
 
   function createModelACB(snapshot) {        
          
@@ -26,7 +25,7 @@ function persistedModel() {
       const defaultGoals = {
         weightGoal : "Mild weight loss",
         weightPerWeek : "0.25 kg",
-        calloriesIntake : "2051",
+        caloriesIntake : "2051",
       }
 
       const person = snapshot.val()?.currentUser ?? defaultPerson;
@@ -34,10 +33,8 @@ function persistedModel() {
 
       console.log(goals);
       return new FitnessModel(person, goals);
-      // console.log(model);
   }
 
-  // console.log(model);
   const db = getDatabase();
   return get(ref(db, '/currentUser')).then(createModelACB);
 }
