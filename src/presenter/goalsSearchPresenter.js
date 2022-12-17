@@ -70,7 +70,6 @@ export default function GoalsSearchPresenter(props) {
     }
 
     function wasCreatedACB() {
-        console.log("goals created!");                           
         props.model.addObserver(observerACB);
         return function isTakenDownACB() {                                
             props.model.removeObserver(observerACB);

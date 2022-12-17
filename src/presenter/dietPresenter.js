@@ -77,20 +77,12 @@ export default function DietPresenter(props){
     }
     
     function wasCreatedACB() {
-        console.log("diet created!");                           
         props.model.addObserver(observerACB);
         return function isTakenDownACB() {                                
             props.model.removeObserver(observerACB);
         };
     }
     
-    function wasCreatedACB() {
-        console.log("diet created!");                           
-        props.model.addObserver(observerACB);
-        return function isTakenDownACB() {                                
-            props.model.removeObserver(observerACB);
-        };
-    }
 
     React.useEffect(wasCreatedACB, []);
     React.useEffect(promiseHasChangedACB, [promise]);

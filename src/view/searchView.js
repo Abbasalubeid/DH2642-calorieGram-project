@@ -5,43 +5,49 @@ import "../css/goalsSearch.css";
 
 export default function SearchView(props) {
 
-    const [ageError, SetAgeError] = React.useState(false);
-    const [heightError, SetHeightError] = React.useState(false);
-    const [weightError, SetWeightError] = React.useState(false);
-    
+    const [ageError, setAgeError] = React.useState("");
+    const [heightError, setHeightError] = React.useState("");
+    const [weightError, setWeightError] = React.useState("");
+    const [emptyBoxError, setEmptyBoxError] =  React.useState("");
 
     function userSavedACB(event) {
         event.preventDefault();
-        props.onUserSearched();
-    }
-    function userTypedAgeACB(event) {
-
-        if(!event.target.value || (event.target.value > 1 && event.target.value < 80)){
-            props.onUserChangedAge(event.target.value);
-            SetAgeError(false);
+        if(props.age === "" || props.height === "" || props.weight === ""){
+            setEmptyBoxError(true);
             return;
         }
+        props.onUserSearched();
+    }
 
-        if ((event.target.value < 1)){
+    function userTypedAgeACB(event) {
+
+        try {
             props.onUserChangedAge(event.target.value);
-            SetAgeError("Age cannot be less than 1");
+            setAgeError("");
+        } catch (error) {
+            setAgeError(error.message);
         }
-        // }
-        // if(event.target.value < 80)
 
-    
-        // if (!(event.target.value > 1 && event.target.value < 80)){
-        //     SetAgeError(true);
-        // }
-        
-            
     }
+
     function userTypedWeightACB(event) {
-        props.onUserChangedWeight(event.target.value);
+        try {
+            props.onUserChangedWeight(event.target.value);
+            setWeightError("");
+        } catch (error) {
+            setWeightError(error.message);
+        }
     }
+
     function userTypedHeightACB(event) {
-        props.onUserChangedHeight(event.target.value);
+        try {
+            props.onUserChangedHeight(event.target.value);
+            setHeightError("");
+        } catch (error) {
+            setHeightError(error.message);
+        }
     }
+    
     function userChooseGenderACB(event) {
         props.onUserChangedGender(event.target.value);
     }
@@ -104,35 +110,50 @@ function renderOptionsCB(opt) {
                             name="age"
                             maxLength="3"
                             placeholder="age"
-                            onBlur={userTypedAgeACB}
+                            onChange={userTypedAgeACB}
                             defaultValue = {props.age}
                             className="input-box"
                         />
+                        {emptyBoxError&&props.age === ""? 
+                        <label className="error-msg"> {"<--"}Age is required!</label> : ""}
                     </div>
-                    {ageError?
-                    <label className="error-msg"> {ageError}</label> : " "}
+                    {ageError !== ""? 
+                    <label className="error-msg">{ageError}</label> : ""}
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <label htmlFor="weight">Weight</label>
                     </td>
+                    
                     <td>
+                        <div>
                         <input type="number" name="weight" maxLength="3"
-                            width="60px" placeholder="kg" onBlur={userTypedWeightACB}
+                            width="60px" placeholder="kg" onChange={userTypedWeightACB}
                             defaultValue = {props.weight} className="input-box" />
+                        {emptyBoxError&&props.weight === ""? 
+                        <label className="error-msg"> {"<--"}Weight is required!</label> : ""}
+                        </div>
+                        {weightError !== ""?
+                    <label className="error-msg">{weightError}</label> : ""}
                     </td>
+
                 </tr>
                 <tr>
                     <td>
                         <label htmlFor="height">Height</label>
                     </td>
                     <td>
+                        <div>
                         <input
                             type="number"  name="height" maxLength="3"
-                            width="60px" placeholder="cm" onBlur={userTypedHeightACB}
-                            defaultValue = {props.height} className="input-box"
-                        />
+                            width="60px" placeholder="cm" onChange={userTypedHeightACB}
+                            defaultValue = {props.height} className="input-box"/>
+                        {emptyBoxError&&props.height === ""? 
+                        <label className="error-msg"> {"<--"}Height is required!</label> : ""}
+                        </div>
+                        {heightError !== ""? 
+                    <label className="error-msg">{heightError}</label> : ""}
                     </td>
                 </tr>
                 <tr className={!props.showLevels?  "hidden" : " "}>
@@ -152,7 +173,7 @@ function renderOptionsCB(opt) {
                     </td>
                     <td>
                         <select name="activity" className="select" onChange={userChooseGoalACB}>
-                            <option>Choose goal</option>
+                            <option>Choose Goal</option>
                             {props.goals?.map(renderOptionsCB)}
                         </select>
                     </td>
@@ -160,7 +181,7 @@ function renderOptionsCB(opt) {
                 <tr>
                     <td></td>
                     <td>
-                        <input type="submit" name="submit" value="Calculate!" className="btn-submit btn-lg" onClick={userSavedACB} />
+                        <input type="submit" name="submit" value={props.showSaveButton? props.showSaveButton : "Calculate!"} className="btn-submit btn-lg" onClick={userSavedACB} />
                     </td>
                 </tr>
             </tbody>
