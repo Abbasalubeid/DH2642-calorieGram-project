@@ -22,14 +22,14 @@ function App(props) {
 
   return(
     <div>
-       <NavbarView />
+      
       <AuthProvider>
        <Routes>
          <Route path='/' element={<SigninView />} />
          <Route path='/signup' element={<SignupView />} />
          <Route
            path='/account'
-           element={ <ProtectedRoute> <Account /> </ProtectedRoute>}/>
+           element={ <ProtectedRoute>  <NavbarView /><Account /> </ProtectedRoute>}/>
           <Route path='home'element={ <ProtectedRoute>
                <Homepage />
              </ProtectedRoute>

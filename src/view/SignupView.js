@@ -46,7 +46,7 @@ return (
               <label htmlFor="password">Re-type password:</label>
               <input type="password" placeholder="**********" onChange={handlePasswordACB} ></input>
               <button  type='submit' className="btn">Sign up</button>
-              <Link to="/login">Already have a account? Sign in</Link>
+              <Link to="/">Already have a account? Sign in</Link>
           </form>
       </div>
   </div>
