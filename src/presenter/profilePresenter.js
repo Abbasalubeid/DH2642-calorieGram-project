@@ -66,6 +66,7 @@ export default function ProfilePresenter(props){
                     showGender = {true}
                     showLevels = {true}
                     showGoals = {true}
+                    showSaveButton = {"Save"}
                     goals ={
                                 [
                                     { value: "maintain", type: "Maintain weight" },

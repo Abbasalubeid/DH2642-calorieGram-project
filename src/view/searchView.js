@@ -173,7 +173,7 @@ function renderOptionsCB(opt) {
                     </td>
                     <td>
                         <select name="activity" className="select" onChange={userChooseGoalACB}>
-                            <option>Choose goal</option>
+                            <option>Choose Goal</option>
                             {props.goals?.map(renderOptionsCB)}
                         </select>
                     </td>
@@ -181,7 +181,7 @@ function renderOptionsCB(opt) {
                 <tr>
                     <td></td>
                     <td>
-                        <input type="submit" name="submit" value="Calculate!" className="btn-submit btn-lg" onClick={userSavedACB} />
+                        <input type="submit" name="submit" value={props.showSaveButton? props.showSaveButton : "Calculate!"} className="btn-submit btn-lg" onClick={userSavedACB} />
                     </td>
                 </tr>
             </tbody>
