@@ -21,13 +21,13 @@ export default function Root(){
     setData(null);
     setError(null);
     let cancelled = false;
-    notifyACB();
+    
 
     function changedAgainACB() { cancelled = true; }
 
     if (promise)
-        promise.then(function saveData(data) { if (!cancelled) setData(data); notifyACB(); }).
-            catch(function saveError(error) { if (!cancelled) setError(error); notifyACB(); });
+        promise.then(function saveData(data) { if (!cancelled) setData(data); }).
+            catch(function saveError(error) { if (!cancelled) setError(error); });
 
     return changedAgainACB;
 }
@@ -40,6 +40,7 @@ function wasCreatedACB() {
 
 React.useEffect(wasCreatedACB, []);
 React.useEffect(promiseHasChangedACB, [promise]);
+React.useEffect(notifyACB, [data, error]);
 
 
 

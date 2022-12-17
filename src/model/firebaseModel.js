@@ -6,9 +6,10 @@ import firebaseConfig from "../firebaseConfig";
 import FitnessModel from "./FitnessModel";
 
 
-const firebaseApp = firebase.initializeApp(firebaseConfig)
-const auth = firebaseApp.auth();
+const app = firebase.initializeApp(firebaseConfig)
 
+const auth = app.auth();
+let datab = getDatabase(app);
 
 function persistedModel() {
     // const model = {};
@@ -49,16 +50,19 @@ function updateFirebaseFromModel(model) {
           
           if(payload.hasOwnProperty('newHeight'))
             set(ref(db, 'currentUser/height'), payload.newHeight)
+          
+          if(payload.hasOwnProperty('newGoals'))
+            set(ref(db, 'currentUser/height'), payload.newGoals)
       }
   }
 
   model.addObserver(persistenceObserverACB);
-}
+ }
 
 
 
-function updateModelFromFirebase(model) {
-  const db = getDatabase();
+ function updateModelFromFirebase(model) {
+  const db = getDatabase(app)
 
   const ageRef = ref(db, 'currentUser/age');
   const genderRef = ref(db, 'currentUser/gender');
@@ -76,7 +80,7 @@ function updateModelFromFirebase(model) {
 }
 
  function writeUserData(age, height, weight) {
-    const db = getDatabase();
+    const db = getDatabase(app);
 
     set(ref(db, 'currentUser/'), {
       age : age,
@@ -86,10 +90,9 @@ function updateModelFromFirebase(model) {
   }
 
   function deleteUserData() {
-    const db = getDatabase();
+    const db = getDatabase(app);
 
     set(ref(db, 'currentUsers/'), null);
-  }
+   }
 
   export {writeUserData, deleteUserData, updateModelFromFirebase, updateFirebaseFromModel, persistedModel, auth}
-

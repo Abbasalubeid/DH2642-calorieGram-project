@@ -44,22 +44,12 @@ export default function ProfilePresenter(props){
     }
 
     function wasCreatedACB() {
-        console.log("profile created!");
         props.model.addObserver(observerACB);
         return function isTakenDownACB() {
             props.model.removeObserver(observerACB);
         };
     }
 
-    function wasCreatedACB() {
-        console.log("profile created!");                           
-        props.model.addObserver(observerACB);
-        return function isTakenDownACB() {                                
-            props.model.removeObserver(observerACB);
-        };
-    }
-
-    React.useEffect(wasCreatedACB, []);
     React.useEffect(wasCreatedACB, []);
 
 
@@ -76,6 +66,7 @@ export default function ProfilePresenter(props){
                     showGender = {true}
                     showLevels = {true}
                     showGoals = {true}
+                    showSaveButton = {"Save"}
                     goals ={
                                 [
                                     { value: "maintain", type: "Maintain weight" },

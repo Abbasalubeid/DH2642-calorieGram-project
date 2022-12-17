@@ -11,6 +11,7 @@ export default function GoalsSearchPresenter(props) {
     const [weight, setWeight] = React.useState(props.model.person.weight);
     const [height, setHeight] = React.useState(props.model.person.height);
     const [gender, setGender] = React.useState(props.model.person.gender);
+    const [goals,  setGoals]  = React.useState(props.model.currentGoal);
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
@@ -73,7 +74,6 @@ export default function GoalsSearchPresenter(props) {
     }
 
     function wasCreatedACB() {
-        console.log("goals created!");                           
         props.model.addObserver(observerACB);
         return function isTakenDownACB() {                                
             props.model.removeObserver(observerACB);

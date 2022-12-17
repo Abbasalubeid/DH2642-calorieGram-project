@@ -57,7 +57,6 @@ export default function BmiPresenter(props) {
     }
 
     function wasCreatedACB() {
-        console.log("bmi pres created!");                           
         props.model.addObserver(observerACB);
         return function isTakenDownACB() {                                
             props.model.removeObserver(observerACB);
