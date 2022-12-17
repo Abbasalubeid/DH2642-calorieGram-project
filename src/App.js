@@ -2,7 +2,7 @@ import React from "react";
 import ProfilePresenter from "./presenter/profilePresenter.js";
 import GoalsSearchPresenter from "./presenter/goalsSearchPresenter.js";
 import BmiPresenter from "./presenter/bmiPresenter.js";
-import  DietPresenter  from "./presenter/dietPresenter.js";
+import DietPresenter  from "./presenter/dietPresenter.js";
 
 import Homepage from "./view/homepage.js";
 import { Route, Routes } from "react-router-dom";
