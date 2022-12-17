@@ -159,7 +159,7 @@ function renderOptionsCB(opt) {
                         </tr>
                         <tr className={!props.showGoals ? "hidden" : " "}>
                             <td>
-                                <label htmlFor="activity">Goal</label>
+                                <label htmlFor="activity" className="label">Goal</label>
                             </td>
                             <td>
                                 <select name="activity" className="select" onChange={userChooseGoalACB}>
