@@ -46,7 +46,6 @@ export default class FitnessModel{
       this.person.age = age;
       const payload = { newAge : age}
       this.notifyObservers(payload);
-      console.log(age);
     }
     else 
       throw new Error("Age must be an integer between 2 and 80");
