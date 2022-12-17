@@ -23,7 +23,6 @@ function App(props) {
   return(
     <div className="banner">
        <NavbarView />
-       <Homepage />
       
       <AuthProvider>
        <Routes>
