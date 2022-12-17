@@ -1,7 +1,7 @@
 export default class FitnessModel{
-  constructor(){
+  constructor(person){
       this.observers = [];
-      this.person = {}
+      this.person = person;
       this.currentActivityLevel = ""
       this.currentGoal = {};
       this.bmi = {};

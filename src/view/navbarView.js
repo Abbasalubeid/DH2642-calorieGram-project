@@ -8,7 +8,7 @@ export default function NavbarView() {
         setSigned(true);
     }
     return <nav className="navbar">
-        <Link to="" className="nav-title nav-home"><img src="CG-withoutbg.png"></img></Link>
+        <Link to="/home" className="nav-title nav-home"><img src="CG-withoutbg.png"></img></Link>
         <a href="" className="nav-toggle">
             <span className="nav-bar"></span>
             <span className="nav-bar"></span>
@@ -23,7 +23,7 @@ export default function NavbarView() {
 
         </ul>
         <div>
-            <a href="/login" className={!signed ? "login-btn" : "hidden"}>Login</a>
+            <a href="/" className={!signed ? "login-btn" : "hidden"}>Login</a>
             <a href="/signup" className={!signed ? "btn" : "hidden"}>Sign up</a>
             <a href="/login" className={signed ? "btn" : "hidden"}>Log out</a>
         </div>
