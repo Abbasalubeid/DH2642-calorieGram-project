@@ -5,11 +5,15 @@ import firebase from 'firebase/compat/app';
 import firebaseConfig from "../firebaseConfig";
 import FitnessModel from "./FitnessModel";
 
+import { UserAuth } from '../AuthContext';
+
 
 const app = firebase.initializeApp(firebaseConfig)
 
 const auth = app.auth();
-let datab = getDatabase(app);
+
+
+console.log(auth._delegate)
 
 function persistedModel() {
 
