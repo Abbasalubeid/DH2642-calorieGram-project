@@ -117,6 +117,7 @@ export default function GoalsSearchPresenter(props) {
                     gender = {gender}
                     height = {height}
                     weight = {weight}
+                    
                 />
             </div>
             <div className={!show ? "goal-info" : "hidden"}>

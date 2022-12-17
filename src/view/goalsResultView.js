@@ -16,8 +16,19 @@ export default function GoalsResultView(props) {
             return <button className="btn anim" value={ret} key={object} onClick={userGoalIsChanged}>{s}</button>
         }
     }
+    
+    //since maintain is a bit of a special case, we check if the string we get starts with "to" which only maintain weight goal starts with then we handle it, otherwise its one of the other 6 goals.
     function userGoalIsChanged(event){
-        props.onUserChangedUserGoals(event.target.value)
+        if (event.target.outerText.substring(0,2) === "To"){
+            const ret = `Maintain weight, ,${event.target.outerText.substring(26,30)}`
+            console.log(ret)
+            props.onUserChangedUserGoals(ret)
+        }
+        else{
+            props.onUserChangedUserGoals(event.target.value)
+        }
+        
+        
     }
     function printFunc(){
         const blob = new Blob([template], {type:"text/plain"})
