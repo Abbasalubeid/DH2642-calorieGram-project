@@ -171,7 +171,7 @@ function renderOptionsCB(opt) {
                         <tr>
                             <td></td>
                             <td>
-                                <input type="submit" name="submit" value={props.showSaveButton ? props.showSaveButton : "Calculate!"} className="btn-submit btn-lg" onClick={userSavedACB} />
+                                <input type="submit" name="submit" value={props.showSaveButton ? props.showSaveButton : "Calculate!"} className="btn" onClick={userSavedACB} />
                             </td>
                         </tr>
                     </tbody>
