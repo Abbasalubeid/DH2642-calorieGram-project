@@ -16,14 +16,13 @@ export default function summaryView(props) {
     age: ${props.age} \n
     weight: ${props.weight} \n
     height:${props.height} \n
-    BMR:  Calories/day \n
+    BMI:  Calories/day \n
     Your activity level is: \n
     your Diet: \n
     Goals:  ${props.goal.weightGoal} (${props.goal.weightPerWeek}) eat:${props.goal.calloriesIntake} Calories\n
     `
     return ( <div>
         <div className="result">
-            {console.log("hhhhh")}
          <h2>Your summmary is the following:</h2><br></br>
          <h3>age:</h3> {props.age} <br></br>
          <h3>weight:</h3> {props.weight} <br></br>

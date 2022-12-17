@@ -30,6 +30,7 @@ export default function GoalsResultView(props) {
         
         
     }
+    /*
     function printFunc(){
         const blob = new Blob([template], {type:"text/plain"})
         const href = URL.createObjectURL(blob)
@@ -40,6 +41,7 @@ export default function GoalsResultView(props) {
         a.click();
         URL.revokeObjectURL(href);
     }
+    */
 
     const template =  `As of ${Date().slice(0,16)} your stats were:
     age: ${props.userInfo.age}
@@ -53,7 +55,7 @@ export default function GoalsResultView(props) {
             <button className="btn anim" onClick={userGoalIsChanged}>To Maintain weight ➡️ Eat {(props.activityResult.BMR)} Calories/day</button>
              {Object.keys(props.activityResult.goals).map(renderGoalsCB)}
         </div>
-        <div><button className = "btn anim" onClick ={printFunc}> Download result </button></div>
+        
      </div>
      );
 }
