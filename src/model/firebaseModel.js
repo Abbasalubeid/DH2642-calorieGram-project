@@ -36,7 +36,7 @@ function persistedModel() {
   }
 
   const db = getDatabase();
-  return get(ref(db, '/currentUser')).then(createModelACB);
+  return get(ref(db)).then(createModelACB);
 }
 
 function updateFirebaseFromModel(model) {
