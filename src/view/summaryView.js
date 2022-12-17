@@ -23,6 +23,7 @@ export default function summaryView(props) {
     `
     return ( <div>
         <div className="result">
+            {console.log("hhhhh")}
          <h2>Your summmary is the following:</h2><br></br>
          <h3>age:</h3> {props.age} <br></br>
          <h3>weight:</h3> {props.weight} <br></br>
