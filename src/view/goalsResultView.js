@@ -16,9 +16,21 @@ export default function GoalsResultView(props) {
             return <button className="btn anim" value={ret} key={object} onClick={userGoalIsChanged}>{s}</button>
         }
     }
+    
+    //since maintain is a bit of a special case, we check if the string we get starts with "to" which only maintain weight goal starts with then we handle it, otherwise its one of the other 6 goals.
     function userGoalIsChanged(event){
-        props.onUserChangedUserGoals(event.target.value)
+        if (event.target.outerText.substring(0,2) === "To"){
+            const ret = `Maintain weight, ,${event.target.outerText.substring(26,30)}`
+            console.log(ret)
+            props.onUserChangedUserGoals(ret)
+        }
+        else{
+            props.onUserChangedUserGoals(event.target.value)
+        }
+        
+        
     }
+    /*
     function printFunc(){
         const blob = new Blob([template], {type:"text/plain"})
         const href = URL.createObjectURL(blob)
@@ -29,6 +41,7 @@ export default function GoalsResultView(props) {
         a.click();
         URL.revokeObjectURL(href);
     }
+    */
 
     const template =  `As of ${Date().slice(0,16)} your stats were:
     age: ${props.userInfo.age}
@@ -42,7 +55,7 @@ export default function GoalsResultView(props) {
             <button className="btn anim" onClick={userGoalIsChanged}>To Maintain weight ➡️ Eat {(props.activityResult.BMR)} Calories/day</button>
              {Object.keys(props.activityResult.goals).map(renderGoalsCB)}
         </div>
-        <div><button className = "btn anim" onClick ={printFunc}> Download result </button></div>
+        
      </div>
      );
 }

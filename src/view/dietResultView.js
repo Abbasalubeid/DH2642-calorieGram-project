@@ -5,12 +5,15 @@ export default function DietResultView(props){
     function renderDietCB(object){
         // 'calorie' is an extra/unused property returned by the API
         if(object != "calorie"){
+        const ret =`${(props.macros[object]["protein"]).toFixed(0)}g,${(props.macros[object]["carbs"]).toFixed(0)}g,${(props.macros[object]["carbs"]).toFixed(0)}g`
         return (
-            <tr key={object}>
+            <tr key={object} >
                 <td>
-                <label> {object + " diet"}
-                        <input type="radio" value={object + " diet"}
-                            className="container gender" />
+                <label key={object} > {object + " diet"}
+                        <input type="radio" value={ret} 
+                            onClick={userDietIsChanged}
+                            className="container gender"
+                        />
                         <span className="checkmark"></span>
                  </label>
                 </td>
@@ -27,6 +30,10 @@ export default function DietResultView(props){
             </tr>
         )
         }  
+    }
+    function userDietIsChanged(event){
+        console.log(event.target.value)
+
     }
         
     return(
