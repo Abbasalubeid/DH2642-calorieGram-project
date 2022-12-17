@@ -74,15 +74,15 @@ function renderOptionsCB(opt) {
                     <tbody>
                         <tr className={!props.showGender ? "hidden" : " "}>
                             <td className="column">
-                                <label>Gender</label>
+                                <label className="label">Gender</label>
                             </td>
                             <td>
-                                <label className="container gender">Male
+                                <label className="container gender label">Male
                                     <input type="radio" value="male" name="gender"
                                         onInput={userChooseGenderACB} />
                                     <span className="checkmark"></span>
                                 </label>
-                                <label className="container gender">Female
+                                <label className="container gender label">Female
                                     <input type="radio" value="female" name="gender"
                                         onInput={userChooseGenderACB} />
                                     <span className="checkmark"></span>
@@ -91,7 +91,7 @@ function renderOptionsCB(opt) {
                         </tr>
                         <tr>
                             <td>
-                                <label htmlFor="age">Age</label>
+                                <label htmlFor="age" className="label">Age</label>
                             </td>
                             <td>
                                 <div>
@@ -113,7 +113,7 @@ function renderOptionsCB(opt) {
                         </tr>
                         <tr>
                             <td>
-                                <label htmlFor="weight">Weight</label>
+                                <label htmlFor="weight" className="label">Weight</label>
                             </td>
 
                             <td>
@@ -131,7 +131,7 @@ function renderOptionsCB(opt) {
                         </tr>
                         <tr>
                             <td>
-                                <label htmlFor="height">Height</label>
+                                <label htmlFor="height" className="label">Height</label>
                             </td>
                             <td>
                                 <div>
@@ -148,7 +148,7 @@ function renderOptionsCB(opt) {
                         </tr>
                         <tr className={!props.showLevels ? "hidden" : " "}>
                             <td >
-                                <label htmlFor="activity">Activity</label>
+                                <label htmlFor="activity" className="label">Activity</label>
                             </td>
                             <td>
                                 <select name="activity" className="select" onChange={userChooseLevelACB}>
@@ -159,7 +159,7 @@ function renderOptionsCB(opt) {
                         </tr>
                         <tr className={!props.showGoals ? "hidden" : " "}>
                             <td>
-                                <label htmlFor="activity">Goal</label>
+                                <label htmlFor="activity" className="label">Goal</label>
                             </td>
                             <td>
                                 <select name="activity" className="select" onChange={userChooseGoalACB}>

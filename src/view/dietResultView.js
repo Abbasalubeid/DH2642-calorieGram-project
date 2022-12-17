@@ -1,4 +1,5 @@
 import "../css/dietResult.css"
+import "../css/bmiSearch.css"
 export default function DietResultView(props){
 
     function renderDietCB(object){
@@ -6,7 +7,13 @@ export default function DietResultView(props){
         if(object != "calorie"){
         return (
             <tr key={object}>
-                <td className="diet-col1">{object + " diet"}</td>
+                <td>
+                <label> {object + " diet"}
+                        <input type="radio" value={object + " diet"}
+                            className="container gender" />
+                        <span className="checkmark"></span>
+                 </label>
+                </td>
                 <td className="diet-col dtext">Protein</td>
                 <td className="diet-col dstate">
                         <span></span>
@@ -24,7 +31,7 @@ export default function DietResultView(props){
         
     return(
         <div className="diet-row">
-            {/* Click to choose and save a diet plan */}
+            Click to choose and save a diet plan
             <table>
                 <tbody>
                     {Object.keys(props.macros).map(renderDietCB)}

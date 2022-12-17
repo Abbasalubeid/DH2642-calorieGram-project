@@ -40,6 +40,12 @@
   left: 0;
   transform: translateY(-50%);
 }
+/* .buttons{
+  cursor: pointer;
+}
+.buttons:before{
+  content: " Click"
+} */
 
 .dtext {
   background-color: #00b4d8;
