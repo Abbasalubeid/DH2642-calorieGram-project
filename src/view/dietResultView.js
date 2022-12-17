@@ -9,9 +9,11 @@ export default function DietResultView(props){
         return (
             <tr key={object} >
                 <td>
-                <label key={object} onClick={userDietIsChanged}> {object + " diet"}
-                        <input type="radio" value={ret}
-                            className="container gender"/>
+                <label key={object} > {object + " diet"}
+                        <input type="radio" value={ret} 
+                            onClick={userDietIsChanged}
+                            className="container gender"
+                        />
                         <span className="checkmark"></span>
                  </label>
                 </td>
