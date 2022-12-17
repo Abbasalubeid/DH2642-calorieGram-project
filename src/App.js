@@ -23,13 +23,15 @@ function App(props) {
   return(
     <div className="banner">
        <NavbarView />
+       <Homepage />
+      
       <AuthProvider>
        <Routes>
          <Route path='/' element={<SigninView />} />
          <Route path='/signup' element={<SignupView />} />
          <Route
            path='/account'
-           element={ <ProtectedRoute>  <NavbarView /><Account /> </ProtectedRoute>}/>
+           element={ <ProtectedRoute>  <Account /> </ProtectedRoute>}/>
           <Route path='home'element={ <ProtectedRoute>
                <Homepage />
              </ProtectedRoute>
