@@ -115,10 +115,10 @@ export default function BmiPresenter(props) {
                     weight = {weight}
                 />
             </div>
-            <div className={!show ? "bmi-info" : "bmi-info-result"}>
+            <div className={data ? "bmi-info-result" : "hidden"}>
                 <CustomInfo />
             </div>
-            <div className={show ? "bmi-result" : "hidden"}>
+            <div className={!show ? "hidden" : "bmi-result "}>
                 {promiseNoData({ promise, data, error }) ||
                 
                     <BmiResultview

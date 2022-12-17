@@ -8,11 +8,11 @@ export default function DietResultView(props){
         return (
             <tr key={object}>
                 <td>
-                <label> {object + " diet"}
-                        <input type="radio" value={object + " diet"}
-                            className="container gender" />
+                    <label className="container label">{object + " diet"}
+                        <input type="radio"  name="food"
+                            />
                         <span className="checkmark"></span>
-                 </label>
+                    </label>
                 </td>
                 <td className="diet-col dtext">Protein</td>
                 <td className="diet-col dstate">
@@ -31,7 +31,7 @@ export default function DietResultView(props){
         
     return(
         <div className="diet-row">
-            Click to choose and save a diet plan
+            <h3>Click to choose and save a diet plan</h3>
             <table>
                 <tbody>
                     {Object.keys(props.macros).map(renderDietCB)}
