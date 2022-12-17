@@ -9,7 +9,9 @@ import { Route, Routes } from "react-router-dom";
 import NavbarView from "./view/navbarView.js";
 import "./css/App.css";
 
-import { AuthProvider } from "./AuthContext.js";
+import { AuthProvider } from  "./model/firebaseModel";
+
+
 
 import SigninView from './view/SigninView';
 import SignupView from './view/SignupView';

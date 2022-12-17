@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserAuth } from '../AuthContext';
+import { UserAuth } from  "../model/firebaseModel";
 
 export default function  Account () {
   const { user, logout } = UserAuth();

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
- import { UserAuth } from '../AuthContext';
+ import { UserAuth } from  '../model/firebaseModel';
  import "../css/login.css";
- import { AuthProvider } from '../AuthContext';
+ import { AuthProvider } from  '../model/firebaseModel';
+
 
 export default function Signin()  {
   const [email, setEmail] = useState('');

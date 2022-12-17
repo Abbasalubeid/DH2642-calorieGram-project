@@ -1,19 +1,71 @@
 import { getDatabase, ref, set, onValue, get } from "firebase/database";
+
+import { createContext, useContext, useEffect, useState } from 'react';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from 'firebase/auth';
 import "firebase/auth"
 import 'firebase/compat/auth';
 import firebase from 'firebase/compat/app';
 import firebaseConfig from "../firebaseConfig";
 import FitnessModel from "./FitnessModel";
 
-import { UserAuth } from '../AuthContext';
 
 
 const app = firebase.initializeApp(firebaseConfig)
 
 const auth = app.auth();
 
+// från här
 
-console.log(auth._delegate)
+
+const UserContext = createContext();
+
+  function AuthProvider  ({ children }) {
+  const [user, setUser] = useState({});
+
+  const createUser = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+   const signIn = (email, password) =>  {
+    return signInWithEmailAndPassword(auth, email, password)
+   }
+
+  function logout  () {
+      return signOut(auth)
+  }
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+     console.log(currentUser.email);
+      setUser(currentUser);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  return (
+    
+    <UserContext.Provider value={{ createUser, user, logout, signIn }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
+
+ function UserAuth  () {
+  return useContext(UserContext);
+};
+
+
+// export{UserAuth, AuthProvider}
+
+// till här
+
 
 function persistedModel() {
 
@@ -81,15 +133,15 @@ function updateFirebaseFromModel(model) {
   const goalsRef = ref(db, 'goals');
 
 
-  onValue(ageRef, function ageIsChanged (snapshot) { model.setAge(snapshot.val()); console.log("1"); console.log(model.person);})
+  onValue(ageRef, function ageIsChanged (snapshot) { model.setAge(snapshot.val()); })
 
-  onValue(genderRef, function genderIsChanged (snapshot) {  model.setGender(snapshot.val());  console.log("2"); console.log(model.person);})
+  onValue(genderRef, function genderIsChanged (snapshot) {  model.setGender(snapshot.val()); })
 
-  onValue(heightRef, function heightIsChanged (snapshot) { model.setHeight(snapshot.val());  console.log("3");  console.log(model.person);})
+  onValue(heightRef, function heightIsChanged (snapshot) { model.setHeight(snapshot.val());  })
 
-  onValue(weightRef, function weightIsChanged (snapshot) {   model.setWeight(snapshot.val()); console.log("4"); console.log(model.person);})
+  onValue(weightRef, function weightIsChanged (snapshot) {   model.setWeight(snapshot.val()); })
 
-  onValue(goalsRef, function goalsIsChanged (snapshot) {   model.setUserGoal(snapshot.val()); console.log("5"); console.log(model.currentGoals);})
+  onValue(goalsRef, function goalsIsChanged (snapshot) {   model.setUserGoal(snapshot.val()); })
   
 
 }
@@ -110,4 +162,4 @@ function updateFirebaseFromModel(model) {
     set(ref(db, 'currentUsers/'), null);
    }
 
-  export {writeUserData, deleteUserData, updateModelFromFirebase, updateFirebaseFromModel, persistedModel, auth}
+  export {UserAuth, AuthProvider,writeUserData, deleteUserData, updateModelFromFirebase, updateFirebaseFromModel, persistedModel, auth}
