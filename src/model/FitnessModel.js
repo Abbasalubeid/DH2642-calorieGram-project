@@ -1,9 +1,9 @@
 export default class FitnessModel{
-  constructor(person){
+  constructor(person, goal){
       this.observers = [];
       this.person = person;
       this.currentActivityLevel = ""
-      this.currentGoal = {};
+      this.currentGoal = goal;
       this.bmi = {};
   }
 
@@ -49,7 +49,6 @@ export default class FitnessModel{
     }
     else 
       throw new Error("Age must be an integer between 2 and 80");
-
   }
 
   setWeight(weight){
@@ -77,16 +76,12 @@ export default class FitnessModel{
    }
 
   setUserGoal(goal){
-      const goals = goal.split(",");        
+      const goals = (goal.toString()).split(",");
       this.currentGoal.weightGoal = goals[0];
       this.currentGoal.weightPerWeek = goals[1];
       this.currentGoal.caloriesIntake = goals[2];
 
-      const payload = {
-        newWeightGoal : goals[0],
-        newWeightPerWeek : goals[1],
-        newCaloriesIntake : goals[2]
-      }
+      const payload = { newGoals : this.currentGoal}
       this.notifyObservers(payload);
   }
 }

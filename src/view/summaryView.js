@@ -20,7 +20,7 @@ export default function summaryView(props) {
     BMI:\n
     Your activity level is: \n
     your Diet: \n
-    Goals:  \n
+    Goals:  ${props.goal.weightGoal} (${props.goal.weightPerWeek}) eat:${props.goal.calloriesIntake} Calories\n
     `
     return ( <div>
         <div className="result">
