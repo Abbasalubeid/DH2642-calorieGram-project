@@ -7,8 +7,7 @@ export default function SummaryPresenter(props){
     const [weight, setHeight] = React.useState(props.model.person.weight);
     const [height, setheight] = React.useState(props.model.person.height);
     const [gender, setGender] = React.useState(props.model.person.gender);
-    const [weightGoal, setWeightGoal] = React.useState(props.model.currentGoal);
-    console.log(weightGoal)
+    const [goal, setGoals] = React.useState(props.model.currentGoal);
     //const [, reRender] = React.useState();
 
 
@@ -20,6 +19,7 @@ export default function SummaryPresenter(props){
                     gender = {gender}
                     height = {height}
                     weight = {weight}
+                    goal= {goal}
                 />
             </div>
            
