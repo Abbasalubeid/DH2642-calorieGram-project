@@ -49,7 +49,6 @@ export default class FitnessModel{
     }
     else 
       throw new Error("Age must be an integer between 2 and 80");
-
   }
 
   setWeight(weight){
@@ -82,11 +81,7 @@ export default class FitnessModel{
       this.currentGoal.weightPerWeek = goals[1];
       this.currentGoal.caloriesIntake = goals[2];
 
-      const payload = {
-        newWeightGoal : goals[0],
-        newWeightPerWeek : goals[1],
-        newCaloriesIntake : goals[2]
-      }
+      const payload = { newGoals : goal}
       this.notifyObservers(payload);
   }
 }

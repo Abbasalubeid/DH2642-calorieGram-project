@@ -50,6 +50,9 @@ function updateFirebaseFromModel(model) {
           
           if(payload.hasOwnProperty('newHeight'))
             set(ref(db, 'currentUser/height'), payload.newHeight)
+          
+          if(payload.hasOwnProperty('newGoals'))
+            set(ref(db, 'currentUser/height'), payload.newHeight)
       }
   }
 
