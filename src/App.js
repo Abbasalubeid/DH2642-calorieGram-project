@@ -2,8 +2,8 @@ import React from "react";
 import ProfilePresenter from "./presenter/profilePresenter.js";
 import GoalsSearchPresenter from "./presenter/goalsSearchPresenter.js";
 import BmiPresenter from "./presenter/bmiPresenter.js";
-import  DietPresenter  from "./presenter/dietPresenter.js";
-
+import DietPresenter  from "./presenter/dietPresenter.js";
+import SummaryPresenter from "./presenter/summaryPresenter.js";
 import Homepage from "./view/homepage.js";
 import { Route, Routes } from "react-router-dom";
 import NavbarView from "./view/navbarView.js";
@@ -21,8 +21,8 @@ import ProtectedRoute from './ProtectedRoute';
 function App(props) {
 
   return(
-    <div>
-      
+    <div className="banner">
+       <NavbarView />
       <AuthProvider>
        <Routes>
          <Route path='/' element={<SigninView />} />
@@ -59,6 +59,12 @@ function App(props) {
              </ProtectedRoute>
            }
          />
+         <Route 
+            path="summary"
+            element={
+            <SummaryPresenter model={props.model} />
+            }
+          />
          <Route
            path='diet'
            element={

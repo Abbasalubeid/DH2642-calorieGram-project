@@ -5,43 +5,49 @@ import "../css/goalsSearch.css";
 
 export default function SearchView(props) {
 
-    const [ageError, SetAgeError] = React.useState(false);
-    const [heightError, SetHeightError] = React.useState(false);
-    const [weightError, SetWeightError] = React.useState(false);
-    
+    const [ageError, setAgeError] = React.useState("");
+    const [heightError, setHeightError] = React.useState("");
+    const [weightError, setWeightError] = React.useState("");
+    const [emptyBoxError, setEmptyBoxError] =  React.useState("");
 
     function userSavedACB(event) {
         event.preventDefault();
-        props.onUserSearched();
-    }
-    function userTypedAgeACB(event) {
-
-        if(!event.target.value || (event.target.value > 1 && event.target.value < 80)){
-            props.onUserChangedAge(event.target.value);
-            SetAgeError(false);
+        if(props.age === "" || props.height === "" || props.weight === ""){
+            setEmptyBoxError(true);
             return;
         }
+        props.onUserSearched();
+    }
 
-        if ((event.target.value < 1)){
+    function userTypedAgeACB(event) {
+
+        try {
             props.onUserChangedAge(event.target.value);
-            SetAgeError("Age cannot be less than 1");
+            setAgeError("");
+        } catch (error) {
+            setAgeError(error.message);
         }
-        // }
-        // if(event.target.value < 80)
 
-    
-        // if (!(event.target.value > 1 && event.target.value < 80)){
-        //     SetAgeError(true);
-        // }
-        
-            
     }
+
     function userTypedWeightACB(event) {
-        props.onUserChangedWeight(event.target.value);
+        try {
+            props.onUserChangedWeight(event.target.value);
+            setWeightError("");
+        } catch (error) {
+            setWeightError(error.message);
+        }
     }
+
     function userTypedHeightACB(event) {
-        props.onUserChangedHeight(event.target.value);
+        try {
+            props.onUserChangedHeight(event.target.value);
+            setHeightError("");
+        } catch (error) {
+            setHeightError(error.message);
+        }
     }
+    
     function userChooseGenderACB(event) {
         props.onUserChangedGender(event.target.value);
     }
@@ -63,112 +69,117 @@ function renderOptionsCB(opt) {
 
     return (
         <div>
-           
-            <div className="Activity-per-week-info">
-                <div className={!props.showActivityPerWeekInfo ? "hidden" : " "}>
-                    By choosing how many times you intend to train per week you will be presented
-                    with a set of goals to achieve. <br></br>
-                    Each set has first the main goal which can vary from mild weight loss
-                    to extreme weight gain, then amount of calories you need to take daily to achieve
-                    that goal.
-                </div>
-            </div>
             <form>
-                   <table>
-            <tbody>
-                <tr className={!props.showGender?  "hidden" : " "}>
-                    <td className="column">
-                        <label>Gender</label>
-                    </td>
-                    <td>
-                        <label className="container gender">Male
-                            <input type="radio" value="male" name="gender"
-                                onInput={userChooseGenderACB} />
-                            <span className="checkmark"></span>
-                        </label>
-                        <label className="container gender">Female
-                            <input type="radio" value="female" name="gender"
-                                onInput={userChooseGenderACB} />
-                            <span className="checkmark"></span>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label htmlFor="age">Age</label>
-                    </td>
-                    <td>
-                    <div>
-                        <input
-                            type="number"
-                            name="age"
-                            maxLength="3"
-                            placeholder="age"
-                            onBlur={userTypedAgeACB}
-                            defaultValue = {props.age}
-                            className="input-box"
-                        />
-                    </div>
-                    {ageError?
-                    <label className="error-msg"> {ageError}</label> : " "}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label htmlFor="weight">Weight</label>
-                    </td>
-                    <td>
-                        <input type="number" name="weight" maxLength="3"
-                            width="60px" placeholder="kg" onBlur={userTypedWeightACB}
-                            defaultValue = {props.weight} className="input-box" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label htmlFor="height">Height</label>
-                    </td>
-                    <td>
-                        <input
-                            type="number"  name="height" maxLength="3"
-                            width="60px" placeholder="cm" onBlur={userTypedHeightACB}
-                            defaultValue = {props.height} className="input-box"
-                        />
-                    </td>
-                </tr>
-                <tr className={!props.showLevels?  "hidden" : " "}>
-                    <td >
-                        <label htmlFor="activity">Activity</label>
-                    </td>
-                    <td>
-                        <select name="activity" className="select" onChange={userChooseLevelACB}>
-                            <option>Choose Activity</option>
-                            {props.levels?.map(renderOptionsCB)}
-                        </select>
-                    </td>
-                </tr>
-                <tr className={!props.showGoals?  "hidden" : " "}>
-                    <td>
-                        <label htmlFor="activity">Goal</label>
-                    </td>
-                    <td>
-                        <select name="activity" className="select" onChange={userChooseGoalACB}>
-                            <option>Choose goal</option>
-                            {props.goals?.map(renderOptionsCB)}
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <input type="submit" name="submit" value="Calculate!" className="btn-submit btn-lg" onClick={userSavedACB} />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        </form>
-        
-            
-    </div>
-);
+                <table>
+                    <tbody>
+                        <tr className={!props.showGender ? "hidden" : " "}>
+                            <td className="column">
+                                <label>Gender</label>
+                            </td>
+                            <td>
+                                <label className="container gender">Male
+                                    <input type="radio" value="male" name="gender"
+                                        onInput={userChooseGenderACB} />
+                                    <span className="checkmark"></span>
+                                </label>
+                                <label className="container gender">Female
+                                    <input type="radio" value="female" name="gender"
+                                        onInput={userChooseGenderACB} />
+                                    <span className="checkmark"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label htmlFor="age">Age</label>
+                            </td>
+                            <td>
+                                <div>
+                                    <input
+                                        type="number"
+                                        name="age"
+                                        maxLength="3"
+                                        placeholder="age"
+                                        onChange={userTypedAgeACB}
+                                        defaultValue={props.age}
+                                        className="input-box"
+                                    />
+                                    {emptyBoxError && props.age === "" ?
+                                        <label className="error-msg"> {"<--"}Age is required!</label> : ""}
+                                </div>
+                                {ageError !== "" ?
+                                    <label className="error-msg">{ageError}</label> : ""}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label htmlFor="weight">Weight</label>
+                            </td>
+
+                            <td>
+                                <div>
+                                    <input type="number" name="weight" maxLength="3"
+                                        width="60px" placeholder="kg" onChange={userTypedWeightACB}
+                                        defaultValue={props.weight} className="input-box" />
+                                    {emptyBoxError && props.weight === "" ?
+                                        <label className="error-msg"> {"<--"}Weight is required!</label> : ""}
+                                </div>
+                                {weightError !== "" ?
+                                    <label className="error-msg">{weightError}</label> : ""}
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <label htmlFor="height">Height</label>
+                            </td>
+                            <td>
+                                <div>
+                                    <input
+                                        type="number" name="height" maxLength="3"
+                                        width="60px" placeholder="cm" onChange={userTypedHeightACB}
+                                        defaultValue={props.height} className="input-box" />
+                                    {emptyBoxError && props.height === "" ?
+                                        <label className="error-msg"> {"<--"}Height is required!</label> : ""}
+                                </div>
+                                {heightError !== "" ?
+                                    <label className="error-msg">{heightError}</label> : ""}
+                            </td>
+                        </tr>
+                        <tr className={!props.showLevels ? "hidden" : " "}>
+                            <td >
+                                <label htmlFor="activity">Activity</label>
+                            </td>
+                            <td>
+                                <select name="activity" className="select" onChange={userChooseLevelACB}>
+                                    <option>Choose Activity</option>
+                                    {props.levels?.map(renderOptionsCB)}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr className={!props.showGoals ? "hidden" : " "}>
+                            <td>
+                                <label htmlFor="activity">Goal</label>
+                            </td>
+                            <td>
+                                <select name="activity" className="select" onChange={userChooseGoalACB}>
+                                    <option>Choose Goal</option>
+                                    {props.goals?.map(renderOptionsCB)}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="submit" name="submit" value={props.showSaveButton ? props.showSaveButton : "Calculate!"} className="btn" onClick={userSavedACB} />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+
+
+        </div >
+    );
        
 }

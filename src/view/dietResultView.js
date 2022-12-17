@@ -6,16 +6,16 @@ export default function DietResultView(props){
         if(object != "calorie"){
         return (
             <tr key={object}>
-                <td className="diet-col1 text">{object + " diet"}</td>
-                <td className="diet-col text">Protein</td>
-                <td className="diet-col state">
+                <td className="diet-col1">{object + " diet"}</td>
+                <td className="diet-col dtext">Protein</td>
+                <td className="diet-col dstate">
                         <span></span>
                     {Number(props.macros[object]["protein"]).toFixed(0) + "g"}</td>
-                <td className="diet-col text">Carbs</td>
-                <td className="diet-col state"><span></span>
+                <td className="diet-col dtext">Carbs</td>
+                <td className="diet-col dstate"><span></span>
                     {Number(props.macros[object]["carbs"]).toFixed(0) + "g"}</td>
-                <td className="diet-col text">Fat</td>
-                <td className="diet-col state"><span></span>
+                <td className="diet-col dtext">Fat</td>
+                <td className="diet-col dstate"><span></span>
                     {Number(props.macros[object]["fat"]).toFixed(0) + " g"}</td>
             </tr>
         )

@@ -1,9 +1,9 @@
 export default class FitnessModel{
-  constructor(person){
+  constructor(person, goal){
       this.observers = [];
       this.person = person;
       this.currentActivityLevel = ""
-      this.currentGoal = {};
+      this.currentGoal = goal;
       this.bmi = {};
   }
 
@@ -31,79 +31,57 @@ export default class FitnessModel{
       }
     }
 
-  setAge(age){
-    // Undefined when deleted in the UI
-    if(!age){
-      this.person.age = null;
-      const payload = { newAge : +age}
-      this.notifyObservers(payload);
-    }
-      if(age > 1 && age < 80)
-          if(Number.isInteger(+age) && age !== this.person.age){
-              this.person.age = +age;
-              const payload = { newAge : +age}
-              this.notifyObservers(payload);
-          }
-              
-  }
-
   setGender(gender){
       if (gender !== this.person.gender){
           this.person.gender = gender;
           const payload = { newGender : gender}
           this.notifyObservers(payload);
       }
-      
+  }
 
+  setAge(age){
+    // API restrictions
+    // Undefined when deleted in the UI
+    if (!age || ((age >= 2 && age <= 80) && Number.isInteger(+age))){
+      this.person.age = age;
+      const payload = { newAge : age}
+      this.notifyObservers(payload);
+    }
+    else 
+      throw new Error("Age must be an integer between 2 and 80");
   }
 
   setWeight(weight){
-    // Undefined when deleted in the UI
-    if(!weight){
-      this.person.weight = null;
-      const payload = { newWeight : +weight}
+    // API restrictions
+    // Undefined when deleted in the UI  
+    if(!weight || (weight <= 160 && weight >=  40)){
+      this.person.weight = weight;
+      const payload = { newWeight : weight}
       this.notifyObservers(payload);
     }
-      // API restrictions
-      if(weight > 160 || weight <  40)
-        return;
-      else if (weight !== this.person.weight){
-          this.person.weight = +weight;
-          const payload = { newWeight : +weight}
-          this.notifyObservers(payload);
-      }
+    else
+      throw new Error("Weight must be an integer between 40 and 160");
   }
 
   setHeight(height){
-    // Undefined when deleted in the UI
-    if(!height){
-      this.person.weight = null;
-      const payload = { newHeight : height}
-      this.notifyObservers(payload);
-    }
-    
-      // API restrictions
-   if(height < 130 || height > 230)   
-   return;
-  //  throw Error("Weight must be between 40 kg to 160 kg");
-   else if (height !== this.person.height){
-      this.person.height = +height;  
-      const payload = { newHeight : +height}
-      this.notifyObservers(payload); 
+   // API restrictions
+   // Undefined when deleted in the UI
+   if((!height ||height > 130 && height < 230)) {
+    this.person.height = height;  
+    const payload = { newHeight : height}
+    this.notifyObservers(payload); 
    }
-  }
+   else
+      throw new Error("Height must be an integer between 130 and 230");
+   }
 
   setUserGoal(goal){
-      const goals = goal.split(",");        
+      const goals = (goal.toString()).split(",");
       this.currentGoal.weightGoal = goals[0];
       this.currentGoal.weightPerWeek = goals[1];
       this.currentGoal.caloriesIntake = goals[2];
 
-      const payload = {
-        newWeightGoal : goals[0],
-        newWeightPerWeek : goals[1],
-        newCaloriesIntake : goals[2]
-      }
+      const payload = { newGoals : this.currentGoal}
       this.notifyObservers(payload);
   }
 }

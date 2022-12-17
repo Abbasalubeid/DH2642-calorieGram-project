@@ -14,6 +14,7 @@ export default function BmiPresenter(props) {
     const [error, setError] = React.useState(null);
     const [searchParams, setSearchParams] = React.useState({});
     const [show, setShow] = React.useState(false);
+    // const [style, setStyle] = React.useState("");
 
 
 
@@ -57,16 +58,42 @@ export default function BmiPresenter(props) {
     }
 
     function wasCreatedACB() {
-        console.log("bmi pres created!");                           
         props.model.addObserver(observerACB);
         return function isTakenDownACB() {                                
             props.model.removeObserver(observerACB);
         };
     }
 
+    // function chooseColor(color) {
+    //     if(data){
+    //         if(data.health === "Normal"){
+    //             setStyle("normal");
+    //         }
+    //         if(data.health === "Normal"){
+    //             setStyle("normal");
+    //         }
+    //         if(data.health === "Normal"){
+    //             setStyle("normal");
+    //         }
+    //         if(data.health === "Normal"){
+    //             setStyle("normal");
+    //         }
+    //         if(data.health === "Normal"){
+    //             setStyle("normal");
+    //         }
+    //         if(data.health === "Normal"){
+    //             setStyle("normal");
+    //         }
+    //         else {
+    //             setStyle("");
+    //         }
+    //     }
+    // }
+
 
     React.useEffect(wasCreatedACB, []);
     React.useEffect(promiseHasChangedACB, [promise]);
+    // React.useEffect(chooseColor, [data]);
 
 
     return (
@@ -133,7 +160,7 @@ function CustomInfo({ href, children, ...props }) {
                     of Units, and you'll see both kJ and kcal on nutrition labels. 4.2kJ is equivalent to approximately 1kcal.
                 </p>
             </div>
-            <label for="check">Read More</label>
+            <label htmlFor="check">Read More</label>
         </div >
     )
 }

@@ -7,9 +7,11 @@
   align-items: center;
   font-size: 1.2rem;
 }
-
+.diet-row table{
+  width: 100%;
+}
 .diet-col {
-  flex-basis: 14.28%;
+  flex-basis: 25%;
   text-align: center;
   padding: 22px 18px;
   height: 100%;
@@ -19,41 +21,39 @@
 
 .diet-col1{
     text-align: center;
-    padding: 14.5px 10px;
+    padding: 14px 10px;
     position: relative;
-    width: 100px;
+    width: 0px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    background-color: #4177dc;
+    color: #fff;
 }
 
 .diet-col span {
   width: 0;
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
-  border-left: 10px solid #4177dc;
+  border-left: 10px solid #00b4d8;
   position: absolute;
   top: 50%;
   left: 0;
   transform: translateY(-50%);
 }
 
-.text {
-  background-color: #4177dc;
+.dtext {
+  background-color: #00b4d8;
   color: white;
 }
 
-.state {
+.dstate {
   font-weight: bold;
   font-size: 1.2em;
-  background-color: #a5e2ff;
+  background-color: #b9fbc0;
 }
 
 .diet-row .diet-col:nth-child(7) {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 
-}
-
-.error-msg {
-  color : red;
 }

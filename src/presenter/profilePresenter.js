@@ -15,8 +15,11 @@ export default function ProfilePresenter(props){
     }
 
 
-    function userSearchedACB(){
-
+    function userSavedACB(){
+        props.model.setAge(age)
+        props.model.setWeight(weight)
+        props.model.setHeight(height)
+        props.model.setGender(gender)
     }
 
     function ageIsChangedACB(age) {
@@ -35,31 +38,13 @@ export default function ProfilePresenter(props){
         props.model.setGender(gender)
     }
 
-    function activityLevelIsChangedACB(level) {
-
-    }
-
-    function goalIsChangedACB(goal) {
-
-    }
-
     function wasCreatedACB() {
-        console.log("profile created!");
         props.model.addObserver(observerACB);
         return function isTakenDownACB() {
             props.model.removeObserver(observerACB);
         };
     }
 
-    function wasCreatedACB() {
-        console.log("profile created!");                           
-        props.model.addObserver(observerACB);
-        return function isTakenDownACB() {                                
-            props.model.removeObserver(observerACB);
-        };
-    }
-
-    React.useEffect(wasCreatedACB, []);
     React.useEffect(wasCreatedACB, []);
 
 
@@ -69,32 +54,10 @@ export default function ProfilePresenter(props){
                 <SearchView onUserChangedAge={ageIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
                     onUserChangedHeight={heightIsChangedACB}
-                    onUserSearched={userSearchedACB}
                     onUserChangedGender={genderIsChangedACB}
-                    onUserChooseLevel={activityLevelIsChangedACB}
-                    onUserChooseGoal = {goalIsChangedACB}
+                    onUserSearched={userSavedACB}
                     showGender = {true}
-                    showLevels = {true}
-                    showGoals = {true}
-                    goals ={
-                                [
-                                    { value: "maintain", type: "Maintain weight" },
-                                    { value: "mildlose", type: "Mild weight loss 0.25 kg/week" },
-                                    { value: "weightlose", type: "Weight loss 0.5 kg/week" },
-                                    { value: "extremelose", type: "Extreme Weight loss 1 kg/week" },
-                                    { value: "mildgain", type: "Mild weight gain 0.25 kg/week" },
-                                    { value: "weightgain", type: "Weight gain 0.5 kg/week" },
-                                    { value: "extremegain", type: "Extreme weight gain 1 kg/week" }
-                                ]}
-                     levels ={
-                                [
-                                    { value: "1", type: "Sedentary: little or no exercise" },
-                                    { value: "2", type: "Light Exercise (1-2 days/week)" },
-                                    { value: "3", type: "Exercise 4-5 times/week" },
-                                    { value: "4", type: "Daily exercise or intense exercise 3-4 times/week" },
-                                    { value: "5", type: "Intense exercise 6-7 times/week" },
-                                    { value: "6", type: "Very intense exercise daily, or physical job" },
-                                ]}
+                    showSaveButton = {"Save"}
                     age = {age}
                     gender = {gender}
                     height = {height}
