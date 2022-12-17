@@ -83,6 +83,9 @@ export default function DietPresenter(props){
         };
     }
     
+    function UserChangedDiet(diet) {
+        props.model.setUserDiet(diet)
+    }
 
     React.useEffect(wasCreatedACB, []);
     React.useEffect(promiseHasChangedACB, [promise]);
@@ -138,7 +141,9 @@ export default function DietPresenter(props){
             <div className={show ? "diet-result" : "hidden"}>
                 {promiseNoData({ promise, data, error }) ||
                     <DietResultView
-                        macros={data}>
+                        macros={data}
+                        onUserChangedDiet={UserChangedDiet}
+                        >
                     </DietResultView>
                 }
             </div>

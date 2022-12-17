@@ -13,7 +13,7 @@ export default function DietResultView(props){
                         <input type="radio" value={ret} 
                             onClick={userDietIsChanged}
                             className="container gender"
-                        />
+                            />
                         <span className="checkmark"></span>
                  </label>
                 </td>
@@ -32,8 +32,7 @@ export default function DietResultView(props){
         }  
     }
     function userDietIsChanged(event){
-        console.log(event.target.value)
-
+        props.onUserChangedDiet(event.target.value)
     }
         
     return(

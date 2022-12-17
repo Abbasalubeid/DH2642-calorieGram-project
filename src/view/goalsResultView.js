@@ -21,7 +21,6 @@ export default function GoalsResultView(props) {
     function userGoalIsChanged(event){
         if (event.target.outerText.substring(0,2) === "To"){
             const ret = `Maintain weight, ,${event.target.outerText.substring(26,30)}`
-            console.log(ret)
             props.onUserChangedUserGoals(ret)
         }
         else{
