@@ -22,9 +22,18 @@ function persistedModel() {
         weight : 85,
         height : 190
       }
-      const person = snapshot.val() ?? defaultPerson;
+
+      const defaultGoals = {
+        weightGoal : "Mild weight loss",
+        weightPerWeek : "0.25 kg",
+        calloriesIntake : "2051",
+      }
+
+      const person = snapshot.val()?.currentUser ?? defaultPerson;
+      const goals = snapshot.val()?.goals ?? defaultGoals;
+
       console.log(person);
-      return new FitnessModel(person);
+      return new FitnessModel(person, goals);
       // console.log(model);
   }
 
@@ -52,7 +61,7 @@ function updateFirebaseFromModel(model) {
             set(ref(db, 'currentUser/height'), payload.newHeight)
           
           if(payload.hasOwnProperty('newGoals'))
-            set(ref(db, 'currentUser/height'), payload.newGoals)
+            set(ref(db, 'goals'), payload.newGoals)
       }
   }
 
@@ -68,6 +77,8 @@ function updateFirebaseFromModel(model) {
   const genderRef = ref(db, 'currentUser/gender');
   const heightRef = ref(db, 'currentUser/height');
   const weightRef = ref(db, 'currentUser/weight');
+  const goalsRef = ref(db, 'goals');
+
 
   onValue(ageRef, function ageIsChanged (snapshot) { model.setAge(snapshot.val()); console.log("1"); console.log(model.person);})
 
@@ -76,6 +87,9 @@ function updateFirebaseFromModel(model) {
   onValue(heightRef, function heightIsChanged (snapshot) { model.setHeight(snapshot.val());  console.log("3");  console.log(model.person);})
 
   onValue(weightRef, function weightIsChanged (snapshot) {   model.setWeight(snapshot.val()); console.log("4"); console.log(model.person);})
+
+  onValue(goalsRef, function goalsIsChanged (snapshot) {   model.setUserGoal(snapshot.val()); console.log("5"); console.log(model.currentGoals);})
+  
 
 }
 
