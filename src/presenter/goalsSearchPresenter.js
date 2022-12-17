@@ -23,6 +23,7 @@ export default function GoalsSearchPresenter(props) {
         setWeight(props.model.person.weight)
         setHeight(props.model.person.height)
         setGender(props.model.person.gender)
+        setGoals(props.model.currentGoal)
     }
 
     function promiseHasChangedACB() {
