@@ -3,6 +3,8 @@ import GoalsResultView from "../view/goalsResultView.js"
 import React from "react";
 import promiseNoData from "../view/promiseNoData.js"
 import { getActivityInfo } from "../fetchSource";
+import "../css/goalsSearch.css"
+import "../css/goalsResult.css"
 
 export default function GoalsSearchPresenter(props) {
     const [age, setAge] = React.useState(props.model.person.age);
@@ -14,6 +16,7 @@ export default function GoalsSearchPresenter(props) {
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
     const [searchParams, setSearchParams] = React.useState({});
+    const [show, setShow] = React.useState(false);
 
     function observerACB(){
         setAge(props.model.person.age);
@@ -42,6 +45,7 @@ export default function GoalsSearchPresenter(props) {
         searchParams.height = props.model.person.height;
         searchParams.weight = props.model.person.weight;
         setPromise(getActivityInfo(searchParams));
+        setShow(true);
     }
 
     function ageIsChangedACB(age) {
@@ -83,6 +87,14 @@ export default function GoalsSearchPresenter(props) {
     return (
         <div className="goal-mainStyle">
             <div>
+                <h1>Goals</h1>
+                <p className="first-p anim"> By choosing how many times you intend to train per week you will be presented
+                    with a set of goals to achieve. <br></br>
+                    Each set has first the main goal which can vary from mild weight loss
+                    to extreme weight gain, then amount of calories you need to take daily to achieve
+                    that goal.</p>
+            </div>
+            <div className="goal-style">
                 <SearchView onUserChangedAge={ageIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
                     onUserChangedHeight={heightIsChangedACB}
@@ -107,7 +119,10 @@ export default function GoalsSearchPresenter(props) {
                     weight = {weight}
                 />
             </div>
-            <div className="result-nopadding result">
+            <div className={!show ? "goal-info" : "hidden"}>
+                <CustomInfo />
+            </div>
+            <div className={show ? "goal-result" : "hidden"}>
                 {promiseNoData({ promise, data, error }) ||
                     <GoalsResultView
                         activityResult={data}
@@ -121,4 +136,39 @@ export default function GoalsSearchPresenter(props) {
 
     )
 
+}
+
+
+/* custom component */
+function CustomInfo({ href, children, ...props }) {
+    return (
+        <div className="custom-info anim">
+            <input type="checkbox" id="check" />
+            <h2>Information</h2>
+            <img src="bmicalc.png" />
+            <p>
+                <span className="bold-text">What's BMI?</span>
+                <br />
+                Body mass index (BMI) to determine how healthy you are.
+                For most adults, a BMI between 18.5 to 24.9 is the idead BMI to have.
+
+                BMI is not a perfect measure, because it does not directly assess body fat.<br /><br />
+                Muscle and bone are denser than fat, so an athlete or muscular person may have a high BMI,
+                yet not have too much fat. But most people are not athletes,
+                and for most people, BMI is a very good gauge of their level of body fat.
+                <br />
+            </p>
+            <div className="readmore-text">
+                <h4>What are calories?</h4>
+                <p>
+                    Calories are a measure of how much energy food or drink contains. The amount of energy you need
+                    will depend on: age, how active you are and your hight and weight.
+                    The term calorie is commonly used as shorthand for kilocalorie. You will find this written as kcal
+                    on food packets. Kilojoules (kJ) are the equivalent of kilocalories within the International System
+                    of Units, and you'll see both kJ and kcal on nutrition labels. 4.2kJ is equivalent to approximately 1kcal.
+                </p>
+            </div>
+            <label htmlFor="check">Read More</label>
+        </div >
+    )
 }

@@ -21,7 +21,7 @@ import ProtectedRoute from './ProtectedRoute';
 function App(props) {
 
   return(
-    <div>
+    <div className="banner">
        <NavbarView />
       <AuthProvider>
        <Routes>

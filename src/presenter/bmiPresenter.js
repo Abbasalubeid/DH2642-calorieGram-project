@@ -14,6 +14,7 @@ export default function BmiPresenter(props) {
     const [error, setError] = React.useState(null);
     const [searchParams, setSearchParams] = React.useState({});
     const [show, setShow] = React.useState(false);
+    // const [style, setStyle] = React.useState("");
 
 
 
@@ -63,9 +64,36 @@ export default function BmiPresenter(props) {
         };
     }
 
+    // function chooseColor(color) {
+    //     if(data){
+    //         if(data.health === "Normal"){
+    //             setStyle("normal");
+    //         }
+    //         if(data.health === "Normal"){
+    //             setStyle("normal");
+    //         }
+    //         if(data.health === "Normal"){
+    //             setStyle("normal");
+    //         }
+    //         if(data.health === "Normal"){
+    //             setStyle("normal");
+    //         }
+    //         if(data.health === "Normal"){
+    //             setStyle("normal");
+    //         }
+    //         if(data.health === "Normal"){
+    //             setStyle("normal");
+    //         }
+    //         else {
+    //             setStyle("");
+    //         }
+    //     }
+    // }
+
 
     React.useEffect(wasCreatedACB, []);
     React.useEffect(promiseHasChangedACB, [promise]);
+    // React.useEffect(chooseColor, [data]);
 
 
     return (

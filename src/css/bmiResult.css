@@ -27,6 +27,9 @@
   left: 0;
   transform: translateY(-50%);
 }
+.normal{
+  background-color: green;
+}
 
 .text {
   background-color: #4177dc;
