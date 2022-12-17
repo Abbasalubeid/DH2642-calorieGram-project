@@ -38,7 +38,7 @@
   padding-left: 70px;
 }
 
-.diet-mainStyle table label {
+.diet-mainStyle table .label {
   color: #3c77af;
   text-align: right;
   font-size: 20px;
