@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserAuth } from '../AuthContext';
 
+
 export default function  Account () {
   const { user, logout } = UserAuth();
   const navigate = useNavigate();
@@ -15,6 +16,8 @@ export default function  Account () {
       console.log(e.message);
     }
   };
+
+ 
 
   return (
     <div >
