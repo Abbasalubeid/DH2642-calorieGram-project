@@ -1,10 +1,11 @@
 export default class FitnessModel{
-  constructor(person, goal){
-      this.observers = [];
-      this.person = person;
+  constructor(person, goal, diet,bmi){
+      this.observers            = [];
+      this.person               = person;
       this.currentActivityLevel = ""
-      this.currentGoal = goal;
-      this.bmi = {};
+      this.currentGoal          = goal;
+      this.currentDiet          = diet;
+      this.currentBmi           = bmi;
   }
 
   addObserver(callback) {
@@ -60,28 +61,49 @@ export default class FitnessModel{
       this.notifyObservers(payload);
     }
     else
-      throw new Error("Weight must be an integer between 40 and 160");
+      throw new Error("Weight must be a number between 40 and 160");
   }
 
   setHeight(height){
    // API restrictions
    // Undefined when deleted in the UI
-   if((!height ||height > 130 && height < 230)) {
+   if((!height ||height >= 130 && height <= 230)) {
     this.person.height = height;  
     const payload = { newHeight : height}
     this.notifyObservers(payload); 
    }
    else
-      throw new Error("Height must be an integer between 130 and 230");
+      throw new Error("Height must be a number between 130 and 230");
    }
 
   setUserGoal(goal){
       const goals = (goal.toString()).split(",");
-      this.currentGoal.weightGoal = goals[0];
-      this.currentGoal.weightPerWeek = goals[1];
+      this.currentGoal.weightGoal     = goals[0 ];
+      this.currentGoal.weightPerWeek  = goals[1];
       this.currentGoal.caloriesIntake = goals[2];
-
+      
       const payload = { newGoals : this.currentGoal}
       this.notifyObservers(payload);
   }
+
+  setUserDiet(diet){
+    const dietArr = (diet.toString()).split(",");
+
+    this.currentDiet.protein = dietArr[0];
+    this.currentDiet.carbs   = dietArr[1];
+    this.currentDiet.fat     = dietArr[2];
+
+    const payload = { newDiet : this.currentDiet}
+      this.notifyObservers(payload);
+  }
+  
+  setUserBmi(bmi){
+    const bmiArr = (bmi.toString()).split(",");
+    this.currentBmi.bmi      = bmiArr[0];
+    this.currentBmi.health   = bmiArr[1];
+    
+    const payload = { newBmi : this.currentBmi}
+      this.notifyObservers(payload);
+  }
+  
 }

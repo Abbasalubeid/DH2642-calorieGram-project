@@ -15,16 +15,16 @@ export default function NavbarView() {
             <span className="nav-bar"></span>
         </a>
         <ul>
-            <CustomLink href="/profile" className="btn-links nav-goals">Profile</CustomLink>
-            <CustomLink href="/goals" className="btn-links nav-goals">Goals</CustomLink>
+            <CustomLink href="/profile" className="btn-links nav-profile">Profile</CustomLink>
             <CustomLink href="/bmi" className="btn-links nav-bmi">Bmi</CustomLink>
+            <CustomLink href="/goals" className="btn-links nav-goals">Goals</CustomLink>
             <CustomLink href="/diet" className="btn-links nav-diet">Diet</CustomLink>
-            <CustomLink href="/summary" className="btn-links nav-summary">summary</CustomLink>
+            <CustomLink href="/summary" className="btn-links nav-summary">Summary</CustomLink>
 
         </ul>
         <div>
-            <a href="/" className={!signed ? "login-btn" : "hidden"}>Login</a>
-            <a href="/signup" className={!signed ? "btn" : "hidden"}>Sign up</a>
+            <a href="/" className={!signed ? "login-btn nav-login" : "hidden"}>Login</a>
+            <a href="/signup" className={!signed ? "btn nav-signup" : "hidden"}>Sign up</a>
             <a href="/login" className={signed ? "btn" : "hidden"}>Log out</a>
         </div>
     </nav>

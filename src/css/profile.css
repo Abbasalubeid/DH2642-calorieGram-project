@@ -1,0 +1,21 @@
+.profile-mainStyle{
+    display: flex;
+    min-height: 75vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.profile-mainStyle table .label {
+  color: #3c77af;
+  text-align: right;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.profile-style{
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
+}

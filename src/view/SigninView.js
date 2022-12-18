@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
- import { UserAuth } from  '../model/firebaseModel';
+ import { UserAuth } from  "../AuthContext";
  import "../css/login.css";
- import { AuthProvider } from  '../model/firebaseModel';
+ import { AuthProvider } from  "../AuthContext";
 
 
 export default function Signin()  {
@@ -17,7 +17,7 @@ export default function Signin()  {
     setError('')
     try {
       await signIn(email, password)
-      navigate('/account')
+      navigate('/profile')
     } catch (e) {
       setError(e.message)
     }

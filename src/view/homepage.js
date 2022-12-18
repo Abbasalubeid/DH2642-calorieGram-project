@@ -1,5 +1,5 @@
 import React from 'react';
-import Joyride, { ACTIONS, EVENTS, STATUS } from 'react-joyride';
+import Joyride from 'react-joyride';
 import "../css/homepage.css";
 // new import
 
@@ -10,26 +10,63 @@ export default function Homepage() {
     steps: [
       {
         target: '.nav-home',
-        content: <h2>This is a page review (UPDATE THIS)
+        content: <h2>Welcome to Calorie Gram🍓 Your personal fitness advisor, calorie calculator, and more 💪 <br></br>
         </h2>,
         locale: { skip: <strong aria-label="skip">SKIP</strong> },
         placement: 'center',
       },
       {
-        target: '.nav-diet',
-        content: <h2>See your current diet plan🥗</h2>,
+        target: '.nav-home',
+        content: <h2>After using our futures, you will learn the basics about a healthy lifestyle. <br></br>
+                    You will also learn more about your current health state and how to maintain or change it
+        </h2>,
+        locale: { skip: <strong aria-label="skip">SKIP</strong> },
+        placement: 'center',
+      },
+      {
+        target: '.nav-signup',
+        content: <h2>To use our futures you will need an account!<br></br>
+          Click here to sign up with your email!<br></br>
+        It takes less than a minute😁 
+        </h2>,
         locale: { skip: <strong aria-label="skip">SKIP</strong> },
       },
-      
+      {
+        target: '.nav-login',
+        content: <h2>Then log in with your account<br></br> 
+        </h2>,
+        locale: { skip: <strong aria-label="skip">SKIP</strong> },
+      },
+      {
+        target: '.nav-profile',
+        content: <h2>Tell us more about yourself in your profile✍️</h2>,
+        locale: { skip: <strong aria-label="skip">SKIP</strong> },
+      },
       {
         target: '.nav-bmi',
-        content: <h2>Calculate your current BMI ✔️</h2>,
+        content: <h2>BMI is a scientific measurement of health🏃 <br></br>
+                      Click here to learn more about it and calculate your own</h2>,
         locale: { skip: <strong aria-label="skip">SKIP</strong> },
 
       },
       {
         target: '.nav-goals',
-        content: <h2>Calculate your food intake and set a personal goal🎯</h2>,
+        content: <h2>Click here to calculate your food intake and set a personal goal🎯</h2>,
+        locale: { skip: <strong aria-label="skip">SKIP</strong> },
+      },
+      {
+        target: '.nav-diet',
+        content: <h2>A goal without a plan is only a dream💤<br></br>
+          Choose a diet plan that you can follow to achieve your goal🥗</h2>,
+        locale: { skip: <strong aria-label="skip">SKIP</strong> },
+      },
+
+      {
+        target: '.nav-summary',
+        content: <h2>Felling overwhelmed? <br></br>
+        Dont worry! We will save all information for you📝  <br></br>
+        Click here to see and download your personal information💾
+        </h2>,
         locale: { skip: <strong aria-label="skip">SKIP</strong> },
       },
       {
@@ -37,7 +74,7 @@ export default function Homepage() {
         content: <h2>Click here to go back to the homepage 🏠</h2>,
         locale: { skip: <strong aria-label="skip">SKIP</strong> },
        
-      },
+      }
       
     ],
   });
@@ -90,11 +127,14 @@ export default function Homepage() {
           callback ={handleJoyrideCallback}/>
       </div>
       <div className="content">
-        <h1 className="anim">Welcome <br />to Calorie Gram</h1>
+        <h1 className="anim">Calorie Gram🍓</h1>
         <p className="anim">
-          Welcome to Calorie Gram🍓 Your personal fitness advisor, calorie calculator, and more 💪
+          
+          Want to be healthy but dont know where to start?<br></br>
+          You came to the right place😁 <br></br>
+          Start your healthy journey by clicking on the start button!
         </p>
-        <button onClick={pageReview} className={joyrideState.run === false ? "btn anim" : "hidden"}>Page review</button>
+        <button onClick={pageReview} className={joyrideState.run === false ? "btn anim" : "hidden"}>Start</button>
         <img src="apple.png" className="feature-img anim" />
       </div>
     </div >)

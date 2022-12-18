@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserAuth } from  "../model/firebaseModel";
+import { UserAuth } from  "../AuthContext"
 
-export default function  Account () {
+
+export default function  AccountView () {
   const { user, logout } = UserAuth();
  
   
@@ -18,13 +19,15 @@ export default function  Account () {
     }
   };
 
+ 
+
   return (
     <div >
       
       <h1 >Account</h1>
-      <p>User Email: {user && user.email}</p>
+      <h4 className="label">User Email: {user && user.email}</h4>
 
-      <button onClick={handleLogout} >
+      <button onClick={handleLogout} className="btn">
         Logout
       </button>
     </div>

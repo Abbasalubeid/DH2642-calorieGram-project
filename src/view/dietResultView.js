@@ -5,17 +5,17 @@ export default function DietResultView(props){
     function renderDietCB(object){
         // 'calorie' is an extra/unused property returned by the API
         if(object != "calorie"){
-        const ret =`${(props.macros[object]["protein"]).toFixed(0)}g,${(props.macros[object]["carbs"]).toFixed(0)}g,${(props.macros[object]["carbs"]).toFixed(0)}g`
+        const ret =`${(props.macros[object]["protein"]).toFixed(0)}g,${(props.macros[object]["carbs"]).toFixed(0)}g,${(props.macros[object]["fat"]).toFixed(0)}g`
         return (
             <tr key={object} >
-                <td>
-                <label key={object} > {object + " diet"}
+                <td className="dlabel">
+                    <label key={object} className="container"><span className="label">{object + " diet"}</span>
                         <input type="radio" value={ret} 
                             onClick={userDietIsChanged}
-                            className="container gender"
+                            name="food"
                         />
                         <span className="checkmark"></span>
-                 </label>
+                    </label>
                 </td>
                 <td className="diet-col dtext">Protein</td>
                 <td className="diet-col dstate">
@@ -32,14 +32,13 @@ export default function DietResultView(props){
         }  
     }
     function userDietIsChanged(event){
-        console.log(event.target.value)
-
+        props.onUserChangedDiet(event.target.value)
     }
         
     return(
         <div className="diet-row">
-            Click to choose and save a diet plan
-            <table>
+            <h3>Click to choose and save a diet plan</h3>
+            <table className="diet-table">
                 <tbody>
                     {Object.keys(props.macros).map(renderDietCB)}
                 </tbody>

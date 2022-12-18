@@ -9,6 +9,7 @@ export default function BmiPresenter(props) {
     const [age, setAge] = React.useState(props.model.person.age);
     const [weight, setWeight] = React.useState(props.model.person.weight);
     const [height, setHeight] = React.useState(props.model.person.height);
+    const [bmi, setBmi] = React.useState(props.model.bmi);
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
@@ -35,6 +36,7 @@ export default function BmiPresenter(props) {
         setAge(props.model.person.age);
         setWeight(props.model.person.weight)
         setHeight(props.model.person.height)
+        setBmi(props.model.person.bmi)
     }
 
     function userSearchedACB() {
@@ -64,6 +66,9 @@ export default function BmiPresenter(props) {
         };
     }
 
+    function userChangedBmi(bmi){
+        props.model.setUserBmi(bmi)
+    }
     // function chooseColor(color) {
     //     if(data){
     //         if(data.health === "Normal"){
@@ -115,14 +120,16 @@ export default function BmiPresenter(props) {
                     weight = {weight}
                 />
             </div>
-            <div className={!show ? "bmi-info" : "bmi-info-result"}>
+            <div className={data ? "bmi-info-result" : "bmi-info"}>
                 <CustomInfo />
             </div>
-            <div className={show ? "bmi-result" : "hidden"}>
+            <div className={!show ? "hidden" : "bmi-result "}>
                 {promiseNoData({ promise, data, error }) ||
                 
                     <BmiResultview
-                        bmiResult={data}>
+                        bmiResult={data}
+                        onUserChangedBmi={userChangedBmi}
+                    >
                     </BmiResultview>
                 }
             </div>
@@ -137,7 +144,7 @@ function CustomInfo({ href, children, ...props }) {
         <div className="custom-info anim">
             <input type="checkbox" id="check" />
             <h2>Information</h2>
-            <img src="bmicalc.png" />
+            <img src="bmi-bild.jpg" />
             <p>
                 <span className="bold-text">What's BMI?</span>
                 <br/>
