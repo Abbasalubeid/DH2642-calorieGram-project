@@ -37,7 +37,7 @@ function persistedModel() {
         health : "Obese class I",
       }
 
-      const person = snapshot.val()?.currentUser ?? defaultPerson;
+      const person = snapshot.val()?.currentPerson ?? defaultPerson;
       const goals = snapshot.val()?.goals ?? defaultGoals;
       const diet = snapshot.val()?.diet ?? defaultDiet;
       const bmi = snapshot.val()?.bmi ?? defaultBmi;
@@ -46,7 +46,7 @@ function persistedModel() {
   }
 
   const db = getDatabase();
-  return get(ref(db)).then(createModelACB);
+  return get(ref(db, '/currentUser')).then(createModelACB);
 }
 
 function updateFirebaseFromModel(model) {
@@ -56,16 +56,16 @@ function updateFirebaseFromModel(model) {
       
     if (payload){
           if (payload.hasOwnProperty('newAge'))
-            set(ref(db, 'currentUser/age'), payload.newAge)
+            set(ref(db, 'currentUser/person/age'), payload.newAge)
               
           if (payload.hasOwnProperty('newGender'))
-            set(ref(db, 'currentUser/gender'), payload.newGender)
+            set(ref(db, 'currentUser/person/gender'), payload.newGender)
 
           if(payload.hasOwnProperty('newWeight'))
-            set(ref(db, 'currentUser/weight'), payload.newWeight)
+            set(ref(db, 'currentUser/person/weight'), payload.newWeight)
           
           if(payload.hasOwnProperty('newHeight'))
-            set(ref(db, 'currentUser/height'), payload.newHeight)
+            set(ref(db, 'currentUser/person/height'), payload.newHeight)
           
           if(payload.hasOwnProperty('newGoals'))
             set(ref(db, 'currentUser/goals'), payload.newGoals)
@@ -86,10 +86,10 @@ function updateFirebaseFromModel(model) {
  function updateModelFromFirebase(model) {
   const db = getDatabase(app)
 
-  const ageRef = ref(db, 'currentUser/age');
-  const genderRef = ref(db, 'currentUser/gender');
-  const heightRef = ref(db, 'currentUser/height');
-  const weightRef = ref(db, 'currentUser/weight');
+  const ageRef = ref(db, 'currentUser/person/age');
+  const genderRef = ref(db, 'currentUser/person/gender');
+  const heightRef = ref(db, 'currentUser/person/height');
+  const weightRef = ref(db, 'currentUser/person/weight');
   const goalsRef = ref(db, 'currentUser/goals');
   const dietRef = ref(db, 'currentUser/diet');
   const bmiRef = ref(db, 'currentUser/bmi');
@@ -118,13 +118,27 @@ function updateFirebaseFromModel(model) {
                     model.setUserGoal(rigntOrder) 
                     })
 
-  onValue(dietRef, function dietIsChanged (snapshot) {   model.setUserDiet(snapshot.val()); 
-    console.log("hello")
-    console.log(snapshot.val())
-  })
+  onValue(dietRef, function dietIsChanged (snapshot) {
+                    function onlyValuesCB(object){
+                      return snapshot.val()[object];
+                    }
+
+                  const wrongOrder = Object.keys(snapshot.val()).map(onlyValuesCB);
+                  const rigntOrder = [wrongOrder[1], wrongOrder[2], wrongOrder[0]].join(",");
+ 
+                  })
   
   
-  onValue(bmiRef, function bmiIsChanged (snapshot) {   model.setUserBmi(snapshot.val()); })         
+  
+  onValue(bmiRef, function bmiIsChanged (snapshot) {
+                  function onlyValuesCB(object){
+                    return snapshot.val()[object];
+    }
+
+                const wrongOrder = Object.keys(snapshot.val()).map(onlyValuesCB);
+                const rigntOrder = [wrongOrder[1], wrongOrder[2], wrongOrder[0]].join(",");
+
+              })         
 
   
 
