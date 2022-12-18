@@ -125,10 +125,9 @@ function updateFirebaseFromModel(model) {
                     }
 
                   const wrongOrder = Object.keys(snapshot.val()).map(onlyValuesCB);
-                  const rightOrder = [wrongOrder[1], wrongOrder[2], wrongOrder[0]].join(",");
-                  console.log("helloooooo")
-                  console.log(wrongOrder)
-                  // model.setUserDiet(rightOrder) 
+                  const rightOrder = [wrongOrder[2], wrongOrder[0], wrongOrder[1]].join(",");
+                  
+                  model.setUserDiet(rightOrder) 
                   })
   
   

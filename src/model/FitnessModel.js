@@ -88,11 +88,11 @@ export default class FitnessModel{
 
   setUserDiet(diet){
     const dietArr = (diet.toString()).split(",");
-    console.log(dietArr)
+
     this.currentDiet.protein = dietArr[0];
     this.currentDiet.carbs   = dietArr[1];
     this.currentDiet.fat     = dietArr[2];
-    console.log(diet)
+
     const payload = { newDiet : this.currentDiet}
       this.notifyObservers(payload);
   }
