@@ -4,7 +4,6 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    display: none;
 }
 
 
@@ -19,4 +18,11 @@
   padding: 10px;
   border-radius: 8px;
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 768px) {
+    .profile-mainStyle{
+      margin-top: 10%;
+      
+    }
 }
