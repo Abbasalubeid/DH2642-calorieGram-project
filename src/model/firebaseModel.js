@@ -8,6 +8,7 @@ const app = firebase.initializeApp(firebaseConfig)
 
 const auth = app.auth();
 
+
 function persistedModel() {
   
   function createModelACB(snapshot) {        

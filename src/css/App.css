@@ -22,3 +22,7 @@ body {
 .error-msg {
   color : red;
 }
+
+.saved-msg{
+  color: green;
+}
