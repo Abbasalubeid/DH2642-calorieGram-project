@@ -1,11 +1,11 @@
 export default class FitnessModel{
   constructor(person, goal){
-      this.observers = [];
-      this.person = person;
+      this.observers            = [];
+      this.person               = person;
       this.currentActivityLevel = ""
-      this.currentGoal = goal;
-      this.currentDiet ={};
-      this.bmi = {};
+      this.currentGoal          = goal;
+      this.currentDiet          = {};
+      this.currentBmi           = {};
   }
 
   addObserver(callback) {
@@ -96,4 +96,14 @@ export default class FitnessModel{
     const payload = { newDiet : this.currentDiet}
       this.notifyObservers(payload);
   }
+  
+  setUserBmi(bmi){
+    const bmiArr = (bmi.toString()).split(",");
+    this.currentBmi.bmi      = bmiArr[0];
+    this.currentBmi.carbs   = bmiArr[1];
+    
+    const payload = { newDiet : this.currentDiet}
+      this.notifyObservers(payload);
+  }
+  
 }

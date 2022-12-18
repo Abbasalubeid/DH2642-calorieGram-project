@@ -182,7 +182,7 @@ function CustomInfo({ href, children, ...props }) {
                     <span className="bold-text">What's Protein?</span><br />
                     Protein is a macronutrient. To put it simply, protein is one of the main nutrients that every person needs to maintain a healthy body. It helps to repair
                     any internal or external damage, supports the immune system and contributes to an overall feeling of well-being.
-            </p>
+                </p>
             </div>
             <label htmlFor="check">Read More</label>
         </div>
