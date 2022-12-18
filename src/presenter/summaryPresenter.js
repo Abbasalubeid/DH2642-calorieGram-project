@@ -10,7 +10,6 @@ export default function SummaryPresenter(props){
     const [goal, setGoals] = React.useState(props.model.currentGoal);
     const [diet, setDiet] = React.useState(props.model.currentDiet);
     const [bmi, setBmi] = React.useState(props.model.currentBmi);
-
     //const [, reRender] = React.useState();
 
 

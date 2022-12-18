@@ -102,13 +102,11 @@ export default class FitnessModel{
   }
   
   setUserBmi(bmi){
-    console.log("helooooo")
-    console.log(bmi)
     const bmiArr = (bmi.toString()).split(",");
     this.currentBmi.bmi      = bmiArr[0];
     this.currentBmi.health   = bmiArr[1];
     
-    const payload = { newDiet : this.currentBmi}
+    const payload = { newBmi : this.currentBmi}
       this.notifyObservers(payload);
   }
   

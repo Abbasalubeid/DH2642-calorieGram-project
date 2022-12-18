@@ -39,8 +39,8 @@ export default function summaryView(props) {
                             <td  className="second-td">{props.height}</td>
                         </tr>
                         <tr>
-                            <td className="first-td">BMI:</td>
-                            <td  className="second-td">{props.bmi.bmi +(" (") + props.bmi.health + (")")}</td>
+                            <td className="first-td">BMI:{console.log(props.bmi)}</td>
+                            <td  className="second-td">{props.diet.bmi +(" (") + props.diet.health + (")")}</td>
                         </tr>
                         <tr>
                             <td className="first-td">Your Activity Level:</td>
@@ -48,7 +48,7 @@ export default function summaryView(props) {
                         </tr>
                         <tr>
                             <td className="first-td">Your Diet:</td>
-                            <td  className="second-td">{props.diet.protein}</td>
+                            <td  className="second-td">{props.bmi.protein + " protein, " +props.bmi.carbs + " carbs, "+props.bmi.fat + " fat" }</td>
                         </tr>
                         <tr>
                             <td className="first-td">Your Goals:</td>
