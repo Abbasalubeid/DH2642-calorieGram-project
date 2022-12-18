@@ -24,7 +24,7 @@ export default function summaryView(props) {
     return (
         <div className="summary-style anim">
                 <h2>Your summmary is the following:</h2>
-                <table cellspacing="23">
+                <table cellSpacing="23">
                     <tbody>
                         <tr>
                             <td className="first-td">Age:</td>

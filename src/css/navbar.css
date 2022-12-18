@@ -13,7 +13,7 @@
   text-decoration: none;
 }
 
-.navbar ul {
+.nav-links ul {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -21,11 +21,11 @@
   font-size: 2em;
 }
 
-.navbar li.active {
+.nav-links li.active {
   border-bottom: 5px solid #3051d7;
   border-radius: 10px;
 }
-.navbar li:hover {
+.nav-links li:hover {
   border-bottom: 5px solid #3051d7;
   border-radius: 10px;
 }
@@ -49,7 +49,7 @@
 
 .nav-toggle {
   position: absolute;
-  top: 0.75rem;
+  top: 2.5rem;
   right: 1rem;
   display: none;
   flex-direction: column;
@@ -59,7 +59,7 @@
 }
 
 .nav-toggle .nav-bar {
-  height: 3px;
+  height: 4px;
   width: 100%;
   background-color: black;
   border-radius: 10px;
@@ -67,4 +67,40 @@
 
 .nav-title img {
   width: 200px;
+}
+
+
+@media (max-width: 700px) {
+    .nav-toggle{
+      display: flex;
+    }
+
+    .nav-links{
+      display: none;
+      width: 100%;
+    }
+    .btn-primary{
+      display: none;
+    }
+    .navbar{
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .nav-links ul {
+      width: 100%;
+      flex-direction: column;
+    }
+    .nav-links li{
+      text-align: center;
+    }
+
+    .nav-links li a {
+      padding: 0.5rem 1rem;
+    }
+    .nav-links.active{
+      display: flex;
+      width: 10%;
+    }
+    
 }
