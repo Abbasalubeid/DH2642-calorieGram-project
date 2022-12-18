@@ -11,14 +11,7 @@ const auth = app.auth();
 
 function persistedModel() {
 
-  onAuthStateChanged(auth, (user)=> {
-    if (user){
-      console.log(user.uid); 
-    }
-    else
-      console.log("logged out!!!!!");
-  })
-  
+
   function createModelACB(snapshot) {        
          
       const defaultPerson = {
@@ -53,9 +46,11 @@ function persistedModel() {
 
       return new FitnessModel(person, goals, diet, bmi);
   }
+  let currentUser = ""
+  setTimeout(() => {console.log(auth.currentUser.uid);}, 4000);
 
   const db = getDatabase();
-  return get(ref(db, '/currentUser')).then(createModelACB);
+  return get(ref(db, `/${currentUser}`)).then(createModelACB);
 }
 
 function updateFirebaseFromModel(model) {
