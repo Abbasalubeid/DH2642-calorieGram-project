@@ -108,7 +108,7 @@ export default class FitnessModel{
     this.currentBmi.bmi      = bmiArr[0];
     this.currentBmi.health   = bmiArr[1];
     
-    const payload = { newDiet : this.currentDiet}
+    const payload = { newDiet : this.currentBmi}
       this.notifyObservers(payload);
   }
   
