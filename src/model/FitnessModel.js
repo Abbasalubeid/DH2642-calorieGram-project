@@ -80,7 +80,8 @@ export default class FitnessModel{
       this.currentGoal.weightGoal = goals[0];
       this.currentGoal.weightPerWeek = goals[1];
       this.currentGoal.caloriesIntake = goals[2];
-
+    console.log(this.currentGoal);  
+    console.log(goal);
       const payload = { newGoals : this.currentGoal}
       this.notifyObservers(payload);
   }

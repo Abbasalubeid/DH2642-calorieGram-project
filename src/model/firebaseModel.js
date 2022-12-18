@@ -7,8 +7,6 @@ import FitnessModel from "./FitnessModel";
 const app = firebase.initializeApp(firebaseConfig)
 
 const auth = app.auth();
-console.log(auth);
-
 
 function persistedModel() {
   
@@ -30,7 +28,6 @@ function persistedModel() {
       const person = snapshot.val()?.currentUser ?? defaultPerson;
       const goals = snapshot.val()?.goals ?? defaultGoals;
 
-      console.log(goals);
       return new FitnessModel(person, goals);
   }
 
