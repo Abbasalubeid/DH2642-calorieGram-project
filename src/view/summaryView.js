@@ -22,7 +22,7 @@ export default function summaryView(props) {
     Goals:  ${props.goal.weightGoal} (${props.goal.weightPerWeek}) eat:${props.goal.calloriesIntake} Calories\n
     `
     return (
-        <div className="summary-style">
+        <div className="summary-style anim">
                 <h2>Your summmary is the following:</h2>
                 <table cellspacing="23">
                     <tbody>
@@ -60,14 +60,6 @@ export default function summaryView(props) {
             </div>
     );
 }
-
-    // <div>Age: <span>{props.age} </span></div>   
-    //             <div>Weight: <span>{props.weight}</span></div>   
-    //             <div>Height: <span>{props.height}</span></div>   
-    //             <div>BMR: <span>Calories/day</span></div>   
-    //             <div>Your activity level is: <span></span></div>   
-    //             <div>Your Diet: <span></span></div>   
-    //             <div>Your Goals: <span></span></div> 
 
 
         {/* <div >
