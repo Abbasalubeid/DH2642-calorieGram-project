@@ -56,7 +56,6 @@ export default function ProfilePresenter(props){
         <div className="profile-mainStyle">
             <div className="profile-style">
                 <AccountView />
-                <h1>Profile</h1>
                 <SearchView onUserChangedAge={ageIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
                     onUserChangedHeight={heightIsChangedACB}
