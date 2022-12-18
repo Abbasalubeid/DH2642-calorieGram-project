@@ -8,8 +8,9 @@ import Homepage from "./view/homepage.js";
 import { Route, Routes } from "react-router-dom";
 import NavbarView from "./view/navbarView.js";
 import "./css/App.css";
+import { AuthProvider } from  "./AuthContext";
 
-import { AuthProvider } from "./AuthContext.js";
+
 
 import SigninView from './view/SigninView';
 import SignupView from './view/SignupView';
@@ -23,13 +24,14 @@ function App(props) {
   return(
     <div className="banner">
        <NavbarView />
+      
       <AuthProvider>
        <Routes>
          <Route path='/' element={<SigninView />} />
          <Route path='/signup' element={<SignupView />} />
          <Route
            path='/account'
-           element={ <ProtectedRoute> <Account /> </ProtectedRoute>}/>
+           element={ <ProtectedRoute>  <Account /> </ProtectedRoute>}/>
           <Route path='home'element={ <ProtectedRoute>
                <Homepage />
              </ProtectedRoute>

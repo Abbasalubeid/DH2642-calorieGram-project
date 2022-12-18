@@ -4,15 +4,13 @@ import firebase from 'firebase/compat/app';
 import firebaseConfig from "../firebaseConfig";
 import FitnessModel from "./FitnessModel";
 
-
-
 const app = firebase.initializeApp(firebaseConfig)
 
 const auth = app.auth();
-
 console.log(auth);
-function persistedModel() {
 
+
+function persistedModel() {
   
   function createModelACB(snapshot) {        
          
@@ -78,15 +76,15 @@ function updateFirebaseFromModel(model) {
   const goalsRef = ref(db, 'goals');
 
 
-  onValue(ageRef, function ageIsChanged (snapshot) { model.setAge(snapshot.val());})
+  onValue(ageRef, function ageIsChanged (snapshot) { model.setAge(snapshot.val()); })
 
-  onValue(genderRef, function genderIsChanged (snapshot) {  model.setGender(snapshot.val());})
+  onValue(genderRef, function genderIsChanged (snapshot) {  model.setGender(snapshot.val()); })
 
   onValue(heightRef, function heightIsChanged (snapshot) { model.setHeight(snapshot.val());  })
 
-  onValue(weightRef, function weightIsChanged (snapshot) {   model.setWeight(snapshot.val());})
+  onValue(weightRef, function weightIsChanged (snapshot) {   model.setWeight(snapshot.val()); })
 
-  onValue(goalsRef, function goalsIsChanged (snapshot) {   model.setUserGoal(snapshot.val());})
+  onValue(goalsRef, function goalsIsChanged (snapshot) {   model.setUserGoal(snapshot.val()); })
   
 
 }
