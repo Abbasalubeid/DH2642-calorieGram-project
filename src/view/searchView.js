@@ -71,7 +71,7 @@ function renderOptionsCB(opt) {
     return (
         <div>
             <form>
-                <table cellspacing= "17">
+                <table cellSpacing= "17">
                     <tbody>
                         <tr className={!props.showGender ? "hidden" : " "}>
                             <td className="column">
