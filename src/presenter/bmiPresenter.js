@@ -46,6 +46,13 @@ export default function BmiPresenter(props) {
         setShow(true);
     }
 
+    function saveResultACB(){
+        if(data){
+        const  ret = `${data.bmi},${data.health}`
+        props.model.setUserBmi(ret)
+        }
+    }
+
     function ageIsChangedACB(age) {
         props.model.setAge(age)
     }
@@ -58,6 +65,10 @@ export default function BmiPresenter(props) {
         props.model.setHeight(height)
     }
 
+    function userChangedBmi(bmi){
+        
+    }
+
     function wasCreatedACB() {
         props.model.addObserver(observerACB);
         return function isTakenDownACB() {                                
@@ -65,13 +76,9 @@ export default function BmiPresenter(props) {
         };
     }
 
-    function userChangedBmi(bmi){
-        props.model.setUserBmi(bmi)
-    }
-
-
     React.useEffect(wasCreatedACB, []);
     React.useEffect(promiseHasChangedACB, [promise]);
+    React.useEffect(saveResultACB, [data]);
 
 
     return (
@@ -101,7 +108,6 @@ export default function BmiPresenter(props) {
                 
                     <BmiResultview
                         bmiResult={data}
-                        onUserChangedBmi={userChangedBmi}
                     >
                     </BmiResultview>
                 }
