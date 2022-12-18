@@ -10,7 +10,7 @@ export default function BmiResultView(props) {
 
     return (
         <div className="row anim" > 
-            {userBmiIsChanged(props.bmiResult)}
+            {/* {userBmiIsChanged(props.bmiResult)} */}
             <div className="col text">Current BMI</div>
             <div className="col state">
                 <span></span>
