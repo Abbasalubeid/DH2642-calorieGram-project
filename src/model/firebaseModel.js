@@ -1,18 +1,15 @@
 import { getDatabase, ref, set, onValue, get } from "firebase/database";
-import "firebase/auth"
 import 'firebase/compat/auth';
 import firebase from 'firebase/compat/app';
 import firebaseConfig from "../firebaseConfig";
 import FitnessModel from "./FitnessModel";
 
-
 const app = firebase.initializeApp(firebaseConfig)
 
 const auth = app.auth();
-let datab = getDatabase(app);
 
 function persistedModel() {
-
+  
   function createModelACB(snapshot) {        
          
       const defaultPerson = {
@@ -76,15 +73,26 @@ function updateFirebaseFromModel(model) {
   const goalsRef = ref(db, 'goals');
 
 
-  onValue(ageRef, function ageIsChanged (snapshot) { model.setAge(snapshot.val()); console.log("1"); console.log(model.person);})
+  onValue(ageRef, function ageIsChanged (snapshot) { model.setAge(snapshot.val()); })
 
-  onValue(genderRef, function genderIsChanged (snapshot) {  model.setGender(snapshot.val());  console.log("2"); console.log(model.person);})
+  onValue(genderRef, function genderIsChanged (snapshot) {  model.setGender(snapshot.val()); })
 
-  onValue(heightRef, function heightIsChanged (snapshot) { model.setHeight(snapshot.val());  console.log("3");  console.log(model.person);})
+  onValue(heightRef, function heightIsChanged (snapshot) { model.setHeight(snapshot.val());  })
 
-  onValue(weightRef, function weightIsChanged (snapshot) {   model.setWeight(snapshot.val()); console.log("4"); console.log(model.person);})
+  onValue(weightRef, function weightIsChanged (snapshot) {   model.setWeight(snapshot.val()); })
 
-  onValue(goalsRef, function goalsIsChanged (snapshot) {   model.setUserGoal(snapshot.val()); console.log("5"); console.log(model.currentGoals);})
+  onValue(goalsRef, function goalsIsChanged (snapshot) {
+
+                      function onlyValuesCB(object){
+                        return snapshot.val()[object];
+                      }
+
+                    const wrongOrder = Object.keys(snapshot.val()).map(onlyValuesCB);
+                    const rigntOrder = [wrongOrder[1], wrongOrder[2], wrongOrder[0]].join(",");
+
+                    console.log(rigntOrder);
+                    model.setUserGoal(rigntOrder) 
+                    })
   
 
 }

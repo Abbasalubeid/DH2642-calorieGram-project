@@ -12,8 +12,9 @@ export default function SummaryPresenter(props){
 
 
     return (
-        <div className="goal-mainStyle">
-            <div >
+        <div className="summary-mainStyle">
+            
+            <div>
                 <SummaryView
                     age = {age}
                     gender = {gender}

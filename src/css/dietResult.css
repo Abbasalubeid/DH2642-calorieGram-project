@@ -3,11 +3,17 @@
   height: 100%;
   display: flex;
   flex-wrap: wrap;
-  text-align: center;
+  text-align: left;
   align-items: center;
   font-size: 1.2rem;
 }
-.diet-row table{
+.diet-row h3{
+  margin: 0 10px;
+}
+.dlabel{
+  display: flex
+}
+.diet-row .diet-table{
   width: 100%;
 }
 .diet-col {

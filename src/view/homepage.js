@@ -10,7 +10,23 @@ export default function Homepage() {
     steps: [
       {
         target: '.nav-home',
-        content: <h2>This is a page review (UPDATE THIS)
+        content: <h2>Do you want to be healthy but dont know where to start🤔
+        </h2>,
+        locale: { skip: <strong aria-label="skip">SKIP</strong> },
+        placement: 'center',
+      },
+      {
+        target: '.nav-home',
+        content: <h2>Dont worry! <br></br> 
+                  You came to the right place👏
+        </h2>,
+        locale: { skip: <strong aria-label="skip">SKIP</strong> },
+        placement: 'center',
+      },
+      {
+        target: '.nav-home',
+        content: <h2>Start by signing up and loggin in<br></br> 
+                  You came to the right place👏
         </h2>,
         locale: { skip: <strong aria-label="skip">SKIP</strong> },
         placement: 'center',
@@ -90,11 +106,12 @@ export default function Homepage() {
           callback ={handleJoyrideCallback}/>
       </div>
       <div className="content">
-        <h1 className="anim">Welcome <br />to Calorie Gram</h1>
+        <h1 className="anim">Calorie Gram</h1>
         <p className="anim">
-          Welcome to Calorie Gram🍓 Your personal fitness advisor, calorie calculator, and more 💪
+          Welcome to Calorie Gram🍓 Your personal fitness advisor, calorie calculator, and more 💪 <br></br>
+          Start your journey by clicking on the start button
         </p>
-        <button onClick={pageReview} className={joyrideState.run === false ? "btn anim" : "hidden"}>Page review</button>
+        <button onClick={pageReview} className={joyrideState.run === false ? "btn anim" : "hidden"}>Start</button>
         <img src="apple.png" className="feature-img anim" />
       </div>
     </div >)

@@ -1,11 +1,14 @@
 import SearchView from "../view/searchView.js";
+import AccountView from "../view/accountView.js";
 import React from "react";
+import "../css/profile.css";
 
 export default function ProfilePresenter(props){
     const [age, setAge] = React.useState(props.model.person.age);
     const [weight, setWeight] = React.useState(props.model.person.weight);
     const [height, setHeight] = React.useState(props.model.person.height);
     const [gender, setGender] = React.useState(props.model.person.gender);
+    const [show, setShow] = React.useState(false);
     
     function observerACB(){
         setAge(props.model.person.age);
@@ -20,6 +23,7 @@ export default function ProfilePresenter(props){
         props.model.setWeight(weight)
         props.model.setHeight(height)
         props.model.setGender(gender)
+        setShow(true);
     }
 
     function ageIsChangedACB(age) {
@@ -49,8 +53,9 @@ export default function ProfilePresenter(props){
 
 
     return (
-        <div className="goal-mainStyle">
-            <div >
+        <div className="profile-mainStyle">
+            <div className="profile-style">
+                <AccountView />
                 <SearchView onUserChangedAge={ageIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
                     onUserChangedHeight={heightIsChangedACB}

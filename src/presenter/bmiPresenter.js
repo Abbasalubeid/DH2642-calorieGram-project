@@ -120,10 +120,10 @@ export default function BmiPresenter(props) {
                     weight = {weight}
                 />
             </div>
-            <div className={!show ? "bmi-info" : "bmi-info-result"}>
+            <div className={data ? "bmi-info-result" : "bmi-info"}>
                 <CustomInfo />
             </div>
-            <div className={show ? "bmi-result" : "hidden"}>
+            <div className={!show ? "hidden" : "bmi-result "}>
                 {promiseNoData({ promise, data, error }) ||
                 
                     <BmiResultview
@@ -144,7 +144,7 @@ function CustomInfo({ href, children, ...props }) {
         <div className="custom-info anim">
             <input type="checkbox" id="check" />
             <h2>Information</h2>
-            <img src="bmicalc.png" />
+            <img src="bmi-bild.jpg" />
             <p>
                 <span className="bold-text">What's BMI?</span>
                 <br/>
