@@ -12,6 +12,7 @@ import 'firebase/compat/auth';
 import firebase from 'firebase/compat/app';
 import firebaseConfig from "../firebaseConfig";
 import FitnessModel from "./FitnessModel";
+// import { UserAuth } from  "../model/firebaseModel";
 
 
 
@@ -26,6 +27,7 @@ const UserContext = createContext();
 
   function AuthProvider  ({ children }) {
   const [user, setUser] = useState({});
+  
 
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -38,17 +40,20 @@ const UserContext = createContext();
   function logout  () {
       return signOut(auth)
   }
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-     console.log(currentUser.email);
+  
+  function findUserACB(currentUser) {
+    //  console.log(currentUser.email);
       setUser(currentUser);
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+      // console.log(currentUser.email)
+    }
+  function toSetUserACB() {
+    const unsubscribe = onAuthStateChanged(auth, findUserACB );
+    return unsubscribe();
+    
+  }
 
+  useEffect(toSetUserACB, []);
+  
   return (
     
     <UserContext.Provider value={{ createUser, user, logout, signIn }}>
@@ -57,10 +62,14 @@ const UserContext = createContext();
   );
 };
 
+
  function UserAuth  () {
   return useContext(UserContext);
 };
 
+// const { user } = UserAuth();
+
+console.log()
 
 // export{UserAuth, AuthProvider}
 
