@@ -9,6 +9,7 @@ export default function BmiPresenter(props) {
     const [age, setAge] = React.useState(props.model.person.age);
     const [weight, setWeight] = React.useState(props.model.person.weight);
     const [height, setHeight] = React.useState(props.model.person.height);
+    const [bmi, setBmi] = React.useState(props.model.bmi);
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
@@ -35,6 +36,7 @@ export default function BmiPresenter(props) {
         setAge(props.model.person.age);
         setWeight(props.model.person.weight)
         setHeight(props.model.person.height)
+        setBmi(props.model.person.bmi)
     }
 
     function userSearchedACB() {
@@ -64,9 +66,39 @@ export default function BmiPresenter(props) {
         };
     }
 
+    function userChangedBmi(bmi){
+        props.model.setUserBmi(bmi)
+    }
+    // function chooseColor(color) {
+    //     if(data){
+    //         if(data.health === "Normal"){
+    //             setStyle("normal");
+    //         }
+    //         if(data.health === "Normal"){
+    //             setStyle("normal");
+    //         }
+    //         if(data.health === "Normal"){
+    //             setStyle("normal");
+    //         }
+    //         if(data.health === "Normal"){
+    //             setStyle("normal");
+    //         }
+    //         if(data.health === "Normal"){
+    //             setStyle("normal");
+    //         }
+    //         if(data.health === "Normal"){
+    //             setStyle("normal");
+    //         }
+    //         else {
+    //             setStyle("");
+    //         }
+    //     }
+    // }
+
 
     React.useEffect(wasCreatedACB, []);
     React.useEffect(promiseHasChangedACB, [promise]);
+    // React.useEffect(chooseColor, [data]);
 
 
     return (
@@ -95,7 +127,9 @@ export default function BmiPresenter(props) {
                 {promiseNoData({ promise, data, error }) ||
                 
                     <BmiResultview
-                        bmiResult={data}>
+                        bmiResult={data}
+                        onUserChangedBmi={userChangedBmi}
+                    >
                     </BmiResultview>
                 }
             </div>
@@ -112,10 +146,10 @@ function CustomInfo({ href, children, ...props }) {
             <h2>Information</h2>
             <img src="bmi-bild.jpg" />
             <p>
-                <span className="bold-text">What is BMI?</span>
+                <span className="bold-text">What's BMI?</span>
                 <br/>
                 Body mass index (BMI) to determine how healthy you are.
-                For most adults, a BMI between 18.5 to 24.9 is the ideal BMI to have.
+                For most adults, a BMI between 18.5 to 24.9 is the idead BMI to have.
 
                 BMI is not a perfect measure, because it does not directly assess body fat.<br /><br />
                 Muscle and bone are denser than fat, so an athlete or muscular person may have a high BMI,

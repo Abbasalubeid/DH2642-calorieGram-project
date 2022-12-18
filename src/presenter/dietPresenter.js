@@ -83,6 +83,9 @@ export default function DietPresenter(props){
         };
     }
     
+    function UserChangedDiet(diet) {
+        props.model.setUserDiet(diet)
+    }
 
     React.useEffect(wasCreatedACB, []);
     React.useEffect(promiseHasChangedACB, [promise]);
@@ -138,7 +141,9 @@ export default function DietPresenter(props){
             <div className={show ? "diet-result" : "hidden"}>
                 {promiseNoData({ promise, data, error }) ||
                     <DietResultView
-                        macros={data}>
+                        macros={data}
+                        onUserChangedDiet={UserChangedDiet}
+                        >
                     </DietResultView>
                 }
             </div>
@@ -177,7 +182,7 @@ function CustomInfo({ href, children, ...props }) {
                     <span className="bold-text">What is Protein?</span><br />
                     Protein is a macronutrient. To put it simply, protein is one of the main nutrients that every person needs to maintain a healthy body. It helps to repair
                     any internal or external damage, supports the immune system and contributes to an overall feeling of well-being.
-            </p>
+                </p>
             </div>
             <label htmlFor="check">Read More</label>
         </div>

@@ -32,8 +32,7 @@ export default function DietResultView(props){
         }  
     }
     function userDietIsChanged(event){
-        console.log(event.target.value)
-
+        props.onUserChangedDiet(event.target.value)
     }
         
     return(
