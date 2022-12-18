@@ -37,7 +37,9 @@ function persistedModel() {
         health : "Obese class I",
       }
 
-      const person = snapshot.val()?.currentPerson ?? defaultPerson;
+      console.log(snapshot.val());
+
+      const person= snapshot.val()?.person ?? defaultPerson;
       const goals = snapshot.val()?.goals ?? defaultGoals;
       const diet = snapshot.val()?.diet ?? defaultDiet;
       const bmi = snapshot.val()?.bmi ?? defaultBmi;
@@ -112,10 +114,9 @@ function updateFirebaseFromModel(model) {
                       }
 
                     const wrongOrder = Object.keys(snapshot.val()).map(onlyValuesCB);
-                    const rigntOrder = [wrongOrder[1], wrongOrder[2], wrongOrder[0]].join(",");
+                    const rightOrder = [wrongOrder[1], wrongOrder[2], wrongOrder[0]].join(",");
 
-                    console.log(rigntOrder);
-                    model.setUserGoal(rigntOrder) 
+                    model.setUserGoal(rightOrder) 
                     })
 
   onValue(dietRef, function dietIsChanged (snapshot) {
@@ -124,8 +125,8 @@ function updateFirebaseFromModel(model) {
                     }
 
                   const wrongOrder = Object.keys(snapshot.val()).map(onlyValuesCB);
-                  const rigntOrder = [wrongOrder[1], wrongOrder[2], wrongOrder[0]].join(",");
- 
+                  const rightOrder = [wrongOrder[1], wrongOrder[2], wrongOrder[0]].join(",");
+                  // model.setUserDiet(rightOrder) 
                   })
   
   
@@ -136,7 +137,8 @@ function updateFirebaseFromModel(model) {
     }
 
                 const wrongOrder = Object.keys(snapshot.val()).map(onlyValuesCB);
-                const rigntOrder = [wrongOrder[1], wrongOrder[2], wrongOrder[0]].join(",");
+                const rightOrder = [wrongOrder[1], wrongOrder[2], wrongOrder[0]].join(",");
+                // model.setUserBmi(rightOrder) 
 
               })         
 
