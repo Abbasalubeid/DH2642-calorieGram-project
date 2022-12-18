@@ -16,9 +16,9 @@ export default function summaryView(props) {
     age: ${props.age} \n
     weight: ${props.weight} \n
     height:${props.height} \n
-    BMI:  Calories/day \n
+    BMI:  ${props.bmi.bmi +(" (") + props.bmi.health + (")")} \n
     Your activity level is: \n
-    your Diet: \n
+    your Diet: ${props.diet.protein + " protein, " +props.diet.carbs + " carbs, "+props.diet.fat + " fat" }\n
     Goals:  ${props.goal.weightGoal} (${props.goal.weightPerWeek}) eat:${props.goal.calloriesIntake} Calories\n
     `
     return (
@@ -39,7 +39,7 @@ export default function summaryView(props) {
                             <td  className="second-td">{props.height}</td>
                         </tr>
                         <tr>
-                            <td className="first-td">BMI:{console.log(props.bmi)}</td>
+                            <td className="first-td">BMI:</td>
                             <td  className="second-td">{props.bmi.bmi +(" (") + props.bmi.health + (")")}</td>
                         </tr>
                         <tr>
