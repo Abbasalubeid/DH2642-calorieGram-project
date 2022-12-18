@@ -61,19 +61,19 @@ export default class FitnessModel{
       this.notifyObservers(payload);
     }
     else
-      throw new Error("Weight must be an integer between 40 and 160");
+      throw new Error("Weight must be a number between 40 and 160");
   }
 
   setHeight(height){
    // API restrictions
    // Undefined when deleted in the UI
-   if((!height ||height > 130 && height < 230)) {
+   if((!height ||height >= 130 && height <= 230)) {
     this.person.height = height;  
     const payload = { newHeight : height}
     this.notifyObservers(payload); 
    }
    else
-      throw new Error("Height must be an integer between 130 and 230");
+      throw new Error("Height must be a number between 130 and 230");
    }
 
   setUserGoal(goal){
@@ -81,11 +81,7 @@ export default class FitnessModel{
       this.currentGoal.weightGoal     = goals[0 ];
       this.currentGoal.weightPerWeek  = goals[1];
       this.currentGoal.caloriesIntake = goals[2];
-
-       console.log(this.currentGoal.weightGoal);
-       console.log(this.currentGoal.weightPerWeek);
-       console.log(this.currentGoal.caloriesIntake);
-
+      
       const payload = { newGoals : this.currentGoal}
       this.notifyObservers(payload);
   }
@@ -96,7 +92,7 @@ export default class FitnessModel{
     this.currentDiet.protein = dietArr[0];
     this.currentDiet.carbs   = dietArr[1];
     this.currentDiet.fat     = dietArr[2];
-    
+    console.log(diet)
     const payload = { newDiet : this.currentDiet}
       this.notifyObservers(payload);
   }

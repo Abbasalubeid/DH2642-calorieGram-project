@@ -8,7 +8,7 @@ export default function ProfilePresenter(props){
     const [weight, setWeight] = React.useState(props.model.person.weight);
     const [height, setHeight] = React.useState(props.model.person.height);
     const [gender, setGender] = React.useState(props.model.person.gender);
-    const [show, setShow] = React.useState(false);
+    const [saved, setSaved] = React.useState(false);
     
     function observerACB(){
         setAge(props.model.person.age);
@@ -17,29 +17,36 @@ export default function ProfilePresenter(props){
         setGender(props.model.person.gender)
     }
 
+    function somethingChangedACB(){
+        setSaved(false);
+    }
 
     function userSavedACB(){
-        props.model.setAge(age)
-        props.model.setWeight(weight)
-        props.model.setHeight(height)
-        props.model.setGender(gender)
-        setShow(true);
+        if(age && weight && height && gender){
+            setSaved(true);
+        }
+        else
+            setSaved(false);
     }
 
     function ageIsChangedACB(age) {
         props.model.setAge(age)
+        setSaved(false);
     }
 
     function weightIsChangedACB(weight) {
         props.model.setWeight(weight)
+        setSaved(false);
     }
 
     function heightIsChangedACB(height) {
         props.model.setHeight(height)
+        setSaved(false);
     }
 
     function genderIsChangedACB(gender) {
         props.model.setGender(gender)
+        setSaved(false);
     }
 
     function wasCreatedACB() {
@@ -61,12 +68,14 @@ export default function ProfilePresenter(props){
                     onUserChangedHeight={heightIsChangedACB}
                     onUserChangedGender={genderIsChangedACB}
                     onUserSearched={userSavedACB}
+                    onPersonChanged = {somethingChangedACB}
                     showGender = {true}
                     showSaveButton = {"Save"}
                     age = {age}
                     gender = {gender}
                     height = {height}
                     weight = {weight}
+                    userSaved = {saved}
                 />
             </div>
 

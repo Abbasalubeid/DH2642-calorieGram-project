@@ -5,7 +5,7 @@ export default function DietResultView(props){
     function renderDietCB(object){
         // 'calorie' is an extra/unused property returned by the API
         if(object != "calorie"){
-        const ret =`${(props.macros[object]["protein"]).toFixed(0)}g,${(props.macros[object]["carbs"]).toFixed(0)}g,${(props.macros[object]["carbs"]).toFixed(0)}g`
+        const ret =`${(props.macros[object]["protein"]).toFixed(0)}g,${(props.macros[object]["carbs"]).toFixed(0)}g,${(props.macros[object]["fat"]).toFixed(0)}g`
         return (
             <tr key={object} >
                 <td className="dlabel">

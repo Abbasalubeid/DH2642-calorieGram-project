@@ -8,6 +8,7 @@ const app = firebase.initializeApp(firebaseConfig)
 
 const auth = app.auth();
 
+
 function persistedModel() {
   
   function createModelACB(snapshot) {        
@@ -36,7 +37,9 @@ function persistedModel() {
         health : "Obese class I",
       }
 
-      const person = snapshot.val()?.currentPerson ?? defaultPerson;
+      console.log(snapshot.val());
+
+      const person= snapshot.val()?.person ?? defaultPerson;
       const goals = snapshot.val()?.goals ?? defaultGoals;
       const diet = snapshot.val()?.diet ?? defaultDiet;
       const bmi = snapshot.val()?.bmi ?? defaultBmi;
@@ -123,8 +126,9 @@ function updateFirebaseFromModel(model) {
 
                   const wrongOrder = Object.keys(snapshot.val()).map(onlyValuesCB);
                   const rightOrder = [wrongOrder[1], wrongOrder[2], wrongOrder[0]].join(",");
-                  model.setUserDiet(rightOrder)
-                  
+                  console.log("helloooooo")
+                  console.log(wrongOrder)
+                  // model.setUserDiet(rightOrder) 
                   })
   
   
@@ -135,8 +139,9 @@ function updateFirebaseFromModel(model) {
                     }
 
                 const wrongOrder = Object.keys(snapshot.val()).map(onlyValuesCB);
-                const rightOrder = [wrongOrder[1], wrongOrder[2], wrongOrder[0]].join(",");
-                model.setUserBmi(rightOrder)
+                const rightOrder = [wrongOrder[0], wrongOrder[1]].join(",");
+                
+                 model.setUserBmi(rightOrder) 
 
               })         
 

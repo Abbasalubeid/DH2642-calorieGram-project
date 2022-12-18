@@ -9,6 +9,7 @@ export default function SearchView(props) {
     const [ageError, setAgeError] = React.useState("");
     const [heightError, setHeightError] = React.useState("");
     const [weightError, setWeightError] = React.useState("");
+    const [invalidError, setInavilError] = React.useState(false);
     const [emptyBoxError, setEmptyBoxError] =  React.useState("");
 
     function userSavedACB(event) {
@@ -17,24 +18,35 @@ export default function SearchView(props) {
             setEmptyBoxError(true);
             return;
         }
-        props.onUserSearched();
+        else if(ageError !== "" || heightError !== "" || weightError !== ""){
+            props.onPersonChanged();
+            setInavilError(true);
+        }
+        else
+            props.onUserSearched();
     }
 
     function userTypedAgeACB(event) {
 
         try {
+            props.onPersonChanged?.();
             props.onUserChangedAge(event.target.value);
             setAgeError("");
+            setInavilError(false);
         } catch (error) {
             setAgeError(error.message);
+            
         }
+        
 
     }
 
     function userTypedWeightACB(event) {
         try {
+            props.onPersonChanged?.();
             props.onUserChangedWeight(event.target.value);
             setWeightError("");
+            setInavilError(false);
         } catch (error) {
             setWeightError(error.message);
         }
@@ -42,14 +54,17 @@ export default function SearchView(props) {
 
     function userTypedHeightACB(event) {
         try {
+            props.onPersonChanged?.();
             props.onUserChangedHeight(event.target.value);
             setHeightError("");
+            setInavilError(false);
         } catch (error) {
             setHeightError(error.message);
         }
     }
     
     function userChooseGenderACB(event) {
+        props.onPersonChanged?.();
         props.onUserChangedGender(event.target.value);
     }
 
@@ -119,7 +134,7 @@ function renderOptionsCB(opt) {
 
                             <td>
                                 <div>
-                                    <input type="number" name="weight" maxLength="3"
+                                    <input type="number" name="weight" maxLength="4" 
                                         width="60px" placeholder="kg" onChange={userTypedWeightACB}
                                         defaultValue={props.weight} className="input-box" />
                                     {emptyBoxError && props.weight === "" ?
@@ -137,14 +152,18 @@ function renderOptionsCB(opt) {
                             <td>
                                 <div>
                                     <input
-                                        type="number" name="height" maxLength="3"
+                                        type="number" name="height" maxLength="4"
                                         width="60px" placeholder="cm" onChange={userTypedHeightACB}
                                         defaultValue={props.height} className="input-box" />
                                     {emptyBoxError && props.height === "" ?
                                         <label className="error-msg"> {"<--"}Height is required!</label> : ""}
                                 </div>
                                 {heightError !== "" ?
-                                    <label className="error-msg">{heightError}</label> : ""}
+                                    <label className="error-msg">{heightError} <br></br></label> : ""}
+                                {props.userSaved?
+                                <label className="saved-msg">Information saved!</label> : ""}
+                                {invalidError&&!props.userSaved?
+                               <label className="error-msg">Please fill in valid values!</label> : ""}
                             </td>
                         </tr>
                         <tr className={!props.showLevels ? "hidden" : " "}>
@@ -172,7 +191,8 @@ function renderOptionsCB(opt) {
                         <tr>
                             <td></td>
                             <td>
-                                <input type="submit" name="submit" value={props.showSaveButton ? props.showSaveButton : "Calculate!"} className="btn" onClick={userSavedACB} />
+                                <input type="submit" name="submit" value={props.showSaveButton ? props.showSaveButton : "Calculate!"} className="btn" onClick={userSavedACB}/>
+
                             </td>
                         </tr>
                     </tbody>
