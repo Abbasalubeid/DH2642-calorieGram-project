@@ -1,11 +1,11 @@
 export default class FitnessModel{
-  constructor(person, goal){
+  constructor(person, goal, bmi, diet){
       this.observers            = [];
       this.person               = person;
       this.currentActivityLevel = ""
       this.currentGoal          = goal;
-      this.currentDiet          = {};
-      this.currentBmi           = {};
+      this.currentDiet          = diet;
+      this.currentBmi           = bmi;
   }
 
   addObserver(callback) {
@@ -102,6 +102,8 @@ export default class FitnessModel{
   }
   
   setUserBmi(bmi){
+    console.log("helooooo")
+    console.log(bmi)
     const bmiArr = (bmi.toString()).split(",");
     this.currentBmi.bmi      = bmiArr[0];
     this.currentBmi.health   = bmiArr[1];

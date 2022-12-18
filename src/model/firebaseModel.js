@@ -117,9 +117,9 @@ function updateFirebaseFromModel(model) {
                     model.setUserGoal(rigntOrder) 
                     })
 
-  onValue(dietRef, function dietIsChanged (snapshot) {   model.setDiet(snapshot.val()); })
+  onValue(dietRef, function dietIsChanged (snapshot) {   model.setUserDiet(snapshot.val()); })
   
-  onValue(bmiRef, function bmiIsChanged (snapshot) {   model.setBmi(snapshot.val()); })         
+  onValue(bmiRef, function bmiIsChanged (snapshot) {   model.setUserBmi(snapshot.val()); })         
 
   
 
