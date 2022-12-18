@@ -19,7 +19,6 @@ export default function BmiResultView(props) {
             <div id="healthstate" className="col state">
                 <span></span>
                 {props.bmiResult.health}</div>
-                {/* <input type="button" value={props.bmiResult.health} onClick={changeColorCB}></input> */}
         </div >
     );
 }
