@@ -81,7 +81,18 @@ function updateFirebaseFromModel(model) {
 
   onValue(weightRef, function weightIsChanged (snapshot) {   model.setWeight(snapshot.val()); })
 
-  onValue(goalsRef, function goalsIsChanged (snapshot) {   model.setUserGoal(snapshot.val()); })
+  onValue(goalsRef, function goalsIsChanged (snapshot) {
+
+                      function onlyValuesCB(object){
+                        return snapshot.val()[object];
+                      }
+
+                    const wrongOrder = Object.keys(snapshot.val()).map(onlyValuesCB);
+                    const rigntOrder = [wrongOrder[1], wrongOrder[2], wrongOrder[0]].join(",");
+
+                    console.log(rigntOrder);
+                    model.setUserGoal(rigntOrder) 
+                    })
   
 
 }
