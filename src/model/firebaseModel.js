@@ -125,20 +125,22 @@ function updateFirebaseFromModel(model) {
                     }
 
                   const wrongOrder = Object.keys(snapshot.val()).map(onlyValuesCB);
-                  const rightOrder = [wrongOrder[1], wrongOrder[2], wrongOrder[0]].join(",");
-                  // model.setUserDiet(rightOrder) 
+                  const rightOrder = [wrongOrder[2], wrongOrder[0], wrongOrder[1]].join(",");
+                  
+                  model.setUserDiet(rightOrder) 
                   })
   
   
   
   onValue(bmiRef, function bmiIsChanged (snapshot) {
                   function onlyValuesCB(object){
-                    return snapshot.val()[object];
-    }
+                  return snapshot.val()[object];
+                    }
 
                 const wrongOrder = Object.keys(snapshot.val()).map(onlyValuesCB);
-                const rightOrder = [wrongOrder[1], wrongOrder[2], wrongOrder[0]].join(",");
-                // model.setUserBmi(rightOrder) 
+                const rightOrder = [wrongOrder[0], wrongOrder[1]].join(",");
+                
+                 model.setUserBmi(rightOrder) 
 
               })         
 

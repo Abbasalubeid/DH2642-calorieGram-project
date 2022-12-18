@@ -81,18 +81,18 @@ export default class FitnessModel{
       this.currentGoal.weightGoal     = goals[0 ];
       this.currentGoal.weightPerWeek  = goals[1];
       this.currentGoal.caloriesIntake = goals[2];
-
+      
       const payload = { newGoals : this.currentGoal}
       this.notifyObservers(payload);
   }
 
   setUserDiet(diet){
     const dietArr = (diet.toString()).split(",");
-    console.log(dietArr)
+
     this.currentDiet.protein = dietArr[0];
     this.currentDiet.carbs   = dietArr[1];
     this.currentDiet.fat     = dietArr[2];
-    
+
     const payload = { newDiet : this.currentDiet}
       this.notifyObservers(payload);
   }
