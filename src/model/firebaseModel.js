@@ -13,7 +13,7 @@ function persistedModel() {
   function createModelACB(snapshot) {        
          
       const defaultPerson = {
-        age : 25,
+        age : 26,
         gender : "male",
         weight : 85,
         height : 190
@@ -25,10 +25,23 @@ function persistedModel() {
         caloriesIntake : "2051",
       }
 
+      const defaultDiet = {
+        protein : "110g",
+        carbs : "240g",
+        fat : "51g",
+      }
+
+      const defaultBmi = {
+        bmi : "34.6",
+        health : "Obese class I",
+      }
+
       const person = snapshot.val()?.currentUser ?? defaultPerson;
       const goals = snapshot.val()?.goals ?? defaultGoals;
+      const diet = snapshot.val()?.diet ?? defaultDiet;
+      const bmi = snapshot.val()?.bmi ?? defaultBmi;
 
-      return new FitnessModel(person, goals);
+      return new FitnessModel(person, goals, diet, bmi);
   }
 
   const db = getDatabase();
@@ -55,6 +68,12 @@ function updateFirebaseFromModel(model) {
           
           if(payload.hasOwnProperty('newGoals'))
             set(ref(db, 'goals'), payload.newGoals)
+
+          if(payload.hasOwnProperty('newDiet'))
+          set(ref(db, 'diet'), payload.newDiet)
+
+          if(payload.hasOwnProperty('newBmi'))
+            set(ref(db, 'bmi'), payload.newBmi)
       }
   }
 
@@ -71,6 +90,10 @@ function updateFirebaseFromModel(model) {
   const heightRef = ref(db, 'currentUser/height');
   const weightRef = ref(db, 'currentUser/weight');
   const goalsRef = ref(db, 'goals');
+  const dietRef = ref(db, 'diet');
+  const bmiRef = ref(db, 'bmi');
+
+
 
 
   onValue(ageRef, function ageIsChanged (snapshot) { model.setAge(snapshot.val()); })
@@ -93,6 +116,11 @@ function updateFirebaseFromModel(model) {
                     console.log(rigntOrder);
                     model.setUserGoal(rigntOrder) 
                     })
+
+  onValue(dietRef, function dietIsChanged (snapshot) {   model.setDiet(snapshot.val()); })
+  
+  onValue(bmiRef, function bmiIsChanged (snapshot) {   model.setBmi(snapshot.val()); })         
+
   
 
 }
