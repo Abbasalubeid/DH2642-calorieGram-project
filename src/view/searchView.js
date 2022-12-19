@@ -162,7 +162,7 @@ function renderOptionsCB(opt) {
                                     <label className="error-msg">{heightError} <br></br></label> : ""}
                                 {props.userSaved?
                                 <label className="saved-msg">Information saved!</label> : ""}
-                                {invalidError&&props.userSaved?
+                                {invalidError&&!props.userSaved?
                                <label className="error-msg">Please fill in valid values!</label> : ""}
                             </td>
                         </tr>
