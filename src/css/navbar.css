@@ -57,7 +57,11 @@
   width: 40px;
   height: 31px;
 }
-
+.nav-toggle{
+  border: 0;
+  background: 0;
+  cursor: pointer;
+}
 .nav-toggle .nav-bar {
   height: 4px;
   width: 100%;
@@ -70,13 +74,13 @@
 }
 
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
     .nav-toggle{
       display: flex;
     }
 
     .nav-links{
-      display: none;
+      display: flex;
       width: 100%;
     }
     .btn-primary{

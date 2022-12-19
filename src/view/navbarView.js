@@ -8,23 +8,23 @@ export default function NavbarView() {
         setSigned(true);
     }
 
-    // const toggleButton = document.getElementsByClassName('nav-toggle')
-    // const navbarlinks = document.getElementsByClassName('nav-links')
+    const toggleButton = document.getElementsByClassName('nav-toggle')
+    const navbarlinks = document.getElementsByClassName('nav-links')
     // toggleButton.addEventListener('click', () => {
     //     navbarlinks.classList.toggle('active')
     // })
 
-    // // function toggleButtonClickACB(){
-    // //     navbarlinks.classList.toggle('active');
-    // // }
+    function toggleButtonClickACB(){
+        navbarlinks.classList.toggle('active');
+    }
 
     return <nav className="navbar">
         <Link to="/home" className="nav-title nav-home"><img src="CG-withoutbg.png"></img></Link>
-        <a href="" className="nav-toggle">
+        <button className="nav-toggle" onClick={toggleButtonClickACB}>
             <span className="nav-bar"></span>
             <span className="nav-bar"></span>
             <span className="nav-bar"></span>
-        </a>
+        </button>
         <div className="nav-links">
             <ul>
                 <CustomLink href="/profile" className="btn-links nav-goals">Profile</CustomLink>
@@ -34,11 +34,11 @@ export default function NavbarView() {
                 <CustomLink href="/summary" className="btn-links nav-summary">Summary</CustomLink>
 
             </ul>
-        <div>
+        </div>
+            <div>
                 <a href="/" className={!signed ? "login-btn btn-primary" : "hidden"}>Login</a>
                 <a href="/signup" className={!signed ? "btn btn-primary" : "hidden"}>Sign up</a>
                 <a href="/login" className={signed ? "btn" : "hidden"}>Log out</a>
-            </div>
         </div>
     </nav>
 }

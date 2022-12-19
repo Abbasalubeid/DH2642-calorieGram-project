@@ -1,7 +1,7 @@
 .goal-mainStyle {
   padding: 0;
   height: 75vh;
-  width: 600px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -24,6 +24,7 @@
 .goal-mainStyle p.first-p {
   line-height: 1.5rem;
   letter-spacing: 1px;
+  width: 600px;
   font-weight: 500;
   font-size: 1.1rem;
   color: black;
@@ -120,10 +121,13 @@
 /*----------------------------------------------------------------bmi result---------------------------------------*/
 .goal-result {
   position: absolute;
-  left: 600px;
+  /* left: 600px; */
+  right: 0;
+  top: 0;
   width: 667px;
-  height: 380px;
-  margin: 10px 5px;
+  height: 465px;
+  margin: 38px 5px;
+  margin-left: 600px;
   border-radius: 8px;
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.25);
 }
@@ -202,4 +206,25 @@
   display: block;
   visibility: visible;
   padding: 0 auto;
+}
+
+
+@media screen and (max-width: 414px) {
+  .goal-style{
+    flex-direction: row;
+    padding-left: 5px;
+  }
+
+  .goal-mainStyle h1{
+    margin: 10px;
+  }
+  .goal-mainStyle p.first-p {
+    width: 100%;
+    margin: 5px;
+  }
+  
+  .goal-result{
+    position: relative;
+    margin: 5px;
+  }
 }

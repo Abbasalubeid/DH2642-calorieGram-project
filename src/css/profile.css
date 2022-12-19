@@ -20,9 +20,17 @@
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 400px) {
     .profile-mainStyle{
       margin-top: 10%;
-      
+      width: 100%;
+    }
+}
+@media (max-width: 700px) {
+    .profile-mainStyle{
+      margin-top: 10%;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 }

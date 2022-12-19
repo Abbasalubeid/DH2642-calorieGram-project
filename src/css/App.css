@@ -22,3 +22,11 @@ body {
 .error-msg {
   color : red;
 }
+
+
+@media screen and (max-width: 800px) {
+  .banner{
+    padding: 0;
+    margin: 0;
+  }
+}

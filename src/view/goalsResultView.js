@@ -51,7 +51,7 @@ export default function GoalsResultView(props) {
     Goals: ${JSON.stringify(props.activityResult.goals).replace(/,/g, "\n")}
     `
     return ( <div>
-        <div className="result">
+        <div className="result-button">
             <h3>Click to choose and save a goal</h3>
             <button className="btn anim" onClick={userGoalIsChanged}>To Maintain weight ➡️ Eat {(props.activityResult.BMR)} Calories/day</button>
              {Object.keys(props.activityResult.goals).map(renderGoalsCB)}

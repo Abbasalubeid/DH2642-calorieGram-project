@@ -5,6 +5,8 @@
 .content {
   margin-top: 10%;
   max-width: 600px;
+  display: flex;
+  flex-direction: column;
 }
 
 .content h1 {
@@ -42,7 +44,8 @@
 }
 
 .feature-img {
-  width: 530px;
+  /* width: 530px; */
+  max-width: 100%;
   position: absolute;
   bottom: 0%;
   right: 5%;
@@ -65,17 +68,27 @@
   }
 }
 
-@media (max-width: 700px) {
-  .hero {
+@media (max-width: 900px) {
+  /* .hero {
     flex-direction: column;
     display: inline-block;
     align-items: center;
-  }
+  } */
   .content {
     margin-top: 5%;
+    flex-direction: column;
   }
   .feature-img {
     width: 400px;
     position: relative;
+    left: 0;
+
+  }
+}
+
+@media (min-width: 900) {
+  .content img {
+    width: 100px;
+    flex-basis: 25%;
   }
 }

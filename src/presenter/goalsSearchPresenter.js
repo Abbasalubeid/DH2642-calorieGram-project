@@ -122,7 +122,7 @@ export default function GoalsSearchPresenter(props) {
                     weight = {weight}
                     
                 />
-            </div>
+            
         
             <div className={show ? "goal-result" : "hidden"}>
                 {promiseNoData({ promise, data, error }) ||
@@ -132,6 +132,7 @@ export default function GoalsSearchPresenter(props) {
                         onUserChangedUserGoals={UserChangedUserGoals}
                     />
                 }
+            </div>
             </div>
         </div>
 
