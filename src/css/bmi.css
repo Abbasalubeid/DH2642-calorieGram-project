@@ -1,7 +1,6 @@
-.goal-mainStyle {
+.bmi-mainStyle {
   padding: 0;
   height: 75vh;
-  width: 600px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -14,18 +13,19 @@
   margin-left: -60px;
   color: #888;
 }
-.goal-mainStyle h1 {
+.bmi-mainStyle h1 {
   flex: 0.3;
   text-align: left;
   justify-content: center;
   margin: 0;
   padding: 0;
 }
-.goal-mainStyle p.first-p {
+.bmi-mainStyle p.first-p {
   line-height: 1.5rem;
   letter-spacing: 1px;
   font-weight: 500;
   font-size: 1.1rem;
+  width: 560px;
   color: black;
   text-align: justify;
   padding: 5px;
@@ -34,11 +34,11 @@
   border-radius: 8px;
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.25);
 }
-.goal-style {
+.bmi-style {
   padding-left: 70px;
 }
 
-.goal-mainStyle table .label {
+.bmi-mainStyle table .label {
   color: #3c77af;
   text-align: right;
   font-size: 20px;
@@ -118,34 +118,116 @@
   background: white;
 }
 /*----------------------------------------------------------------bmi result---------------------------------------*/
-.goal-result {
+.bmi-result {
   position: absolute;
-  left: 600px;
+  top: 0;
+  right: 0;
+  margin-left: 460px;
   width: 667px;
-  height: 380px;
+  height: 100px;
   margin: 10px 5px;
   border-radius: 8px;
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.25);
 }
 
+
+.row {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.col {
+  flex-basis: 25%;
+  text-align: center;
+  padding: 22px 18px;
+  height: 100%;
+  position: relative;
+}
+
+.col span {
+  width: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 10px solid #4177dc;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.normal{
+  background-color: green;
+}
+
+.text {
+  background-color: #4177dc;
+  color: white;
+}
+
+.state {
+  font-weight: bold;
+  font-size: 1.2em;
+  background-color: #a5e2ff;
+}
+
+.row .col:nth-child(1) {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.row .col:nth-child(4) {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .bmi-style {
+    width: 450px;
+  }
+  .bmi-mainStyle p.first-p{
+    flex-grow: 1;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .bmi-style {
+    width: 450px;
+    padding-left: 30px;
+  }
+  .bmi-result{
+    position: relative;
+    left: 0;
+    padding:0;
+  }
+
+  .bmi-info-result{
+    display: none;
+  }
+}
+
+
 /*----------------------------------------------------------------bmi info---------------------------------------*/
 
-.goal-info {
+.bmi-info {
   position: absolute;
-  left: 600px;
+  right: 0;
+  top: 0;
   display: flex;
   flex-direction: row;
   width: 700px;
-  margin: 37px 8px;
+  margin-left: 600px;
+  margin-top: 30px;
   padding: 10px;
   padding-right: 5px;
   border-radius: 8px;
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
-.goal-info-result {
+.bmi-info-result {
   position: absolute;
-  top: 100px;
+  top: 168px;
   left: 600px;
   width: 670px;
   margin: 0 5px;
@@ -202,4 +284,18 @@
   display: block;
   visibility: visible;
   padding: 0 auto;
+}
+@media screen and (max-width: 768px) {
+  .bmi-info{
+    position: relative;
+    width: 460px;
+    margin-left: 5px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .bmi-info{
+    position: relative;
+    bottom: 0;
+    margin-left: 5px;
+  }
 }

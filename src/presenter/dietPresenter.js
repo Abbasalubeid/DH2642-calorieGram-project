@@ -3,7 +3,7 @@ import DietResultView from "../view/dietResultView.js";
 import React from "react";
 import promiseNoData from "../view/promiseNoData.js";
 import { getMacroInfo } from "../fetchSource";
-import "../css/dietSearch.css"
+import "../css/diet.css"
 
 
 export default function DietPresenter(props){
@@ -137,9 +137,8 @@ export default function DietPresenter(props){
         <div className="diet-mainStyle">
             <div>
             <h1>Diet Calculate</h1>
-             <p className="first-p anim">The Diet Calculator can be used to estimate the number of calories
-                    a person needs to consume each day.
-                    This calculator can also provide some simple guidelines for gaining or losing weight.</p>
+             <p className="first-p anim">The Diet Calculator can be used to estimate the amount of protein, carbs and fats you need to match the goal and activity level you choose below.<br></br>
+             A healthy diet is essential for good health and nutrition and it will help you achive your goals faster and better.</p>
             </div>
             <div className="diet-style">
                 <SearchView onUserChangedAge={ageIsChangedACB}
@@ -169,7 +168,7 @@ export default function DietPresenter(props){
                     height = {props.model.person.height}
                     weight = {props.model.person.weight}
                 />
-            </div>
+           
             <div className={!show ? "diet-info" : "hidden"}>
                 <CustomInfo />
             </div>
@@ -182,6 +181,7 @@ export default function DietPresenter(props){
                         >
                     </DietResultView>
                 }
+            </div>
             </div>
         </div>
     )

@@ -1,7 +1,7 @@
 import React from "react";
-import "../css/bmiSearch.css";
-import "../css/dietSearch.css";
-import "../css/goalsSearch.css";
+import "../css/bmi.css";
+import "../css/diet.css";
+import "../css/goals.css";
 import "../css/profile.css";
 
 export default function SearchView(props) {
@@ -86,7 +86,6 @@ export default function SearchView(props) {
     }
 
     function userChooseLevelACB(event) {
-        //console.log(event.target)
         props.onUserChooseLevel(event.target.value);
     }
     function userChooseGoalACB(event){
@@ -156,7 +155,8 @@ function renderOptionsCB(opt) {
                                         defaultValue={props.age}
                                         className="input-box"
                                     />
-                                    {(emptyBoxError && !props.age) ?
+                                    <span className="grey-text">age</span>
+                                    {emptyBoxError && props.age === "" ?
                                         <label className="error-msg"> {"<--"}Age is required!</label> : ""}
                                 </div>
                                 {ageError !== "" ?
@@ -173,7 +173,8 @@ function renderOptionsCB(opt) {
                                     <input type="number" name="weight" maxLength="4" 
                                         width="60px" placeholder="kg" onChange={userTypedWeightACB}
                                         defaultValue={props.weight} className="input-box" />
-                                    {(emptyBoxError && !props.weight) ? 
+                                    <span className="grey-text">kg</span>
+                                    {emptyBoxError && props.weight === "" ?
                                         <label className="error-msg"> {"<--"}Weight is required!</label> : ""}
                                 </div>
                                 {weightError !== "" ?
@@ -191,7 +192,8 @@ function renderOptionsCB(opt) {
                                         type="number" name="height" maxLength="4"
                                         width="60px" placeholder="cm" onChange={userTypedHeightACB}
                                         defaultValue={props.height} className="input-box" />
-                                    {(emptyBoxError && !props.height) ? 
+                                        <span className="grey-text">cm</span>
+                                    {emptyBoxError && props.height === "" ?
                                         <label className="error-msg"> {"<--"}Height is required!</label> : ""}
                                 </div>
                                 {heightError !== "" ?

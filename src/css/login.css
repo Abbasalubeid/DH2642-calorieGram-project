@@ -5,7 +5,20 @@
   justify-content: center;
   text-align: center;
 }
-
+.signup-banner {
+  display: flex;
+  min-height: 75vh;
+  align-items: flex-start;
+  justify-content: space-between;
+  text-align: center;
+  flex-direction: row;
+}
+.form-container{
+  padding: 1rem;
+   border-radius: 8px;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
+  margin-left: 15px;
+}
 .form-container,
 .form-login,
 .form-register {
@@ -40,4 +53,29 @@ input:invalid {
   background-color: white;
   padding: 20px;
   cursor: pointer;
+}
+
+
+.signup-info{
+  display: flex;
+  flex-direction: column;
+  flex: 0.8;
+  margin-top: 30px;
+  border-radius: 8px;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.25);
+  text-align: left;
+  padding: 14px;
+}
+
+.signup-info h2{
+  transition: 0.5s;
+  margin: 5px;
+}
+
+.signup-info img {
+  margin-left: 65px;
+  padding: 0;
+  width: 250px;
+  height: 250px;
+  transition: 1.5s;
 }

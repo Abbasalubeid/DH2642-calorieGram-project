@@ -44,7 +44,7 @@ export default function summaryView(props) {
                                             <tr>
                                             <td className="first-td">Your Activity Level:</td>
                                             <td  className="second-td">{props.activityLevel}</td>
-                                            <button onClick={props.removeUserActivity}>remove</button> 
+                                            <button onClick={props.removeUserActivity} className="btn">remove</button> 
                                         </tr>                                            
                         :""
                         }
@@ -53,7 +53,7 @@ export default function summaryView(props) {
                                             <tr>
                                                 <td className="first-td">BMI:</td>
                                                 <td className="second-td">{props.bmi.bmi +(" (") + props.bmi.health + (")")}</td>
-                                                <button onClick={props.removeUserBmi}>remove</button> 
+                                                <button onClick={props.removeUserBmi} className="btn anim">remove</button> 
                                             </tr>                                            
                         :""
                         }
@@ -62,7 +62,7 @@ export default function summaryView(props) {
                                                 <tr>
                                                     <td className="first-td">Your Diet:</td>
                                                     <td className="second-td">{props.diet.protein + " protein, " +props.diet.carbs + " carbs, "+props.diet.fat + " fat" }</td>
-                                                    <button onClick={props.removeUserDiet}>remove</button> 
+                                                    <button onClick={props.removeUserDiet} className="btn anim">remove</button> 
                                                 </tr>
                         :""
                         }
@@ -74,7 +74,7 @@ export default function summaryView(props) {
                                                                                 props.goal.weightPerWeek+"),\n"+
                                                                                 props.goal.caloriesIntake +(" calories per day.")} 
                                                     </td>
-                                                    <button onClick={props.removeUserGoal}>remove</button>
+                                                 <button onClick={props.removeUserGoal} className="btn anim">remove</button>
                                                 </tr>
                         :
                         ""

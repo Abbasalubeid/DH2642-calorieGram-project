@@ -7,13 +7,15 @@ export default function NavbarView() {
     function userLogin() {
         setSigned(true);
     }
+
     return <nav className="navbar">
         <Link to="/home" className="nav-title nav-home"><img src="CG-withoutbg.png"></img></Link>
-        <a href="" className="nav-toggle">
+        <a className="nav-toggle">
             <span className="nav-bar"></span>
             <span className="nav-bar"></span>
             <span className="nav-bar"></span>
         </a>
+        <div className="nav-links">
         <ul>
             <CustomLink href="/profile" className="btn-links nav-profile">Profile</CustomLink>
             <CustomLink href="/bmi" className="btn-links nav-bmi">Bmi</CustomLink>
@@ -22,10 +24,11 @@ export default function NavbarView() {
             <CustomLink href="/summary" className="btn-links nav-summary">Summary</CustomLink>
 
         </ul>
+        </div>
         <div>
-            <a href="/" className={!signed ? "login-btn nav-login" : "hidden"}>Login</a>
-            <a href="/signup" className={!signed ? "btn nav-signup" : "hidden"}>Sign up</a>
-            <a href="/login" className={signed ? "btn" : "hidden"}>Log out</a>
+            <a href="/" className={signed ? "login-btn" : "hidden"}>Login</a>
+            <a href="/signup" className={signed ? "btn signbtn" : "hidden"}>Sign up</a>
+            <a href="/login" className={!signed ? "btn signbtn" : "hidden"}>Log out</a>
         </div>
     </nav>
 }

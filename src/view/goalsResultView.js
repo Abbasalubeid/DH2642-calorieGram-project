@@ -1,4 +1,4 @@
-import "../css/goalsResult.css";
+import "../css/goals.css";
 export default function GoalsResultView(props) {
 
     function renderGoalsCB(object) {
@@ -30,12 +30,12 @@ export default function GoalsResultView(props) {
         
     }
 
-    return ( 
-        <div className="result">
+    return ( <div>
+        <div className="result-button">
+            <h3>Click to choose and save a goal</h3>
             <button className="btn anim" onClick={userGoalIsChanged}>To Maintain weight ➡️ Eat {(props.activityResult.BMR)} Calories/day</button>
              {Object.keys(props.activityResult.goals).map(renderGoalsCB)}
-            <button onClick={props.removeGoalInfo}>remove data</button>
         </div>
-        
+     </div>
      );
 }

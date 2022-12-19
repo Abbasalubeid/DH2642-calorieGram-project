@@ -14,7 +14,7 @@
 }
 
 .summary-style h2{
-    width: 300px;
+    width: 100%;
 }
 .summary-style .first-td{
     font-weight: bold;
@@ -26,3 +26,12 @@
     text-align: left;
 }
 
+
+@media screen and (max-width: 768px) and (min-width: 300px){
+    .summary-mainStyle{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 30px;
+}
+}

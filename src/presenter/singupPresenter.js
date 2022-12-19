@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {  useNavigate } from 'react-router-dom';
 import { UserAuth } from  "../model/AuthContext";
-import Signup from "../view/SignupView"
+import Signup from '../view/SignupView.js';
 import { AuthProvider } from '../model/AuthContext';
 
 export default function SignupPresenter () {

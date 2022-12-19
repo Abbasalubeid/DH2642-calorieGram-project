@@ -1,7 +1,6 @@
-.bmi-mainStyle {
+.diet-mainStyle {
   padding: 0;
   height: 75vh;
-  width: 600px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -14,18 +13,19 @@
   margin-left: -60px;
   color: #888;
 }
-.bmi-mainStyle h1 {
+.diet-mainStyle h1 {
   flex: 0.3;
   text-align: left;
   justify-content: center;
   margin: 0;
   padding: 0;
 }
-.bmi-mainStyle p.first-p {
+.diet-mainStyle p.first-p {
   line-height: 1.5rem;
   letter-spacing: 1px;
   font-weight: 500;
   font-size: 1.1rem;
+  width: 560px;
   color: black;
   text-align: justify;
   padding: 5px;
@@ -34,11 +34,11 @@
   border-radius: 8px;
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.25);
 }
-.bmi-style {
+.diet-style {
   padding-left: 70px;
 }
 
-.bmi-mainStyle table .label {
+.diet-mainStyle table .label {
   color: #3c77af;
   text-align: right;
   font-size: 20px;
@@ -54,11 +54,27 @@
   background-image: linear-gradient(79deg, #edf3fc, #dddff9 48%, #b2c3fd 100%);
 }
 
+.select {
+  display: block;
+  width: 250px;
+  height: 50px;
+  padding: 6px 12px;
+  font-size: 17px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 /* The container */
 .container {
-  display: inline-block;
+  display: flex;
+  /* justify-content: space-around; */
+  flex-direction: row;
   position: relative;
-  padding-left: 30px;
+  padding-left: 10px;
   margin: 0 6px;
   cursor: pointer;
   font-size: 22px;
@@ -117,35 +133,123 @@
   border-radius: 50%;
   background: white;
 }
-/*----------------------------------------------------------------bmi result---------------------------------------*/
-.bmi-result {
+/*----------------------------------------------------------------diet result---------------------------------------*/
+.diet-result {
   position: absolute;
-  left: 600px;
+  right: 0;
+  top: 0;
   width: 667px;
-  height: 80px;
+  height: 500px;
+  margin-left: 600px;
   margin: 10px 5px;
   border-radius: 8px;
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.25);
 }
 
-/*----------------------------------------------------------------bmi info---------------------------------------*/
 
-.bmi-info {
+.diet-row {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left;
+  align-items: center;
+  font-size: 1.2rem;
+}
+.diet-row h3{
+  margin: 0 10px;
+}
+.dlabel{
+  display: flex
+}
+.diet-row .diet-table{
+  width: 100%;
+}
+.diet-col {
+  flex-basis: 25%;
+  text-align: center;
+  padding: 22px 18px;
+  height: 100%;
+  position: relative;
+}
+
+.diet-col1{
+    text-align: center;
+    padding: 14px 10px;
+    position: relative;
+    width: 0px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: #4177dc;
+    color: #fff;
+}
+
+.diet-col span {
+  width: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 10px solid #00b4d8;
   position: absolute;
-  left: 600px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.dtext {
+  background-color: #00b4d8;
+  color: white;
+}
+
+.dstate {
+  font-weight: bold;
+  font-size: 1.2em;
+  background-color: #b9fbc0;
+}
+
+.diet-row .diet-col:nth-child(7) {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+}
+
+@media screen and (max-width: 768px) {
+  .diet-style {
+    width: 450px;
+  }
+  .diet-mainStyle p.first-p{
+    flex-grow: 1;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .diet-style {
+    width: 450px;
+    padding-left: 30px;
+  }
+  .diet-result{
+    position: relative;
+    left: 0;
+  }
+}
+
+/*----------------------------------------------------------------diet info---------------------------------------*/
+
+.diet-info {
+  position: absolute;
+  right: 0;
+  top: 0;
   display: flex;
   flex-direction: row;
   width: 700px;
-  margin: 37px 8px;
+  margin-left: 600px;
+  margin-top: 30px;
   padding: 10px;
-  padding-right: 5px;
   border-radius: 8px;
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
-.bmi-info-result {
+.diet-info-result {
   position: absolute;
-  top: 100px;
+  top: 330px;
   left: 600px;
   width: 670px;
   margin: 0 5px;
@@ -160,14 +264,21 @@
   margin-left: 10px;
 }
 .custom-info p {
-  line-height: 1.2;
+  line-height: 1.4;
   letter-spacing: 1px;
-   word-spacing: -2px;
+  word-spacing: 4 .2px;
   text-align: justify;
 }
-.custom-info h4 {
-  width: 25%;
-  margin: 0;
+.custom-info h2 {
+  width: 30%;
+  margin: 0 0 10px;
+}
+.bold-text {
+  width: 100px;
+  height:100px;
+  margin: 10px 0;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 #check {
@@ -202,4 +313,18 @@
   display: block;
   visibility: visible;
   padding: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  .diet-info{
+    width: 460px;
+    margin-left: 5px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .diet-info{
+    position: relative;
+    left: 0;
+    margin-left: 5px;
+  }
 }

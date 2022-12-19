@@ -1,5 +1,5 @@
-import "../css/dietResult.css"
-import "../css/bmiSearch.css"
+import "../css/diet.css"
+import "../css/bmi.css"
 export default function DietResultView(props){
 
     function renderDietCB(object){
@@ -43,13 +43,7 @@ export default function DietResultView(props){
                     {Object.keys(props.macros).map(renderDietCB)}
                 </tbody>
             </table>
-            <button onClick={props.removeDietInfo}>remove info</button>
            </div>
 
     )
 }
-
-// <button className= "btn anim" key = {object}> {"\n" + object + " diet: protein -> "
-        //                       +  Number(props.macros[object]["protein"]).toFixed(0) + " gram"
-        //                       + " carbs -> " + Number(props.macros[object]["carbs"]).toFixed(0) + " gram"
-        //                       + " fat -> " + Number(props.macros[object]["fat"]).toFixed(0) + " gram"}</button>
