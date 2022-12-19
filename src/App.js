@@ -9,8 +9,8 @@ import { Route, Routes } from "react-router-dom";
 import NavbarView from "./view/navbarView.js";
 import "./css/App.css";
 import { AuthProvider } from  "./AuthContext";
-import SigninView from './view/SigninView';
-import SignupView from './view/SignupView';
+import SigninView from './view/signinView';
+import SignupView from './view/signupView';
 import Account from './view/accountView';
 import ProtectedRoute from './ProtectedRoute';
 
