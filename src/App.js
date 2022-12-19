@@ -8,9 +8,11 @@ import Homepage from "./view/homepage.js";
 import { Route, Routes } from "react-router-dom";
 import NavbarView from "./view/navbarView.js";
 import "./css/App.css";
-import { AuthProvider } from  "./AuthContext";
-import SigninView from './view/signinView';
-import SignupView from './view/signupView';
+import { AuthProvider } from  "./model/AuthContext";
+
+import SignInPresenter from "./presenter/signInPresenter.js";
+import SignupPresenter from "./presenter/singupPresenter.js";
+
 import Account from './view/accountView';
 import ProtectedRoute from './ProtectedRoute';
 
@@ -23,8 +25,8 @@ function App(props) {
       
       <AuthProvider>
        <Routes>
-         <Route path='/' element={<SigninView />} />
-         <Route path='/signup' element={<SignupView />} />
+         <Route path='/' element={<SignInPresenter />} />
+         <Route path='/signup' element={<SignupPresenter />} />
          <Route
            path='/account'
            element={ <ProtectedRoute> <Account /> </ProtectedRoute>}/>

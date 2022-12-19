@@ -23,11 +23,11 @@ function persistedModel(userId) {
     const model =  new FitnessModel(person, goals, diet, bmi);
 
     if (userId){
-        console.log(userId);
+       
         model.setUserId(userId);
         }
       else{
-        console.log(userId);
+       
         model.setUserId("");
       }
       return model;
@@ -92,16 +92,16 @@ function updateFirebaseFromModel(model) {
     const dietRef = ref(db, `/${model.currentUserId}/diet`);
     const bmiRef = ref(db, `/${model.currentUserId}/bmi`);
 
-    onValue(ageRef, function ageIsChanged (snapshot) {console.log(snapshot.val()); model.setAge(snapshot.val()); })
+    onValue(ageRef, function ageIsChanged (snapshot) { model.setAge(snapshot.val()); })
 
-    onValue(genderRef, function genderIsChanged (snapshot) { console.log(snapshot.val()); model.setGender(snapshot.val()); })
+    onValue(genderRef, function genderIsChanged (snapshot) {  model.setGender(snapshot.val()); })
 
-    onValue(heightRef, function heightIsChanged (snapshot) { console.log(snapshot.val());model.setHeight(snapshot.val());  })
+    onValue(heightRef, function heightIsChanged (snapshot) { model.setHeight(snapshot.val());  })
 
-    onValue(weightRef, function weightIsChanged (snapshot) {  console.log(snapshot.val()); model.setWeight(snapshot.val()); })
+    onValue(weightRef, function weightIsChanged (snapshot) {   model.setWeight(snapshot.val()); })
 
     onValue(goalsRef, function goalsIsChanged (snapshot) {
-      console.log(snapshot.val());
+      
                         function onlyValuesCB(object){
                           return snapshot.val()[object];
                         }
@@ -116,7 +116,7 @@ function updateFirebaseFromModel(model) {
                       })
 
     onValue(dietRef, function dietIsChanged (snapshot) {
-                      console.log(snapshot.val());
+                     
                       function onlyValuesCB(object){
                         return snapshot.val()[object];
                       }
