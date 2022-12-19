@@ -18,6 +18,18 @@ export default function SummaryPresenter(props){
         props.model.removeUserGoal(); 
     }
 
+    function removeGoalsInfo(){
+    props.model.removeUserGoal(); 
+    }
+
+    function removeDietInfo(){
+        props.model.removeUserDiet(); 
+    }
+
+    function removeBmiInfo(){
+        props.model.removeUserBmi(); 
+    }
+
     return (
         <div className="summary-mainStyle">
             
@@ -31,6 +43,10 @@ export default function SummaryPresenter(props){
                     diet= {diet}
                     bmi = {bmi}
                     removeUserInfo= {removeInfo}
+                    removeUserGoal= {removeGoalsInfo}
+                    removeUserDiet= {removeDietInfo}
+                    removeUserBmi= {removeBmiInfo}
+
                 />
             </div>
            

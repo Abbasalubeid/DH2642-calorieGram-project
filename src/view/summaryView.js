@@ -46,7 +46,8 @@ export default function summaryView(props) {
                         {props.bmi.bmi!="" ?
                                             <tr>
                                                 <td className="first-td">BMI:</td>
-                                                <td  className="second-td">{props.bmi.bmi +(" (") + props.bmi.health + (")")}</td>
+                                                <td className="second-td">{props.bmi.bmi +(" (") + props.bmi.health + (")")}</td>
+                                                <button onClick={props.removeUserBmi}>remove</button> 
                                             </tr>                                            
                         :
                         console.log("hellloooo")
@@ -55,7 +56,8 @@ export default function summaryView(props) {
                         {props.diet.protein!="" ?
                                                 <tr>
                                                     <td className="first-td">Your Diet:</td>
-                                                    <td  className="second-td">{props.diet.protein + " protein, " +props.diet.carbs + " carbs, "+props.diet.fat + " fat" }</td>
+                                                    <td className="second-td">{props.diet.protein + " protein, " +props.diet.carbs + " carbs, "+props.diet.fat + " fat" }</td>
+                                                    <button onClick={props.removeUserDiet}>remove</button> 
                                                 </tr>
                         :
                         console.log("hellloooo")
@@ -64,10 +66,11 @@ export default function summaryView(props) {
                         {props.goal.weightGoal!="" ?
                                                 <tr>
                                                     <td className="first-td">Your Goals:</td>
-                                                    <td  className="second-td">{props.goal.weightGoal+"\n("+
+                                                    <td className="second-td">{props.goal.weightGoal+"\n("+
                                                                                 props.goal.weightPerWeek+"),\n"+
-                                                                                props.goal.caloriesIntake +(" calories per day.")}
+                                                                                props.goal.caloriesIntake +(" calories per day.")} 
                                                     </td>
+                                                    <button onClick={props.removeUserGoal}>remove</button>
                                                 </tr>
                         :
                         console.log("hellloooo")
