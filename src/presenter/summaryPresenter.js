@@ -20,9 +20,9 @@ export default function SummaryPresenter(props){
         setWeight(props.model.person.weight);
         setHeight(props.model.person.height);
         setGender(props.model.person.gender);
-        setBmi(props.model.currentBmi);
-        setGoals(props.model.currentGoal);
-        setDiet(props.model.currentDiet);
+        setBmi(props.model.currentBmi.bmi);
+        setGoals(props.model.currentGoal.weightGoal);
+        setDiet(props.model.currentDiet.protein);
         setActivityLevel(props.model.currentActivityLevel);
     }
 
@@ -63,14 +63,14 @@ export default function SummaryPresenter(props){
             
             <div>
                 <SummaryView
-                    age = {age}
-                    gender = {gender}
-                    height = {height}
-                    weight = {weight}
-                    goal= {goal}
-                    diet= {diet}
-                    bmi = {bmi}
-                    activityLevel = {activityLevel}
+                    age = {props.model.person.age}
+                    gender = {props.model.person.gender}
+                    height = {props.model.person.height}
+                    weight = {props.model.person.weight}
+                    goal= {props.model.currentGoal}
+                    diet= {props.model.currentDiet}
+                    bmi = {props.model.currentBmi}
+                    activityLevel = {props.model.currentActivityLevel}
                     removeUserInfo= {removeInfo}
                     removeUserGoal= {removeGoalsInfo}
                     removeUserDiet= {removeDietInfo}
