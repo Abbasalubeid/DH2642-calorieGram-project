@@ -20,15 +20,16 @@ function userPasswordACB(e) {
 }
 return (
     <div className="login-banner">
-      <div>
-      <h2>To use our futures you will need an account!<br></br>
-            Click here to sign up with your email!<br></br>
-          It takes less than a minute😁 
-          </h2>
-          <h2>After using our futures, you will learn the basics about a healthy lifestyle. <br></br>
-            You will also learn more about your current health state and how to maintain or change it
-          </h2>
-      </div>
+    <div className="signup-banner">
+      <div className="signup-info">
+        <h2 className="anim">To use our futures you will need an account!</h2>
+        <h2 className="anim">It takes less than a minute😁</h2>
+        <h4 className="anim">After using our futures, you will learn the basics about a healthy lifestyle. <br></br>
+          You will also learn more about your current health state and how to maintain or change it
+        </h4>
+        <img className="anim" src="Happy-Peace-Smiley-Face.png" />
+        </div>
+        </div>
         <div className="form-container">
             <h2>Create a new account</h2>
             {props.onUserError}
