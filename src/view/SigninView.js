@@ -1,53 +1,41 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
- import { UserAuth } from  "../AuthContext";
+
+import { Link } from 'react-router-dom';
+
  import "../css/login.css";
- import { AuthProvider } from  "../AuthContext";
 
-
-export default function Signin()  {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
-  const { signIn } = UserAuth();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError('')
-    try {
-      await signIn(email, password)
-      navigate('/home')
-    } catch (e) {
-      setError(e.message)
-    }
-  };
-    function handleEmailACB(e){
-      setEmail(e.target.value)
+export default function Signin (props)  {
+  
+   function userSubmitACB (e) {
+        props.onUserSubmit(e)  
+      };
+    function userEmailACB(e){
+     
+     props.onUserEmail(e.target.value)
     }
   
-    function handlePasswordACB(e) {
-      setPassword(e.target.value)
+    function userPasswordACB(e) {
+      props.onUserPassword(e.target.value)
     }
-      return (
-        <AuthProvider>
 
-        <div className="login-banner">
-            <div className="form-container">
-                <h2>Login</h2>
-                {error} 
-                <form onSubmit={handleSubmit} className="form-login">
-                    <label htmlFor="email">Email address:</label>
-                    <input type="email" placeholder="abc@email.com" onChange={handleEmailACB} required="required" ></input>
-                    <label htmlFor="password">Password:</label>
-                    <input type="password" placeholder="**********" onChange={handlePasswordACB} ></input>
-                    <button  type="submit" className="btn">Log in</button>
-                    
-                    <Link to={"/signup"}>Don't have a account? Sign up</Link>
-                </form>
+  return (
+         
+    
+            <div className="login-banner">
+                <div className="form-container">
+                    <h2>Login</h2>
+                    {props.onUserError} 
+                    <form onSubmit={userSubmitACB} className="form-login" >
+                        <label htmlFor="email">Email address:</label>
+                        <input type="email" placeholder="abc@email.com" onChange={userEmailACB} required="required" ></input>
+                        <label htmlFor="password">Password:</label>
+                        <input type="password" placeholder="**********" onChange={userPasswordACB} ></input>
+                        <button  type="submit" className="btn"  >Log in</button>
+                        
+                        <Link to={"/signup"}>Don't have a account? Sign up</Link>
+                    </form>
+                </div>
             </div>
-        </div>
-        </AuthProvider>
-    )
-};
+          
+        )
 
+}

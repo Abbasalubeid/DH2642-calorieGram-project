@@ -6,7 +6,7 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 
- import { auth } from "./model/firebaseModel";
+ import { auth } from "./firebaseModel";
 
 const UserContext = createContext();
 
