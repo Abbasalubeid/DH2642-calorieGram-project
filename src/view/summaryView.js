@@ -44,7 +44,7 @@ export default function summaryView(props) {
                                             <tr>
                                             <td className="first-td">Your Activity Level:</td>
                                             <td  className="second-td">{props.activityLevel}</td>
-                                            <button onClick={props.removeUserActivity}>remove</button> 
+                                            <button onClick={props.removeUserActivity} className="btn">remove</button> 
                                         </tr>                                            
                         :""
                         }
