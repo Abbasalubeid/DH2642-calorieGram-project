@@ -43,6 +43,7 @@ export default function DietResultView(props){
                     {Object.keys(props.macros).map(renderDietCB)}
                 </tbody>
             </table>
+            <button onClick={props.removeDietInfo}>remove info</button>
            </div>
 
     )
