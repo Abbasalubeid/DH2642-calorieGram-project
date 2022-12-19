@@ -3,12 +3,15 @@ import App from './App';
 import {BrowserRouter } from "react-router-dom"
 import {updateFirebaseFromModel, updateModelFromFirebase, persistedModel} from "../src/model/firebaseModel";
 import promiseNoData from './view/promiseNoData';
+import { auth } from "./model/firebaseModel";
+import { onAuthStateChanged } from "firebase/auth";
 
 export default function Root(){
 
   const [promise, setPromise] = React.useState(null);
   const [data, setData] = React.useState(null);
   const [error, setError] = React.useState(null);
+  
 
   function notifyACB(){
     if (data) {
@@ -33,7 +36,17 @@ export default function Root(){
 }
 
 function wasCreatedACB() {
-  setPromise(persistedModel());
+  onAuthStateChanged(auth, (user)=> {
+    if (user){
+      setPromise(persistedModel(user.uid));
+    }
+    else 
+    {
+      setPromise(persistedModel());
+    }
+      
+      
+  })
   return function isTakenDownACB() {};
 }
 
@@ -46,7 +59,7 @@ React.useEffect(notifyACB, [data, error]);
 
 return (<React.StrictMode>
     <BrowserRouter>
-      {promiseNoData({ promise, data, error }) || <App model ={data}/>}
+    {promiseNoData({ promise, data, error }) || <App model ={data}/>}
     </BrowserRouter>
   </React.StrictMode>
 );
