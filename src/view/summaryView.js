@@ -16,10 +16,10 @@ export default function summaryView(props) {
     age: ${props.age} \n
     weight: ${props.weight} \n
     height:${props.height} \n
-    BMI:  Calories/day \n
+    BMI:  ${props.bmi.bmi +(" (") + props.bmi.health + (")")} \n
     Your activity level is: \n
-    your Diet: \n
-    Goals:  ${props.goal.weightGoal} (${props.goal.weightPerWeek}) eat:${props.goal.calloriesIntake} Calories\n
+    your Diet: ${props.diet.protein + " protein, " +props.diet.carbs + " carbs, "+props.diet.fat + " fat" }\n
+    Goals:  ${props.goal.weightGoal} (${props.goal.weightPerWeek}) eat:${props.goal.caloriesIntake} Calories\n
     `
     return (
         <div className="summary-style anim">
@@ -39,8 +39,8 @@ export default function summaryView(props) {
                             <td  className="second-td">{props.height}</td>
                         </tr>
                         <tr>
-                            <td className="first-td">BMR:</td>
-                            <td  className="second-td">Calories/day</td>
+                            <td className="first-td">BMI:</td>
+                            <td  className="second-td">{props.bmi.bmi +(" (") + props.bmi.health + (")")}</td>
                         </tr>
                         <tr>
                             <td className="first-td">Your Activity Level:</td>
@@ -48,11 +48,13 @@ export default function summaryView(props) {
                         </tr>
                         <tr>
                             <td className="first-td">Your Diet:</td>
-                            <td  className="second-td">....</td>
+                            <td  className="second-td">{props.diet.protein + " protein, " +props.diet.carbs + " carbs, "+props.diet.fat + " fat" }</td>
                         </tr>
                         <tr>
                             <td className="first-td">Your Goals:</td>
-                            <td  className="second-td">....</td>
+                            <td  className="second-td">{props.goal.weightGoal+"\n("+
+                                                        props.goal.weightPerWeek+"),\n"+
+                                                        props.goal.caloriesIntake +(" calories per day.")}</td>
                         </tr>
                     </tbody>
                 </table>  

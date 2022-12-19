@@ -76,11 +76,11 @@
 
 @media (max-width: 900px) {
     .nav-toggle{
-      display: flex;
+      
     }
 
-    .nav-links{
-      display: flex;
+    .nav-links, .login-btn, .signbtn{
+      display: none;
       width: 100%;
     }
     .btn-primary{

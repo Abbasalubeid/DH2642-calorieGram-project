@@ -30,3 +30,6 @@ body {
     margin: 0;
   }
 }
+.saved-msg{
+  color: green;
+}

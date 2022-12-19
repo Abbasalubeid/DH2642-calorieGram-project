@@ -8,6 +8,8 @@ export default function SummaryPresenter(props){
     const [height, setheight] = React.useState(props.model.person.height);
     const [gender, setGender] = React.useState(props.model.person.gender);
     const [goal, setGoals] = React.useState(props.model.currentGoal);
+    const [diet, setDiet] = React.useState(props.model.currentDiet);
+    const [bmi, setBmi] = React.useState(props.model.currentBmi);
     //const [, reRender] = React.useState();
 
 
@@ -21,6 +23,8 @@ export default function SummaryPresenter(props){
                     height = {height}
                     weight = {weight}
                     goal= {goal}
+                    diet= {diet}
+                    bmi = {bmi}
                 />
             </div>
            

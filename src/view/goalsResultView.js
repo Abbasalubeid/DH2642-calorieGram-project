@@ -21,7 +21,6 @@ export default function GoalsResultView(props) {
     function userGoalIsChanged(event){
         if (event.target.outerText.substring(0,2) === "To"){
             const ret = `Maintain weight, ,${event.target.outerText.substring(26,30)}`
-            console.log(ret)
             props.onUserChangedUserGoals(ret)
         }
         else{
@@ -56,7 +55,6 @@ export default function GoalsResultView(props) {
             <button className="btn anim" onClick={userGoalIsChanged}>To Maintain weight ➡️ Eat {(props.activityResult.BMR)} Calories/day</button>
              {Object.keys(props.activityResult.goals).map(renderGoalsCB)}
         </div>
-        
      </div>
      );
 }
