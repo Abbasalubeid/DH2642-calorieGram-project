@@ -1,17 +1,29 @@
 import React from 'react';
 
-export default function InformationView (props) {
-    const [show, setShow] = React.useState(false);
-    setShow(true);
+export default function InformationPresenter (props) {
     return (
         <div>
-            <div className={show ? 'diet' : 'hidden'}>
+
+
+            <div className={!props.showinfo ? "hidden" : " "}>
+                <h1>Goals</h1>
+                <p className="first-p anim"> By choosing how many times you intend to train per week you will be presented
+                    with a set of goals to achieve. <br></br>
+                    Each set has first the main goal which can vary from mild weight loss
+                    to extreme weight gain, then amount of calories you need to take daily to achieve
+                    that goal.</p>
+            </div>
+
+
+            <div className={props.showDietinfo ? 'diet' : 'hidden'}>
                 <h1>Diet Calculate</h1>
                 <p className="first-p anim">The Diet Calculator can be used to estimate the number of calories
                     a person needs to consume each day.
                     This calculator can also provide some simple guidelines for gaining or losing weight.</p>
             </div>
-            <div>
+
+
+            <div className={props.showBmiinfo ? '' : 'hidden'}>
                 <h1>BMI Calculate</h1>
                 <p className="first-p anim">The BMI Calculator can be used to estimate the number of calories
                     a person needs to consume each day.
@@ -47,6 +59,8 @@ export default function InformationView (props) {
              </div>
              <label htmlFor="check">Read More</label>
         </div >
+
+
 
             <div className="custom-info anim">
                 <input type="checkbox" id="check" />

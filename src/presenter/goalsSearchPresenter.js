@@ -4,6 +4,7 @@ import React from "react";
 import promiseNoData from "../view/promiseNoData.js"
 import { getActivityInfo } from "../fetchSource";
 import "../css/goals.css"
+import InformationView from "../view/informationView.js";
 
 export default function GoalsSearchPresenter(props) {
     const [age, setAge] = React.useState(props.model.person.age);
@@ -16,6 +17,7 @@ export default function GoalsSearchPresenter(props) {
     const [error, setError] = React.useState(null);
     const [searchParams, setSearchParams] = React.useState({});
     const [show, setShow] = React.useState(false);
+    const [gaolsInfo, setGoalsInfo] = React.useState(false);
     
 
     function observerACB(){
@@ -98,14 +100,6 @@ export default function GoalsSearchPresenter(props) {
 
     return (
         <div className="goal-mainStyle">
-            <div>
-                <h1>Goals</h1>
-                <p className="first-p anim"> By choosing how many times you intend to train per week you will be presented
-                    with a set of goals to achieve. <br></br>
-                    Each set has first the main goal which can vary from mild weight loss
-                    to extreme weight gain, then amount of calories you need to take daily to achieve
-                    that goal.</p>
-            </div>
             <div className="goal-style">
                 <SearchView onUserChangedAge={ageIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
