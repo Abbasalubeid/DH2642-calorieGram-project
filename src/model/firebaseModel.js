@@ -9,47 +9,69 @@ const app = firebase.initializeApp(firebaseConfig)
 
 const auth = app.auth();
 
-// function persistedModel() {
+
+function persistedModel(userId) {
+
+  function createModelACB(snapshot) {  
+    
+    const defaultPerson = {
+      age : 26,
+      gender : "male",
+      weight : 85,
+      height : 190
+    }
+
+    const defaultGoals = {
+      weightGoal : "Mild weight loss",
+      weightPerWeek : "0.25 kg",
+      caloriesIntake : "2051",
+    }
+
+    const defaultDiet = {
+      protein : "110g",
+      carbs : "240g",
+      fat : "51g",
+    }
+
+    const defaultBmi = {
+      bmi : "34.6",
+      health : "Obese class I",
+    }
+
+    
+    const person= snapshot.val()?.person ?? defaultPerson;
+    const goals = snapshot.val()?.goals ?? defaultGoals;
+    const diet = snapshot.val()?.diet ?? defaultDiet;
+    const bmi = snapshot.val()?.bmi ?? defaultBmi;
+
+    const model =  new FitnessModel(person, goals, diet, bmi);
+
+    if (userId){
+        console.log(userId);
+        model.setUserID(userId);
+        }
+      else{
+        console.log(userId);
+        model.setUserID("");
+      }
+      return model;
+  } 
+
+  if(userId){
+    console.log(userId);
+    const db = getDatabase();
+    return get(ref(db, `/${userId}`)).then(createModelACB);
+}
+  else{
+    const db = getDatabase();
+    return get(ref(db, `/guest`)).then(createModelACB);
+  }
+
+    
+}
 
 
-//   function createModelACB(snapshot) {        
-         
-//       const defaultPerson = {
-//         age : 26,
-//         gender : "male",
-//         weight : 85,
-//         height : 190
-//       }
 
-//       const defaultGoals = {
-//         weightGoal : "Mild weight loss",
-//         weightPerWeek : "0.25 kg",
-//         caloriesIntake : "2051",
-//       }
-
-//       const defaultDiet = {
-//         protein : "110g",
-//         carbs : "240g",
-//         fat : "51g",
-//       }
-
-//       const defaultBmi = {
-//         bmi : "34.6",
-//         health : "Obese class I",
-//       }
-
-
-//       const person= snapshot.val()?.person ?? defaultPerson;
-//       const goals = snapshot.val()?.goals ?? defaultGoals;
-//       const diet = snapshot.val()?.diet ?? defaultDiet;
-//       const bmi = snapshot.val()?.bmi ?? defaultBmi;
-
-//       return new FitnessModel(person, goals, diet, bmi);
-//   }
-
-//   const db = getDatabase();
-//   return get(ref(db, '/currentUser')).then(createModelACB);
-// }
 
 function updateFirebaseFromModel(model) {
   const db = getDatabase();
@@ -90,16 +112,6 @@ function updateFirebaseFromModel(model) {
   const db = getDatabase(app)
 
   if (model.currentUserId !== ""){
-      function updateModelACB(snapshot){
-        model.person = snapshot.val()?.person ?? model.person;
-        model.currentGoal  = snapshot.val()?.goals ?? model.currentGoal
-        model.currentDiet = snapshot.val()?.diet ??  model.currentDiet
-        model.currentBmi  = snapshot.val()?.bmi ?? model.currentBmi;
-      }
-
-    get(ref(db, `/${model.currentUserId}`)).then(updateModelACB);
-
-
 
     const ageRef = ref(db, `/${model.currentUserId}/person/age`);
     const genderRef = ref(db, `/${model.currentUserId}/person/gender`);
@@ -186,4 +198,4 @@ function updateFirebaseFromModel(model) {
     set(ref(db, 'currentUsers/'), null);
    }
 
-  export {writeUserData, deleteUserData, updateModelFromFirebase, updateFirebaseFromModel, auth}
+  export {writeUserData, deleteUserData, updateModelFromFirebase, updateFirebaseFromModel, auth, persistedModel}

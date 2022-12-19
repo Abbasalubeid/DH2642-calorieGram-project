@@ -5,53 +5,46 @@ import {updateFirebaseFromModel, updateModelFromFirebase, persistedModel} from "
 import promiseNoData from './view/promiseNoData';
 import { auth } from "./model/firebaseModel";
 import { onAuthStateChanged } from "firebase/auth";
-import FitnessModel from './model/FitnessModel';
 
 export default function Root(){
 
-    const[, reRender] = React.useState();
+  const [promise, setPromise] = React.useState(null);
+  const [data, setData] = React.useState(null);
+  const [error, setError] = React.useState(null);
   
 
-  function updateUserInfoACB(){
-      updateFirebaseFromModel(defaultModel);
-      updateModelFromFirebase(defaultModel);
-      // const obj = {}
-      // reRender(obj);
+  function notifyACB(){
+    if (data) {
+      updateModelFromFirebase(data);
+      updateFirebaseFromModel(data);
+    }
   }
 
-const defaultPerson = {
-  age : 26,
-  gender : "male",
-  weight : 85,
-  height : 190
-}
+  function promiseHasChangedACB() {
+    setData(null);
+    setError(null);
+    let cancelled = false;
+    
 
-const defaultGoals = {
-  weightGoal : "Mild weight loss",
-  weightPerWeek : "0.25 kg",
-  caloriesIntake : "2051",
-}
+    function changedAgainACB() { cancelled = true; }
 
-const defaultDiet = {
-  protein : "110g",
-  carbs : "240g",
-  fat : "51g",
-}
+    if (promise)
+        promise.then(function saveData(data) { if (!cancelled) setData(data); }).
+            catch(function saveError(error) { if (!cancelled) setError(error); });
 
-const defaultBmi = {
-  bmi : "34.6",
-  health : "Obese class I",
+    return changedAgainACB;
 }
-const defaultModel = new FitnessModel(defaultPerson, defaultGoals, defaultDiet, defaultBmi);
 
 function wasCreatedACB() {
   onAuthStateChanged(auth, (user)=> {
     if (user){
-      defaultModel.setUserID(user.uid);
-      updateUserInfoACB();
+      setPromise(persistedModel(user.uid));
     }
-    else
-      defaultModel.setUserID("");
+    else 
+    {
+      setPromise(persistedModel());
+    }
+      
       
   })
   return function isTakenDownACB() {};
@@ -59,12 +52,14 @@ function wasCreatedACB() {
 
 
 React.useEffect(wasCreatedACB, []);
+React.useEffect(promiseHasChangedACB, [promise]);
+React.useEffect(notifyACB, [data, error]);
 
 
 
 return (<React.StrictMode>
     <BrowserRouter>
-       <App model ={defaultModel}/>
+    {promiseNoData({ promise, data, error }) || <App model ={data}/>}
     </BrowserRouter>
   </React.StrictMode>
 );
