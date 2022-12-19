@@ -9,16 +9,31 @@ const app = firebase.initializeApp(firebaseConfig)
 
 const auth = app.auth();
 
+//  const database = getDatabase(app);
+//   return get(ref(db, '/currentUser')).then(createModelACB);
 function persistedModel() {
 
-  onAuthStateChanged(auth, (user)=> {
-    if (user){
-      console.log(user.uid); 
-    }
-    else
-      console.log("logged out!!!!!");
-  })
+  // onAuthStateChanged(auth, (user)=> {
+  //   if (user){
+  //     console.log(user.uid); 
+  //   }
+  //   else
+  //     console.log("logged out!!!!!");
+  // })
   
+  // onAuthStateChanged(auth, (user) => {
+  //   if (user) {
+  //     console.log("user sign in"); 
+  //     const userData = {
+  //       displayName: user.displayName,
+  //       email: user.email,
+  //       uid: user.uid,
+  //     };
+  //     database.ref('users/' + user.uid).set(userData);
+  //   } else {
+  //     console.log("user sign out"); 
+  //   }
+  // });
   function createModelACB(snapshot) {        
          
       const defaultPerson = {
