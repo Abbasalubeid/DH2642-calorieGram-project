@@ -48,6 +48,7 @@ export default function DietPresenter(props){
         setTempAge(age);
         setTempWeight(weight)
         setTempHeight(height)
+        setTempGender(gender)
     }
 
     function userSearchedACB(wantToSave) {
