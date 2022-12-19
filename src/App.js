@@ -29,7 +29,7 @@ function App(props) {
            path='/account'
            element={ <ProtectedRoute> <Account /> </ProtectedRoute>}/>
           <Route path='home'element={
-               <Homepage />
+              <ProtectedRoute>  <Homepage /> </ProtectedRoute>
            }
          />
           <Route
