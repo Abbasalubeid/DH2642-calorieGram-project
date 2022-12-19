@@ -14,51 +14,27 @@ function persistedModel(userId) {
 
   function createModelACB(snapshot) {  
     
-    const defaultPerson = {
-      age : 26,
-      gender : "male",
-      weight : 85,
-      height : 190
-    }
-
-    const defaultGoals = {
-      weightGoal : "Mild weight loss",
-      weightPerWeek : "0.25 kg",
-      caloriesIntake : "2051",
-    }
-
-    const defaultDiet = {
-      protein : "110g",
-      carbs : "240g",
-      fat : "51g",
-    }
-
-    const defaultBmi = {
-      bmi : "34.6",
-      health : "Obese class I",
-    }
 
     
-    const person= snapshot.val()?.person ?? defaultPerson;
-    const goals = snapshot.val()?.goals ?? defaultGoals;
-    const diet = snapshot.val()?.diet ?? defaultDiet;
-    const bmi = snapshot.val()?.bmi ?? defaultBmi;
+    const person= snapshot.val()?.person ?? {};
+    const goals = snapshot.val()?.goals ??  {};
+    const diet = snapshot.val()?.diet ?? {};
+    const bmi = snapshot.val()?.bmi ?? {};
 
     const model =  new FitnessModel(person, goals, diet, bmi);
 
     if (userId){
         console.log(userId);
-        model.setUserID(userId);
+        model.setUserId(userId);
         }
       else{
         console.log(userId);
-        model.setUserID("");
+        model.setUserId("");
       }
       return model;
   } 
 
   if(userId){
-    console.log(userId);
     const db = getDatabase();
     return get(ref(db, `/${userId}`)).then(createModelACB);
 }
@@ -69,9 +45,6 @@ function persistedModel(userId) {
 
     
 }
-
-
-
 
 function updateFirebaseFromModel(model) {
   const db = getDatabase();

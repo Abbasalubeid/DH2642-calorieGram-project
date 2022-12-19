@@ -87,7 +87,8 @@ export default class FitnessModel{
       this.notifyObservers(payload);
   }
 
-  setUserDiet(diet){
+  setUserDiet(diet){ 
+    console.log(diet);
     const dietArr = (diet.toString()).split(",");
 
     this.currentDiet.protein = dietArr[0];
@@ -107,7 +108,8 @@ export default class FitnessModel{
       this.notifyObservers(payload);
   }
 
-  setUserID(userId){
+
+  setUserId(userId){
     this.currentUserId = userId;
 
     const payload = { newId : this.currentUserId }
