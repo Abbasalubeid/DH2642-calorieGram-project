@@ -88,9 +88,7 @@ export default function BmiPresenter(props) {
         <div className="bmi-mainStyle">
             <div>
                 <h1>BMI Calculate</h1>
-                <p className="first-p anim">The BMI Calculator can be used to estimate the number of calories
-                    a person needs to consume each day.
-                    This calculator can also provide some simple guidelines for gaining or losing weight.</p>
+                <p className="first-p anim">The BMI Calculator will calculate your currrent bmi and its corresponding meaning (how healthy your bmi is).<br></br></p>
             </div>
             <div className="bmi-style">
                 <SearchView onUserChangedAge={ageIsChangedACB}

@@ -53,7 +53,6 @@ export default function SummaryPresenter(props){
                     removeUserDiet= {removeDietInfo}
                     removeUserBmi= {removeBmiInfo}
                     removeUserActivity= {removeActivityInfo}
-
                 />
             </div>
            
