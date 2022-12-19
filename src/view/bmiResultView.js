@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/bmiResult.css";
+import "../css/bmi.css";
 
 export default function BmiResultView(props) {
     

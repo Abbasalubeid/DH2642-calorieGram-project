@@ -1,4 +1,4 @@
-import "../css/dietResult.css"
+import "../css/diet.css"
 import "../css/bmiSearch.css"
 export default function DietResultView(props){
 

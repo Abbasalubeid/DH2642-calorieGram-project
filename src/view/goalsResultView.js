@@ -1,4 +1,4 @@
-import "../css/goalsResult.css";
+import "../css/goals.css";
 export default function GoalsResultView(props) {
 
     function renderGoalsCB(object) {

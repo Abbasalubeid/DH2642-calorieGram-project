@@ -132,6 +132,32 @@
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.25);
 }
 
+.goal-row {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.result-button button {
+  width: 660px;
+}
+
+@media screen and (max-width: 768px) {
+  .result-button button {
+    width: 450px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .result-button button {
+    width: 450px;
+  }
+}
+
+
 /*----------------------------------------------------------------bmi info---------------------------------------*/
 
 .goal-info {
