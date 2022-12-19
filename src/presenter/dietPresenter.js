@@ -138,7 +138,7 @@ export default function DietPresenter(props){
                     height = {props.model.person.height}
                     weight = {props.model.person.weight}
                 />
-            </div>
+           
             <div className={!show ? "diet-info" : "hidden"}>
                 <CustomInfo />
             </div>
@@ -151,6 +151,7 @@ export default function DietPresenter(props){
                         >
                     </DietResultView>
                 }
+            </div>
             </div>
         </div>
     )

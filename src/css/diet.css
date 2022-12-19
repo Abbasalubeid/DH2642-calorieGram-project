@@ -1,7 +1,6 @@
 .diet-mainStyle {
   padding: 0;
   height: 75vh;
-  width: 600px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -26,6 +25,7 @@
   letter-spacing: 1px;
   font-weight: 500;
   font-size: 1.1rem;
+  width: 560px;
   color: black;
   text-align: justify;
   padding: 5px;
@@ -193,12 +193,6 @@
   left: 0;
   transform: translateY(-50%);
 }
-/* .buttons{
-  cursor: pointer;
-}
-.buttons:before{
-  content: " Click"
-} */
 
 .dtext {
   background-color: #00b4d8;
@@ -217,16 +211,36 @@
 
 }
 
+@media screen and (max-width: 768px) {
+  .diet-style {
+    width: 450px;
+  }
+  .diet-mainStyle p.first-p{
+    flex-grow: 1;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .diet-style {
+    width: 450px;
+    padding-left: 30px;
+  }
+  .diet-result{
+    position: relative;
+    left: 0;
+  }
+}
 
 /*----------------------------------------------------------------diet info---------------------------------------*/
 
 .diet-info {
   position: absolute;
-  left: 600px;
+  right: 0;
+  top: 0;
   display: flex;
   flex-direction: row;
   width: 700px;
-  margin: 5px 8px;
+  margin-left: 600px;
+  margin-top: 22px;
   padding: 10px;
   border-radius: 8px;
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
@@ -298,4 +312,18 @@
   display: block;
   visibility: visible;
   padding: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  .diet-info{
+    width: 460px;
+    margin-left: 5px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .diet-info{
+    position: relative;
+    left: 0;
+    margin-left: 5px;
+  }
 }
