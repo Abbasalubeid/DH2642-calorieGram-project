@@ -38,10 +38,10 @@ export default function summaryView(props) {
     age: ${props.age} \n
     weight: ${props.weight} \n
     height:${props.height} \n
-    ${props.bmi.bmi!="" && props.bmi.bmi!=undefined ? `BMI:  ${props.bmi.bmi +(" (") + props.bmi.health + (")")} \n` : ``}
-    ${props.activityLevel!="" && props.bmi.bmi!=undefined ? `Activity level:${props.activityLevel} \n` : ``}
-    ${props.diet.protein!="" && props.diet.protein!=undefined ? `Diet: ${props.diet.protein + " protein, " +props.diet.carbs + " carbs, "+props.diet.fat + " fat" }\n` : ``}
-    ${props.goal.weightGoal!="" && props.goal.weightGoal!=undefined ? `Goals:  ${props.goal.weightGoal} (${props.goal.weightPerWeek}) eat:${props.goal.caloriesIntake} Calories\n` : ``}
+    ${props.bmi.bmi!=="" && props.bmi.bmi!==undefined ? `BMI:  ${props.bmi.bmi +(" (") + props.bmi.health + (")")} \n` : ``}
+    ${props.activityLevel!=="" && props.bmi.bmi!==undefined ? `Activity level:${props.activityLevel} \n` : ``}
+    ${props.diet.protein!=="" && props.diet.protein!==undefined ? `Diet: ${props.diet.protein + " protein, " +props.diet.carbs + " carbs, "+props.diet.fat + " fat" }\n` : ``}
+    ${props.goal.weightGoal!=="" && props.goal.weightGoal!==undefined ? `Goals:  ${props.goal.weightGoal} (${props.goal.weightPerWeek}) eat:${props.goal.caloriesIntake} Calories\n` : ``}
     `
     return (
         <div className="summary-style anim">
@@ -62,7 +62,7 @@ export default function summaryView(props) {
                         </tr>
                         
                         
-                        {props.activityLevel!="" && props.activityLevel!=undefined ?
+                        {props.activityLevel!=="" && props.activityLevel!==undefined ?
                                             <tr>
                                             <td className="first-td">Your Activity Level:</td>
                                             <td  className="second-td">{props.activityLevel}</td>
@@ -73,7 +73,7 @@ export default function summaryView(props) {
                         :""
                         }
 
-                        {props.bmi.bmi!="" && props.bmi.bmi!=undefined ?
+                        {props.bmi.bmi!=="" && props.bmi.bmi!==undefined ?
                                             <tr>
                                                 <td className="first-td">BMI:</td>
                                                 <td className="second-td">{props.bmi.bmi +(" (") + props.bmi.health + (")")}</td>
@@ -84,7 +84,7 @@ export default function summaryView(props) {
                         :""
                         }
 
-                        {props.diet.protein!="" && props.diet.protein!=undefined ?
+                        {props.diet.protein!=="" && props.diet.protein!==undefined ?
                                                 <tr>
                                                     <td className="first-td">Your Diet:</td>
                                                     <td className="second-td">{props.diet.protein + " protein, " +props.diet.carbs + " carbs, "+props.diet.fat + " fat" }</td>
@@ -95,7 +95,7 @@ export default function summaryView(props) {
                         :""
                         }
                     
-                        {props.goal.weightGoal!="" && props.goal.weightGoal!=undefined?
+                        {props.goal.weightGoal!=="" && props.goal.weightGoal!==undefined?
                                                 <tr>
                                                     <td className="first-td">Your Goals:</td>
                                                     <td className="second-td">{props.goal.weightGoal+"\n("+
