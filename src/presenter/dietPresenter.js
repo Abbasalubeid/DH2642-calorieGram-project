@@ -3,7 +3,7 @@ import DietResultView from "../view/dietResultView.js";
 import React from "react";
 import promiseNoData from "../view/promiseNoData.js";
 import { getMacroInfo } from "../fetchSource";
-import "../css/dietSearch.css"
+import "../css/diet.css"
 
 
 export default function DietPresenter(props){

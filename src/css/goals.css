@@ -144,6 +144,9 @@
 
 .result-button button {
   width: 660px;
+  cursor: pointer;
+  text-align: left;
+  padding-left: 70px;
 }
 
 @media screen and (max-width: 768px) {
@@ -154,6 +157,7 @@
 @media screen and (max-width: 1000px) {
   .result-button button {
     width: 450px;
+    padding-left: 30px;
   }
 }
 

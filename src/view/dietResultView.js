@@ -1,5 +1,5 @@
 import "../css/diet.css"
-import "../css/bmiSearch.css"
+import "../css/bmi.css"
 export default function DietResultView(props){
 
     function renderDietCB(object){

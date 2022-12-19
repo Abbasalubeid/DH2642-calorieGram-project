@@ -3,8 +3,7 @@ import GoalsResultView from "../view/goalsResultView.js"
 import React from "react";
 import promiseNoData from "../view/promiseNoData.js"
 import { getActivityInfo } from "../fetchSource";
-import "../css/goalsSearch.css"
-import "../css/goalsResult.css"
+import "../css/goals.css"
 
 export default function GoalsSearchPresenter(props) {
     const [age, setAge] = React.useState(props.model.person.age);
