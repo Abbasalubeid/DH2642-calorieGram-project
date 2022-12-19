@@ -26,3 +26,12 @@
     text-align: left;
 }
 
+
+@media screen and (max-width: 768px) and (min-width: 300px){
+    .summary-mainStyle{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 30px;
+}
+}

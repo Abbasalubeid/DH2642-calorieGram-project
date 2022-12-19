@@ -14,7 +14,7 @@ export default function BmiResultView(props) {
                 <span></span>
                 {props.bmiResult.health}</div>
 
-                <button onClick={props.removeBmiInfo}>remove data</button>
+                <button onClick={props.removeBmiInfo} className="btn">remove data</button>
         </div >
     );
 }

@@ -119,6 +119,7 @@ function renderOptionsCB(opt) {
                                         defaultValue={props.age}
                                         className="input-box"
                                     />
+                                    <span className="grey-text">age</span>
                                     {emptyBoxError && props.age === "" ?
                                         <label className="error-msg"> {"<--"}Age is required!</label> : ""}
                                 </div>
@@ -136,6 +137,7 @@ function renderOptionsCB(opt) {
                                     <input type="number" name="weight" maxLength="4" 
                                         width="60px" placeholder="kg" onChange={userTypedWeightACB}
                                         defaultValue={props.weight} className="input-box" />
+                                    <span className="grey-text">kg</span>
                                     {emptyBoxError && props.weight === "" ?
                                         <label className="error-msg"> {"<--"}Weight is required!</label> : ""}
                                 </div>
@@ -154,6 +156,7 @@ function renderOptionsCB(opt) {
                                         type="number" name="height" maxLength="4"
                                         width="60px" placeholder="cm" onChange={userTypedHeightACB}
                                         defaultValue={props.height} className="input-box" />
+                                        <span className="grey-text">cm</span>
                                     {emptyBoxError && props.height === "" ?
                                         <label className="error-msg"> {"<--"}Height is required!</label> : ""}
                                 </div>
