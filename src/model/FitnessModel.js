@@ -140,6 +140,7 @@ export default class FitnessModel{
       this.notifyObservers(payload);
   }
   setUserActivity(activity){
+    console.log(activity)
     this.currentActivityLevel = activity
 
     const payload = { newActivityLevel : this.currentActivityLevel}
