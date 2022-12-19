@@ -6,6 +6,7 @@ export default class FitnessModel{
       this.currentGoal          = goal;
       this.currentDiet          = diet;
       this.currentBmi           = bmi;
+      this.currentUserId = ""
   }
 
   addObserver(callback) {
@@ -78,20 +79,37 @@ export default class FitnessModel{
 
   setUserGoal(goal){
       const goals = (goal.toString()).split(",");
-      this.currentGoal.weightGoal     = goals[0 ];
+      this.currentGoal.weightGoal     = goals[0];
       this.currentGoal.weightPerWeek  = goals[1];
       this.currentGoal.caloriesIntake = goals[2];
       
       const payload = { newGoals : this.currentGoal}
       this.notifyObservers(payload);
   }
+  removeUserGoal(){
+    this.currentGoal.weightGoal       = "";
+      this.currentGoal.weightPerWeek  = "";
+      this.currentGoal.caloriesIntake = "";
 
-  setUserDiet(diet){
+    const payload = { newGoals : this.currentGoal}
+    this.notifyObservers(payload);
+  }
+
+  setUserDiet(diet){ 
+    console.log(diet);
     const dietArr = (diet.toString()).split(",");
 
     this.currentDiet.protein = dietArr[0];
     this.currentDiet.carbs   = dietArr[1];
     this.currentDiet.fat     = dietArr[2];
+
+    const payload = { newDiet : this.currentDiet}
+      this.notifyObservers(payload);
+  }
+  removeUserDiet(){
+    this.currentDiet.protein = "";
+    this.currentDiet.carbs   = "";
+    this.currentDiet.fat     = "";
 
     const payload = { newDiet : this.currentDiet}
       this.notifyObservers(payload);
@@ -102,6 +120,22 @@ export default class FitnessModel{
     this.currentBmi.bmi      = bmiArr[0];
     this.currentBmi.health   = bmiArr[1];
     
+    const payload = { newBmi : this.currentBmi}
+      this.notifyObservers(payload);
+  }
+
+
+  setUserId(userId){
+    this.currentUserId = userId;
+
+    const payload = { newId : this.currentUserId }
+    this.notifyObservers(payload);
+  }
+
+  removeUserBmi(){
+    this.currentBmi.bmi      = "";
+    this.currentBmi.health   = "";
+
     const payload = { newBmi : this.currentBmi}
       this.notifyObservers(payload);
   }

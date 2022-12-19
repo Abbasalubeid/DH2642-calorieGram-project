@@ -65,8 +65,11 @@ export default function BmiPresenter(props) {
         props.model.setHeight(height)
     }
 
-    function userChangedBmi(bmi){
+    function userChangedBmi(){
         
+    }
+    function removeInfo(){
+        props.model.removeUserBmi();
     }
 
     function wasCreatedACB() {
@@ -100,7 +103,7 @@ export default function BmiPresenter(props) {
                     weight = {weight}
                 />
             </div>
-            <div className={data ? "bmi-info-result" : "bmi-info"}>
+            <div className={data ? "bmi-info-result" : "hidden"}>
                 <CustomInfo />
             </div>
             <div className={!show ? "hidden" : "bmi-result "}>
@@ -108,6 +111,7 @@ export default function BmiPresenter(props) {
                 
                     <BmiResultview
                         bmiResult={data}
+                        removeBmiInfo={removeInfo}
                     >
                     </BmiResultview>
                 }

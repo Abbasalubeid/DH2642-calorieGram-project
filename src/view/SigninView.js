@@ -17,7 +17,7 @@ export default function Signin()  {
     setError('')
     try {
       await signIn(email, password)
-      navigate('/profile')
+      navigate('/home')
     } catch (e) {
       setError(e.message)
     }

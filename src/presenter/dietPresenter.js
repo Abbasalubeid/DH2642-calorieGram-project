@@ -87,6 +87,10 @@ export default function DietPresenter(props){
         props.model.setUserDiet(diet)
     }
 
+    function removeInfo(){
+        props.model.removeUserDiet(); 
+    }
+
     React.useEffect(wasCreatedACB, []);
     React.useEffect(promiseHasChangedACB, [promise]);
 
@@ -143,6 +147,7 @@ export default function DietPresenter(props){
                     <DietResultView
                         macros={data}
                         onUserChangedDiet={UserChangedDiet}
+                        removeDietInfo={removeInfo}
                         >
                     </DietResultView>
                 }
