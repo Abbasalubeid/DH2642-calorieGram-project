@@ -3,13 +3,21 @@ import 'firebase/compat/auth';
 import firebase from 'firebase/compat/app';
 import firebaseConfig from "../firebaseConfig";
 import FitnessModel from "./FitnessModel";
+import { onAuthStateChanged } from "firebase/auth";
 
 const app = firebase.initializeApp(firebaseConfig)
 
 const auth = app.auth();
 
-
 function persistedModel() {
+
+  onAuthStateChanged(auth, (user)=> {
+    if (user){
+      console.log(user.uid); 
+    }
+    else
+      console.log("logged out!!!!!");
+  })
   
   function createModelACB(snapshot) {        
          
@@ -37,7 +45,6 @@ function persistedModel() {
         health : "Obese class I",
       }
 
-      console.log(snapshot.val());
 
       const person= snapshot.val()?.person ?? defaultPerson;
       const goals = snapshot.val()?.goals ?? defaultGoals;
