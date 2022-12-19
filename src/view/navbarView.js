@@ -8,18 +8,6 @@ export default function NavbarView() {
         setSigned(true);
     }
 
-    // const toggleButton = document.getElementsByClassName('nav-toggle')[0];
-    // const navbarlinks = document.getElementsByClassName('nav-links')[0];
-    // toggleButton.addEventListener('click', () => {
-    //     navbarlinks.classList.toggle('active')
-    //     console.log(navbarlinks);
-    // })
-    
-
-    // function toggleButtonClickACB(){
-    //     navbarlinks.classList.toggle('active');
-    // }
-
     return <nav className="navbar">
         <Link to="/home" className="nav-title nav-home"><img src="CG-withoutbg.png"></img></Link>
         <a className="nav-toggle">
@@ -38,9 +26,9 @@ export default function NavbarView() {
         </ul>
         </div>
         <div>
-            <a href="/" className={!signed ? "login-btn" : "hidden"}>Login</a>
-            <a href="/signup" className={!signed ? "btn signbtn" : "hidden"}>Sign up</a>
-            <a href="/login" className={signed ? "btn signbtn" : "hidden"}>Log out</a>
+            <a href="/" className={signed ? "login-btn" : "hidden"}>Login</a>
+            <a href="/signup" className={signed ? "btn signbtn" : "hidden"}>Sign up</a>
+            <a href="/login" className={!signed ? "btn signbtn" : "hidden"}>Log out</a>
         </div>
     </nav>
 }
