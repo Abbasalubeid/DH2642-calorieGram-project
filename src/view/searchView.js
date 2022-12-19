@@ -231,12 +231,12 @@ function renderOptionsCB(opt) {
                             <td>
                                 <input type="submit" name="submit" value={props.showSaveButton ? props.showSaveButton : "Calculate!"} className="btn" onClick={userSavedACB}/>
                                 {!newValues&&!props.showSaveButton? <div>
-                                <h3 className="saved-msg">Your information is changed, want to save it to your profile?</h3> 
+                                <h3 className="saved-msg">Your information is changed! <br></br> want to save it to your profile?</h3> 
                                 <input type="submit" name="submit" value= "Yes" className="btn" onClick={saveAfterChangeACB}/>
                                 <input type="submit" name="submit" value= "No" className="btn" onClick={dontSaveAfterChangeACB}/>
                                 </div> : ""}
                                 {(save&&newValues) && !calculated?
-                                <h3  className="saved-msg">New information will be saved when you calculate😃</h3> : ""}
+                                <h3  className="saved-msg">New information will be saved <br></br> when you calculate😃</h3> : ""}
                                 {(!save&&newValues) && !calculated?
                                 <h3  className="saved-msg">The information will not be saved😃</h3> : ""}
                             </td>

@@ -43,6 +43,12 @@
   border-top-left-radius: 30px;
 }
 
+.goals-result-btn {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+
 .feature-img {
   /* width: 530px; */
   max-width: 100%;

@@ -227,6 +227,7 @@
 
 .bmi-info-result {
   position: absolute;
+  right:0;
   top: 168px;
   left: 600px;
   width: 670px;

@@ -1,7 +1,10 @@
 import "../css/diet.css";
 import "../css/goals.css";
 import "../css/bmi.css";
+import React from "react";
 export default function GoalsResultView(props) {
+
+    const [result, setResult] = React.useState("");
 
     function renderGoalsCB(object) {
         if (props.activityResult.goals[object]["gain weight"]){
@@ -24,9 +27,11 @@ export default function GoalsResultView(props) {
         if (event.target.outerText.substring(0,2) === "To"){
             const ret = `Maintain weight, ,${event.target.outerText.substring(26,30)}`
             props.onUserChangedUserGoals(ret)
+            setResult(ret);
         }
         else{
             props.onUserChangedUserGoals(event.target.value)
+            setResult(event.target.value);
         }
         
         
@@ -35,8 +40,12 @@ export default function GoalsResultView(props) {
     return ( <div>
         <div className="result-button">
             <h3>Click to choose and save a goal</h3>
-            <button className="btn anim" onClick={userGoalIsChanged}>To Maintain weight ➡️ Eat {(props.activityResult.BMR)} Calories/day</button>
+            <button className="btn" onClick={userGoalIsChanged}>To Maintain weight ➡️ Eat {(props.activityResult.BMR)} Calories/day</button>
              {Object.keys(props.activityResult.goals).map(renderGoalsCB)}
+             {result !== ""?
+             <div className="goals-result-btn">
+               Your choice ➜ {result} calories/day🍇
+             </div>: ""}
         </div>
      </div>
      );
