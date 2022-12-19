@@ -3,14 +3,12 @@ import 'firebase/compat/auth';
 import firebase from 'firebase/compat/app';
 import firebaseConfig from "../firebaseConfig";
 import FitnessModel from "./FitnessModel";
-import { onAuthStateChanged } from "firebase/auth";
 
 const app = firebase.initializeApp(firebaseConfig)
 
 const auth = app.auth();
 
 function persistedModel() {
-
 
   function createModelACB(snapshot) {        
          
@@ -46,11 +44,9 @@ function persistedModel() {
 
       return new FitnessModel(person, goals, diet, bmi);
   }
-  let currentUser = ""
-  setTimeout(() => {console.log(auth.currentUser.uid);}, 4000);
 
   const db = getDatabase();
-  return get(ref(db, `/${currentUser}`)).then(createModelACB);
+  return get(ref(db, '/currentUser')).then(createModelACB);
 }
 
 function updateFirebaseFromModel(model) {
