@@ -3,7 +3,7 @@ import 'firebase/compat/auth';
 import firebase from 'firebase/compat/app';
 import firebaseConfig from "../firebaseConfig";
 import FitnessModel from "./FitnessModel";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth"
 
 const app = firebase.initializeApp(firebaseConfig)
 
@@ -13,27 +13,7 @@ const auth = app.auth();
 //   return get(ref(db, '/currentUser')).then(createModelACB);
 function persistedModel() {
 
-  // onAuthStateChanged(auth, (user)=> {
-  //   if (user){
-  //     console.log(user.uid); 
-  //   }
-  //   else
-  //     console.log("logged out!!!!!");
-  // })
   
-  // onAuthStateChanged(auth, (user) => {
-  //   if (user) {
-  //     console.log("user sign in"); 
-  //     const userData = {
-  //       displayName: user.displayName,
-  //       email: user.email,
-  //       uid: user.uid,
-  //     };
-  //     database.ref('users/' + user.uid).set(userData);
-  //   } else {
-  //     console.log("user sign out"); 
-  //   }
-  // });
   function createModelACB(snapshot) {        
          
       const defaultPerson = {
@@ -106,7 +86,6 @@ function updateFirebaseFromModel(model) {
  }
 
 
-
  function updateModelFromFirebase(model) {
   const db = getDatabase(app)
 
@@ -117,8 +96,6 @@ function updateFirebaseFromModel(model) {
   const goalsRef = ref(db, 'currentUser/goals');
   const dietRef = ref(db, 'currentUser/diet');
   const bmiRef = ref(db, 'currentUser/bmi');
-
-
 
 
   onValue(ageRef, function ageIsChanged (snapshot) { model.setAge(snapshot.val()); })
