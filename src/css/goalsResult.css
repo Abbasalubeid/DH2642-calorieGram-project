@@ -12,3 +12,13 @@
   width: 660px;
 }
 
+@media screen and (max-width: 768px) {
+  .result-button button {
+    width: 450px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .result-button button {
+    width: 450px;
+  }
+}
