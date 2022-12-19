@@ -19,8 +19,9 @@ function persistedModel(userId) {
     const goals = snapshot.val()?.goals ??  {};
     const diet = snapshot.val()?.diet ?? {};
     const bmi = snapshot.val()?.bmi ?? {};
+    const activityLevel = snapshot.val()?.activityLevel ?? {};
 
-    const model =  new FitnessModel(person, goals, diet, bmi);
+    const model =  new FitnessModel(person, goals, diet, bmi, activityLevel);
 
     if (userId){
        
@@ -71,6 +72,9 @@ function updateFirebaseFromModel(model) {
 
         if(payload.hasOwnProperty('newBmi'))
           set(ref(db, `/${model.currentUserId}/bmi`), payload.newBmi)
+
+          if(payload.hasOwnProperty('newActivityLevel'))
+          set(ref(db, `/${model.currentUserId}/activityLevel`), payload.newActivityLevel)
       }
     }
   }
@@ -88,9 +92,10 @@ function updateFirebaseFromModel(model) {
     const genderRef = ref(db, `/${model.currentUserId}/person/gender`);
     const heightRef = ref(db, `/${model.currentUserId}/person/height`);
     const weightRef = ref(db, `/${model.currentUserId}/person/weight`);
-    const goalsRef = ref(db, `/${model.currentUserId}/goals`);
-    const dietRef = ref(db, `/${model.currentUserId}/diet`);
-    const bmiRef = ref(db, `/${model.currentUserId}/bmi`);
+    const goalsRef         = ref(db, `/${model.currentUserId}/goals`);
+    const dietRef          = ref(db, `/${model.currentUserId}/diet`);
+    const bmiRef           = ref(db, `/${model.currentUserId}/bmi`);
+    const activityLevelRef = ref(db, `/${model.currentUserId}/activityLevel`);
 
     onValue(ageRef, function ageIsChanged (snapshot) { model.setAge(snapshot.val()); })
 
@@ -148,6 +153,8 @@ function updateFirebaseFromModel(model) {
                   }
 
                 })         
+
+    onValue(activityLevelRef, function activityLevelIsChanged (snapshot) {  console.log(snapshot.val()); model.setWeight(snapshot.val()); })
 
     }
 
