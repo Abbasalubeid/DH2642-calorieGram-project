@@ -43,7 +43,7 @@ export default function summaryView(props) {
                             <td  className="second-td">...</td>
                         </tr>
 
-                        {props.bmi.bmi!="" ?
+                        {props.bmi.bmi!="" && props.bmi.bmi!=undefined ?
                                             <tr>
                                                 <td className="first-td">BMI:</td>
                                                 <td className="second-td">{props.bmi.bmi +(" (") + props.bmi.health + (")")}</td>
@@ -52,7 +52,7 @@ export default function summaryView(props) {
                         :""
                         }
 
-                        {props.diet.protein!="" ?
+                        {props.diet.protein!="" && props.diet.protein!=undefined?
                                                 <tr>
                                                     <td className="first-td">Your Diet:</td>
                                                     <td className="second-td">{props.diet.protein + " protein, " +props.diet.carbs + " carbs, "+props.diet.fat + " fat" }</td>
@@ -60,8 +60,8 @@ export default function summaryView(props) {
                                                 </tr>
                         :""
                         }
-                        
-                        {props.goal.weightGoal!="" ?
+                    
+                        {props.goal.weightGoal!="" && props.goal.weightGoal!=undefined?
                                                 <tr>
                                                     <td className="first-td">Your Goals:</td>
                                                     <td className="second-td">{props.goal.weightGoal+"\n("+
