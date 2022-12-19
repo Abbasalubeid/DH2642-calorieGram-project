@@ -40,7 +40,7 @@ export default function summaryView(props) {
                         </tr>
                         <tr>
                             <td className="first-td">Your Activity Level:</td>
-                            <td  className="second-td">...</td>
+                            <td  className="second-td">{console.log(props.activityLevel)}</td>
                         </tr>
 
                         {props.bmi.bmi!="" && props.bmi.bmi!=undefined ?

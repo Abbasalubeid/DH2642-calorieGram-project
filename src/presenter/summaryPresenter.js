@@ -10,6 +10,7 @@ export default function SummaryPresenter(props){
     const [goal, setGoals] = React.useState(props.model.currentGoal);
     const [diet, setDiet] = React.useState(props.model.currentDiet);
     const [bmi, setBmi] = React.useState(props.model.currentBmi);
+    const [activityLevel, setActivityLevel] = React.useState(props.model.currentActivityLevel);
     //const [, reRender] = React.useState();
 
     function removeInfo(){
@@ -42,6 +43,7 @@ export default function SummaryPresenter(props){
                     goal= {goal}
                     diet= {diet}
                     bmi = {bmi}
+                    activityLevel = {activityLevel}
                     removeUserInfo= {removeInfo}
                     removeUserGoal= {removeGoalsInfo}
                     removeUserDiet= {removeDietInfo}
