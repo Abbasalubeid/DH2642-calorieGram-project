@@ -76,7 +76,7 @@
 
 @media (max-width: 900px) {
     .nav-toggle{
-      
+      flex-direction: column;
     }
 
     .nav-links, .login-btn, .signbtn{
