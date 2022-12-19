@@ -131,7 +131,6 @@ function updateFirebaseFromModel(model) {
                     const rightOrder = [wrongOrder[2], wrongOrder[0], wrongOrder[1]].join(",");
                     
                     model.setUserDiet(rightOrder)
-                    console.log(model);
                     }
 
                     })

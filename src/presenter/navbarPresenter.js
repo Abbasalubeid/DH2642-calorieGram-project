@@ -12,7 +12,6 @@ export default function NavbarPresenter(){
         onAuthStateChanged(auth, (user)=> {
           if (user){
             setSigned(false);
-            console.log(user);
           }
           else 
           {

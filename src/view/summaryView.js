@@ -12,6 +12,10 @@ export default function summaryView(props) {
         URL.revokeObjectURL(href);
     }
 
+    function deleteAllACB(){
+        props.removeUserInfo();
+    }
+
     const template =  `As of ${Date().slice(0,16)} your stats were:
     age: ${props.age} \n
     weight: ${props.weight} \n
@@ -40,7 +44,7 @@ export default function summaryView(props) {
                         </tr>
                         
                         
-                        {props.activityLevel!="" && props.bmi.bmi!=undefined ?
+                        {props.activityLevel!="" && props.activityLevel!=undefined ?
                                             <tr>
                                             <td className="first-td">Your Activity Level:</td>
                                             <td  className="second-td">{props.activityLevel}</td>
@@ -83,7 +87,7 @@ export default function summaryView(props) {
                     </tbody>
                 </table>  
                 <button className="btn anim" onClick={printFunc}> Download result </button>
-                <button className="btn anim" onClick={props.removeUserInfo}> Reset Data </button>
+                <button className="btn anim" onClick={deleteAllACB}> Reset Data </button>
             </div>
     );
 }

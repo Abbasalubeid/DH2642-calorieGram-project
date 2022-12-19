@@ -96,7 +96,6 @@ export default class FitnessModel{
   }
 
   setUserDiet(diet){ 
-    console.log(diet);
     const dietArr = (diet.toString()).split(",");
 
     this.currentDiet.protein = dietArr[0];
