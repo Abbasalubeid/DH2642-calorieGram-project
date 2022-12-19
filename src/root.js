@@ -8,11 +8,15 @@ import { onAuthStateChanged } from "firebase/auth";
 import FitnessModel from './model/FitnessModel';
 
 export default function Root(){
+
+    const[, reRender] = React.useState();
   
 
   function updateUserInfoACB(){
       updateFirebaseFromModel(defaultModel);
       updateModelFromFirebase(defaultModel);
+      // const obj = {}
+      // reRender(obj);
   }
 
 const defaultPerson = {

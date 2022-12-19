@@ -57,17 +57,17 @@ function updateFirebaseFromModel(model) {
     
     if(model.currentUserId !== ""){
       if (payload){
-        // if (payload.hasOwnProperty('newAge'))
-        //   set(ref(db, `/${model.currentUserId}/person/age`), payload.newAge)
+        if (payload.hasOwnProperty('newAge'))
+          set(ref(db, `/${model.currentUserId}/person/age`), payload.newAge)
             
-        // if (payload.hasOwnProperty('newGender'))
-        //   set(ref(db, `/${model.currentUserId}/person/gender`), payload.newGender)
+        if (payload.hasOwnProperty('newGender'))
+          set(ref(db, `/${model.currentUserId}/person/gender`), payload.newGender)
 
-        // if(payload.hasOwnProperty('newWeight'))
-        //   set(ref(db, `/${model.currentUserId}/person/weight`), payload.newWeight)
+        if(payload.hasOwnProperty('newWeight'))
+          set(ref(db, `/${model.currentUserId}/person/weight`), payload.newWeight)
         
-        // if(payload.hasOwnProperty('newHeight'))
-        //   set(ref(db, `/${model.currentUserId}/person/height`), payload.newHeight)
+        if(payload.hasOwnProperty('newHeight'))
+          set(ref(db, `/${model.currentUserId}/person/height`), payload.newHeight)
         
         if(payload.hasOwnProperty('newGoals'))
           set(ref(db, `/${model.currentUserId}/goals`), payload.newGoals)
@@ -90,72 +90,81 @@ function updateFirebaseFromModel(model) {
   const db = getDatabase(app)
 
   if (model.currentUserId !== ""){
-    console.log(model);
-    function updateModelACB(snapshot){
-      // console.log(snapshot.val());
-      // console.log(model.person);
-      // model.person = snapshot.val()?.person ?? model.person;
-      model.currentGoal  = snapshot.val()?.goals ?? model.currentGoal
-      model.currentDiet = snapshot.val()?.diet ??  model.currentDiet
-      model.currentBmi  = snapshot.val()?.bmi ?? model.currentBmi;
-    }
+      function updateModelACB(snapshot){
+        model.person = snapshot.val()?.person ?? model.person;
+        model.currentGoal  = snapshot.val()?.goals ?? model.currentGoal
+        model.currentDiet = snapshot.val()?.diet ??  model.currentDiet
+        model.currentBmi  = snapshot.val()?.bmi ?? model.currentBmi;
+      }
 
     get(ref(db, `/${model.currentUserId}`)).then(updateModelACB);
 
 
 
-    // const ageRef = ref(db, `/${model.currentUserId}/person/age`);
-    // const genderRef = ref(db, `/${model.currentUserId}/person/gender`);
-    // const heightRef = ref(db, `/${model.currentUserId}/person/height`);
-    // const weightRef = ref(db, `/${model.currentUserId}/person/weight`);
+    const ageRef = ref(db, `/${model.currentUserId}/person/age`);
+    const genderRef = ref(db, `/${model.currentUserId}/person/gender`);
+    const heightRef = ref(db, `/${model.currentUserId}/person/height`);
+    const weightRef = ref(db, `/${model.currentUserId}/person/weight`);
     const goalsRef = ref(db, `/${model.currentUserId}/goals`);
     const dietRef = ref(db, `/${model.currentUserId}/diet`);
     const bmiRef = ref(db, `/${model.currentUserId}/bmi`);
 
-    // onValue(ageRef, function ageIsChanged (snapshot) { model.setAge(snapshot.val()); })
+    onValue(ageRef, function ageIsChanged (snapshot) {console.log(snapshot.val()); model.setAge(snapshot.val()); })
 
-    // onValue(genderRef, function genderIsChanged (snapshot) {  model.setGender(snapshot.val()); })
+    onValue(genderRef, function genderIsChanged (snapshot) { console.log(snapshot.val()); model.setGender(snapshot.val()); })
 
-    // onValue(heightRef, function heightIsChanged (snapshot) { model.setHeight(snapshot.val());  })
+    onValue(heightRef, function heightIsChanged (snapshot) { console.log(snapshot.val());model.setHeight(snapshot.val());  })
 
-    // onValue(weightRef, function weightIsChanged (snapshot) {   model.setWeight(snapshot.val()); })
+    onValue(weightRef, function weightIsChanged (snapshot) {  console.log(snapshot.val()); model.setWeight(snapshot.val()); })
 
-    // onValue(goalsRef, function goalsIsChanged (snapshot) {
+    onValue(goalsRef, function goalsIsChanged (snapshot) {
+      console.log(snapshot.val());
+                        function onlyValuesCB(object){
+                          return snapshot.val()[object];
+                        }
 
-    //                     function onlyValuesCB(object){
-    //                       return snapshot.val()[object];
-    //                     }
+                      if(snapshot.val()){
+                        const wrongOrder = Object.keys(snapshot.val()).map(onlyValuesCB);
+                        const rightOrder = [wrongOrder[1], wrongOrder[2], wrongOrder[0]].join(",");
+  
+                        model.setUserGoal(rightOrder) 
+                      }
 
-    //                   const wrongOrder = Object.keys(snapshot.val()).map(onlyValuesCB);
-    //                   const rightOrder = [wrongOrder[1], wrongOrder[2], wrongOrder[0]].join(",");
+                      })
 
-    //                   model.setUserGoal(rightOrder) 
-    //                   })
+    onValue(dietRef, function dietIsChanged (snapshot) {
+                      console.log(snapshot.val());
+                      function onlyValuesCB(object){
+                        return snapshot.val()[object];
+                      }
 
-    // onValue(dietRef, function dietIsChanged (snapshot) {
-    //                   function onlyValuesCB(object){
-    //                     return snapshot.val()[object];
-    //                   }
-
-    //                 const wrongOrder = Object.keys(snapshot.val()).map(onlyValuesCB);
-    //                 const rightOrder = [wrongOrder[2], wrongOrder[0], wrongOrder[1]].join(",");
+                    if(snapshot.val()){
+                    const wrongOrder = Object.keys(snapshot.val()).map(onlyValuesCB);
+                    const rightOrder = [wrongOrder[2], wrongOrder[0], wrongOrder[1]].join(",");
                     
-    //                 model.setUserDiet(rightOrder) 
-    //                 })
-    
-    
-    
-    // onValue(bmiRef, function bmiIsChanged (snapshot) {
-    //                 function onlyValuesCB(object){
-    //                 return snapshot.val()[object];
-    //                   }
+                    model.setUserDiet(rightOrder)
+                    console.log(model);
+                    }
 
-    //               const wrongOrder = Object.keys(snapshot.val()).map(onlyValuesCB);
-    //               const rightOrder = [wrongOrder[0], wrongOrder[1]].join(",");
+                    })
+    
+    
+    
+    onValue(bmiRef, function bmiIsChanged (snapshot) {
+
+                    function onlyValuesCB(object){
+                    return snapshot.val()[object];
+                    }
+
+                  if(snapshot.val()){      
+                  const wrongOrder = Object.keys(snapshot.val()).map(onlyValuesCB);
+                  const rightOrder = [wrongOrder[0], wrongOrder[1]].join(",");
                   
-    //               model.setUserBmi(rightOrder) 
+                  model.setUserBmi(rightOrder) 
 
-    //             })         
+                  }
+
+                })         
 
     }
 
