@@ -86,6 +86,7 @@ export default function SearchView(props) {
     }
 
     function userChooseLevelACB(event) {
+        //console.log(event.target)
         props.onUserChooseLevel(event.target.value);
     }
     function userChooseGoalACB(event){
