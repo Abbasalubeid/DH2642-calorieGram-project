@@ -57,7 +57,7 @@ function App(props) {
            }
          />
          <Route 
-            path="summary"
+            path='summary'
             element={
               <ProtectedRoute>
             <SummaryPresenter model={props.model} />

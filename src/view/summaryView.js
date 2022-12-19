@@ -12,28 +12,6 @@ export default function summaryView(props) {
         URL.revokeObjectURL(href);
     }
 
-    function deleteAllACB(){
-        props.removeUserInfo();
-    }
-
-    function removeGoalACB(){
-        props.removeUserGoal();
-    }
-    
-    function removeDietACB(){
-        props.removeUserDiet();
-    }
-
-    function removeBmiACB(){
-        props.removeUserBmi();
-    }
-
-    function removeActivityACB(){
-        props.removeUserActivity();
-    }
-
-
-
     const template =  `As of ${Date().slice(0,16)} your stats were:
     age: ${props.age} \n
     weight: ${props.weight} \n
@@ -62,12 +40,13 @@ export default function summaryView(props) {
                         </tr>
                         
                         
-                        {props.activityLevel!=="" && props.activityLevel!==undefined ?
+                        {props.activityLevel!=="" && props.bmi.bmi!==undefined ?
                                             <tr>
                                             <td className="first-td">Your Activity Level:</td>
                                             <td  className="second-td">{props.activityLevel}</td>
                                             <td>
-                                            <button onClick={removeActivityACB} className="btn">remove</button> 
+
+                                            <button onClick={props.removeUserActivity} className="btn">remove</button> 
                                             </td>
                                         </tr>                                            
                         :""
@@ -78,7 +57,8 @@ export default function summaryView(props) {
                                                 <td className="first-td">BMI:</td>
                                                 <td className="second-td">{props.bmi.bmi +(" (") + props.bmi.health + (")")}</td>
                                                 <td>
-                                                <button onClick={removeBmiACB} className="btn anim">remove</button> 
+
+                                                <button onClick={props.removeUserBmi} className="btn anim">remove</button> 
                                                 </td>
                                             </tr>                                            
                         :""
@@ -87,9 +67,10 @@ export default function summaryView(props) {
                         {props.diet.protein!=="" && props.diet.protein!==undefined ?
                                                 <tr>
                                                     <td className="first-td">Your Diet:</td>
-                                                    <td className="second-td">{props.diet.protein + " protein, " +props.diet.carbs + " carbs, "+props.diet.fat + " fat" }</td>
+                                                    <td className="second-td">{props.diet.protein + " protein, " +props.diet.carbs + " carbs, "+props.diet.fat + " fat" }</td> 
                                                     <td>
-                                                    <button onClick={removeDietACB} className="btn anim">remove</button> 
+                                                    
+                                                    <button onClick={props.removeUserDiet} className="btn anim">remove</button> 
                                                     </td>
                                                 </tr>
                         :""
@@ -102,11 +83,11 @@ export default function summaryView(props) {
                                                                                 props.goal.weightPerWeek+"),\n"+
                                                                                 props.goal.caloriesIntake +(" calories per day.")} 
                                                     </td>
-                                                <td>
-                                                 <button onClick={removeGoalACB} className="btn anim">remove</button>
-                                                 </td>
+                                                    <td>
+                                                    
+                                                 <button onClick={props.removeUserGoal} className="btn anim">remove</button>
+                                                    </td>
                                                 </tr>
-                                                
                         :
                         ""
                         }
@@ -114,7 +95,7 @@ export default function summaryView(props) {
                     </tbody>
                 </table>  
                 <button className="btn anim" onClick={printFunc}> Download result </button>
-                <button className="btn anim" onClick={deleteAllACB}> Reset Data </button>
+                <button className="btn anim" onClick={props.removeUserInfo}> Reset Data </button>
             </div>
     );
 }
