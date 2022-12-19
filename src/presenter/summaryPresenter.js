@@ -12,6 +12,11 @@ export default function SummaryPresenter(props){
     const [bmi, setBmi] = React.useState(props.model.currentBmi);
     //const [, reRender] = React.useState();
 
+    function removeInfo(){
+        props.model.removeUserDiet(); 
+        props.model.removeUserBmi(); 
+        props.model.removeUserGoal(); 
+    }
 
     return (
         <div className="summary-mainStyle">
@@ -25,6 +30,7 @@ export default function SummaryPresenter(props){
                     goal= {goal}
                     diet= {diet}
                     bmi = {bmi}
+                    removeUserInfo= {removeInfo}
                 />
             </div>
            

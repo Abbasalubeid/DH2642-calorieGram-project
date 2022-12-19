@@ -59,19 +59,7 @@ export default function summaryView(props) {
                     </tbody>
                 </table>  
                 <button className="btn anim" onClick={printFunc}> Download result </button>
+                <button className="btn anim" onClick={props.removeUserInfo}> Reset Data </button>
             </div>
     );
 }
-
-
-        {/* <div >
-         <h2>Your summmary is the following:</h2>
-         <h3>age:</h3> {props.age} 
-         <h3>weight:</h3> {props.weight} 
-         <h3>height:</h3>{props.height} 
-         <h3>BMR: </h3> Calories/day 
-         <h3>Your activity level is: </h3>
-         <h3>your Diet: </h3>
-         <h3>Goals:</h3>  {props.goal.weightGoal} ({props.goal.weightPerWeek}) eat:{props.goal.calloriesIntake} Calories
-        </div> */}
-        {/* <div><button className = "btn anim" onClick ={printFunc}> Download result </button></div> */}
