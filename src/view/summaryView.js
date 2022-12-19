@@ -39,23 +39,40 @@ export default function summaryView(props) {
                             <td  className="second-td">{props.height}</td>
                         </tr>
                         <tr>
-                            <td className="first-td">BMI:</td>
-                            <td  className="second-td">{props.bmi.bmi +(" (") + props.bmi.health + (")")}</td>
-                        </tr>
-                        <tr>
                             <td className="first-td">Your Activity Level:</td>
                             <td  className="second-td">...</td>
                         </tr>
-                        <tr>
-                            <td className="first-td">Your Diet:</td>
-                            <td  className="second-td">{props.diet.protein + " protein, " +props.diet.carbs + " carbs, "+props.diet.fat + " fat" }</td>
-                        </tr>
-                        <tr>
-                            <td className="first-td">Your Goals:</td>
-                            <td  className="second-td">{props.goal.weightGoal+"\n("+
-                                                        props.goal.weightPerWeek+"),\n"+
-                                                        props.goal.caloriesIntake +(" calories per day.")}</td>
-                        </tr>
+
+                        {props.bmi.bmi!="" ?
+                                            <tr>
+                                                <td className="first-td">BMI:</td>
+                                                <td  className="second-td">{props.bmi.bmi +(" (") + props.bmi.health + (")")}</td>
+                                            </tr>                                            
+                        :
+                        console.log("hellloooo")
+                        }
+
+                        {props.diet.protein!="" ?
+                                                <tr>
+                                                    <td className="first-td">Your Diet:</td>
+                                                    <td  className="second-td">{props.diet.protein + " protein, " +props.diet.carbs + " carbs, "+props.diet.fat + " fat" }</td>
+                                                </tr>
+                        :
+                        console.log("hellloooo")
+                        }
+                        
+                        {props.goal.weightGoal!="" ?
+                                                <tr>
+                                                    <td className="first-td">Your Goals:</td>
+                                                    <td  className="second-td">{props.goal.weightGoal+"\n("+
+                                                                                props.goal.weightPerWeek+"),\n"+
+                                                                                props.goal.caloriesIntake +(" calories per day.")}
+                                                    </td>
+                                                </tr>
+                        :
+                        console.log("hellloooo")
+                        }
+
                     </tbody>
                 </table>  
                 <button className="btn anim" onClick={printFunc}> Download result </button>
