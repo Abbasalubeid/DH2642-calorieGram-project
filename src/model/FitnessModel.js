@@ -1,8 +1,8 @@
 export default class FitnessModel{
-  constructor(person, goal, diet,bmi){
+  constructor(person, goal, diet, bmi, activityLevel){
       this.observers            = [];
       this.person               = person;
-      this.currentActivityLevel = {}
+      this.currentActivityLevel = activityLevel;
       this.currentGoal          = goal;
       this.currentDiet          = diet;
       this.currentBmi           = bmi;
@@ -140,8 +140,8 @@ export default class FitnessModel{
       this.notifyObservers(payload);
   }
   setUserActivity(activity){
-    console.log(activity)
     this.currentActivityLevel =`${activity}`
+    console.log("this.currentactivity is: ")
     console.log(this.currentActivityLevel)
 
     const payload = { newActivityLevel : this.currentActivityLevel}

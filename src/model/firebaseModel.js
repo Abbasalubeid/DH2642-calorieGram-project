@@ -156,7 +156,7 @@ function updateFirebaseFromModel(model) {
                 })         
 
     onValue(activityLevelRef, function activityLevelIsChanged (snapshot) {  console.log(snapshot.val()); model.setWeight(snapshot.val()); })
-    
+
     }
 
 }
