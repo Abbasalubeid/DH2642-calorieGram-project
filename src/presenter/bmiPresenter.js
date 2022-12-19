@@ -48,7 +48,6 @@ export default function BmiPresenter(props) {
     }
 
     function userSearchedACB(wantToSave) {
-        console.log(wantToSave);
         if(!wantToSave){
             searchParams.age = props.model.person.age;
             searchParams.height = props.model.person.height;

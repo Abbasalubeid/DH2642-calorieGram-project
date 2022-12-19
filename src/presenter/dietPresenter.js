@@ -11,6 +11,11 @@ export default function DietPresenter(props){
     const [weight, setWeight] = React.useState(props.model.person.weight);
     const [height, setHeight] = React.useState(props.model.person.height);
     const [gender, setGender] = React.useState(props.model.person.gender);
+    const [tempAge, setTempAge] = React.useState();
+    const [tempWeight, setTempWeight] = React.useState();
+    const [tempHeight, setTempHeight] = React.useState();
+    const [tempGender, setTempGender] = React.useState();
+
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
@@ -39,14 +44,39 @@ export default function DietPresenter(props){
         return changedAgainACB;
     }
 
-    function userSearchedACB() {
-        searchParams.age = props.model.person.age;
-        searchParams.gender = props.model.person.gender;
-        searchParams.height = props.model.person.height;
-        searchParams.weight = props.model.person.weight;
-        setPromise(getMacroInfo(searchParams));
-        setShow(true);
+    function persistCurrentValues(){
+        setTempAge(age);
+        setTempWeight(weight)
+        setTempHeight(height)
     }
+
+    function userSearchedACB(wantToSave) {
+        if(!wantToSave){
+            searchParams.age = props.model.person.age;
+            searchParams.height = props.model.person.height;
+            searchParams.weight = props.model.person.weight;
+            searchParams.gender = props.model.person.gender;
+
+            setPromise(getMacroInfo(searchParams));
+            setShow(true);
+            props.model.setAge(tempAge)
+            props.model.setWeight(tempWeight)
+            props.model.setHeight(tempHeight)
+            props.model.setGender(tempGender)
+        }
+        else if (wantToSave){
+            searchParams.age = props.model.person.age;
+            searchParams.height = props.model.person.height;
+            searchParams.weight = props.model.person.weight;
+            searchParams.gender = props.model.person.gender;
+
+            setPromise(getMacroInfo(searchParams));
+            setShow(true);
+        }
+
+
+    }
+
 
     function ageIsChangedACB(age) {
         props.model.setAge(age)
@@ -77,6 +107,7 @@ export default function DietPresenter(props){
     }
     
     function wasCreatedACB() {
+        persistCurrentValues();
         props.model.addObserver(observerACB);
         return function isTakenDownACB() {                                
             props.model.removeObserver(observerACB);
