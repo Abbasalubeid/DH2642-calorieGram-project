@@ -81,6 +81,10 @@ export default function GoalsSearchPresenter(props) {
         };
     }
 
+    function removeInfo(){
+        props.model.removeUserGoal(); 
+    }
+
 
     React.useEffect(wasCreatedACB, []);
     React.useEffect(promiseHasChangedACB, [promise]);
@@ -128,6 +132,7 @@ export default function GoalsSearchPresenter(props) {
                         activityResult={data}
                         userInfo={searchParams}
                         onUserChangedUserGoals={UserChangedUserGoals}
+                        removeGoalInfo={removeInfo}
                     />
                 }
             </div>

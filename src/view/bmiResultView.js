@@ -13,6 +13,8 @@ export default function BmiResultView(props) {
             <div id="healthstate" className="col state">
                 <span></span>
                 {props.bmiResult.health}</div>
+
+                <button onClick={props.removeBmiInfo}>remove data</button>
         </div >
     );
 }
