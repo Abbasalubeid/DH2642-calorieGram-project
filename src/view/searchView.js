@@ -10,17 +10,20 @@ export default function SearchView(props) {
     const [heightError, setHeightError] = React.useState("");
     const [weightError, setWeightError] = React.useState("");
     const [invalidError, setInavilError] = React.useState(false);
-    const [emptyBoxError, setEmptyBoxError] =  React.useState("");
+    const [emptyBoxError, setEmptyBoxError] =  React.useState(false);
 
     function userSavedACB(event) {
         event.preventDefault();
-        if(props.age === "" || props.height === "" || props.weight === ""){
+        if(!props.age || !props.height || !props.weight || !props.weight || !props.gender){
             setEmptyBoxError(true);
+            console.log(invalidError);
         }
         if(ageError !== "" || heightError !== "" || weightError !== ""){
             props.onPersonChanged();
             setInavilError(true);
+            setEmptyBoxError(false);
         }
+
         else
             props.onUserSearched();
     }
@@ -32,12 +35,12 @@ export default function SearchView(props) {
             props.onUserChangedAge(event.target.value);
             setAgeError("");
             setInavilError(false);
+            setEmptyBoxError(false);
         } catch (error) {
             setAgeError(error.message);
             
         }
-        
-
+        setEmptyBoxError(false);
     }
 
     function userTypedWeightACB(event) {
@@ -49,6 +52,7 @@ export default function SearchView(props) {
         } catch (error) {
             setWeightError(error.message);
         }
+        setEmptyBoxError(false);
     }
 
     function userTypedHeightACB(event) {
@@ -60,6 +64,7 @@ export default function SearchView(props) {
         } catch (error) {
             setHeightError(error.message);
         }
+        setEmptyBoxError(false);
     }
     
     function userChooseGenderACB(event) {
@@ -94,13 +99,17 @@ function renderOptionsCB(opt) {
                             <td>
                                 <label className="container gender label">Male
                                     <input type="radio" value="male" name="gender"
-                                        onInput={userChooseGenderACB} />
+                                        onInput={userChooseGenderACB}
+                                        defaultChecked = {props.gender&&props.gender === "male" ? true : false} />
                                     <span className="checkmark"></span>
                                 </label>
                                 <label className="container gender label">Female
                                     <input type="radio" value="female" name="gender"
-                                        onInput={userChooseGenderACB} />
+                                        onInput={userChooseGenderACB}
+                                        defaultChecked = {props.gender&&props.gender === "female" ? true : false} />
                                     <span className="checkmark"></span>
+                                    {(emptyBoxError && !props.gender) ? 
+                                        <label className="error-msg"> {"<--"}Select a gender!</label> : ""}
                                 </label>
                             </td>
                         </tr>
@@ -119,7 +128,7 @@ function renderOptionsCB(opt) {
                                         defaultValue={props.age}
                                         className="input-box"
                                     />
-                                    {emptyBoxError && props.age === "" ?
+                                    {(emptyBoxError && !props.age) ?
                                         <label className="error-msg"> {"<--"}Age is required!</label> : ""}
                                 </div>
                                 {ageError !== "" ?
@@ -136,7 +145,7 @@ function renderOptionsCB(opt) {
                                     <input type="number" name="weight" maxLength="4" 
                                         width="60px" placeholder="kg" onChange={userTypedWeightACB}
                                         defaultValue={props.weight} className="input-box" />
-                                    {emptyBoxError && props.weight === "" ?
+                                    {(emptyBoxError && !props.weight) ? 
                                         <label className="error-msg"> {"<--"}Weight is required!</label> : ""}
                                 </div>
                                 {weightError !== "" ?
@@ -154,14 +163,14 @@ function renderOptionsCB(opt) {
                                         type="number" name="height" maxLength="4"
                                         width="60px" placeholder="cm" onChange={userTypedHeightACB}
                                         defaultValue={props.height} className="input-box" />
-                                    {emptyBoxError && props.height === "" ?
+                                    {(emptyBoxError && !props.height) ? 
                                         <label className="error-msg"> {"<--"}Height is required!</label> : ""}
                                 </div>
                                 {heightError !== "" ?
                                     <label className="error-msg">{heightError} <br></br></label> : ""}
                                 {props.userSaved?
                                 <label className="saved-msg">Information saved!</label> : ""}
-                                {invalidError?
+                                {(invalidError ||emptyBoxError) && !props.userSaved?
                                <label className="error-msg">Please fill in valid values!</label> : ""}
                             </td>
                         </tr>
