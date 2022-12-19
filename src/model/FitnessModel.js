@@ -6,6 +6,7 @@ export default class FitnessModel{
       this.currentGoal          = goal;
       this.currentDiet          = diet;
       this.currentBmi           = bmi;
+      this.currentUserId = ""
   }
 
   addObserver(callback) {
@@ -103,6 +104,13 @@ export default class FitnessModel{
     this.currentBmi.health   = bmiArr[1];
     
     const payload = { newBmi : this.currentBmi}
+      this.notifyObservers(payload);
+  }
+
+  setUserID(userId){
+    this.currentUserId = userId;
+
+    const payload = { newId : this.currentUserId }
       this.notifyObservers(payload);
   }
   
