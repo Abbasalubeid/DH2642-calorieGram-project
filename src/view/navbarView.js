@@ -8,23 +8,25 @@ export default function NavbarView() {
         setSigned(true);
     }
 
-    const toggleButton = document.getElementsByClassName('nav-toggle')
-    const navbarlinks = document.getElementsByClassName('nav-links')
-    // toggleButton.addEventListener('click', () => {
-    //     navbarlinks.classList.toggle('active')
-    // })
+    const toggleButton = document.getElementsByClassName('nav-toggle')[0];
+    const navbarlinks = document.getElementsByClassName('nav-links')[0];
+    toggleButton.addEventListener('click', () => {
+        navbarlinks.classList.toggle('active')
+        console.log(navbarlinks);
+    })
+    
 
-    function toggleButtonClickACB(){
-        navbarlinks.classList.toggle('active');
-    }
+    // function toggleButtonClickACB(){
+    //     navbarlinks.classList.toggle('active');
+    // }
 
     return <nav className="navbar">
         <Link to="/home" className="nav-title nav-home"><img src="CG-withoutbg.png"></img></Link>
-        <button className="nav-toggle" onClick={toggleButtonClickACB}>
+        <a className="nav-toggle">
             <span className="nav-bar"></span>
             <span className="nav-bar"></span>
             <span className="nav-bar"></span>
-        </button>
+        </a>
         <div className="nav-links">
             <ul>
                 <CustomLink href="/profile" className="btn-links nav-goals">Profile</CustomLink>
