@@ -6,7 +6,7 @@ import DietPresenter  from "./presenter/dietPresenter.js";
 import SummaryPresenter from "./presenter/summaryPresenter.js";
 import Homepage from "./view/homepage.js";
 import { Route, Routes } from "react-router-dom";
-import NavbarView from "./view/navbarView.js";
+import NavbarPresenter from "./presenter/navbarPresenter.js";
 import "./css/App.css";
 import { AuthProvider } from  "./model/AuthContext";
 
@@ -21,7 +21,7 @@ function App(props) {
 
   return(
     <div className="banner">
-       <NavbarView />
+       <NavbarPresenter />
       
       <AuthProvider>
        <Routes>

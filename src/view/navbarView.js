@@ -2,11 +2,9 @@ import React from "react";
 import { Link, useResolvedPath, useMatch } from "react-router-dom";
 import "../css/navbar.css";
 
-export default function NavbarView() {
-    const [signed, setSigned] = React.useState(false);
-    function userLogin() {
-        setSigned(true);
-    }
+
+export default function NavbarView(props) {
+
 
     return <nav className="navbar">
         <Link to="/home" className="nav-title nav-home"><img src="CG-withoutbg.png"></img></Link>
@@ -26,9 +24,8 @@ export default function NavbarView() {
         </ul>
         </div>
         <div>
-            <a href="/" className={signed ? "login-btn" : "hidden"}>Login</a>
-            <a href="/signup" className={signed ? "btn signbtn" : "hidden"}>Sign up</a>
-            <a href="/login" className={!signed ? "btn signbtn" : "hidden"}>Log out</a>
+            <a href="/" className={props.signed ? "login-btn" : "hidden"}>Login</a>
+            <a href="/signup" className={props.signed ? "btn signbtn" : "hidden"}>Sign up</a>
         </div>
     </nav>
 }
