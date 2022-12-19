@@ -85,6 +85,12 @@ export default class FitnessModel{
       const payload = { newGoals : this.currentGoal}
       this.notifyObservers(payload);
   }
+  removeUserGoal(){
+    this.currentGoal = null;
+
+    const payload = { newGoals : this.currentGoal}
+    this.notifyObservers(payload);
+  }
 
   setUserDiet(diet){
     const dietArr = (diet.toString()).split(",");
@@ -96,12 +102,24 @@ export default class FitnessModel{
     const payload = { newDiet : this.currentDiet}
       this.notifyObservers(payload);
   }
+  removeUserDiet(){
+    this.currentDiet = null;
+
+    const payload = { newDiet : this.currentDiet}
+      this.notifyObservers(payload);
+  }
   
   setUserBmi(bmi){
     const bmiArr = (bmi.toString()).split(",");
     this.currentBmi.bmi      = bmiArr[0];
     this.currentBmi.health   = bmiArr[1];
     
+    const payload = { newBmi : this.currentBmi}
+      this.notifyObservers(payload);
+  }
+  removeUserDiet(){
+    this.currentBmi = null;
+
     const payload = { newBmi : this.currentBmi}
       this.notifyObservers(payload);
   }
