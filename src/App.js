@@ -9,10 +9,8 @@ import { Route, Routes } from "react-router-dom";
 import NavbarPresenter from "./presenter/navbarPresenter.js";
 import "./css/App.css";
 import { AuthProvider } from  "./model/AuthContext";
-
 import SignInPresenter from "./presenter/signInPresenter.js";
 import SignupPresenter from "./presenter/singupPresenter.js";
-
 import Account from './view/accountView';
 import ProtectedRoute from './ProtectedRoute';
 
