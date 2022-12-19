@@ -2,11 +2,7 @@ import React from "react";
 import "../css/bmiResult.css";
 
 export default function BmiResultView(props) {
-<<<<<<< HEAD
-
-=======
     
->>>>>>> d2f9b6d159467aa4aed86e993c48dda96095b371
     return (
         <div className="row anim" > 
             <div className="col text">Current BMI</div>
