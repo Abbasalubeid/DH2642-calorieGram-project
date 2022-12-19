@@ -65,9 +65,6 @@ export default function BmiPresenter(props) {
         props.model.setHeight(height)
     }
 
-    function userChangedBmi(){
-        
-    }
     function removeInfo(){
         props.model.removeUserBmi();
     }

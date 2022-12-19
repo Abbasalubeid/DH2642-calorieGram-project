@@ -16,7 +16,6 @@ export default function SearchView(props) {
         event.preventDefault();
         if(!props.age || !props.height || !props.weight || !props.weight || !props.gender){
             setEmptyBoxError(true);
-            console.log(invalidError);
         }
         if(ageError !== "" || heightError !== "" || weightError !== ""){
             props.onPersonChanged();
