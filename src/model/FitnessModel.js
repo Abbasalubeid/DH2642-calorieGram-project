@@ -139,5 +139,11 @@ export default class FitnessModel{
     const payload = { newBmi : this.currentBmi}
       this.notifyObservers(payload);
   }
+  setUserActivity(activity){
+    this.currentActivityLevel = activity
+
+    const payload = { newActivityLevel : this.currentActivityLevel}
+      this.notifyObservers(payload);
+  }
   
 }
