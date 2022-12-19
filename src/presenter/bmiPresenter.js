@@ -95,9 +95,6 @@ export default function BmiPresenter(props) {
         setShow(false);
     }
 
-    function showInfo(){
-        setBmiInfo(true);
-    }
 
     function wasCreatedACB() {
         persistCurrentValues();
@@ -114,7 +111,12 @@ export default function BmiPresenter(props) {
 
     return (
         <div className="bmi-mainStyle">
+            <InformationView
+            bmi1 = {true}>
+                
+            </InformationView>
             <div className="bmi-style">
+                
                 <SearchView onUserChangedAge={ageIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
                     onUserChangedHeight={heightIsChangedACB}
@@ -124,8 +126,10 @@ export default function BmiPresenter(props) {
                     height = {height}
                     weight = {weight}
                 />
+
             
             <div className={!show ? "hidden" : "bmi-result"}>
+
                 {promiseNoData({ promise, data, error }) ||
                 
                     <BmiResultview
@@ -135,7 +139,9 @@ export default function BmiPresenter(props) {
                 }
             </div>
                 <div className={data ? "bmi-info-result" : "hidden"}>
-                    <InformationView />
+                <InformationView
+                    bmi2 = {true}>
+                </InformationView>
                 </div>
             </div>
         </div>

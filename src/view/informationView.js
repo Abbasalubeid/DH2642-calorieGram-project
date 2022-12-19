@@ -5,7 +5,7 @@ export default function InformationPresenter (props) {
         <div>
 
 
-            <div className={!props.showinfo ? "hidden" : " "}>
+            <div className={!props.goals ? "hidden" : " "}>
                 <h1>Goals</h1>
                 <p className="first-p anim"> By choosing how many times you intend to train per week you will be presented
                     with a set of goals to achieve. <br></br>
@@ -15,7 +15,7 @@ export default function InformationPresenter (props) {
             </div>
 
 
-            <div className={props.showDietinfo ? 'diet' : 'hidden'}>
+            <div className={props.diet1 ? 'diet' : 'hidden'}>
                 <h1>Diet Calculate</h1>
                 <p className="first-p anim">The Diet Calculator can be used to estimate the number of calories
                     a person needs to consume each day.
@@ -23,7 +23,7 @@ export default function InformationPresenter (props) {
             </div>
 
 
-            <div className={props.showBmiinfo ? '' : 'hidden'}>
+            <div className={props.bmi1 ? '' : 'hidden'}>
                 <h1>BMI Calculate</h1>
                 <p className="first-p anim">The BMI Calculator can be used to estimate the number of calories
                     a person needs to consume each day.
@@ -31,12 +31,12 @@ export default function InformationPresenter (props) {
             </div>
         
 
-        <div className="custom-info anim">
+        <div className={props.bmi2? "custom-info anim" : "hidden"}>
              <input type="checkbox" id="check" />
              <h2>Information</h2>
              <img src="bmi-bild.jpg" />
              <p>
-                 <span className="bold-text">What's BMI?</span>
+                 <span className= "bold-text">What's BMI?</span>
                  <br />
                  Body mass index (BMI) to determine how healthy you are.
                  For most adults, a BMI between 18.5 to 24.9 is the ideal BMI to have.
@@ -62,7 +62,7 @@ export default function InformationPresenter (props) {
 
 
 
-            <div className="custom-info anim">
+            <div className={props.diet2? "custom-info anim" : "hidden"}> 
                 <input type="checkbox" id="check" />
                 <h2>Information</h2>
                 <img src="healthy-diet.png" />

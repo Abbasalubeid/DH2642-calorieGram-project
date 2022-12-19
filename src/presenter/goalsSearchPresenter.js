@@ -131,6 +131,10 @@ export default function GoalsSearchPresenter(props) {
 
     return (
         <div className="goal-mainStyle">
+            <InformationView
+                goals = {true}>
+
+            </InformationView>
             <div className="goal-style">
                 <SearchView onUserChangedAge={ageIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}

@@ -139,6 +139,8 @@ export default function DietPresenter(props){
 
     return (
         <div className="diet-mainStyle">
+            <InformationView
+                diet1 = {true}  />
             <div className="diet-style">
                 <SearchView onUserChangedAge={ageIsChangedACB}
                     onUserChangedWeight={weightIsChangedACB}
@@ -169,7 +171,8 @@ export default function DietPresenter(props){
                 />
            
             <div className={!show ? "diet-info" : "hidden"}>
-                <InformationView />
+                <InformationView
+                diet2 = {true}  />
             </div>
             <div className={show ? "diet-result" : "hidden"}>
                 {promiseNoData({ promise, data, error }) ||
