@@ -17,7 +17,7 @@ export default function summaryView(props) {
     weight: ${props.weight} \n
     height:${props.height} \n
     BMI:  ${props.bmi.bmi +(" (") + props.bmi.health + (")")} \n
-    Your activity level is: \n
+    Your activity level is:${props.activityLevel} \n
     your Diet: ${props.diet.protein + " protein, " +props.diet.carbs + " carbs, "+props.diet.fat + " fat" }\n
     Goals:  ${props.goal.weightGoal} (${props.goal.weightPerWeek}) eat:${props.goal.caloriesIntake} Calories\n
     `
@@ -38,10 +38,16 @@ export default function summaryView(props) {
                             <td className="first-td">Height:</td>
                             <td  className="second-td">{props.height}</td>
                         </tr>
-                        <tr>
-                            <td className="first-td">Your Activity Level:</td>
-                            <td  className="second-td">{props.activityLevel}</td>
-                        </tr>
+                        
+                        
+                        {props.activityLevel!="" && props.bmi.bmi!=undefined ?
+                                            <tr>
+                                            <td className="first-td">Your Activity Level:</td>
+                                            <td  className="second-td">{props.activityLevel}</td>
+                                            <button onClick={props.removeUserActivity}>remove</button> 
+                                        </tr>                                            
+                        :""
+                        }
 
                         {props.bmi.bmi!="" && props.bmi.bmi!=undefined ?
                                             <tr>

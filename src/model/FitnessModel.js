@@ -141,8 +141,13 @@ export default class FitnessModel{
   }
   setUserActivity(activity){
     this.currentActivityLevel =`${activity}`
-    console.log("this.currentactivity is: ")
-    console.log(this.currentActivityLevel)
+
+    const payload = { newActivityLevel : this.currentActivityLevel}
+      this.notifyObservers(payload);
+  }
+
+  removeUserActivity(){
+    this.currentActivityLevel =``
 
     const payload = { newActivityLevel : this.currentActivityLevel}
       this.notifyObservers(payload);
