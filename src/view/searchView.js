@@ -11,10 +11,13 @@ export default function SearchView(props) {
     const [weightError, setWeightError] = React.useState("");
     const [invalidError, setInavilError] = React.useState(false);
     const [emptyBoxError, setEmptyBoxError] =  React.useState(false);
+    const [newValues, setNewValues] =  React.useState(true);
+    const [save, setSave] =  React.useState(true);
+    const [calculated, setCalculated] =  React.useState(true);
 
     function userSavedACB(event) {
         event.preventDefault();
-        if(!props.age || !props.height || !props.weight || !props.weight || !props.gender){
+        if(!props.age || !props.height || !props.weight || !props.weight){
             setEmptyBoxError(true);
         }
         if(ageError !== "" || heightError !== "" || weightError !== ""){
@@ -23,8 +26,11 @@ export default function SearchView(props) {
             setEmptyBoxError(false);
         }
 
-        else
-            props.onUserSearched();
+        else{
+            props.onUserSearched(save);
+            setCalculated(true)
+        }
+            
     }
 
     function userTypedAgeACB(event) {
@@ -35,6 +41,8 @@ export default function SearchView(props) {
             setAgeError("");
             setInavilError(false);
             setEmptyBoxError(false);
+            if(event.target.value !== props.age)
+                setNewValues(false);
         } catch (error) {
             setAgeError(error.message);
             
@@ -48,6 +56,8 @@ export default function SearchView(props) {
             props.onUserChangedWeight(event.target.value);
             setWeightError("");
             setInavilError(false);
+            if(event.target.value !== props.weight)
+                setNewValues(false);
         } catch (error) {
             setWeightError(error.message);
         }
@@ -60,6 +70,8 @@ export default function SearchView(props) {
             props.onUserChangedHeight(event.target.value);
             setHeightError("");
             setInavilError(false);
+            if(event.target.value !== props.height)
+                setNewValues(false); 
         } catch (error) {
             setHeightError(error.message);
         }
@@ -67,6 +79,8 @@ export default function SearchView(props) {
     }
     
     function userChooseGenderACB(event) {
+        if(event.target.value !== props.gender)
+            setNewValues(false);
         props.onPersonChanged?.();
         props.onUserChangedGender(event.target.value);
     }
@@ -77,6 +91,20 @@ export default function SearchView(props) {
     function userChooseGoalACB(event){
         props.onUserChooseGoal(event.target.value);
 }
+
+    function dontSaveAfterChangeACB(event){
+        event.preventDefault();
+        setNewValues(true)
+        setSave(false);
+        setCalculated(false);
+    }
+
+    function saveAfterChangeACB(event){
+        event.preventDefault();
+        setNewValues(true)
+        setSave(true);
+        setCalculated(false);
+    }
 
 function renderOptionsCB(opt) {
     return <option value={opt.value} key={opt.value}>{opt.type}</option>
@@ -169,7 +197,7 @@ function renderOptionsCB(opt) {
                                     <label className="error-msg">{heightError} <br></br></label> : ""}
                                 {props.userSaved?
                                 <label className="saved-msg">Information saved!</label> : ""}
-                                {(invalidError ||emptyBoxError) && !props.userSaved?
+                                {(invalidError ||emptyBoxError)?
                                <label className="error-msg">Please fill in valid values!</label> : ""}
                             </td>
                         </tr>
@@ -197,16 +225,22 @@ function renderOptionsCB(opt) {
                         </tr>
                         <tr>
                             <td></td>
-                            <td>
-                                <input type="submit" name="submit" value={props.showSaveButton ? props.showSaveButton : "Calculate!"} className="btn" onClick={userSavedACB}/>
-
+                            <td>{newValues?
+                                <input type="submit" name="submit" value={props.showSaveButton ? props.showSaveButton : "Calculate!"} className="btn" onClick={userSavedACB}/>: ""}
+                                {!newValues&&!props.showSaveButton? <div>
+                                <h3 className="saved-msg">Your information is changed, want to save it to your profile?</h3> 
+                                <input type="submit" name="submit" value= "Yes" className="btn" onClick={saveAfterChangeACB}/>
+                                <input type="submit" name="submit" value= "No" className="btn" onClick={dontSaveAfterChangeACB}/>
+                                </div> : ""}
+                                {(save&&newValues) && !calculated?
+                                <h3  className="saved-msg">New information will be saved when you calculate😃</h3> : ""}
+                                {(!save&&newValues) && !calculated?
+                                <h3  className="saved-msg">The information will not be saved😃</h3> : ""}
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </form>
-
-
         </div >
     );
        

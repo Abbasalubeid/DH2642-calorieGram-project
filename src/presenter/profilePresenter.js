@@ -70,7 +70,7 @@ export default function ProfilePresenter(props){
                     onUserSearched={userSavedACB}
                     onPersonChanged = {somethingChangedACB}
                     showGender = {true}
-                    showSaveButton = {"Save"}
+                    showSaveButton = {"Update"}
                     age = {age}
                     gender = {gender}
                     height = {height}

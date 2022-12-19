@@ -9,6 +9,9 @@ export default function BmiPresenter(props) {
     const [age, setAge] = React.useState(props.model.person.age);
     const [weight, setWeight] = React.useState(props.model.person.weight);
     const [height, setHeight] = React.useState(props.model.person.height);
+    const [tempAge, setTempAge] = React.useState();
+    const [tempWeight, setTempWeight] = React.useState();
+    const [tempHeight, setTempHeight] = React.useState();
     const [bmi, setBmi] = React.useState(props.model.bmi);
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
@@ -31,6 +34,12 @@ export default function BmiPresenter(props) {
         return changedAgainACB;
     }
 
+    function persistCurrentValues(){
+        setTempAge(age);
+        setTempWeight(weight)
+        setTempHeight(height)
+    }
+
     function observerACB(){
         setAge(props.model.person.age);
         setWeight(props.model.person.weight)
@@ -38,12 +47,27 @@ export default function BmiPresenter(props) {
         setBmi(props.model.person.bmi)
     }
 
-    function userSearchedACB() {
-        searchParams.age = props.model.person.age;
-        searchParams.height = props.model.person.height;
-        searchParams.weight = props.model.person.weight;
-        setPromise(getFitnessInfo(searchParams));
-        setShow(true);
+    function userSearchedACB(wantToSave) {
+        console.log(wantToSave);
+        if(!wantToSave){
+            searchParams.age = props.model.person.age;
+            searchParams.height = props.model.person.height;
+            searchParams.weight = props.model.person.weight;
+            setPromise(getFitnessInfo(searchParams));
+            setShow(true);
+            props.model.setAge(tempAge)
+            props.model.setWeight(tempWeight)
+            props.model.setHeight(tempHeight)
+        }
+        else if (wantToSave){
+            searchParams.age = props.model.person.age;
+            searchParams.height = props.model.person.height;
+            searchParams.weight = props.model.person.weight;
+            setPromise(getFitnessInfo(searchParams));
+            setShow(true);
+        }
+
+
     }
 
     function saveResultACB(){
@@ -67,9 +91,11 @@ export default function BmiPresenter(props) {
 
     function removeInfo(){
         props.model.removeUserBmi();
+        setShow(false);
     }
 
     function wasCreatedACB() {
+        persistCurrentValues();
         props.model.addObserver(observerACB);
         return function isTakenDownACB() {                                
             props.model.removeObserver(observerACB);
