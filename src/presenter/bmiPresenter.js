@@ -65,8 +65,11 @@ export default function BmiPresenter(props) {
         props.model.setHeight(height)
     }
 
-    function userChangedBmi(bmi){
+    function userChangedBmi(){
         
+    }
+    function removeInfo(){
+        props.model.removeUserBmi();
     }
 
     function wasCreatedACB() {
@@ -108,6 +111,7 @@ export default function BmiPresenter(props) {
                 
                     <BmiResultview
                         bmiResult={data}
+                        removeBmiInfo={removeInfo}
                     >
                     </BmiResultview>
                 }

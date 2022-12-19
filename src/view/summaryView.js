@@ -39,39 +39,47 @@ export default function summaryView(props) {
                             <td  className="second-td">{props.height}</td>
                         </tr>
                         <tr>
-                            <td className="first-td">BMI:</td>
-                            <td  className="second-td">{props.bmi.bmi +(" (") + props.bmi.health + (")")}</td>
-                        </tr>
-                        <tr>
                             <td className="first-td">Your Activity Level:</td>
                             <td  className="second-td">...</td>
                         </tr>
-                        <tr>
-                            <td className="first-td">Your Diet:</td>
-                            <td  className="second-td">{props.diet.protein + " protein, " +props.diet.carbs + " carbs, "+props.diet.fat + " fat" }</td>
-                        </tr>
-                        <tr>
-                            <td className="first-td">Your Goals:</td>
-                            <td  className="second-td">{props.goal.weightGoal+"\n("+
-                                                        props.goal.weightPerWeek+"),\n"+
-                                                        props.goal.caloriesIntake +(" calories per day.")}</td>
-                        </tr>
+
+                        {props.bmi.bmi!="" ?
+                                            <tr>
+                                                <td className="first-td">BMI:</td>
+                                                <td className="second-td">{props.bmi.bmi +(" (") + props.bmi.health + (")")}</td>
+                                                <button onClick={props.removeUserBmi} className="btn anim">remove</button> 
+                                            </tr>                                            
+                        :
+                        console.log("hellloooo")
+                        }
+
+                        {props.diet.protein!="" ?
+                                                <tr>
+                                                    <td className="first-td">Your Diet:</td>
+                                                    <td className="second-td">{props.diet.protein + " protein, " +props.diet.carbs + " carbs, "+props.diet.fat + " fat" }</td>
+                                                    <button onClick={props.removeUserDiet} className="btn anim">remove</button> 
+                                                </tr>
+                        :
+                        console.log("hellloooo")
+                        }
+                        
+                        {props.goal.weightGoal!="" ?
+                                                <tr>
+                                                    <td className="first-td">Your Goals:</td>
+                                                    <td className="second-td">{props.goal.weightGoal+"\n("+
+                                                                                props.goal.weightPerWeek+"),\n"+
+                                                                                props.goal.caloriesIntake +(" calories per day.")} 
+                                                    </td>
+                                                 <button onClick={props.removeUserGoal} className="btn anim">remove</button>
+                                                </tr>
+                        :
+                        console.log("hellloooo")
+                        }
+
                     </tbody>
                 </table>  
                 <button className="btn anim" onClick={printFunc}> Download result </button>
+                <button className="btn anim" onClick={props.removeUserInfo}> Reset Data </button>
             </div>
     );
 }
-
-
-        {/* <div >
-         <h2>Your summmary is the following:</h2>
-         <h3>age:</h3> {props.age} 
-         <h3>weight:</h3> {props.weight} 
-         <h3>height:</h3>{props.height} 
-         <h3>BMR: </h3> Calories/day 
-         <h3>Your activity level is: </h3>
-         <h3>your Diet: </h3>
-         <h3>Goals:</h3>  {props.goal.weightGoal} ({props.goal.weightPerWeek}) eat:{props.goal.calloriesIntake} Calories
-        </div> */}
-        {/* <div><button className = "btn anim" onClick ={printFunc}> Download result </button></div> */}

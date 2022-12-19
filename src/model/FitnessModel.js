@@ -78,12 +78,20 @@ export default class FitnessModel{
 
   setUserGoal(goal){
       const goals = (goal.toString()).split(",");
-      this.currentGoal.weightGoal     = goals[0 ];
+      this.currentGoal.weightGoal     = goals[0];
       this.currentGoal.weightPerWeek  = goals[1];
       this.currentGoal.caloriesIntake = goals[2];
       
       const payload = { newGoals : this.currentGoal}
       this.notifyObservers(payload);
+  }
+  removeUserGoal(){
+    this.currentGoal.weightGoal       = "";
+      this.currentGoal.weightPerWeek  = "";
+      this.currentGoal.caloriesIntake = "";
+
+    const payload = { newGoals : this.currentGoal}
+    this.notifyObservers(payload);
   }
 
   setUserDiet(diet){
@@ -96,12 +104,27 @@ export default class FitnessModel{
     const payload = { newDiet : this.currentDiet}
       this.notifyObservers(payload);
   }
+  removeUserDiet(){
+    this.currentDiet.protein = "";
+    this.currentDiet.carbs   = "";
+    this.currentDiet.fat     = "";
+
+    const payload = { newDiet : this.currentDiet}
+      this.notifyObservers(payload);
+  }
   
   setUserBmi(bmi){
     const bmiArr = (bmi.toString()).split(",");
     this.currentBmi.bmi      = bmiArr[0];
     this.currentBmi.health   = bmiArr[1];
     
+    const payload = { newBmi : this.currentBmi}
+      this.notifyObservers(payload);
+  }
+  removeUserBmi(){
+    this.currentBmi.bmi      = "";
+    this.currentBmi.health   = "";
+
     const payload = { newBmi : this.currentBmi}
       this.notifyObservers(payload);
   }

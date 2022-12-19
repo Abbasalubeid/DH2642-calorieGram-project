@@ -29,31 +29,13 @@ export default function GoalsResultView(props) {
         
         
     }
-    /*
-    function printFunc(){
-        const blob = new Blob([template], {type:"text/plain"})
-        const href = URL.createObjectURL(blob)
-        const a= Object.assign(document.createElement("a"), {
-            href,
-            download: "goals.txt",
-        }) 
-        a.click();
-        URL.revokeObjectURL(href);
-    }
-    */
 
-    const template =  `As of ${Date().slice(0,16)} your stats were:
-    age: ${props.userInfo.age}
-    weight: ${props.userInfo.weight}
-    height: ${props.userInfo.height}
-    BMR: ${(props.activityResult.BMR)} Calories/day
-    Goals: ${JSON.stringify(props.activityResult.goals).replace(/,/g, "\n")}
-    `
     return ( <div>
         <div className="result-button">
             <h3>Click to choose and save a goal</h3>
             <button className="btn anim" onClick={userGoalIsChanged}>To Maintain weight ➡️ Eat {(props.activityResult.BMR)} Calories/day</button>
              {Object.keys(props.activityResult.goals).map(renderGoalsCB)}
+            <button onClick={props.removeGoalInfo} className="btn">remove data</button>
         </div>
      </div>
      );
