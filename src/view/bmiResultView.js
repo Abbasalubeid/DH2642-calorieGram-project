@@ -1,4 +1,6 @@
 import React from "react";
+import "../css/diet.css";
+import "../css/goals.css";
 import "../css/bmi.css";
 
 export default function BmiResultView(props) {

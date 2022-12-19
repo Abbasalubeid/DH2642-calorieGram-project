@@ -1,4 +1,7 @@
 import React from 'react';
+import "../css/diet.css";
+import "../css/goals.css";
+import "../css/bmi.css";
 
 export default function InformationPresenter (props) {
     return (
@@ -47,17 +50,6 @@ export default function InformationPresenter (props) {
                  and for most people, BMI is a very good gauge of their level of body fat.
                  <br />
              </p>
-             <div className="readmore-text">
-                 <h4>What are calories?</h4>
-                 <p>
-                     Calories are a measure of how much energy food or drink contains. The amount of energy you need
-                     will depend on: age, how active you are and your hight and weight.
-                     The term calorie is commonly used as shorthand for kilocalorie. You will find this written as kcal
-                     on food packets. Kilojoules (kJ) are the equivalent of kilocalories within the International System
-                     of Units, and you'll see both kJ and kcal on nutrition labels. 4.2kJ is equivalent to approximately 1kcal.
-                 </p>
-             </div>
-             <label htmlFor="check">Read More</label>
         </div >
 
 
@@ -76,22 +68,6 @@ export default function InformationPresenter (props) {
                     Carbs are sugar basically. No matter what you eat a chocolate, bread, pasta or sugar, in your body they get converted to the same thing,
                     spiking your blood sugar, which in turn spikes your insulin levels.
                 </p>
-                <div className="readmore-text">
-                    <p>
-                        When you have a high amount of insulin in your body, you can't burn fat. Carbs will provide you with "instant energy" but they
-                        are hard to consume so eating a lot will tend to make you fat. Think of the standard american diet and the obesity epidemic. Diets that
-                        advocate a high carb consumption are vegan, for example. US health system advocates high carb, low fat diets.<br></br>
-                        <span className="bold-text">What is Body Fat?</span> <br />
-                        Fats There are at least 3 types of fat. Some are good, some are bad. There is a consensus that trans fats (from processed foods) are bad for you.
-                        Saturated fat (butter, lard) is now again being considered healthy (check Time magazine, and lots of studies). Monounsaturated fat was always
-                        considered healthy.
-                        Diets that advocate a high fat, low carb lifestyle are keto and paleo. Sweden for example advocates low carb, high fat diets.<br></br>
-                        <span className="bold-text">What is Protein?</span><br />
-                        Protein is a macronutrient. To put it simply, protein is one of the main nutrients that every person needs to maintain a healthy body. It helps to repair
-                        any internal or external damage, supports the immune system and contributes to an overall feeling of well-being.
-                    </p>
-                </div>
-                <label htmlFor="check">Read More</label>
             </div>
 
         </div>

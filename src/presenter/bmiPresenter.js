@@ -4,6 +4,7 @@ import React from "react";
 import promiseNoData from "../view/promiseNoData.js";
 import { getFitnessInfo } from "../fetchSource";
 import InformationView from "../view/informationView.js";
+import "../css/bmi.css";
 
 
 export default function BmiPresenter(props) {
@@ -127,7 +128,11 @@ export default function BmiPresenter(props) {
                     weight = {weight}
                 />
 
-            
+                <div className={data ? "bmi-info-result" : "hidden"}>
+                    <InformationView
+                        bmi2={true}>
+                    </InformationView>
+                </div>  
             <div className={!show ? "hidden" : "bmi-result"}>
 
                 {promiseNoData({ promise, data, error }) ||
@@ -138,11 +143,6 @@ export default function BmiPresenter(props) {
                     </BmiResultview>
                 }
             </div>
-                <div className={data ? "bmi-info-result" : "hidden"}>
-                <InformationView
-                    bmi2 = {true}>
-                </InformationView>
-                </div>
             </div>
         </div>
     )
