@@ -80,7 +80,7 @@
     }
 
     .nav-links, .login-btn, .signbtn{
-      display: none;
+      display: flex;
       width: 100%;
     }
     .btn-primary{

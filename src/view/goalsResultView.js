@@ -1,4 +1,6 @@
+import "../css/diet.css";
 import "../css/goals.css";
+import "../css/bmi.css";
 export default function GoalsResultView(props) {
 
     function renderGoalsCB(object) {
