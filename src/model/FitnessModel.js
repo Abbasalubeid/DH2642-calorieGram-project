@@ -117,7 +117,7 @@ export default class FitnessModel{
     const payload = { newBmi : this.currentBmi}
       this.notifyObservers(payload);
   }
-  removeUserDiet(){
+  removeUserBmi(){
     this.currentBmi = null;
 
     const payload = { newBmi : this.currentBmi}
