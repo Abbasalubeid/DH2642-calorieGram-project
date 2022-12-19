@@ -19,7 +19,7 @@ export default function summaryView(props) {
     BMI:  ${props.bmi.bmi +(" (") + props.bmi.health + (")")} \n
     Your activity level is: \n
     your Diet: ${props.diet.protein + " protein, " +props.diet.carbs + " carbs, "+props.diet.fat + " fat" }\n
-    Goals:  ${props.goal.weightGoal} (${props.goal.weightPerWeek}) eat:${props.goal.calloriesIntake} Calories\n
+    Goals:  ${props.goal.weightGoal} (${props.goal.weightPerWeek}) eat:${props.goal.caloriesIntake} Calories\n
     `
     return (
         <div className="summary-style anim">
