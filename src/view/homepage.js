@@ -16,28 +16,6 @@ export default function Homepage() {
         placement: 'center',
       },
       {
-        target: '.nav-home',
-        content: <h2>After using our futures, you will learn the basics about a healthy lifestyle. <br></br>
-                    You will also learn more about your current health state and how to maintain or change it
-        </h2>,
-        locale: { skip: <strong aria-label="skip">SKIP</strong> },
-        placement: 'center',
-      },
-      {
-        target: '.nav-signup',
-        content: <h2>To use our futures you will need an account!<br></br>
-          Click here to sign up with your email!<br></br>
-        It takes less than a minute😁 
-        </h2>,
-        locale: { skip: <strong aria-label="skip">SKIP</strong> },
-      },
-      {
-        target: '.nav-login',
-        content: <h2>Then log in with your account<br></br> 
-        </h2>,
-        locale: { skip: <strong aria-label="skip">SKIP</strong> },
-      },
-      {
         target: '.nav-profile',
         content: <h2>Tell us more about yourself in your profile✍️</h2>,
         locale: { skip: <strong aria-label="skip">SKIP</strong> },

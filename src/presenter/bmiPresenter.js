@@ -103,7 +103,7 @@ export default function BmiPresenter(props) {
                     weight = {weight}
                 />
             </div>
-            <div className={data ? "bmi-info-result" : "bmi-info"}>
+            <div className={data ? "bmi-info-result" : "hidden"}>
                 <CustomInfo />
             </div>
             <div className={!show ? "hidden" : "bmi-result "}>

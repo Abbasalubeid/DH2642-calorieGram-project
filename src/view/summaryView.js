@@ -49,8 +49,7 @@ export default function summaryView(props) {
                                                 <td className="second-td">{props.bmi.bmi +(" (") + props.bmi.health + (")")}</td>
                                                 <button onClick={props.removeUserBmi} className="btn anim">remove</button> 
                                             </tr>                                            
-                        :
-                        console.log("hellloooo")
+                        :""
                         }
 
                         {props.diet.protein!="" ?
@@ -59,8 +58,7 @@ export default function summaryView(props) {
                                                     <td className="second-td">{props.diet.protein + " protein, " +props.diet.carbs + " carbs, "+props.diet.fat + " fat" }</td>
                                                     <button onClick={props.removeUserDiet} className="btn anim">remove</button> 
                                                 </tr>
-                        :
-                        console.log("hellloooo")
+                        :""
                         }
                         
                         {props.goal.weightGoal!="" ?
@@ -73,7 +71,7 @@ export default function summaryView(props) {
                                                  <button onClick={props.removeUserGoal} className="btn anim">remove</button>
                                                 </tr>
                         :
-                        console.log("hellloooo")
+                        ""
                         }
 
                     </tbody>
