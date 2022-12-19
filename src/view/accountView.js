@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserAuth } from  "../AuthContext"
+import { UserAuth } from  "../model/AuthContext"
 
 
 export default function  AccountView () {
@@ -18,8 +18,6 @@ export default function  AccountView () {
       console.log(e.message);
     }
   };
-
- 
 
   return (
     <div >
