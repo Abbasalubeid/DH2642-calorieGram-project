@@ -44,8 +44,6 @@ function wasCreatedACB() {
     {
       setPromise(persistedModel());
     }
-      
-      
   })
   return function isTakenDownACB() {};
 }
