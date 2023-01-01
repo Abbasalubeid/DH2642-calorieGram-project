@@ -1,6 +1,6 @@
 # 🧮🍎CalorieGram
 
-Latest deply --> https://projekt40-30e90.web.app/
+Latest deploy --> https://projekt40-30e90.web.app/
 
 A project made with react for the course DH2642
 
